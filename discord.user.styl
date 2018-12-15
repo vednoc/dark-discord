@@ -119,6 +119,29 @@
         [class^="messagesWrapper"] { colors: 0, 0, $t; }
         [class^="messagesWrapper"] + form { colors: 0, 0, $t; }
       }
+
+      // * Messages.
+      [class^="message"] {
+        time { colors: $lighter, 0, 0; }
+        [class^="username"], [class^="markup"] { colors: $light, 0, 0; }
+        [class^="dividerEnabled"] { border-bottom-color: #FFFFFF08; }
+      }
+
+      // * Input section.
+      [class^="channelTextArea"] {
+        border-top-color: #FFFFFF08;
+        // Input container.
+        > [class^="inner"] { colors: 0, 0, $darker; }
+      }
+
+      // * Typing section.
+      [class^="typing"] {
+        colors: $light, 0, $t;
+        [class^="text"], [class^="cooldownWrapper"] { colors: $lighter, 0, 0; }
+        [class^="text"] strong { colors: $light, 0, 0; }
+        [class^="ellipsis"] .spinner-item { colors: 0, 0, $light; }
+      }
+
     }
 
   }
