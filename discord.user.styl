@@ -9,6 +9,8 @@
 @updateURL    https://gitlab.com/vednoc/dark-discord/raw/master/discord.user.styl
 @preprocessor stylus
 
+@var text b_radius "Custom border radius" 5px
+
 @var color dark    "Dark color.   " #2e2e2e
 @var color darker  "Darker color. " #212121
 @var color light   "Light color.  " #d1d1d1
@@ -45,6 +47,7 @@
     --cyan    : cyan;
     --green   : green;
     --t       : transparent !important;
+    --radius: b_radius;
   }
 
   // * Use stylus-lang variables with CSS variables.
@@ -65,6 +68,7 @@
   $cyan    = var(--cyan);
   $green   = var(--green);
   $t       = var(--t);
+  $radius  = var(--radius);
 
   // * Color mixin.
   // ? All colors -> colors: $light, $darker, $dark;
@@ -214,9 +218,11 @@
 
   // * Code chunks
   .markup-2BOw-j code, .markup-2BOw-j code.inline {
-    background: $darker !important;
-    color: $light !important;
+    border-radius: $radius;
+    colors: $light, 0, $darker;
+    box-shadow: 2px 2px 8px 0 $shadow;
   }
+  [class^="markup"] > pre { border: none !important; }
   .hljs {
     &-name, &-section, &-selector-class, &-selector-id, &-title {
       color: $blue !important;
