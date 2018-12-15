@@ -75,6 +75,14 @@
     if z is a 'call' { background-color: z !important; }
   }
 
+  // * Global reset.
+  ::placeholder { colors: $lighter, 0, 0; }
+  [class^="chat"] ::-webkit-scrollbar {
+    &-track { colors: 0, 0, $dark; }
+    &-track-piece { colors: 0, $dark, $shadow; }
+    &-thumb { colors: 0, $dark, $darker; }
+  }
+
   // * Loading page
   [class^="app"] > [class^="container"][class*="fixClipping"] { colors: 0, 0, $dark; }
   [class^="quote"] { colors: $light, 0, 0; }
