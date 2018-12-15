@@ -82,9 +82,11 @@
     &-track-piece { colors: 0, $dark, $shadow; }
     &-thumb { colors: 0, $dark, $darker; }
   }
-  // * Dirty firefox sidebar fix
-  .scrollerWrap-2lJEkd {
-    margin-right: -16px;
+
+  // * Dirty Firefox sidebar(s) hacks.
+  @supports (-moz-user-select: none) {
+    .scrollerWrap-2lJEkd { margin-right: -24px !important; }
+    [class*="directionColumn"][class*="firefoxFixScrollFlex"] { overflow: hidden; }
   }
 
   // * Loading page
