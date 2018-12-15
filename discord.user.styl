@@ -162,6 +162,43 @@
       }
 
     }
-
   }
+  
+  // * Code chunks
+  .markup-2BOw-j code, .markup-2BOw-j code.inline {
+    background: $darker !important;
+    color: $light !important;
+  }
+  .hljs {
+    &-name, &-section, &-selector-class, &-selector-id, &-title {
+      color: $blue !important;
+    }
+    &-attr, &-attribute, &-class , &-template-variable, &-type, &-variable {
+      color: $orange !important;
+    }
+    &-built_in, &-deletion {
+      color: $red !important;
+    }
+    &-doctag, &-literal, &-meta &-meta-string, &-number, &-regexp, &-string {
+      color: $cyan !important;
+    }
+    &-addition, &-keyword, &-selector-tag {
+      color: $green !important;
+    }
+    &-comment, &-quote {
+      color: $light !important;
+    }
+  }
+
+  // * Channel status
+  .online-2S838R {
+    background: $green !important;
+  }
+  .idle-3DEnRT {
+    background: $orange !important;
+  }
+  .dnd-1_xrcq {
+    background: $red !important;
+  }
+
 }
