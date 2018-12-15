@@ -77,12 +77,14 @@
 
   // * Global reset.
   ::placeholder { colors: $lighter, 0, 0; }
-  [class^="chat"] ::-webkit-scrollbar {
-    &-track { colors: 0, 0, $dark; }
-    &-track-piece { colors: 0, $dark, $shadow; }
-    &-thumb { colors: 0, $dark, $darker; }
+  // "Disconnected" scrollbars.
+  [class^="chat"], [class*="friends-"] {
+    ::-webkit-scrollbar {
+      &-track { colors: 0, 0, $dark; }
+      &-track-piece { colors: 0, $dark, $shadow; }
+      &-thumb { colors: 0, $dark, $darker; }
+    }
   }
-
   // * Dirty Firefox sidebar(s) hacks.
   @supports (-moz-user-select: none) {
     .scrollerWrap-2lJEkd { margin-right: -24px !important; }
