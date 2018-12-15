@@ -148,10 +148,16 @@
           opacity: 1;
           colors: $light, 0, 0;
         }
-        [class*="edited"], [class*="timestampCozy"] { colors: $lighter, 0, 0; }
-        [class^="username"], [class^="markup"] { colors: $light, 0, 0; }
+        [class*="timestampCozy"] {
+          opacity: 0.5;
+          colors: $light, 0, 0;
+        }
+        [class*="edited"], [class^="username"] { colors: $lighter, 0, 0; }
+        [class^="markup"] {
+          colors: $light, 0, 0;
+          a { colors: $accent, 0, 0; }
+        }
         [class^="dividerEnabled"] { border-bottom-color: #FFFFFF08; }
-        [class^="markup"] a { colors: $accent, 0, 0; }
       }
 
       // * Input section.
