@@ -103,5 +103,23 @@
       [class^="username"] { colors: $light, 0, 0; }
     }
 
+    // * Chat section.
+    [class*="chat"] {
+      colors: 0, 0, $dark;
+      > [class^="titleWrapper"] > [class*="title"] {
+        colors: 0, 0, $darker;
+        box-shadow: 0 1px 0 0 $shadow !important;
+      }
+
+      // ? Transparentize extra elements.
+      // ! Careful with this; might need to be removed.
+      > div {
+        colors: 0, 0, $t;
+        // Messages and input wrapper.
+        [class^="messagesWrapper"] { colors: 0, 0, $t; }
+        [class^="messagesWrapper"] + form { colors: 0, 0, $t; }
+      }
+    }
+
   }
 }
