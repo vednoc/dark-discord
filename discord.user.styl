@@ -209,4 +209,18 @@
     }
   }
 
+  // * QuickSwitcher.
+  [class*="quickswitcher"] {
+    colors: $light, 0, $dark;
+    box-shadow: 0 8px 16px 0 $shadow;
+    [class*="input"] {
+      colors: $light, 0, $darker;
+      box-shadow: 0 4px 8px 0 $shadow;
+    }
+    [class*="match"], [class*="header"] { colors: $accent, 0, 0; }
+    [class*="header"], [class*="username"] { colors: $light, 0, 0; }
+    [class*="tips"], [class*="content"], [class*="note"] { colors: $lighter, 0, 0; }
+    [class*="icon"] { colors: $icon, 0, 0; }
+  }
+
 }
