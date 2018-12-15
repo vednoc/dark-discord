@@ -86,4 +86,22 @@
     [class^="friendsOnline"], [class^="download"] { colors: $lighter, 0, 0; }
   }
 
+  // * Main area.
+  [class*="base"] {
+    // ? Make guild channels have transparent background.
+    > [class*="spacer"] > [class*="channels"] > [class*="noWrap"] {
+      colors: 0, 0, $t;
+    }
+    // ? Global channels.
+    [class*="channels"] {
+      colors: 0, 0, $darker;
+    }
+
+    // * User controls.
+    [class^="channels"][class*="vertical"] > div:last-child {
+      colors: $lighter, 0, $t;
+      [class^="username"] { colors: $light, 0, 0; }
+    }
+
+  }
 }
