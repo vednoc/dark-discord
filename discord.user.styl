@@ -9,6 +9,7 @@
 @updateURL    https://gitlab.com/vednoc/dark-discord/raw/master/discord.user.styl
 @preprocessor stylus
 
+@var checkbox min_guilds "Minimize width of guild area" 0
 @var text b_radius "Custom border radius" 5px
 
 @var color dark    "Dark color.   " #2e2e2e
@@ -104,6 +105,14 @@
   [class^="guildsWrapper"] {
     colors: 0, 0, $dark;
     [class^="friendsOnline"], [class^="download"] { colors: $lighter, 0, 0; }
+    [class*="noIcon"] { colors: $light, 0, $darker; }
+    if min_guilds {
+      transition: 0.3s cubic-bezier(0, 0, 0.2, 1);
+      transition-delay: 0.5s;
+      max-width: 10px;
+      &:hover { max-width: 70px; }
+      [class*="guild-"][class*="unread"]::before { colors: 0, 0, $lighter; }
+    }
   }
 
   // * Main area.
