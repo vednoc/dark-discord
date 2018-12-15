@@ -182,7 +182,27 @@
     [class*="idle"] { colors: 0, 0, $orange; }
     [class*="dnd"] { colors: 0, 0, $red; }
   }
-  
+
+  // * Friends area.
+  #friends {
+    colors: 0, 0, $dark;
+    [class*="headerBar"] {
+      colors: 0, 0, $darker;
+      box-shadow: 0 1px 0 0 $shadow;
+    }
+    .friends-table-header {
+      border-bottom-color: $darker !important;
+      .friends-column { colors: $lighter, 0, 0; }
+      .friends-column-separator { colors: 0, 0, $darker; }
+    }
+    [class*="friends-row"] {
+      border-color: #FFFFFF08 !important;
+      &:hover { colors: 0, 0, $darker; }
+      .friends-column-name { colors: $lighter, 0, 0; }
+      [class*="noIcon"] { colors: $light, 0, $darker; }
+    }
+  }
+
   // * Tab bar.
   .tab-bar {
     .tab-bar-item:not(.tab-bar-item-primary) {
