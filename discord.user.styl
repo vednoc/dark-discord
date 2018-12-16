@@ -320,8 +320,10 @@
   // * Settings.
   [class^="sidebarRegion"] {
     colors: $light, $shadow, $dark;
-    [class^="itemSelected"] { colors: $lighter, 0, $accent; }
-    [class^="itemDefault"], [class^="itemHover"] { colors: $light, 0, 0; }
+    [class^="header"] { opacity: 0.5; colors: $lighter, 0, 0; }
+    [class^="itemSelected"] { colors: $light, 0, $accent; }
+    [class*="itemDefault"]:hover { colors: $light, 0, $darker; }
+    [class^="itemDefault"], [class^="itemHover"] { colors: $lighter, 0, 0; }
   }
   [class^="contentRegion"] { colors: $light, $shadow, $darker; }
   // * Username and such.
