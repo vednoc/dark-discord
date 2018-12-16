@@ -284,4 +284,21 @@
     [class*="icon"] { colors: $icon, 0, 0; }
   }
 
+  // * Dropdown menus.
+  [class^="menu"] {
+    colors: $light, 0, $dark;
+    [class^="item"] {
+      colors: $light, 0, 0;
+      &:hover { colors: $light, 0, $darker; }
+    }
+  }
+  [class^="itemGroup"] {
+    [class^="item"] {
+    colors: $light, $dark, $dark;
+    &:hover { colors: $light, 0, $darker; }
+    }
+  }
+  [class^="contextMenu"] { colors: $light, $dark, $dark; box-shadow: $bshadow; }
+  .checkbox .checkbox-inner input[type="checkbox"]:checked + span { colors: 0, $accent, $accent; }
+  
 }
