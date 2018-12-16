@@ -82,7 +82,7 @@
     if z is a 'call' { background-color: z !important; }
   }
 
-  // * Global reset.
+  // * Global reset/overwrites.
   ::placeholder, [class*="emptyPlaceholder"] { colors: $lighter, 0, 0; }
   // "Disconnected" scrollbars.
   [class^="chat"], [class*="friends-"] {
@@ -97,6 +97,11 @@
     .scrollerWrap-2lJEkd { margin-right: -24px !important; }
     [class*="directionColumn"][class*="firefoxFixScrollFlex"] { overflow: hidden; }
   }
+
+  // * User status.
+  [class*="online"] { colors: 0, 0, $green; }
+  [class*="idle"] { colors: 0, 0, $orange; }
+  [class*="dnd"] { colors: 0, 0, $red; }
 
   // * Loading page
   [class^="app"] > [class^="container"][class*="fixClipping"] { colors: 0, 0, $dark; }
@@ -203,11 +208,6 @@
       }
 
     }
-
-    // * User status.
-    [class*="online"] { colors: 0, 0, $green; }
-    [class*="idle"] { colors: 0, 0, $orange; }
-    [class*="dnd"] { colors: 0, 0, $red; }
 
     // * Text status.
     [class*="statusGreen"], [style*="color: rgb(67, 181, 129)"] { colors: $green, 0, 0; }
