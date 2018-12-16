@@ -83,7 +83,7 @@
   }
 
   // * Global reset.
-  ::placeholder { colors: $lighter, 0, 0; }
+  ::placeholder, [class*="emptyPlaceholder"] { colors: $lighter, 0, 0; }
   // "Disconnected" scrollbars.
   [class^="chat"], [class*="friends-"] {
     ::-webkit-scrollbar {
