@@ -207,10 +207,10 @@
     [class*="dnd"] { colors: 0, 0, $red; }
 
     // * Text status.
-    [class^="statusGreen"] { colors: 0, 0, $green; }
-    [class^="statusOrange"] { colors: 0, 0, $orange; }
-    [class^="statusYellow"] { colors: 0, 0, $yellow; }
-    [class^="statusRed"] { colors: 0, 0, $red; }
+    [class*="statusGreen"], [style*="color: rgb(67, 181, 129)"] { colors: $green, 0, 0; }
+    [class*="statusOrange"], [style*="color: rgb(250, 166, 26)"] { colors: $orange, 0, 0; }
+    [class*="statusYellow"] { colors: $yellow, 0, 0; }
+    [class*="statusRed"], [style*="color: rgb(240, 71, 71)"] { colors: $red, 0, 0; }
   }
 
   // * Friends area.
