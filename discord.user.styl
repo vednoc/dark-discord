@@ -300,5 +300,14 @@
   }
   [class^="contextMenu"] { colors: $light, $dark, $dark; box-shadow: $bshadow; }
   .checkbox .checkbox-inner input[type="checkbox"]:checked + span { colors: 0, $accent, $accent; }
-  
+
+  // * Mentions .
+  [class^="messagesPopoutWrap"] {
+    colors: $light, $shadow, $darker;
+    [class^="header"]:not([class^="headerCozy"]) { colors: $light, $shadow, $darker; }
+    [class^="messageGroupWrapper"] { colors: $light, $shadow, $dark; }
+    [class^="jumpButton"] { colors: $light, $shadow, $t; }
+    [class^="actionButtons"] { colors: $light, $shadow, $t; transition: none !important; box-shadow: none !important; }
+  }
+
 }
