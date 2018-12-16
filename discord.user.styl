@@ -310,4 +310,23 @@
     [class^="actionButtons"] { colors: $light, $shadow, $t; transition: none !important; box-shadow: none !important; }
   }
 
+  // * Settings.
+  [class^="sidebarRegion"] {
+    colors: $light, $shadow, $dark;
+    [class^="itemSelected"] { colors: $lighter, 0, $accent; }
+    [class^="itemDefault"], [class^="itemHover"] { colors: $light, 0, 0; }
+  }
+  [class^="contentRegion"] { colors: $light, $shadow, $darker; }
+  // * Username and such.
+  [class*="cardPrimary"] {
+    colors: $light, $shadow, $dark;
+    [class*="userSettingsAccount"] { color: $lighter !important; }
+  }
+  [class*="faded"] { color: $light !important; opacity: .5; }
+
+  // * Buttons.
+  [class*="lookFilled"] { colors: $lighter, $accent, $accent; }
+  // * Check slider.
+  [class*="valueChecked"] { colors: $lighter, 0, $accent; }
+
 }
