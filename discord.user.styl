@@ -103,6 +103,13 @@
   [class*="idle"] { colors: 0, 0, $orange; }
   [class*="dnd"] { colors: 0, 0, $red; }
 
+  // * Text status.
+  [class*="statusGreen"], [style$="(67\, 181\, 129);"] { colors: $green, 0, 0; }
+  [class*="statusOrange"], [style$="(250\, 166\, 26);"] { colors: $orange, 0, 0; }
+  [class*="statusRed"], [style$="(240\, 71\, 71);"] { colors: $red, 0, 0; }
+  [class*="statusYellow"] { colors: $yellow, 0, 0; }
+  [class*="titleChecked"], [class*="descChecked"] { colors: $light, 0, 0; }
+
   // * Loading page
   [class^="app"] > [class^="container"][class*="fixClipping"] { colors: 0, 0, $dark; }
   [class^="quote"] { colors: $light, 0, 0; }
@@ -206,14 +213,7 @@
         [class^="text"] strong { colors: $light, 0, 0; }
         [class^="ellipsis"] .spinner-item { colors: 0, 0, $light; }
       }
-
     }
-
-    // * Text status.
-    [class*="statusGreen"], [style*="color: rgb(67, 181, 129)"] { colors: $green, 0, 0; }
-    [class*="statusOrange"], [style*="color: rgb(250, 166, 26)"] { colors: $orange, 0, 0; }
-    [class*="statusYellow"] { colors: $yellow, 0, 0; }
-    [class*="statusRed"], [style*="color: rgb(240, 71, 71)"] { colors: $red, 0, 0; }
 
     // * Embeded cards .
     [class^="embedInner"] { colors: $light, $shadow, $darker; }
