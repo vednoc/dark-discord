@@ -10,6 +10,7 @@
 @preprocessor stylus
 
 @var checkbox min_guilds "Minimize width of guild area" 0
+@var checkbox smol_guild "Minimize height of guild icons" 0
 @var text b_radius "Custom border radius" 5px
 
 @var color dark    "Dark color.   " #2e2e2e
@@ -120,12 +121,35 @@
     colors: 0, 0, $dark;
     [class^="friendsOnline"], [class^="download"] { colors: $lighter, 0, 0; }
     [class*="noIcon"] { colors: $light, 0, $darker; }
+    [class*="Separator"]::after { colors: 0, 0, $darker; }
     if min_guilds {
       transition: 0.3s cubic-bezier(0, 0, 0.2, 1);
       transition-delay: 0.5s;
       max-width: 10px;
       &:hover { max-width: 70px; }
       [class*="guild-"][class*="unread"]::before { colors: 0, 0, $lighter; }
+    }
+    if smol_guild {
+      [class*="guild-"] {
+        max-height: 30px;
+        // Set guild border-radius and background-color.
+        [class*="guildInner"], [class*="avatar-"] {
+          height: 30px;
+          border-radius: 15px !important;
+          colors: 0, 0, $darker;
+          a { height: 30px; }
+          // Guild image element.
+          a [class*="icon"] {
+            line-height: 30px;
+            height: 30px;
+            background-size: cover;
+          }
+        }
+      }
+      [class*="guildsAdd"] {
+        line-height: 30px;
+        border-radius: 30px;
+      }
     }
   }
 
