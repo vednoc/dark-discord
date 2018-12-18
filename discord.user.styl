@@ -204,6 +204,13 @@
       colors: 0, 0, $darker;
     }
 
+    // * Guild members list.
+    [class*="membersWrap-"] [class*="members-"] {
+      colors: 0, 0, $darker;
+      [class*="membersGroup-"] { opacity: 0.8; colors: $light, 0, 0; }
+      [class*="activityText-"] { colors: $lighter, 0, 0; }
+    }
+
     // * Search bar.
     [class*="channels"] [class*="searchBar"] {
       box-shadow: 0 1px 0 0 $shadow;
