@@ -132,10 +132,18 @@
   [class*="statusYellow"] { colors: $yellow, 0, 0; }
   [class*="titleChecked"], [class*="descChecked"] { colors: $light, 0, 0; }
 
-  // * Loading page
-  [class^="app"] > [class^="container"][class*="fixClipping"] { colors: 0, 0, $dark; }
-  [class^="quote"] { colors: $light, 0, 0; }
-  [class^="status"] { colors: $lighter, 0, 0; }
+  // * Loading page.
+  [class^="app"] > [style^="opacity"] {
+    // Background.
+    &[class*="fixClipping"] { colors: 0, 0, $dark; }
+    // Text colors.
+    [class^="quote-"] { colors: $light, 0, 0; }
+    [class^="status-"] { colors: $lighter, 0, 0; }
+    [class*="problems-"] {
+      [class*="Text"] { colors: $lighter, 0, 0; }
+      [class*="anchor"] { colors: $accent, 0, 0; }
+    }
+  }
 
   // ? All usernames except the ones that have custom colors.
   [class^="username"]:not([style^="color"]) { colors: $lighter, 0, 0; }
