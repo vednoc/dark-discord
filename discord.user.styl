@@ -415,14 +415,25 @@
   }
 
   // * Settings.
+  [class*="standardSidebarView"] { colors: 0, 0, $darker; }
+  // * Settings :: Sidebar.
   [class^="sidebarRegion"] {
-    colors: $light, $shadow, $dark;
+    border-right: 1px solid;
+    colors: $light, $shadow, $shadow;
     [class^="header"] { opacity: 0.5; colors: $lighter, 0, 0; }
     [class^="itemSelected"] { colors: $light, 0, $accent; }
     [class*="itemDefault"]:hover { colors: $light, 0, $darker; }
     [class^="itemDefault"], [class^="itemHover"] { colors: $lighter, 0, 0; }
   }
-  [class^="contentRegion"] { colors: $light, $shadow, $darker; }
+  // * Settings :: Main content.
+  [class^="contentRegion"] {
+    colors: $light, $shadow, $darker;
+    // Text colors.
+    [class*="titleDefault"], [class*="title-"] { colors: $lighter, 0, 0; }
+    [class*="description"] { colors: $light, 0, 0; }
+    [class*="divider"] { colors: 0, 0, $shadow; }
+    [class*="value-label"] { colors: $light, 0, 0; }
+  }
   // * Username and such.
   [class*="cardPrimary"] {
     colors: $light, $shadow, $dark;
