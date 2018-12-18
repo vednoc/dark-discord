@@ -11,6 +11,8 @@
 
 @var checkbox min_guilds "Minimize width of guild area" 0
 @var checkbox smol_guild "Minimize height of guild icons" 0
+@var checkbox hideCarousel "Hide carousel from activity page" 0
+@var checkbox hideNews "Hide news from activity page" 0
 @var text b_radius "Custom border radius" 5px
 
 @var color dark    "Dark color.   " #2e2e2e
@@ -408,4 +410,12 @@
   // * Check slider.
   [class*="valueChecked"] { colors: $lighter, 0, $accent; }
 
+  if hideCarousel {
+    [class*="carousel"] { display: none !important; }
+  }
+  if hideNews {
+    [class*="card"][class*="card"] {
+      [class*="cardBody"] > div:last-child { display: none !important; }
+    }
+  }
 }
