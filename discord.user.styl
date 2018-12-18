@@ -206,10 +206,8 @@
     // * Search bar.
     [class*="channels"] [class*="searchBar"] {
       box-shadow: 0 1px 0 0 $shadow;
-      .search-bar {
-        colors: 0, 0, $darker;
-        box-shadow: 0 1px 0 0 $shadow;
-      }
+      [class$="search-bar"] { colors: $lighter, $t, $t; }
+      [class$="search-bar-inner"] { colors: $lighter, $shadow, $shadow; }
     }
 
     // * User controls.
