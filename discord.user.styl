@@ -442,7 +442,14 @@
   [class*="faded"] { color: $light !important; opacity: .5; }
 
   // * Buttons.
-  [class*="lookFilled"] { colors: $lighter, $accent, $accent; }
+  [class*="lookFilled"] {
+    colors: $lighter, $accent, $accent;
+    transition: all 0.15s ease-in-out;
+    &[class*="colorGreen"] { colors: $light, $green, $green; }
+    &[disabled] { colors: $light, $darker, $darker; }
+    &:hover { opacity: 0.8 !important; }
+  }
+
   // * Check slider.
   [class*="valueChecked"] { colors: $lighter, 0, $accent; }
 
