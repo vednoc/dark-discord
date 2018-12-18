@@ -95,7 +95,7 @@
   }
   // * Dirty Firefox sidebar(s) hacks.
   @supports (-moz-user-select: none) {
-    .scrollerWrap-2lJEkd { margin-right: -24px !important; }
+    // .scrollerWrap-2lJEkd { margin-right: -24px !important; }
     [class*="directionColumn"][class*="firefoxFixScrollFlex"] { overflow: hidden; }
   }
 
@@ -227,7 +227,8 @@
           colors: $light, 0, 0;
           a { colors: $accent, 0, 0; }
         }
-        [class^="dividerEnabled"] { border-bottom-color: #FFFFFF08; }
+        // ? Message separators; sibling of message-* selectors.
+        & + [class*="dividerEnabled"] { opacity: 0.8; colors: 0, $darker, 0; }
       }
 
       // * Input section.
@@ -282,7 +283,7 @@
       .friends-column-separator { colors: 0, 0, $darker; }
     }
     [class*="friends-row"] {
-      border-color: #FFFFFF08 !important;
+      border-color: $shadow !important;
       &:hover { colors: 0, 0, $darker; }
       .friends-column-name { colors: $lighter, 0, 0; }
       [class*="noIcon"] { colors: $light, 0, $darker; }
@@ -290,7 +291,7 @@
   }
 
   // * Tab bar.
-  .tab-bar {
+  #friends .tab-bar {
     .tab-bar-item:not(.tab-bar-item-primary) {
       colors: $lighter, 0, 0;
       &.selected, &:hover { colors: $light, 0, $dark; }
