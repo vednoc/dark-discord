@@ -286,6 +286,26 @@
     .tab-bar-separator { colors: 0, 0, $shadow; }
   }
 
+  // * Private channels.
+  [class^="privateChannels-"] {
+    // Headers.
+    header { opacity: 0.5; colors: $light, 0, 0; }
+    // Channel related styles.
+    [class^="channel-"] {
+      colors: $light, 0, 0;
+      // Usernames.
+      a, [class^="name-"] { colors: $light, 0, 0; }
+      // Activities.
+      [class^="name-"] > [class^="activity"] { colors: $lighter, 0, 0; }
+      // On hover/active state.
+      &:hover a, &[class*="selected-"] a { colors: 0, 0, $dark; }
+    }
+    // ? Reset scroller padding so it takes less space.
+    [class*="scrollerWrapPolyfill"] > [class^="scroller-"] {
+      padding: 0 0px 0 8px !important;
+    }
+  }
+
   // * Code chunks
   .markup-2BOw-j code, .markup-2BOw-j code.inline {
     border-radius: $radius;
