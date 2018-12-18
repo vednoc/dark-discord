@@ -95,6 +95,25 @@
       &-thumb { colors: 0, $dark, $darker; }
     }
   }
+
+  // * Firefox scrollbar polyfill.
+  .scrollbar {
+    colors: 0, 0, $dark;
+    .track { colors: 0, 0, $shadow; }
+    .thumb { colors: 0, 0, $dark; }
+    .thumb::after { colors: 0, 0, $darker; }
+    &::after { colors: 0, 0, $dark; }
+  }
+  // Different type of scrollbar.
+  [class^="scrollbar-"] {
+    colors: 0, 0, $darker;
+    [class^="track"] { colors: 0, 0, $shadow; }
+    [class^="thumb"] {
+      box-shadow: 0 0 0 2px $darker, inset 0 0 0 4px $shadow;
+      colors: 0, 0, $dark; }
+    [class^="pad"] { colors: 0, 0, $darker; }
+  }
+
   // * Dirty Firefox sidebar(s) hacks.
   @supports (-moz-user-select: none) {
     // .scrollerWrap-2lJEkd { margin-right: -24px !important; }
