@@ -118,6 +118,11 @@
   @supports (-moz-user-select: none) {
     // .scrollerWrap-2lJEkd { margin-right: -24px !important; }
     [class*="directionColumn"][class*="firefoxFixScrollFlex"] { overflow: hidden; }
+    // ? Fixes input element in *fox-based browsers.
+    [class*="channelTextArea"] textarea {
+      margin: 0px 2px -12px 0;
+      padding: 10px;
+    }
   }
 
   // * User status.
