@@ -138,6 +138,44 @@
     }
   }
 
+  // * User popout.
+  [class*="userPopout"] {
+    border-radius: $radius;
+    colors: 0, 0, $darker;
+    > [class^="headerNormal-"] {
+      colors: $light, 0, $shadow;
+      // Username/discriminator colors.
+      [class*="Name"] { colors: $light, 0, 0; }
+      [class*="Tag"] { colors: $lighter, 0, 0; }
+    }
+    // * Different modes.
+    // TODO Should we include different colors?
+    [class*="Spotify"] { colors: 0, 0, $dark; }
+    [class*="headerPlaying"] { colors: 0, 0, $darker; }
+    [class*="activityUserPopout"] { colors: 0, 0, $shadow; }
+    // * Body.
+    > [class^="body-"] {
+      colors: $lighter, 0, $t;
+      // Headers.
+      [class*="bodyTitle"] { colors: $lighter, 0, 0; }
+      // Add role button.
+      [class*="actionButton"] { colors: $lighter, $shadow, $shadow; }
+      // Note section.
+      [class*="note"] > textarea {
+        colors: $light, 0, 0;
+        &:focus { colors: 0, 0, $shadow; }
+      }
+    }
+    // * Footer.
+    > [class^="footer-"] {
+      colors: $light, $shadow, $t;
+      // Tip color.
+      [class*="tip"] { colors: $lighter, 0, 0; }
+      // Message $user.
+      [class*="quickMessage"] { colors: $light, $shadow, $shadow; }
+    }
+  }
+
   // * User status.
   [class*="online-"] { colors: 0, $darker, $green; }
   [class*="idle-"] { colors: 0, $darker, $orange; }
