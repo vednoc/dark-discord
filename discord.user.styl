@@ -125,6 +125,19 @@
     }
   }
 
+  // * Popout menus.
+  // ? For example: Spotify invitation/Upload a File/etc.
+  [class*="popouts-"] [class*="attachPopout-"] {
+    colors: $light, 0, $darker;
+    // Text color.
+    [class*="RowText"] { colors: $lighter, 0, 0; }
+    // On hover event.
+    > [class*="attachPopoutRow"]:hover {
+      colors: $lighter, 0, $shadow;
+      [class*="RowText"] { colors: $light, 0, 0; }
+    }
+  }
+
   // * User status.
   [class*="online-"] { colors: 0, $darker, $green; }
   [class*="idle-"] { colors: 0, $darker, $orange; }
