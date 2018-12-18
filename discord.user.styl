@@ -232,9 +232,21 @@
 
       // * Input section.
       [class^="channelTextArea"] {
-        border-top-color: #FFFFFF08;
+        border-top-color: $darker;
         // Input container.
         > [class^="inner"] { colors: 0, 0, $darker; }
+        // Input text color.
+        textarea { colors: $light, 0, 0; }
+        [class*="divider"], [class*="Divider"] { colors: 0, 0, $shadow; }
+        // Emojis, mentions, commands popout.
+        [class*="autocomplete-"] {
+          border-bottom: 1px solid;
+          colors: 0, $shadow, $darker;
+          [class*="iconForeground"] { fill: $icon; }
+          [class*="Title"], [class*="description"] { colors: $lighter, 0, 0; }
+          [class*="content-"], [class*="Title"] strong { colors: $light, 0, 0; }
+          [class*="selectorSelected"] { colors: 0, 0, $dark; }
+        }
       }
 
       // * Typing section.
