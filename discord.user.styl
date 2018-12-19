@@ -229,31 +229,35 @@
       [class*="guild-"][class*="unread"]::before { colors: 0, 0, $lighter; }
     }
     if smol_guild {
+      $height = 30px;
       [class*="guild-"] {
-        max-height: 30px;
+        max-height: $height;
         // Set guild border-radius and background-color.
         [class*="guildInner"], [class*="avatar-"] {
-          height: 30px;
+          height: $height;
           border-radius: 15px !important;
           colors: 0, 0, $darker;
-          a { height: 30px; }
+          a { height: $height; }
           // Guild image element.
           a [class*="icon"] {
-            line-height: 30px;
-            height: 30px;
+            line-height: $height;
+            height: $height;
             background-size: cover;
           }
         }
+        // ? Home icon.
+        svg[class*="homeIcon-"] {
+          height: 50px;
+          margin-top: -10px;
+          padding: 10px !important;
+        }
       }
       [class*="guildsAdd"] {
-        line-height: 30px;
-        border-radius: 30px;
+        line-height: $height;
+        border-radius: $height;
       }
     }
   }
-
-  // * Home icon above quilds.
-  [class^="guildInner"] { colors: 0, 0, $accent; }
 
   // * Main area.
   [class*="base"] {
