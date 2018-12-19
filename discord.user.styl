@@ -213,8 +213,14 @@
   [class^="guildsWrapper"] {
     colors: 0, 0, $dark;
     [class^="friendsOnline"], [class^="download"] { colors: $lighter, 0, 0; }
-    [class*="noIcon"] { colors: $light, 0, $darker; }
     [class*="Separator"]::after { colors: 0, 0, $darker; }
+    // * Home icon above guilds.
+    [class^="guildInner"][draggable="false"] {
+      colors: 0, 0, $darker;
+      transition-duration: 0.15s !important;
+      &[class*="background"] [class*="noIcon"] { colors: $light, 0, 0; }
+      &[style$="rgb(114\, 137\, 218);"] { colors: 0, 0, $accent; }
+    }
     if min_guilds {
       transition: 0.3s cubic-bezier(0, 0, 0.2, 1);
       transition-delay: 0.5s;
