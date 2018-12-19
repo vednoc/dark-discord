@@ -87,6 +87,13 @@
 
   // * Global reset/overwrites.
   ::placeholder, [class*="emptyPlaceholder"] { colors: $lighter, 0, 0; }
+
+  // * Modal backdrop.
+  [class^="backdrop"] {
+    opacity: 0.80 !important;
+    colors: 0, 0, $dark;
+  }
+
   // "Disconnected" scrollbars.
   [class^="chat"], [class*="friends-"] {
     ::-webkit-scrollbar {
