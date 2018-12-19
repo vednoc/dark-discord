@@ -529,10 +529,14 @@
   }
   // * Username and such.
   [class*="cardPrimary"] {
-    colors: $light, $shadow, $dark;
-    [class*="userSettingsAccount"] { color: $lighter !important; }
+    colors: $light, $shadow, $shadow;
+    input {
+      colors: $light, $shadow, $shadow;
+      &:focus { colors: 0, $accent, 0; }
+    }
   }
   [class*="faded"] { color: $light !important; opacity: .5; }
+  [class*="colorPrimary"] { colors: $light, 0, 0; }
 
   // * Buttons.
   [class*="lookFilled"] {
