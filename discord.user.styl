@@ -474,6 +474,33 @@
     }
   }
 
+  // * Search results.
+  .search-results-wrap {
+    colors: 0, 0, $darker;
+    .search-header {
+      colors: $red, 0, $darker;
+      box-shadow: 0 1px 0 0 $shadow !important;
+      // Text color.
+      .tab, .total-results { opacity: 0.6; colors: $lighter, 0, 0; }
+      .tab.selected { colors: $light, $accent, 0; }
+    }
+    .results-wrapper {
+      // Name and separator.
+      .channel-separator {
+        &::before { colors: 0, $shadow, 0; }
+        span { colors: $lighter, 0, $darker; }
+      }
+      .search-result {
+        // Remove unnecessary gradients.
+        &::before, &::after { background: none !important; }
+        // Matching message.
+        .hit { colors: 0, $shadow, $dark; box-shadow: 0 0 30px 6px $darker; }
+      }
+      // Pages.
+      .pagination { colors: $lighter, 0, 0; }
+    }
+  }
+
   // * Code chunks
   .markup-2BOw-j code, .markup-2BOw-j code.inline {
     border-radius: $radius;
