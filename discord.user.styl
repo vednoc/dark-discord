@@ -132,6 +132,35 @@
     }
   }
 
+
+  // * Modals.
+  [class*="modal-"] {
+    &[class*="sizeSmall-"] {
+      colors: 0, 0, $darker;
+      box-shadow: 0 0 0 1px $shadow, 0 2px 10px 0 $shadow;
+    }
+    [class*="footer-"] {
+      colors: 0, 0, $shadow;
+      box-shadow: inset 0 1px 0 0 $shadow;
+    }
+    // Highlighted friends.
+    [class*="friend-"] { colors: $light, 0, 0; }
+    [class*="friendSelected-"] { colors: 0, 0, $dark; }
+    .search-bar {
+      colors: 0, 0, $t;
+      &-inner { colors: 0, $shadow, $shadow; }
+      &-tag { colors: $lighter, 0, $darker; }
+      input { colors: $light, 0, 0; }
+    }
+    // Text color.
+    [class*="defaultColor"] { colors: $light, 0, 0; }
+    [class*="Header"], [class*="header-"] { colors: $lighter, 0, 0; }
+    // Spotify invitation.
+    [class*="partyStatus"] {
+      colors: $lighter, 0, 0;
+      [class*="textLink"] { colors: $light, 0, 0; }
+    }
+  }
   // * Popout menus.
   // ? For example: Spotify invitation/Upload a File/etc.
   [class*="popouts-"] [class*="attachPopout-"] {
