@@ -341,6 +341,12 @@
         & + [class*="dividerEnabled"] { opacity: 0.8; colors: 0, $darker, 0; }
       }
 
+      // ? New message divider.
+      [class*="dividerRed-"] [class*="Content-"] {
+        colors: $red, 0, 0;
+        &::before, &::after { colors: 0, $red, 0; }
+      }
+
       // * Invite embed.
       [class*="wrapper-"] {
         colors: 0, $shadow, $shadow;
