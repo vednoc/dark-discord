@@ -238,6 +238,13 @@
     }
   }
 
+  // * Skeleton/crashed page.
+  [class*="appMount-"] > [class*="themeDark-"] {
+    colors: 0, 0, $dark;
+    [class*="text-"] > h4 { colors: $light, 0, 0; }
+    [class*="note-"] { colors: $lighter, 0, 0; }
+  }
+
   // ? All usernames except the ones that have custom colors.
   [class^="username"]:not([style^="color"]) { colors: $lighter, 0, 0; }
   // ? Default no-role color in right sidebar.
