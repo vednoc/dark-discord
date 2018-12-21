@@ -432,6 +432,38 @@
     [class^="embedPill"] { colors: 0, 0, $accent; }
   }
 
+  // * Emote menu.
+  [class*="emojiPicker-"] {
+    colors: $red, $darker, $darker;
+    box-shadow: 0 0 6px 0 var(--shadow);
+    // Header.
+    .search-bar {
+      colors: 0, 0, $darker; // not necessary?
+      &-inner { colors: $lighter, 0, $dark; }
+      &-inner input { colors: $light, 0, 0; }
+    }
+    // Frequently used.
+    [class*="stickyHeader-"] { colors: 0, 0, $darker; }
+    [class*="category-"] { colors: $lighter, 0, 0; }
+    // Selected emote.
+    [class*="row-"] [class*="selected-"] { colors: 0, 0, $accent; }
+    // Dimmed overlay.
+    [class*="visible-"] {
+      opacity: 0.8;
+      colors: 0, 0, $darker;
+    }
+    // Diversity selector.
+    [class*="popout-"] {
+      padding: 2px;
+      colors: 0, $dark, $darker;
+    }
+    // ? Fix scrollbar polyfill.
+    [class*="scrollbar-"] > [class*="pad"] {
+      left: -2px !important;
+      colors: 0, 0, $darker;
+    }
+  }
+
   // * Friends area.
   #friends {
     colors: 0, 0, $dark;
