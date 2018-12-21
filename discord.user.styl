@@ -501,7 +501,12 @@
     [class^="channel-"] {
       colors: $light, 0, 0;
       // Usernames.
-      a, [class^="name-"] { colors: $light, 0, 0; }
+      a, [class^="name-"] { colors: $lighter, 0, 0; }
+      // ? Text opacity.
+      [class^="name-"] { opacity: 0.6; }
+      // On hover/select states.
+      &:hover [class*="name-"],
+      &[class*="selected-"] [class*="name-"] { opacity: 1; }
       // Activities.
       [class^="name-"] > [class^="activity"] { colors: $lighter, 0, 0; }
       // On hover/active state.
