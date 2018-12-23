@@ -167,11 +167,20 @@
     [class*="header-"] > [class*="Info"] {
       [class*="username"] { colors: $light, 0, 0; }
       [class*="discriminator"] { colors: $lighter, 0, 0; }
-    [class*="Spotify"] {
+      // Send friend request button.
+      & + [class*="lookInverted"] {
+        colors: $green, 0, $dark;
+        box-shadow: inset 0 0 0 1px $shadow;
+        transition: 0.2s ease-in-out;
+        &:hover { colors: $accent, 0, 0; }
+      }
+    }
+    // * Activities.
+    [class*="Spotify-"] {
       colors: 0, 0, $darker;
       [class^="headerFill-"] {
         border-top: 1px solid;
-        colors: 0, 0, $t;
+        colors: 0, $shadow, $t;
       }
     }
     [class*="Playing-"] {
@@ -181,7 +190,7 @@
         colors: 0, $shadow, $t;
       }
     }
-    [class*="topSectionNormal"] {
+    [class*="topSectionNormal-"] {
       colors: 0, 0, $darker;
     }
     // * Tab bar.
@@ -199,14 +208,14 @@
       [class*="Info"] { colors: $lighter, 0, 0; }
       [class*="note"] > textarea {
         colors: $light, 0, 0;
-        &:focus { colors: 0, 0, $shadow; }
+        &:focus { colors: 0, 0, $dark; }
       }
     }
     // * Connected accounts.
     [class*="userInfoSection"] {
       colors: 0, $shadow, 0;
       [class*="Accounts"] > [class*="Account"] {
-        colors: 0, $shadow, $shadow;
+        colors: 0, $shadow, $dark;
         [class*="AccountName"] { colors: $lighter, 0, 0; }
       }
     }
