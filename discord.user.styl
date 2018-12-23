@@ -239,27 +239,32 @@
     border-radius: $radius;
     colors: 0, 0, $darker;
     > [class^="headerNormal-"] {
-      colors: $light, 0, $shadow;
+      colors: $light, 0, $darker;
       // Username/discriminator colors.
       [class*="Name"] { colors: $light, 0, 0; }
       [class*="Tag"] { colors: $lighter, 0, 0; }
+      [class*="botTag"] { colors: $light, 0, $accent; }
     }
     // * Different modes.
     // TODO Should we include different colors?
-    [class*="Spotify"] { colors: 0, 0, $dark; }
+    [class*="Spotify"] { colors: 0, 0, $darker; }
     [class*="headerPlaying"] { colors: 0, 0, $darker; }
-    [class*="activityUserPopout"] { colors: 0, 0, $shadow; }
+    [class*="activityUserPopout"] {
+      border-top: 1px solid;
+      colors: 0, $shadow, $t;
+    }
     // * Body.
     > [class^="body-"] {
-      colors: $lighter, 0, $t;
+      border-top: 1px solid;
+      colors: $lighter, $shadow, $t;
       // Headers.
       [class*="bodyTitle"] { colors: $lighter, 0, 0; }
       // Add role button.
-      [class*="actionButton"] { colors: $lighter, $shadow, $shadow; }
+      [class*="actionButton"] { colors: $lighter, $dark, $darker; }
       // Note section.
       [class*="note"] > textarea {
-        colors: $light, 0, 0;
-        &:focus { colors: 0, 0, $shadow; }
+        colors: $lighter, 0, 0;
+        &:focus { colors: $light, 0, $dark; }
       }
     }
     // * Footer.
@@ -268,7 +273,7 @@
       // Tip color.
       [class*="tip"] { colors: $lighter, 0, 0; }
       // Message $user.
-      [class*="quickMessage"] { colors: $light, $shadow, $shadow; }
+      [class*="quickMessage"] { colors: $light, $shadow, $dark; }
     }
   }
 
