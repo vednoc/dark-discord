@@ -573,6 +573,15 @@
     [class*="announcing"] { colors: $accent, 0, 0; }
   }
 
+  // * Library page.
+  [class^="gameLibrary-"] {
+    colors: 0, 0, $dark;
+    [class*="headerBar-"] {
+      colors: 0, 0, $darker;
+      [class*="title-"] { colors: $light, 0, 0; }
+    }
+  }
+
   // * Tab bar.
   #friends .tab-bar {
     .tab-bar-item:not(.tab-bar-item-primary) {
