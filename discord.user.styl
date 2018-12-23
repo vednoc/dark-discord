@@ -148,7 +148,7 @@
     [class*="friendSelected-"] { colors: 0, 0, $dark; }
     .search-bar {
       colors: 0, 0, $t;
-      &-inner { colors: 0, $shadow, $shadow; }
+      &-inner { colors: 0, $shadow, $dark; }
       &-tag { colors: $lighter, 0, $darker; }
       input { colors: $light, 0, 0; }
     }
@@ -400,7 +400,7 @@
     [class*="channels"] [class*="searchBar"] {
       box-shadow: 0 1px 0 0 $shadow;
       [class$="search-bar"] { colors: $lighter, $t, $t; }
-      [class$="search-bar-inner"] { colors: $lighter, $shadow, $shadow; }
+      [class$="search-bar-inner"] { colors: $lighter, $shadow, $dark; }
     }
 
     // * User controls.
@@ -459,7 +459,7 @@
 
       // * Invite embed.
       [class*="wrapper-"] {
-        colors: 0, $shadow, $shadow;
+        colors: 0, $shadow, $dark;
         [class*="title-"], [class*="guildDetail-"] { colors: $lighter, 0, 0; }
         [class*="guildName-"] { colors: $light, 0, 0; }
         [class*="statusOnline-"] { colors: 0, 0, $green; }
@@ -474,7 +474,7 @@
         > [class^="inner"] { colors: 0, 0, $darker; }
         // Input text color.
         textarea { colors: $light, 0, 0; }
-        [class*="divider"], [class*="Divider"] { colors: 0, 0, $shadow; }
+        [class*="divider"], [class*="Divider"] { colors: 0, 0, $t; }
         // Emojis, mentions, commands popout.
         [class*="autocomplete-"] {
           border-bottom: 1px solid;
