@@ -551,10 +551,14 @@
       .friends-column-separator { colors: 0, 0, $darker; }
     }
     [class*="friends-row"] {
-      border-color: $shadow !important;
-      &:hover { colors: 0, 0, $darker; }
+      colors: 0, $shadow, 0;
+      .status-text { colors: $lighter, 0, 0; }
       .friends-column-name { colors: $lighter, 0, 0; }
       [class*="noIcon"] { colors: $light, 0, $darker; }
+      &:hover {
+        colors: 0, 0, $darker;
+        box-shadow: 0 2px 4px 0 $shadow !important;
+      }
     }
   }
 
