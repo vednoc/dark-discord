@@ -804,4 +804,19 @@
       [class*="cardBody"] > div:last-child { display: none !important; }
     }
   }
+
+  // * Deprecated elements.
+  .form.deprecated {
+    .header {
+      colors: 0, 0, $dark;
+      h1 { colors: $light, 0, 0; }
+      input[type=text] {
+        colors: $lighter, $darker, $darker;
+        box-shadow: 0 2px 1px 0 $shadow !important;
+      }
+    }
+    .form-inner { colors: 0, 0, $darker; }
+    .footer { colors: $lighter, $shadow, $darker; }
+    a { colors: $accent, 0, 0; }
+  }
 }
