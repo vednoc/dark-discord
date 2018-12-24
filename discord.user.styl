@@ -583,6 +583,36 @@
     }
   }
 
+  // * Activity page.
+  [class^="activityFeed-"] {
+    [class*="card-"] {
+      box-shadow: 0 2px 8px -1px $shadow;
+      [class*="header-"] { colors: 0, 0, $dark; }
+      [class*="cardBody-"] { colors: 0, 0, $darker; }
+      // News, announcements, videos.
+      [class*="news-"] {
+        colors: 0, 0, $darker;
+        [class*="title-"] { colors: $light, 0, 0; }
+        [class*="subtitle-"], [class*="description-"] {
+          opacity: 0.6;
+          colors: $light, 0, 0;
+        }
+      }
+      // Text colors.
+      [class*="username-"] { colors: $light, 0, 0; }
+      [class*="discriminator-"] { colors: $lighter, 0, 0; }
+      [class*="Title-"], [class*="playTime-"] { colors: $lighter, 0, 0; }
+    }
+    [class*="title-"] { colors: $light, 0, 0; }
+    [class*="article-"] {
+      colors: 0, 0, $darker;
+      [class*="background-"] {
+        -webkit-mask: linear-gradient(0deg, $t, $dark 150%);
+        mask: linear-gradient(0deg, $t, $dark 150%);
+      }
+    }
+  }
+
   // * Tab bar.
   #friends .tab-bar {
     .tab-bar-item:not(.tab-bar-item-primary) {
