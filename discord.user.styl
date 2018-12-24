@@ -819,4 +819,19 @@
     .footer { colors: $lighter, $shadow, $darker; }
     a { colors: $accent, 0, 0; }
   }
+  // * Create/join another server.
+  [class*="animator-"][class*="fixClipping-"] {
+    colors: 0, 0, $t;
+    [class*="modal-"][class*="slide-"][class*="size-"] {
+      colors: 0, 0, $darker;
+      box-shadow: 0 2px 8px -1px $shadow !important;
+      [class*="action-"] {
+        background: none !important;
+        colors: 0, $shadow, $dark;
+        box-shadow: 0 2px 8px 0 $shadow;
+      }
+      [class*="actionBody-"] { colors: $lighter, 0, 0; }
+      [class*="or-"] { background-image: none !important; }
+    }
+  }
 }
