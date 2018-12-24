@@ -573,11 +573,12 @@
     [class*="announcing"] { colors: $accent, 0, 0; }
   }
 
-  // * Library page.
-  [class^="gameLibrary-"] {
+  // * Shared page.
+  [class^="activityFeed-"], [class^="gameLibrary-"], [class*="root-"] {
     colors: 0, 0, $dark;
     [class*="headerBar-"] {
       colors: 0, 0, $darker;
+      box-shadow: 0 1px 0 0 $shadow !important;
       [class*="title-"] { colors: $light, 0, 0; }
     }
   }
