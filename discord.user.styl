@@ -575,6 +575,24 @@
     [class*="gameTitle-"] { colors: $light, 0, 0; }
     [class*="tagline-"] { colors: $lighter, 0, 0; }
     [class*="priceOSSection-"] { colors: $light, 0, 0; }
+    // ? "First on Discord" cards.
+    [class*="tileWrapper-"] {
+      > [class*="tileMedia-"][class*="tile-"] {
+        colors: 0, 0, $dark;
+        &:hover { box-shadow: 0 9px 20px 0 $shadow; }
+        > figure[class*="splashContainer-"] { colors: 0, 0, $t; }
+        > dif[class*="mediaFade-"] {
+          background: linear-gradient(180deg, $t 90%, $darker);
+        }
+        [class*="description-"] {
+          background: linear-gradient(180deg, $t, $darker 45%, $darker);
+        }
+        [class*="tag-"] {
+          background-image: linear-gradient(90deg, $accent, $darker);
+          &::before { filter: grayscale(100%) opacity(0.2); }
+        }
+      }
+    }
   }
 
   // * Shared pages.
