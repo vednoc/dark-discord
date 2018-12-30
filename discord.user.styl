@@ -571,10 +571,25 @@
     colors: 0, 0, $dark;
     [class*="headerBar-"] {
       colors: 0, 0, $darker;
+      box-shadow: 0 1px 0 0 $shadow;
       [class*="title-"] { colors: $light, 0, 0; }
+    }
+    // * Header.
+    [class*="premiumApplicationsHeader-"],
+    [class*="distributionApplicationsActions-"] {
+      colors: $light, $darker, 0;
+      [class*="viewAllGames-"] { colors: $light, 0, 0; }
+      [class*="announcing"] { font-weight: bold !important; colors: $red, 0, 0; }
+    }
+    [class*="button-"][class*="lookOutlined-"][class*="colorWhite-"] {
+      colors: $light, $darker, 0;
+      &:hover { colors: 0, 0, $darker; }
     }
     // Links.
     [class*="announcing"] { colors: $accent, 0, 0; }
+    [class*="tilePrice-"] {
+      [class*="originalAmount-"] { colors: $lighter, 0, 0; }
+    }
     // "First on Discord" deals.
     [class*="gameTitle-"] { colors: $light, 0, 0; }
     [class*="tagline-"] { colors: $lighter, 0, 0; }
@@ -596,6 +611,11 @@
           &::before { filter: grayscale(100%) opacity(0.2); }
         }
       }
+    }
+    // ? Other cards.
+    [class*="applicationTile-"] {
+      transition: background-color 0.2s ease, box-shadow 0.2s ease;
+      &:hover { box-shadow: 0 9px 20px 0 $shadow; }
     }
   }
 
