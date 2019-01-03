@@ -389,6 +389,37 @@
     // ? Global channels.
     [class*="channels"] {
       colors: 0, 0, $darker;
+      // Selected channel.
+      [class*="contentSelectedText-"], [class*="contentHoveredText-"] {
+        colors: 0, 0, $dark;
+        [class*="Text-"] { colors: $light, 0, 0; }
+      }
+      // Channel containers.
+      [class*="containerDefault-"] {
+        // Defaults.
+        [class*="nameDefault-"] { colors: $light, 0, 0; }
+        [class*="contentDefaultText"] > div {
+          opacity: 0.6;
+          colors: $lighter, 0, 0;
+        }
+        // Unread messages.
+        [class*="unread-"] { colors: 0, 0, $accent; }
+        [class*="contentUnreadText"] > div {
+          colors: $accent, 0, 0;
+        }
+        // Collapsed containers.
+        [class*="Collapsed-"] {
+          colors: $lighter, 0, 0;
+          &:hover { colors: $light, 0, 0; }
+        }
+        // Muted containers.
+        [class*="Muted-"] {
+          opacity: 0.6;
+          colors: $lighter, 0, 0;
+        }
+        // Hovered containers.
+        [class*="nameHovered-"] { colors: $light, 0, 0; }
+      }
     }
 
     // * Guild members list.
