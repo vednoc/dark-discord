@@ -513,11 +513,28 @@
         box-shadow: 0 8px 16px 0 $shadow;
       }
     }
-
-    // * Embeded cards .
-    [class^="embedInner"] { colors: $light, $shadow, $darker; }
-    [class^="embedPill"] { colors: 0, 0, $accent; }
   }
+
+  // * Embeds.
+  [class^="embedInner"] {
+    colors: $light, $shadow, $darker;
+    // Descriptions and such.
+    [class*="Provider-"], [class*="Description-"] {
+      colors: $lighter, 0, 0;
+      a { colors: $accent, 0, 0; }
+    }
+    // Fields.
+    [class*="Field-"] {
+      [class*="FieldName-"] { colors: $light, 0, 0; }
+      [class*="FieldValue-"] { colors: $lighter, 0, 0; }
+    }
+    // Titles.
+    [class*="Title-"], [class*="AuthorName-"] { colors: $light, 0, 0; }
+    // Links.
+    [class*="TitleLink-"] { colors: $accent, 0, 0; }
+  }
+  // ? Left bar color; we don't want to overwrite it.
+  // [class^="embedPill"] { colors: 0, 0, $accent; }
 
   // * Emote menu.
   [class*="emojiPicker-"] {
