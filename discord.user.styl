@@ -460,7 +460,11 @@
         }
       }
 
-      // ? New message divider.
+      // ? Message dividers.
+      [class*="divider-"] > [class*="dividerContent-"] {
+        colors: $lighter, 0, 0;
+        &::before, &::after { colors: 0, $darker, 0; }
+      }
       [class*="dividerRed-"] [class*="Content-"] {
         colors: $red, 0, 0;
         &::before, &::after { colors: 0, $red, 0; }
