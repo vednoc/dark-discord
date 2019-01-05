@@ -447,9 +447,21 @@
     // * Chat section.
     [class*="chat"] {
       colors: 0, 0, $dark;
+
+      // ? Channel title-bar.
       > [class^="titleWrapper"] > [class*="title"] {
         colors: 0, 0, $darker;
         box-shadow: 0 1px 0 0 $shadow !important;
+        [class*="channelName-"] { colors: $light, 0, 0; }
+        [class*="channelIcon-"], [class*="topic-"] { colors: $lighter, 0, 0; }
+        [class*="topic-"]::before { colors: 0, 0, $dark; }
+      }
+
+      // ? Welcome section.
+      [class*="welcomeMessage-"] {
+        h1, strong { colors: $light, 0, 0; }
+        p { colors: $lighter, 0, 0; }
+        a { colors: $accent, 0, 0; }
       }
 
       // ? Transparentize extra elements.
