@@ -389,6 +389,23 @@
     // ? Global channels.
     [class*="channels"] {
       colors: 0, 0, $darker;
+
+      // Title and stuff.
+      [class*="container-"] > [class*="header-"] {
+        colors: $light, 0, 0;
+        box-shadow: 0 1px 0 0 $shadow;
+      }
+
+      // Notices.
+      [class*="channelNotice-"] {
+        colors: 0, 0, $darker;
+        box-shadow: inset 0 -1px 0 0 $shadow;
+        [class*="message-"] {
+          colors: $lighter, 0, 0;
+          [class*="btn-"] { colors: $lighter, $dark, $darker; }
+        }
+      }
+
       // Selected channel.
       [class*="contentSelectedText-"], [class*="contentHoveredText-"] {
         colors: 0, 0, $dark;
