@@ -117,9 +117,12 @@
   // Different type of scrollbar.
   [class^="scrollbar-"] {
     colors: 0, 0, $darker;
-    [class^="track"] { colors: 0, 0, $shadow; }
+    [class^="track"] {
+      margin: 4px 0 !important;
+      colors: 0, 0, $shadow; }
     [class^="thumb"] {
-      box-shadow: 0 0 0 2px $darker, inset 0 0 0 4px $shadow;
+      margin: 4px 0 !important;
+      box-shadow: 0 0 0 4px $darker, inset 0 0 0 4px $shadow;
       colors: 0, 0, $dark; }
     [class^="pad"] { colors: 0, 0, $darker; }
   }
@@ -532,12 +535,12 @@
 
       // * Invite embed.
       [class*="wrapper-"] {
-        colors: 0, $shadow, $dark;
+        colors: 0, $darker, $darker;
         [class*="title-"], [class*="guildDetail-"] { colors: $lighter, 0, 0; }
         [class*="guildName-"] { colors: $light, 0, 0; }
         [class*="statusOnline-"] { colors: 0, 0, $green; }
-        [class*="statusOffline-"] { colors: 0, 0, $darker; }
-        [class*="lookOutlined-"] { colors: 0, $darker, 0; }
+        [class*="statusOffline-"] { colors: 0, 0, $dark; }
+        [class*="lookOutlined-"] { colors: 0, $dark, 0; }
       }
 
       // * Input section.
