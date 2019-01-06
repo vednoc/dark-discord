@@ -934,12 +934,13 @@
     [class*="value-label"] { colors: $light, 0, 0; }
   }
   // * Username and such.
-  [class*="cardPrimary"] {
-    colors: $light, $shadow, $shadow;
+  [class*="cardPrimary-"] {
+    colors: $light, $dark, $dark;
     input {
       colors: $light, $shadow, $shadow;
       &:focus { colors: 0, $accent, 0; }
     }
+    [class*="viewBody-"] { colors: $light, 0, 0; }
   }
   [class*="faded"] { color: $light !important; opacity: .5; }
   [class*="colorPrimary"] { colors: $light, 0, 0; }
