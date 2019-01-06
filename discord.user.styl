@@ -477,6 +477,12 @@
         [class*="topic-"]::before { colors: 0, 0, $dark; }
       }
 
+      // ? Group DM header.
+      [class*="groupDM-"] [class*="input-"] {
+        colors: $light, 0, 0;
+        input[class*="input-"]:focus { colors: 0, 0, $dark; }
+      }
+
       // ? Welcome section.
       [class*="welcomeMessage-"] {
         h1, strong { colors: $light, 0, 0; }
