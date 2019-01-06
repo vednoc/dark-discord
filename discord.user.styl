@@ -488,9 +488,23 @@
       // ! Careful with this; might need to be removed.
       > div {
         colors: 0, 0, $t;
-        // Messages and input wrapper.
-        [class^="messagesWrapper"] { colors: 0, 0, $t; }
-        [class^="messagesWrapper"] + form { colors: 0, 0, $t; }
+        // ? Group welcome message.
+        [class*="messages-"] [class*="default-"] h1 {
+          colors: $lighter, 0, 0;
+          strong { colors: $light, 0, 0; }
+        }
+        // ? Guild/group user greeters.
+        [class*="container-"] > [class*="content-"] {
+          colors: $lighter, 0, 0;
+          a {
+            font-weight: bold;
+            colors: $light, 0, 0;
+          }
+          time {
+            opacity: 0.6;
+            colors: $lighter, 0, 0;
+          }
+        }
       }
 
       // * Messages.
