@@ -389,6 +389,23 @@
     > [class*="spacer"] > [class*="channels"] > [class*="noWrap"] {
       colors: 0, 0, $t;
     }
+
+    // ? Header in friends area.
+    [class*="headerBar-"] {
+      colors: 0, 0, $darker;
+      box-shadow: 0 1px 0 0 $shadow !important;
+      [class*="tabBar-"] {
+        colors: 0, $shadow, $t;
+        [class*="itemDefault-"]:not([class*="primary-"]) {
+          colors: $lighter, 0, 0;
+          transition: 0.2s ease;
+          &:hover { colors: $light, 0, $dark; }
+        }
+        [class*="selected-"] { colors: $accent, 0, $dark; }
+        [class*="primary-"] { colors: 0, 0, $accent; }
+      }
+    }
+
     // ? Global channels.
     [class*="channels"] {
       colors: 0, 0, $darker;
