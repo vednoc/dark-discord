@@ -390,6 +390,26 @@
       colors: 0, 0, $t;
     }
 
+    // * Friends list.
+    [class*="friendsTable-"] {
+      colors: 0, 0, $dark;
+      [class*="friendsTableHeader-"] {
+        colors: 0, $darker, 0;
+        [class*="friendsColumn-"] { colors: $lighter, 0, 0; }
+        [class*="ColumnSeparator-"] { colors: 0, 0, $darker; }
+      }
+      [class*="friendsTableBody-"] {
+        colors: 0, $shadow, 0;
+        [class*="friendsColumn-"] { colors: $lighter, 0, 0; }
+        [class*="statusText-"] { colors: $light, 0, 0; }
+        [class*="noIcon-"] { colors: $light, 0, $darker; }
+        [class*="friendsRow-"]:hover {
+          colors: 0, 0, $darker;
+          box-shadow: 0 2px 4px 0 $shadow !important;
+        }
+      }
+    }
+
     // ? Header in friends area.
     [class*="headerBar-"] {
       colors: 0, 0, $darker;
@@ -665,30 +685,6 @@
     [class*="scrollbar-"] > [class*="pad"] {
       left: -2px !important;
       colors: 0, 0, $darker;
-    }
-  }
-
-  // * Friends area.
-  #friends {
-    colors: 0, 0, $dark;
-    [class*="headerBar"] {
-      colors: 0, 0, $darker;
-      box-shadow: 0 1px 0 0 $shadow;
-    }
-    .friends-table-header {
-      border-bottom-color: $darker !important;
-      .friends-column { colors: $lighter, 0, 0; }
-      .friends-column-separator { colors: 0, 0, $darker; }
-    }
-    [class*="friends-row"] {
-      colors: 0, $shadow, 0;
-      .status-text { colors: $lighter, 0, 0; }
-      .friends-column-name { colors: $lighter, 0, 0; }
-      [class*="noIcon"] { colors: $light, 0, $darker; }
-      &:hover {
-        colors: 0, 0, $darker;
-        box-shadow: 0 2px 4px 0 $shadow !important;
-      }
     }
   }
 
