@@ -505,6 +505,9 @@
     [class*="chat"] {
       colors: 0, 0, $dark;
 
+      // ? Added due to weird behaviour on Raitaro's end
+      form { background: $dark !important; }
+
       // ? Channel title-bar.
       > [class^="titleWrapper"] > [class*="title"] {
         colors: 0, 0, $darker;
@@ -579,6 +582,9 @@
           a { colors: $accent, 0, 0; }
         }
       }
+
+      // ? Added due to weird behaviour on Raitaro's end
+      [class*="messagesWrapper"] { background: $dark !important; }
 
       // ? Message dividers.
       [class*="divider-"] > [class*="dividerContent-"] {
