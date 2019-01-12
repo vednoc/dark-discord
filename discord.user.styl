@@ -661,18 +661,20 @@
     colors: $red, $darker, $darker;
     box-shadow: 0 0 6px 0 var(--shadow);
     // Header.
-    .search-bar {
-      colors: 0, 0, $darker; // not necessary?
-      &-inner { colors: $lighter, 0, $dark; }
-      &-inner input { colors: $light, 0, 0; }
+    [class*="searchBar-"] {
+      colors: 0, 0, $t; // not necessary?
+      [class*="searchBarInner-"] { colors: $lighter, 0, $dark; }
+      [class*="searchBarInner-"] input { colors: $light, 0, 0; }
     }
     // Frequently used.
     [class*="stickyHeader-"] { colors: 0, 0, $darker; }
-    [class*="category-"] { colors: $lighter, 0, 0; }
+    [class*="category-"], [class*="sadImage-"] + div { colors: $lighter, 0, 0; }
     // Selected emote.
     [class*="row-"] [class*="selected-"] { colors: 0, 0, $accent; }
+    // Selected category.
+    [class*="categories-"] [class*="selected-"] { colors: 0, $accent, 0; }
     // Dimmed overlay.
-    [class*="visible-"] {
+    [class*="visible-"]:not([class*="icon-"] ) {
       opacity: 0.8;
       colors: 0, 0, $darker;
     }
