@@ -536,6 +536,19 @@
         [class*="topic-"]::before { colors: 0, 0, $dark; }
       }
 
+      // ? Title-bar search messages.
+      [class*="search-"] [class*="searchBar-"] {
+        colors: $lighter, 0, $dark;
+        // Input text color.
+        [class*="DraftEditor-"] {
+          colors: $lighter, 0, 0;
+        }
+        // Blocks.
+        [class*="searchFilter-"], [class*="searchAnswer"] {
+          colors: $light, 0, $darker;
+        }
+      }
+
       // ? Group DM header.
       [class*="groupDM-"] [class*="input-"] {
         colors: $light, 0, 0;
