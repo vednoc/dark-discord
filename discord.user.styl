@@ -107,24 +107,21 @@
   }
 
   // * Firefox scrollbar polyfill.
-  .scrollbar {
-    colors: 0, 0, $dark;
-    .track { colors: 0, 0, $shadow; }
-    .thumb { colors: 0, 0, $dark; }
-    .thumb::after { colors: 0, 0, $darker; }
-    &::after { colors: 0, 0, $dark; }
+  [class*="messages-"] + {
+    [class^="scrollbar-"] {
+      colors: 0, $t, $dark;
+      [class^="track"] { colors: 0, $dark, $darker; }
+      [class^="thumb"] { colors: 0, $dark, $accent; }
+      [class^="pad"] { colors: 0, 0, $dark; }
+    }
   }
-  // Different type of scrollbar.
-  [class^="scrollbar-"] {
-    colors: 0, 0, $darker;
-    [class^="track"] {
-      margin: 4px 0 !important;
-      colors: 0, 0, $shadow; }
-    [class^="thumb"] {
-      margin: 4px 0 !important;
-      box-shadow: 0 0 0 4px $darker, inset 0 0 0 4px $shadow;
-      colors: 0, 0, $dark; }
-    [class^="pad"] { colors: 0, 0, $darker; }
+  [class*="scrollerFade-"] {
+    > [class*="scrollbar-"] {
+      colors: 0, $t, $darker;
+      [class^="track"] { colors: 0, $darker, $dark; }
+      [class^="thumb"] { colors: 0, $darker, $accent; }
+      [class^="pad"] { colors: 0, 0, $darker; }
+    }
   }
 
   // * Dirty Firefox sidebar(s) hacks.
