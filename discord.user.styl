@@ -107,6 +107,10 @@
   }
 
   // * Firefox scrollbar polyfill.
+  // ? Settings/Activity/Store/Friends/Chat.
+  [class*="sidebarRegion-"] > div:first-child >,
+  [class*="feed-"] +, [class*="Store-"] +,
+  [class*="friendsTableBody-"] +,
   [class*="messages-"] + {
     [class^="scrollbar-"] {
       colors: 0, $t, $dark;
@@ -115,8 +119,11 @@
       [class^="pad"] { colors: 0, 0, $dark; }
     }
   }
-  [class*="scrollerFade-"] {
-    > [class*="scrollbar-"] {
+  // ? Search/Pinned/Channels.
+  [class*="searchResultsWrap-"] > div:last-child,
+  [class*="messagesPopout-"] +,
+  [class*="scrollerFade-"] > {
+    [class*="scrollbar-"] {
       colors: 0, $t, $darker;
       [class^="track"] { colors: 0, $darker, $dark; }
       [class^="thumb"] { colors: 0, $darker, $accent; }
