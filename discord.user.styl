@@ -35,6 +35,7 @@
 
 @-moz-document domain("discordapp.com") {
   :root {
+    --note    : "Dark-Discord v0.1.0";
     --dark    : dark;
     --darker  : darker;
     --light   : light;
@@ -83,6 +84,12 @@
     if x is a 'call' { color: x !important; }
     if y is a 'call' { border-color: y !important; }
     if z is a 'call' { background-color: z !important; }
+  }
+
+  // * Userstyle version.
+  [class*="userSettingsAccount"] > h2::after {
+    content: " | Theme: " var(--note);
+    text-transform: capitalize;
   }
 
   // * Global reset/overwrites.
