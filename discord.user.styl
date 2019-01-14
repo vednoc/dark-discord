@@ -978,6 +978,17 @@
     }
   }
 
+  // * Cards.
+  [class*="card-"] {
+    colors: 0, $shadow, $dark;
+    [class*="title-"], [class*="primary-"] { colors: $light, 0, 0; }
+    [class*="desc-"] { colors: $lighter, 0, 0; }
+    [class*="anchor-"] { colors: $accent, 0, 0; }
+    [class*="checkbox-"] {
+      colors: 0, $darker, 0;
+      &[class*="checked-"] { colors: 0, 0, $darker; }
+    }
+  }
   // * Username and such.
   [class*="cardPrimary-"] {
     colors: $light, $dark, $dark;
