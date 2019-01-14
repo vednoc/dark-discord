@@ -86,6 +86,16 @@
     if z is a 'call' { background-color: z !important; }
   }
 
+  // * Icons.
+  svg[class*="icon"] path[fill="currentColor"],
+  svg[class*="icon"] g[fill="currentColor"] > path,
+  svg[class*="icon"] path[fill^="#FFF"] {
+    fill: $light !important;
+  }
+  svg[class*="button"] path[stroke="#FFF"] {
+    stroke: $light !important;
+  }
+
   // * Userstyle version.
   [class*="userSettingsAccount"] > h2::after {
     content: " | Theme: " var(--note);
