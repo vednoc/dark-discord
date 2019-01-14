@@ -826,29 +826,39 @@
   }
 
   // * Search results.
-  .search-results-wrap {
+  [class*="searchResultsWrap-"] {
     colors: 0, 0, $darker;
-    .search-header {
-      colors: $red, 0, $darker;
+    [class*="searchHeader-"] {
+      colors: 0, 0, $darker;
       box-shadow: 0 1px 0 0 $shadow !important;
       // Text color.
-      .tab, .total-results { opacity: 0.6; colors: $lighter, 0, 0; }
-      .tab.selected { colors: $light, $accent, 0; }
-    }
-    .results-wrapper {
-      // Name and separator.
-      .channel-separator {
-        &::before { colors: 0, $shadow, 0; }
-        span { colors: $lighter, 0, $darker; }
+      [class*="tab-"], [class*="totalResults-"] {
+        opacity: 0.6;
+        colors: $lighter, 0, 0;
       }
-      .search-result {
+      [class*="tab-"][class*="selected-"] {
+        opacity: 1;
+        colors: $light, $accent, 0;
+      }
+    }
+    [class*="resultsWrapper-"] {
+      // Name and separator.
+      [class*="channelSeparator-"] {
+        &::before { colors: 0, $shadow, 0; }
+        [class*="channelName-"] { colors: $lighter, 0, $darker; }
+      }
+      // Single result.
+      [class*="searchResult-"] {
         // Remove unnecessary gradients.
         &::before, &::after { background: none !important; }
         // Matching message.
-        .hit { colors: 0, $shadow, $dark; box-shadow: 0 0 30px 6px $darker; }
+        [class*="hit"] {
+          colors: 0, $shadow, $dark;
+          box-shadow: 0 0 30px 6px $darker;
+         }
       }
       // Pages.
-      .pagination { colors: $lighter, 0, 0; }
+      [class*="pagination-"] { colors: $lighter, 0, 0; }
     }
   }
 
