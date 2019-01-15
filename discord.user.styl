@@ -1001,8 +1001,25 @@
     }
   }
 
+  // * Emoji section.
+  [class*="emojiRow-"] {
+    &::before { colors: 0, $shadow, $dark; }
+    // Text color.
+    [class*="emojiAliasPlaceholder-"] {
+      colors: $lighter, 0, 0;
+      &::before, &::after { colors: $light, 0, 0; }
+    }
+    [class*="emojiRowText-"] { colors: $light, 0, 0; }
+    // Input fields.
+    input {
+      transition: 0.2s ease !important;
+      colors: $lighter, $darker, $dark;
+      &:hover, &:focus { colors: $light, 0, $darker; }
+    }
+  }
+
   // * Cards.
-  [class*="card-"] {
+  [class*="card-"]:not([class*="emojiRow-"]) {
     colors: 0, $shadow, $dark;
     [class*="title-"], [class*="primary-"] { colors: $light, 0, 0; }
     [class*="desc-"] { colors: $lighter, 0, 0; }
