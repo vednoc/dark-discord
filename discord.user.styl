@@ -154,8 +154,11 @@
     [class*="directionColumn"][class*="firefoxFixScrollFlex"] { overflow: hidden; }
     // ? Fixes input element in *fox-based browsers.
     [class*="channelTextArea"] textarea {
-      margin: 0px 2px -12px 0;
-      padding: 10px;
+      margin: 0; padding: 0 10px;
+      // ? Center input text on the first row of text.
+      &[style*="height: auto"] { padding-top: 10px; margin: 1px 0 -3px; }
+      // ? Reset padding whenever there are two or more rows of text.
+      &:not([style*="height: auto"]) { padding: 10px; }
     }
   }
 
