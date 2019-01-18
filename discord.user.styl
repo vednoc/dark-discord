@@ -314,6 +314,13 @@
     }
   }
 
+  // * User controls.
+  [class^="channels"][class*="vertical"] > div:last-child {
+    colors: $lighter, 0, $t;
+    [class^="username"] { colors: $light, 0, 0; }
+    [class*="discriminator"] { opacity: 0.6; colors: $lighter, 0, 0; }
+  }
+
   // * User status.
   [class*="online-"] { colors: 0, $darker, $green; }
   [class*="idle-"] { colors: 0, $darker, $orange; }
@@ -515,12 +522,6 @@
       box-shadow: 0 1px 0 0 $shadow;
       [class$="search-bar"] { colors: $lighter, $t, $t; }
       [class$="search-bar-inner"] { colors: $lighter, $shadow, $dark; }
-    }
-
-    // * User controls.
-    [class^="channels"][class*="vertical"] > div:last-child {
-      colors: $lighter, 0, $t;
-      [class^="username"] { colors: $light, 0, 0; }
     }
 
     // * Chat section.
