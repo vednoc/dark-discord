@@ -1107,10 +1107,15 @@
         height: auto; width: auto;
         [class*="image-"] { height: 16px; width: 16px; }
       }
+      // Message content.
       [class*="contentCozy-"] {
         margin-left: 12px;
         // TODO Find a better separator.
         [class*="markup-"]::before { opacity: 0.3; content: "⤷ "; }
+        // Big emoji!
+        .emoji.jumboable { height: 1.35rem; width: 1.35rem; }
+        // Reactions.
+        [class*="reactions-"] { margin-top: 0; margin-left: 12px; }
       }
     }
   }
