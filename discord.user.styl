@@ -466,6 +466,18 @@
     }
   }
 
+  // * Calendar.
+  [class*="datePicker-"] > div > div {
+    colors: $lighter, 0, $dark;
+    [class*="__navigation"] { colors: 0, $red, 0; }
+    // Month/year header.
+    [class*="__header"] {
+      colors: $lighter, 0, $t;
+      [class*="__current-month"] { colors: $light, $darker, 0; }
+      [class*="__day-name"] { colors: $lighter, 0, 0; }
+    }
+  }
+
   // * Main area.
   [class*="base"] {
     // ? Make guild channels have transparent background.
