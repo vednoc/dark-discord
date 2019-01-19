@@ -425,6 +425,26 @@
     }
   }
 
+  // * Search results.
+  [class*="popout-"] > [class*="container-"] {
+    colors: $red, 0, $dark;
+    // * Items.
+    [class*="option"] {
+      // Remove gradient.
+      &::after { display: none; }
+      // On event.
+      &:hover, &[class*="selected-"] { colors: 0, 0, $darker; }
+      // Text color.
+      [class*="filter-"], [class*="displayedNick-"] {
+        colors: $light, 0, 0;
+      }
+      [class*="answer-"], [class*="displayUsername-"] {
+        opacity: 0.6;
+        colors: $lighter, 0, 0;
+      }
+    }
+  }
+
   // * Main area.
   [class*="base"] {
     // ? Make guild channels have transparent background.
