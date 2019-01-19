@@ -14,6 +14,7 @@
 @var checkbox compact_cozy "Compact mode for cozy messages" 0
 @var checkbox hideCarousel "Hide carousel from activity page" 0
 @var checkbox hideNews "Hide news from activity page" 0
+@var text input_height "Input bar maximum height" 140px
 @var text b_radius "Custom border radius" 5px
 
 @var color dark    "Dark color.   " #2e2e2e
@@ -55,6 +56,7 @@
     --green   : green;
     --t       : transparent !important;
     --radius  : b_radius;
+    --textarea: input_height;
   }
 
   // * Use stylus-lang variables with CSS variables.
@@ -156,6 +158,8 @@
     // ? Fixes input element in *fox-based browsers.
     [class*="channelTextArea"] textarea {
       margin: 0; padding: 0 10px;
+      // ? Input bar max-height setting.
+      max-height: var(--textarea);
       // ? Center input text on the first row of text.
       &[style*="height: auto"] { padding-top: 10px; margin: 1px 0 -3px; }
       // ? Reset padding whenever there are two or more rows of text.
