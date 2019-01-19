@@ -440,6 +440,10 @@
         box-shadow: inset 0 -4px 0 $accent;
       }
     }
+    // Text color.
+    [class*="header-"] { colors: $lighter, 0, 0; }
+    [class*="searchLearnMore-"] [class*="anchor-"],
+    [class*="plusIcon-"] { colors: $lighter, 0, 0; }
     // * Items.
     [class*="option"] {
       // Remove gradient.
@@ -447,12 +451,17 @@
       // On event.
       &:hover, &[class*="selected-"] { colors: 0, 0, $darker; }
       // Text color.
-      [class*="filter-"], [class*="displayedNick-"] {
-        colors: $light, 0, 0;
-      }
+      > strong { colors: $accent, 0, 0; }
+      [class*="filter-"] { colors: $light, 0, 0; }
+      [class*="nonText-"] { colors: $lighter, 0, 0; }
+      [class*="displayedNick-"] { colors: $light, 0, 0; }
       [class*="answer-"], [class*="displayUsername-"] {
         opacity: 0.6;
         colors: $lighter, 0, 0;
+      }
+      [class*="resultChannel-"] {
+        strong { colors: $accent, 0, 0; }
+        span, svg { colors: $lighter, 0, 0; }
       }
     }
   }
