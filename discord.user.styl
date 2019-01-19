@@ -428,6 +428,18 @@
   // * Search results.
   [class*="popout-"] > [class*="container-"] {
     colors: $red, 0, $dark;
+    // * "Search for" selector.
+    > [class*="queryContainer-"] {
+      colors: $light, $dark, $darker;
+      // Text colors.
+      [class*="queryText-"] { colors: $lighter, 0, 0; }
+      [class*="queryText-"] strong { colors: $light, 0, 0; }
+      // Shortcut button.
+      [class*="queryShortcut-"] [class*="keybindShortcut-"] span {
+        colors: $light, $dark, $darker;
+        box-shadow: inset 0 -4px 0 $accent;
+      }
+    }
     // * Items.
     [class*="option"] {
       // Remove gradient.
