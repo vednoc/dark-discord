@@ -193,6 +193,16 @@
     }
   }
 
+  // * Channel info modal.
+  [class*="inner-"] > [class*="modal-"][class*="size-"] {
+    colors: $light, 0, $darker;
+    box-shadow: 0 2px 10px 0 $shadow, 0 0 0 1px $dark;
+    // Close icon.
+    [class*="close-"] { color: $lighter, 0, 0; }
+    // Text color.
+    [class*="content-"] > [class*="primary-"] { color: $lighter, 0, 0; }
+  }
+
   // * User modal.
   [class^="modal-"] > div > [class*="root"] {
     [class*="header-"] > [class*="Info"] {
