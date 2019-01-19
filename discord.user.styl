@@ -476,6 +476,20 @@
       [class*="__current-month"] { colors: $light, $darker, 0; }
       [class*="__day-name"] { colors: $lighter, 0, 0; }
     }
+    // * Days.
+    [aria-label^="day-"] {
+      colors: $light, $darker, $dark;
+      // ? Select *only* days that are in the past.
+      &:hover:not([class*="disabled"]) { colors: $light, 0, $accent; }
+    }
+    [class*="__day--outside-month"], [class*="__day--disabled"] {
+      opacity: 0.6;
+      colors: $lighter, $darker, $darker;
+    }
+    [class*="__day--today"] {
+      colors: $light, 0, 0;
+      &::after { colors: 0, 0, $accent; }
+    }
   }
 
   // * Main area.
