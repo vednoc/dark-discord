@@ -54,7 +54,7 @@
     --cyan    : cyan;
     --green   : green;
     --t       : transparent !important;
-    --radius: b_radius;
+    --radius  : b_radius;
   }
 
   // * Use stylus-lang variables with CSS variables.
@@ -469,8 +469,8 @@
   // * Calendar.
   [class*="datePicker-"] > div > div {
     colors: $lighter, 0, $dark;
-    [class*="__navigation"] { colors: 0, $red, 0; }
-    // Month/year header.
+    [class*="__navigation"] { colors: 0, $darker, 0; }
+    // * Month/year header.
     [class*="__header"] {
       colors: $lighter, 0, $t;
       [class*="__current-month"] { colors: $light, $darker, 0; }
@@ -740,7 +740,7 @@
         > [class^="inner"] { colors: 0, 0, $darker; }
         // Input text color.
         textarea { colors: $light, 0, 0; }
-        [class*="divider"], [class*="Divider"] { colors: 0, 0, $t; }
+        [class*="divider"], [class*="Divider"] { colors: 0, 0, $dark; }
         // Emojis, mentions, commands popout.
         [class*="autocomplete-"] {
           border-bottom: 1px solid;
@@ -1199,7 +1199,7 @@
       [class*="contentCozy-"] {
         margin-left: 12px;
         // TODO Find a better separator.
-        [class*="markup-"]::before { opacity: 0.3; content: "⤷ "; }
+        [class*="markup-"]::before { opacity: 0.25; content: "⤷ "; }
         // Big emoji!
         .emoji.jumboable { height: 1.35rem; width: 1.35rem; }
         // Reactions.
