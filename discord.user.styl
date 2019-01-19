@@ -491,6 +491,17 @@
       &::after { colors: 0, 0, $accent; }
     }
   }
+  // * Hints.
+  [class*="datePicker-"] [class*="datePickerHint-"] {
+    margin: 0;
+    padding: 20px;
+    colors: 0, $dark, $darker;
+    span { colors: $lighter, 0, 0; }
+    [class*="hintValue-"] {
+      padding: 0 4px;
+      colors: $light, 0, $accent;
+    }  
+  }
 
   // * Main area.
   [class*="base"] {
