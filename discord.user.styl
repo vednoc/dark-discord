@@ -1198,6 +1198,7 @@
   }
 
   // * Padding-less cozy messages.
+  // ? Removes excess top and bottom padding from cozy messagas.
   if paddingless_cozy {
     [class*="containerCozyBounded-"] {
       padding: 0;
@@ -1205,12 +1206,19 @@
       [class*="avatar-"] { margin-top: 0px; }
       [class*="divider"] { margin: 0 20px; }
     }
+    // Mentions.
+    [class*="messageGroupWrapperOffsetCorrection-"] {
+      margin: -10px 0px -10px -20px !important;
+    }
   }
 
-  // * Compact cozy messages, kinda like compact mode but with avatars.
+  // * Compact cozy messages.
+  // ? Kinda like compact mode but with avatars.
   if compact_cozy {
     [class*="containerCozyBounded-"] {
-      padding: 0 0 10px 0;
+      padding: 0px 10px 0px 10px;
+      // Fix divider.
+      [class*="divider"] { margin: auto 10px !important; }
       // Avatars.
       [class*="avatar-"] {
         margin: 1px 4px 0 8px;
@@ -1227,6 +1235,10 @@
         // Reactions.
         [class*="reactions-"] { margin-top: 0; margin-left: 12px; }
       }
+    }
+    // Mentions.
+    [class*="messageGroupWrapperOffsetCorrection-"] {
+      margin: -5px 0px -5px -22px !important;
     }
   }
 }
