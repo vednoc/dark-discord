@@ -13,6 +13,7 @@
 @var checkbox smol_guild "Minimize height of guild icons" 0
 @var checkbox paddingless_cozy "Remove padding for cozy messages" 0
 @var checkbox compact_cozy "Compact mode for cozy messages" 0
+@var checkbox scrollbars_chromium "Disable scrollbars in Chromium" 0
 @var checkbox scrollbars_firefox "Disable scrollbars in Firefox" 0
 @var checkbox hideCarousel "Hide carousel from activity page" 0
 @var checkbox hideNews "Hide news from activity page" 0
@@ -119,12 +120,14 @@
     colors: 0, 0, $dark;
   }
 
-  // "Disconnected" scrollbars.
-  [class^="chat"], [class*="friends-"] {
-    ::-webkit-scrollbar {
-      &-track { colors: 0, 0, $dark; }
-      &-track-piece { colors: 0, $dark, $shadow; }
-      &-thumb { colors: 0, $dark, $darker; }
+  // * Chromium scrollbars.
+  if not scrollbars_chromium {
+    [class^="chat"], [class*="friends"] {
+      ::-webkit-scrollbar {
+        &-track { colors: 0, 0, $dark; }
+        &-track-piece { colors: 0, $dark, $shadow; }
+        &-thumb { colors: 0, $dark, $darker; }
+      }
     }
   }
 
