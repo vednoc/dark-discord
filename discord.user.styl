@@ -13,6 +13,7 @@
 @var checkbox smol_guild "Minimize height of guild icons" 0
 @var checkbox paddingless_cozy "Remove padding for cozy messages" 0
 @var checkbox compact_cozy "Compact mode for cozy messages" 0
+@var checkbox scrollbars_firefox "Disable scrollbars in Firefox" 0
 @var checkbox hideCarousel "Hide carousel from activity page" 0
 @var checkbox hideNews "Hide news from activity page" 0
 @var text input_height "Input bar maximum height" 140px
@@ -128,27 +129,28 @@
   }
 
   // * Firefox scrollbar polyfill.
-  // ? Settings/Activity/Store/Friends/Chat.
-  [class*="sidebarRegion-"] > div:first-child >,
-  [class*="feed-"] +, [class*="Store-"] +,
-  [class*="friendsTableBody-"] +,
-  [class*="messages-"] + {
-    [class^="scrollbar-"] {
-      colors: 0, $t, $dark;
-      [class^="track"] { colors: 0, $dark, $darker; }
-      [class^="thumb"] { colors: 0, $dark, $accent; }
-      [class^="pad"] { colors: 0, 0, $dark; }
+  if not scrollbars_firefox {
+    // ? Activity/Store/Friends/Chat.
+    [class*="feed-"] +, [class*="Store-"] +,
+    [class*="friendsTableBody-"] +,
+    [class*="messages-"] + {
+      [class^="scrollbar-"] {
+        colors: 0, $t, $dark;
+        [class^="track"] { colors: 0, $dark, $darker; }
+        [class^="thumb"] { colors: 0, $dark, $accent; }
+        [class^="pad"] { colors: 0, 0, $dark; }
+      }
     }
-  }
-  // ? Search/Pinned/Channels.
-  [class*="searchResultsWrap-"] > div:last-child,
-  [class*="messagesPopout-"] +,
-  [class*="scrollerFade-"] > {
-    [class*="scrollbar-"] {
-      colors: 0, $t, $darker;
-      [class^="track"] { colors: 0, $darker, $dark; }
-      [class^="thumb"] { colors: 0, $darker, $accent; }
-      [class^="pad"] { colors: 0, 0, $darker; }
+    // ? Search/Pinned/Channels.
+    [class*="searchResultsWrap-"] > div:last-child,
+    [class*="messagesPopout-"] +,
+    [class*="scrollerFade-"] > {
+      [class*="scrollbar-"] {
+        colors: 0, $t, $darker;
+        [class^="track"] { colors: 0, $darker, $dark; }
+        [class^="thumb"] { colors: 0, $darker, $accent; }
+        [class^="pad"] { colors: 0, 0, $darker; }
+      }
     }
   }
 
