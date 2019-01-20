@@ -157,17 +157,14 @@
     // .scrollerWrap-2lJEkd { margin-right: -24px !important; }
     [class*="directionColumn"][class*="firefoxFixScrollFlex"] { overflow: hidden; }
     // ? Fixes input element in *fox-based browsers.
-    [class*="channelTextArea"] textarea {
+    [class*="channelTextArea-"] textarea[class*="textArea-"] {
       margin: 0; padding: 0 10px;
-      // ? Input bar max-height setting.
-      max-height: var(--textarea);
       // ? Center input text on the first row of text.
       &[style*="height: auto"] { padding-top: 10px; margin: 1px 0 -3px; }
       // ? Reset padding whenever there are two or more rows of text.
       &:not([style*="height: auto"]) { padding: 10px; }
     }
   }
-
 
   // * Modals.
   [class*="modal-"] {
@@ -1188,6 +1185,11 @@
       [class*="actionBody-"] { colors: $lighter, 0, 0; }
       [class*="or-"] { background-image: none !important; }
     }
+  }
+
+  // * Input bar max-height setting.
+  [class*="channelTextArea-"] textarea[class*="textArea-"] {
+    max-height: var(--textarea);
   }
 
   // * Padding-less cozy messages.
