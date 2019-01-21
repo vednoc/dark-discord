@@ -718,6 +718,13 @@
         a { colors: $accent, 0, 0; }
       }
 
+      // ? New messages.
+      [class*="newMessagesBar-"] {
+        background-image: linear-gradient(90deg, $t -80%, $accent);
+        colors: $lighter, 0, $t;
+        button { colors: $lighter, 0, 0; }
+      }
+
       // ? Transparentize extra elements.
       // ! Careful with this; might need to be removed.
       > div {
