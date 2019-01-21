@@ -129,6 +129,13 @@
         &-thumb { colors: 0, $dark, $darker; }
       }
     }
+    [class*="emojiPicker-"] {
+      ::-webkit-scrollbar {
+        &-track { colors: 0, 0, $dark; }
+        &-track-piece { colors: 0, 0, 0; }
+        &-thumb { colors: 0, $darker, $accent; }
+      }
+    }
   }
 
   // * Firefox scrollbar polyfill.
