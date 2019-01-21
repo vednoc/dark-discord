@@ -207,6 +207,47 @@
     }
   }
 
+  // * Upload modal.
+  [class*="uploadModal-"] {
+    colors: 0, 0, $dark;
+    box-shadow: inset 0 0 0 2px $darker;
+    [class*="inner-"] {
+      colors: $lighter, $darker, 0;
+      // Different file-types.
+      [class*="file-"] [class*="icon-"] {
+        &[class*="image-"] {
+          colors: 0, $darker, $dark;
+          box-shadow: 0 2px 8px 0 $shadow !important;
+        }
+        &[class*="unknown-"], &[class*="code-"],
+        &[class*="document-"], &[class*="video-"] {
+          filter: invert(0.8) hue-rotate(180deg);
+        }
+        // File title.
+        + [class*="description"] { colors: $light, 0, 0; }
+      }
+    }
+    // ? Controls.
+    [class*="footer-"] {
+      colors: 0, 0, $darker;
+      box-shadow: inset 0 1px 0 0 $darker;
+      // Cancel button.
+      [class*="lookLink-"] {
+        colors: $lighter, 0, 0;
+        &:hover [class*="contents-"] {
+          background-image: none;
+          box-shadow: inset 0 -1px 0 0 $accent;
+        }
+      }
+      // Upload button.
+      [class*="lookInverted-"] {
+        transition: 0.2s ease;
+        colors: $lighter, 0, $dark;
+        &:hover { filter: opacity(0.8); }
+      }
+    }
+  }
+
   // * Channel info modal.
   [class*="inner-"] > [class*="modal-"][class*="size-"] {
     colors: $light, 0, $darker;
