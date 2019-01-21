@@ -725,6 +725,14 @@
         button { colors: $lighter, 0, 0; }
       }
 
+      // * Spinners.
+      [class*="spinner-"] {
+        // Loading messages.
+        [class*="wanderingCubesItem-"] { colors: 0, 0, $accent; }
+        // Someone is typing.
+        [class*="pulsingEllipsisItem-"] { colors: 0, 0, $light; }
+      }
+
       // ? Transparentize extra elements.
       // ! Careful with this; might need to be removed.
       > div {
@@ -808,7 +816,6 @@
         colors: $light, 0, $t;
         [class^="text"], [class^="cooldownWrapper"] { colors: $lighter, 0, 0; }
         [class^="text"] strong { colors: $light, 0, 0; }
-        [class*="pulsingEllipsisItem-"] { colors: 0, 0, $light; }
       }
 
       // * Voice/video calls.
