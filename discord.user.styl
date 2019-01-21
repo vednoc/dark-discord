@@ -328,6 +328,11 @@
     // * Footer.
     > [class^="footer-"] {
       colors: $light, $shadow, $t;
+      // Wumpus!
+      [class*="wumpusShown-"] [class*="wumpusTooltip-"] {
+        colors: $lighter, 0, $dark;
+        &::after { border-color: $t $dark $t $t; }
+      }
       // Tip color.
       [class*="tip"] { colors: $lighter, 0, 0; }
       // Message $user.
