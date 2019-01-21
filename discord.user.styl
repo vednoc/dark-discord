@@ -752,25 +752,6 @@
         [class*="lookOutlined-"] { colors: 0, $dark, 0; }
       }
 
-      // * Input section.
-      [class^="channelTextArea"] {
-        border-top-color: $darker;
-        // Input container.
-        > [class^="inner"] { colors: 0, 0, $darker; }
-        // Input text color.
-        textarea { colors: $light, 0, 0; }
-        [class*="divider"], [class*="Divider"] { colors: 0, 0, $dark; }
-        // Emojis, mentions, commands popout.
-        [class*="autocomplete-"] {
-          border-bottom: 1px solid;
-          colors: 0, $shadow, $darker;
-          [class*="iconForeground"] { fill: $icon; }
-          [class*="Title"], [class*="description"] { colors: $lighter, 0, 0; }
-          [class*="content-"], [class*="Title"] strong { colors: $light, 0, 0; }
-          [class*="selectorSelected"] { colors: 0, 0, $dark; }
-        }
-      }
-
       // * Typing section.
       [class^="typing"] {
         colors: $light, 0, $t;
@@ -783,6 +764,33 @@
       [class^="video"] {
         colors: 0, 0, $dark;
         box-shadow: 0 8px 16px 0 $shadow;
+      }
+    }
+  }
+
+  // * Input section.
+  [class^="channelTextArea"] {
+    border-top-color: $dark;
+    // Input container.
+    > [class^="inner"] { colors: 0, 0, $darker; }
+    // Input text color.
+    textarea { colors: $light, 0, 0; }
+    // Dividers.
+    [class*="divider"], [class*="Divider"] { colors: 0, 0, $shadow; }
+    // ? Emojis, mentions, commands popout.
+    [class*="autocomplete-"][class*="autocomplete-"] {
+      colors: 0, 0, $darker;
+      box-shadow: 0 1px 0 0px $shadow;
+      [class*="autocompleteInner-"] {
+        border: none !important;
+        // Command mode icons.
+        [class*="iconForeground"] { fill: $icon; }
+        // Title/description selectors.
+        [class*="Title"], [class*="description"] { colors: $lighter, 0, 0; }
+        [class*="contentTitle"] strong { colors: $light, 0, 0; }
+        // Main content.
+        [class*="content-"] { colors: $light, 0, 0; }
+        [class*="selectorSelected-"] { colors: 0, 0, $dark; }
       }
     }
   }
