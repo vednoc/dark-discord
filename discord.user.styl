@@ -11,6 +11,7 @@
 
 @var checkbox min_guilds "Minimize width of guild area" 0
 @var checkbox smol_guild "Minimize height of guild icons" 0
+@var checkbox mid_guilds "WIP: Smaller icon size for guild icons" 0
 @var checkbox paddingless_cozy "Remove padding for cozy messages" 0
 @var checkbox compact_cozy "Compact mode for cozy messages" 0
 @var checkbox scrollbars_chromium "Disable scrollbars in Chromium" 0
@@ -1317,6 +1318,41 @@
     // Mentions.
     [class*="messageGroupWrapperOffsetCorrection-"] {
       margin: -5px 0px -5px -22px !important;
+    }
+  }
+
+  // * Smaller guild icons.
+  if mid_guilds {
+    [class*="guildsWrapper-"] {
+      width: 56px;
+      // > [class*="scrollerWrap-"] { width: 80px; }
+    }
+    [class*="guilds-"] {
+      padding: 8px;
+      // Online friends and separators.
+      [class*="friendsOnline-"], [class*="guildSeparator-"] {
+        width: auto;
+        max-width: 40px;
+      }
+    }
+    // Main parent element.
+    [class*="guild-"] {
+      height: 40px;
+      width: 40px;
+      // Guild icons.
+      [class*="guildInner-"] {
+        height: 40px;
+        width: 40px;
+        a, a > [class*="guildIcon-"] {
+          height: inherit !important;
+          width: inherit !important;
+        }
+        // Guilds without icons.
+        [class*="noIcon"] {
+          line-height: 40px;
+          colors: $lighter, 0, 0;
+        }
+      }
     }
   }
 }
