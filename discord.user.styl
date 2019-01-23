@@ -16,6 +16,7 @@
 @var checkbox compact_cozy "Compact mode for cozy messages" 0
 @var checkbox scrollbars_chromium "Disable scrollbars in Chromium" 0
 @var checkbox scrollbars_firefox "Disable scrollbars in Firefox" 0
+@var checkbox msg_options "Highlight message by hovering over buttons" 0
 @var checkbox hideCarousel "Hide carousel from activity page" 0
 @var checkbox hideNews "Hide news from activity page" 0
 @var text input_height "Input bar maximum height" 140px
@@ -795,11 +796,10 @@
         }
 
         // ? Message separators; sibling of message-* selectors.
-        & + [class*="dividerEnabled"] { opacity: 0.8; colors: 0, $darker, 0; }
-        [class*="buttonContainer"]:hover + [class^="markup"] { background: $darker !important; }
-        [class*="operations"] {
-          colors: $light, 0, 0;
-          a { colors: $accent, 0, 0; }
+        if msg_options {
+          [class*="buttonContainer"]:hover + [class^="markup"] {
+            colors: 0, 0, $darker;
+          }
         }
       }
 
