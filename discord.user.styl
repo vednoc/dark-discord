@@ -452,6 +452,10 @@
       &[class*="background"] [class*="noIcon"] { colors: $light, 0, 0; }
       &[style$="rgb(114\, 137\, 218);"] { colors: 0, 0, $accent; }
     }
+    
+    // * Unread messages.
+    [class*="dms-"] [class*="badge-"] { colors: $light, 0, $accent; }
+
     if min_guilds {
       transition: 0.3s cubic-bezier(0, 0, 0.2, 1);
       transition-delay: 0.5s;
