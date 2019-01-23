@@ -445,6 +445,7 @@
     colors: 0, 0, $dark;
     [class^="friendsOnline"], [class^="download"] { colors: $lighter, 0, 0; }
     [class*="Separator"]::after { colors: 0, 0, $darker; }
+
     // * Home icon above guilds.
     [class^="guildInner"][draggable="false"] {
       colors: 0, 0, $darker;
@@ -456,6 +457,7 @@
     // * Unread messages.
     [class*="dms-"] [class*="badge-"] { colors: $light, 0, $accent; }
 
+    // * Minimize width of guild area.
     if min_guilds {
       transition: 0.3s cubic-bezier(0, 0, 0.2, 1);
       transition-delay: 0.5s;
@@ -463,6 +465,8 @@
       &:hover { max-width: 70px; }
       [class*="guild-"][class*="unread"]::before { colors: 0, 0, $lighter; }
     }
+
+    // * Minimize height of guild icons. 
     if smol_guild {
       $height = 30px;
       [class*="guild-"] {
