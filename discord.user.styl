@@ -795,6 +795,16 @@
           a { colors: $light, 0, 0; }
         }
 
+        // ? Reactions.
+        [class*="reactions-"] > [class*="reaction-"] {
+          colors: 0, 0, $darker;
+          &[class*="reactionMe-"] {
+            background-image: linear-gradient(90deg, $accent -200%, $t 300%);
+            [class*="reactionCount-"] { colors: $light, 0, 0; }
+          }
+          [class*="reactionCount-"] { colors: $lighter, 0, 0; }
+        }
+
         // ? Message separators; sibling of message-* selectors.
         if msg_options {
           [class*="buttonContainer"]:hover + [class^="markup"] {
