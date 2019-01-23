@@ -780,15 +780,20 @@
           opacity: 1;
           colors: $light, 0, 0;
         }
-        [class*="timestampCozy"] {
+        [class*="timestampCozy-"] {
           opacity: 0.5;
           colors: $light, 0, 0;
         }
-        [class*="edited"] { colors: $lighter, 0, 0; }
-        [class^="markup"] {
+        [class*="edited-"] { colors: $lighter, 0, 0; }
+        [class^="markup-"] {
           colors: $light, 0, 0;
           a { colors: $accent, 0, 0; }
         }
+        [class*="operations"] {
+          colors: $lighter, 0, 0;
+          a { colors: $light, 0, 0; }
+        }
+
         // ? Message separators; sibling of message-* selectors.
         & + [class*="dividerEnabled"] { opacity: 0.8; colors: 0, $darker, 0; }
         [class*="buttonContainer"]:hover + [class^="markup"] { background: $darker !important; }
