@@ -11,7 +11,7 @@
 
 @var checkbox min_guilds "Minimize width of guild area" 0
 @var checkbox smol_guild "Minimize height of guild icons" 0
-@var checkbox mid_guilds "WIP: Smaller icon size for guild icons" 0
+@var checkbox mid_guilds "Smaller guild icons" 0
 @var checkbox paddingless_cozy "Remove padding for cozy messages" 0
 @var checkbox compact_cozy "Compact mode for cozy messages" 0
 @var checkbox scrollbars_chromium "Disable scrollbars in Chromium" 0
@@ -1349,11 +1349,11 @@
   // * Smaller guild icons.
   if mid_guilds {
     [class*="guildsWrapper-"] {
-      width: 56px;
+      width: 60px;
       // > [class*="scrollerWrap-"] { width: 80px; }
     }
     [class*="guilds-"] {
-      padding: 8px;
+      padding: 10px;
       // Online friends and separators.
       [class*="friendsOnline-"], [class*="guildSeparator-"] {
         width: auto;
@@ -1364,13 +1364,26 @@
     [class*="guild-"] {
       height: 40px;
       width: 40px;
+      // Unread messages.
+      &[class*="unread-"]::before {
+        opacity: 0.6;
+        colors: 0, 0, $lighter;
+      }
+      // Selected.
+      &[class*="selected-"]::before {
+        margin-top: -15px;
+        height: 30px;
+        colors: 0, 0, $lighter;
+      }
       // Guild icons.
       [class*="guildInner-"] {
         height: 40px;
         width: 40px;
-        a, a > [class*="guildIcon-"] {
+        // Inherit sizes recursively.
+        a, a > [class*="icon-"], [class*="avatar-"] {
           height: inherit !important;
           width: inherit !important;
+          background-size: cover !important;
         }
         // Guilds without icons.
         [class*="noIcon"] {
