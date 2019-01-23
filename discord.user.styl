@@ -674,10 +674,16 @@
     }
 
     // * Search bar.
-    [class*="channels"] [class*="searchBar"] {
+    [class*="privateChannels-"] > [class*="searchBar-"] {
       box-shadow: 0 1px 0 0 $shadow;
-      [class$="search-bar"] { colors: $lighter, $t, $t; }
-      [class$="search-bar-inner"] { colors: $lighter, $shadow, $dark; }
+      // Wrapper element.
+      [class*="searchBarComponent-"] { colors: $t, $t, $t; }
+      // The actual search bar.
+      [class*="searchBarInner-"] {
+        border-radius: $radius;
+        colors: $lighter, $dark, $dark;
+        box-shadow: 0 2px 1px 0 $shadow;
+      }
     }
 
     // * Chat section.
