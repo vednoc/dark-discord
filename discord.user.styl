@@ -597,16 +597,16 @@
 
     // ? Header in friends area.
     [class*="headerBar-"] {
-      colors: 0, 0, $darker;
-      box-shadow: 0 1px 0 0 $shadow !important;
+      colors: 0, 0, $dark;
+      box-shadow: 0 1px 0 0 $darker !important;
       [class*="tabBar-"] {
         colors: 0, $shadow, $t;
         [class*="itemDefault-"]:not([class*="primary-"]) {
           colors: $lighter, 0, 0;
           transition: 0.2s ease;
-          &:hover { colors: $light, 0, $dark; }
+          &:hover { colors: $light, 0, $darker; }
         }
-        [class*="selected-"] { colors: $accent, 0, $dark; }
+        [class*="selected-"] { colors: $accent, 0, $t; }
         [class*="primary-"] { colors: 0, 0, $accent; }
       }
     }
