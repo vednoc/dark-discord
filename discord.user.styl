@@ -94,6 +94,14 @@
     if z is a 'call' { background-color: z !important; }
   }
 
+  // * Login page.
+  [class*="authBox-"] {
+    colors: $lighter, $darker, $dark;
+    box-shadow: 0 2px 10px 2px $shadow;
+    [class*="title-"] { colors: $light, 0, 0; }
+    [class*="subTitle-"] { colors: $lighter, 0, 0; }
+  }
+
   // * Icons.
   svg[class*="icon"] path[fill="currentColor"],
   svg[class*="icon"] g[fill="currentColor"] > path,
