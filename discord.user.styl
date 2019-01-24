@@ -704,6 +704,33 @@
       }
     }
 
+    // * Search bar in guilds, groups and DMs.
+    [class*="search-"] {
+      > [class*="searchBar-"] {
+        width: auto;
+        min-width: 144px;
+        border-radius: $radius;
+        transition: min-width 0.2s ease-in-out 0.1s;
+      }
+      // ? On event.
+      &[class*="focused"] {
+        > [class*="searchBar-"][class*="searchBar-"] {
+          min-width: 240px;
+          colors: 0, 0, $darker;
+          box-shadow: 0 2px 8px 1px $shadow;
+        }
+      }
+      // ? Some magic for placeholder text.
+      [class*="Placeholder"]:not([class*="hasFocus"]) {
+        opacity: 0.6;
+        colors: $lighter, 0, 0;
+      }
+      & + [class*="divider-"] {
+        opacity: 0.2;
+        colors: 0, 0, $lighter;
+      }
+    }
+
     // * Chat section.
     [class*="chat"] {
       colors: 0, 0, $dark;
