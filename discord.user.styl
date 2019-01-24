@@ -14,6 +14,7 @@
 @var checkbox mid_guilds "Smaller guild icons" 0
 @var checkbox paddingless_cozy "Remove padding for cozy messages" 0
 @var checkbox compact_cozy "Compact mode for cozy messages" 0
+@var checkbox unified_header "WIP: Make the header transparent" 0
 @var checkbox scrollbars_chromium "Disable scrollbars in Chromium" 0
 @var checkbox scrollbars_firefox "Disable scrollbars in Firefox" 0
 @var checkbox msg_options "Highlight message by hovering over buttons" 0
@@ -1403,6 +1404,32 @@
           colors: $lighter, 0, 0;
         }
       }
+    }
+  }
+
+  // * Unified header.
+  if unified_header {
+    // * Transparetinze title bar.
+    [class*="chat-"] > [class*="titleWrapper-"] {
+      > [class*="title"][class*="headerBar"] {
+        colors: 0, 0, $t;
+        box-shadow: none !important;
+      }
+    }
+    // ? Pseudo background for members section.
+    [class*="membersWrap-"]::before {
+      content: "";
+      position: absolute;
+      top: -48px; right: 0; left: 0;
+      height: 48px;
+      colors: 0, 0, $darker;
+    }
+    // ? Background should take over the header.
+    // TODO: Move to a separate background option perhaps?
+    [class*="content-"] > [class*="spacer-"][class*="vertical-"] {
+      overflow: visible;
+      // Account for the height of the title bar.
+      &::before { top: -50px; }
     }
   }
 }
