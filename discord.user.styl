@@ -755,7 +755,15 @@
         box-shadow: 0 1px 0 0 $shadow !important;
         [class*="channelName-"] { colors: $light, 0, 0; }
         [class*="channelIcon-"], [class*="topic-"] { colors: $lighter, 0, 0; }
-        [class*="topic-"]::before { colors: 0, 0, $dark; }
+        [class*="topic-"] {
+          // Separator
+          &::before { colors: 0, 0, $darker; }
+          // Nicknames in guilds.
+          [class*="aka-"] {
+            colors: $accent, 0, $dark;
+            box-shadow: 0 0 0 1px $darker;
+          }
+        }
       }
 
       // ? Title-bar search messages.
