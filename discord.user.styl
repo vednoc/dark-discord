@@ -464,7 +464,19 @@
     }
     
     // * Unread messages.
-    [class*="dms-"] [class*="badge-"] { colors: $light, 0, $accent; }
+    [class*="dms-"], [class*="guild-"] {
+      [class*="badge-"] {
+        colors: $dark, 0, $accent;
+        box-shadow: 2px 2px 0 0 $darker;
+      }
+    }
+    [class*="unreadMentionsBar-"] {
+      colors: $dark, 0, $accent;
+      box-shadow: 2px 2px 0 0 $darker;
+      transition: 0.2s ease;
+      svg { colors: $dark, 0, 0; }
+      &:hover { opacity: 0.8; }
+    }
 
     // * Minimize width of guild area.
     if min_guilds {
