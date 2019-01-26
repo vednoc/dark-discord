@@ -792,6 +792,17 @@
         a { colors: $accent, 0, 0; }
       }
 
+      // ? Load more messages bar.
+      [class*="hasMore-"] button {
+        colors: $lighter, $darker, $darker;
+        box-shadow: 0 2px 8px -2px $shadow;
+        transition: 0.2s ease;
+        &:hover {
+          colors: $light, 0, 0;
+          box-shadow: 0 4px 8px 0px $shadow;
+        }
+      }
+
       // ? New messages.
       [class*="newMessagesBar-"] {
         background-image: linear-gradient(90deg, $t -400%, $accent);
@@ -1466,6 +1477,7 @@
       }
     }
     // ? Pseudo background for members section.
+    [class*="searchResultsWrap-"]::before,
     [class*="membersWrap-"]::before {
       content: "";
       position: absolute;
@@ -1473,6 +1485,8 @@
       height: 48px;
       colors: 0, 0, $darker;
     }
+    // Fix upstream hidding the overflow.
+    [class*="searchResultsWrap-"] { overflow: visible; }
     // ? Background should take over the header.
     // TODO: Move to a separate background option perhaps?
     [class*="content-"] > [class*="spacer-"][class*="vertical-"] {
