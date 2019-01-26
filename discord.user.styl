@@ -1189,13 +1189,16 @@
     }
   }
 
-  // * Code chunks
-  .markup-2BOw-j code, .markup-2BOw-j code.inline {
-    border-radius: $radius;
+  // * Code blocks.
+  [class*="markup-"] pre {
+    border: none !important;
     colors: $light, 0, $darker;
-    box-shadow: 2px 2px 8px 0 $shadow;
+    code {
+      border-radius: $radius;
+      colors: $light, 0, $darker;
+      box-shadow: 2px 2px 8px -2px $shadow;
+    }
   }
-  [class^="markup"] > pre { border: none !important; }
   .hljs {
     &-name, &-section, &-selector-class, &-selector-id, &-title {
       color: $blue !important;
