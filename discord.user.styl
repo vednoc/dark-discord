@@ -15,6 +15,7 @@
 @var checkbox paddingless_cozy "Remove padding for cozy messages" 0
 @var checkbox compact_cozy "Compact mode for cozy messages" 0
 @var checkbox unified_header "WIP: Make the header transparent" 0
+@var checkbox disable_images "WIP: Disable images and show their links" 0
 @var checkbox scrollbars_chromium "Disable scrollbars in Chromium" 0
 @var checkbox scrollbars_firefox "Disable scrollbars in Firefox" 0
 @var checkbox msg_options "Highlight message by hovering over buttons" 0
@@ -1469,6 +1470,19 @@
           colors: $lighter, 0, 0;
         }
       }
+    }
+  }
+
+  // * Replace images with their links.
+  if disable_images {
+    [class*="imageZoom-"] {
+      height: auto !important;
+      width: auto !important;
+      &::after {
+        color: $lighter;
+        content: "URL: " attr(href);
+      }
+      img { display: none; }
     }
   }
 
