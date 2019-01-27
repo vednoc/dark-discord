@@ -21,6 +21,7 @@
 @var checkbox msg_options "Highlight message by hovering over buttons" 0
 @var checkbox hideCarousel "Hide carousel from activity page" 0
 @var checkbox hideNews "Hide news from activity page" 0
+@var text code_font "Custom font for code blocks" ""font-name""
 @var text input_height "Input bar maximum height" 140px
 @var text b_radius "Custom border radius" 5px
 
@@ -64,6 +65,7 @@
     --t       : transparent !important;
     --radius  : b_radius;
     --textarea: input_height;
+    --font    : code_font;
   }
 
   // * Use stylus-lang variables with CSS variables.
@@ -1200,6 +1202,7 @@
       border-radius: $radius;
       colors: $light, 0, $darker;
       box-shadow: 2px 2px 8px -2px $shadow;
+      font-family: var(--font), Consolas, Liberation Mono, Menlo, Courier, monospace;
     }
   }
   .hljs {
