@@ -65,7 +65,7 @@
     --t       : transparent !important;
     --radius  : b_radius;
     --textarea: input_height;
-    --font    : code_font;
+    --codearea: code_font;
   }
 
   // * Use stylus-lang variables with CSS variables.
@@ -774,6 +774,7 @@
       // ? Title-bar search messages.
       [class*="search-"] [class*="searchBar-"] {
         colors: $lighter, 0, $dark;
+        box-shadow: inset 0 0 0 1px $darker;
         // Input text color.
         [class*="DraftEditor-"] {
           colors: $lighter, 0, 0;
@@ -959,7 +960,7 @@
 
   // * Embeds.
   [class^="embedInner"] {
-    colors: $light, $shadow, $darker;
+    colors: $light, $darker, $darker;
     // Descriptions and such.
     [class*="Provider-"], [class*="Description-"] {
       colors: $lighter, 0, 0;
@@ -1149,7 +1150,7 @@
     colors: 0, 0, $darker;
     [class*="searchHeader-"] {
       colors: 0, 0, $darker;
-      box-shadow: 0 1px 0 0 $shadow !important;
+      box-shadow: 0 1px 0 0 $dark !important;
       // Text color.
       [class*="tab-"], [class*="totalResults-"] {
         opacity: 0.6;
@@ -1163,7 +1164,7 @@
     [class*="resultsWrapper-"] {
       // Name and separator.
       [class*="channelSeparator-"] {
-        &::before { colors: 0, $shadow, 0; }
+        &::before { colors: 0, $dark, 0; }
         [class*="channelName-"] { colors: $lighter, 0, $darker; }
       }
       // Single result.
@@ -1172,7 +1173,8 @@
         &::before, &::after { background: none !important; }
         // Matching message.
         [class*="hit"] {
-          colors: 0, $shadow, $dark;
+          border-radius: $radius;
+          colors: 0, $dark, $dark;
           box-shadow: 0 0 30px 6px $darker;
          }
       }
@@ -1202,7 +1204,7 @@
       border-radius: $radius;
       colors: $light, 0, $darker;
       box-shadow: 2px 2px 8px -2px $shadow;
-      font-family: var(--font), Consolas, Liberation Mono, Menlo, Courier, monospace;
+      font-family: var(--codearea), Consolas, Liberation Mono, Menlo, Courier, monospace;
     }
   }
   .hljs {
