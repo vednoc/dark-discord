@@ -1191,10 +1191,12 @@
   }
 
   // * Code blocks.
-  [class*="markup-"] pre {
-    border: none !important;
-    colors: $light, 0, $darker;
-    code {
+  [class*="markup-"] {
+    pre {
+      border: none !important;
+      colors: $light, 0, $darker;
+    }
+    code, code[class*="inline"] {
       border-radius: $radius;
       colors: $light, 0, $darker;
       box-shadow: 2px 2px 8px -2px $shadow;
