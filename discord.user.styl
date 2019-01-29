@@ -897,6 +897,12 @@
       }
 
       // * Mentions.
+      [class*="markup-"] [class*="mention"] {
+        colors: $accent, 0, $t;
+        &:hover { text-decoration: underline; }
+      }
+
+      // * Mention bar.
       [class*="isMentioned"] {
         position: relative;
         colors: 0, 0, $t;
@@ -913,7 +919,6 @@
           left: -4px;
           colors: 0, $accent, $t;
         }
-        [class*="markup-"] [class*="mention"] { colors: $accent, 0, $t; }
       }
 
       // ? Message dividers.
