@@ -100,7 +100,7 @@
   }
 
   // * Compact_lines helper mixins.
-  pipeline(x, y) {
+  line(x, y) {
     content: "";
     position: absolute;
     if x != false { border-left: 2px solid $darker; }
@@ -147,6 +147,8 @@
   ::placeholder, [class*="emptyPlaceholder"] { colors: $lighter, 0, 0; }
   ::selection { colors: $darker, 0, $accent; }
   ::-moz-selection { colors: $darker, 0, $accent; }
+  // Bot tags.
+  [class*="botTag"] { colors: $light, 0, $accent; }
 
   // * No channel. (=
   [class*="noChannel-"] { colors: 0, 0, $dark; }
@@ -303,7 +305,6 @@
     [class*="header-"] > [class*="Info"] {
       [class*="username"] { colors: $light, 0, 0; }
       [class*="discriminator"] { colors: $lighter, 0, 0; }
-      [class*="botTag"] { colors: $light, 0, $accent; }
       // Send friend request button.
       & + [class*="lookInverted"] {
         colors: $green, 0, $dark;
@@ -389,7 +390,6 @@
       // Username/discriminator colors.
       [class*="Name"] { colors: $light, 0, 0; }
       [class*="Tag"] { colors: $lighter, 0, 0; }
-      [class*="botTag"] { colors: $light, 0, $accent; }
     }
     // * Different modes.
     // TODO Should we include different colors?
@@ -725,7 +725,6 @@
       colors: 0, 0, $darker;
       [class*="membersGroup-"] { opacity: 0.8; colors: $light, 0, 0; }
       [class*="activityText-"] { colors: $lighter, 0, 0; }
-      [class*="botTagRegular"] { colors: $light, 0, $accent; }
       [class*="member-"]:hover [class*="content-"] { colors: 0, 0, $dark; }
     }
 
