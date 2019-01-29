@@ -14,6 +14,7 @@
 @var checkbox mid_guilds "Smaller guild icons" 0
 @var checkbox paddingless_cozy "Remove padding for cozy messages" 0
 @var checkbox compact_cozy "Compact mode for cozy messages" 0
+@var checkbox compact_lines "Compact mode visual lines" 0
 @var checkbox unified_header "WIP: Make the header transparent" 0
 @var checkbox disable_images "WIP: Disable images and show their links" 0
 @var checkbox scrollbars_chromium "Disable scrollbars in Chromium" 0
@@ -96,6 +97,24 @@
     if x is a 'call' { color: x !important; }
     if y is a 'call' { border-color: y !important; }
     if z is a 'call' { background-color: z !important; }
+  }
+
+  // * Compact_lines helper mixins.
+  pipeline(x, y) {
+    content: "";
+    position: absolute;
+    if x != false { border-left: 2px solid $darker; }
+    if y != false { border-bottom: 2px solid $darker; }
+  }
+  size(w, h) {
+    if w != 'boolean' { width: w; }
+    if h != 'boolean' { height: h; }
+  }
+  nav(a, b, c, d) {
+    if a != 'boolean' || a != 'null' { top: a; }
+    if b != 'boolean' || b != 'null' { right: b; }
+    if c != 'boolean' || c != 'null' { bottom: c; }
+    if d != 'boolean' || d != 'null' { left: d; }
   }
 
   // * Login page.
@@ -1443,8 +1462,13 @@
       // Message content.
       [class*="contentCozy-"] {
         margin-left: 12px;
-        // TODO Find a better separator.
-        [class*="markup-"]::before { opacity: 0.25; content: "⤷ "; }
+        // Default message arrows.
+        if not compact_lines {
+          [class*="markup-"]::before {
+            opacity: 0.25;
+            content: "⤷ ";
+          }
+        }
         // Big emoji!
         .emoji.jumboable { height: 1.35rem; width: 1.35rem; }
         // Reactions.
@@ -1544,6 +1568,98 @@
       // overflow: visible;
       // Account for the height of the title bar.
       &::before { top: -50px; }
+    }
+  }
+
+  // * Compact mode lines.
+  if compact_lines {
+    // Fix message buttons issues.
+    [class*="buttonContainer-"] + [class*="markup-"] {
+      margin-right: 46px;
+    }
+    [class*="containerCozyBounded-"] {
+      // Avatars.
+      [class*="avatar-"] {
+        z-index: 1;
+        box-shadow: 0 0 0 2px $darker;
+        &:hover { opacity: 1; }
+      }
+      // Markup.
+      [class*="markup-"] {
+        position: relative;
+        margin-left: 16px;
+        // Straight line.
+        &::before {
+          nav: 0, false, -10px, -13px;
+          line: true, false;
+          // colors: 0, $red, 0;
+        }
+        // Curved line.
+        &::after {
+          size: 9px, 30px;
+          nav: -20px, 0, 0, -13px;
+          border-radius: 0 0 0 6px;
+          line: true, true;
+          // colors: 0, $cyan, 0;
+        }
+      }
+      // Reset for the last pseudo elements.
+      > div:nth-last-child(2) [class*="contentCozy-"] {
+        // Reset markup and embeds.
+        [class*="markup-"], [class*="embed-"] {
+          &::before { colors: 0, $t, 0; }
+          // &::after { colors: 0, $yellow, 0; }
+        }
+        // Reset your uploaded image.
+        [class*="containerCozy-"] > a[class*="embed"]::before {
+          display: none;
+          // colors: 0, $red, 0;
+        }
+        // Reset extra server/gift embeds.
+        [class*="containerCozy-"] > [class*="cursorDefault-"]::before {
+          display: none;
+          // colors: 0, $blue, 0;
+        }
+      }
+      // Images/videos/embeds.
+      [class*="containerCozy-"] > [class*="embed-"] {
+        margin-left: 16px;
+        margin-bottom: 8px;
+        &::before {
+          nav: 0, 0, -22px, -13px;
+          line: true, false;
+          // colors: 0, $orange, 0;
+        }
+      }
+      // Your uploaded image embed.
+      [class*="containerCozy-"] > a[class*="embed"] {
+        overflow: visible;
+        margin-left: 15px;
+        &::before {
+          nav: 0, 0, 0, -12px;
+          line: true, false;
+          // colors: 0, $green, 0;
+        }
+      }
+    }
+    // Invites.
+    [class*="containerCozy-"] > [class*="cursorDefault-"] {
+      position: relative;
+      margin-left: 16px;
+      &::before {
+        nav: 0, 0, 0px, -14px;
+        line: true, false;
+        // colors: 0, $red, 0;
+      }
+    }
+    // Gifts.
+    [class*="content-"] > [class*="containerCozy-"][style*="position: relative;"] {
+      margin-left: 16px;
+      &::before {
+        nav: 0, 0, 0px, -13px;
+        line: true, false;
+        // colors: 0, $red, 0;
+      }
     }
   }
 }
