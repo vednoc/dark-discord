@@ -1313,11 +1313,10 @@
 
   // * Settings.
   [class*="standardSidebarView-"] {
-    colors: 0, 0, $darker;
+    colors: 0, 0, $dark;
     // * Sidebar.
     [class^="sidebarRegion-"] {
-      border-right: 1px solid;
-      colors: $light, $shadow, $dark;
+      colors: $light, 0, $darker;
       [class^="header-"] { opacity: 0.5; colors: $lighter, 0, 0; }
       [class^="itemSelected-"] { colors: $light, 0, $accent; }
       [class*="itemDefault-"]:hover { colors: $light, 0, $darker; }
@@ -1325,18 +1324,21 @@
     }
     // * Main content.
     [class^="contentRegion-"] {
-      colors: $light, $shadow, $darker;
+      colors: $light, 0, $dark;
       // Text colors.
       [class*="titleDefault-"], [class*="title-"] { colors: $lighter, 0, 0; }
-      [class*="description-"] { colors: $light, 0, 0; }
-      [class*="divider-"] { colors: 0, 0, $shadow; }
+      [class*="description-"] {
+        colors: $light, 0, 0;
+        [class*="anchor-"] { colors: $accent, 0, 0; }
+      }
+      [class*="divider-"] { colors: 0, 0, $darker; }
       [class*="value-label-"] { colors: $light, 0, 0; }
     }
     // Close button.
     [class*="closeButton-"] {
-      colors: 0, $dark, 0;
+      colors: 0, $darker, 0;
       transition: 0.2s ease;
-      &:hover { colors: 0, 0, $dark; }
+      &:hover { colors: 0, 0, $darker; }
       path[fill*="#dcddde"] { fill: $lighter; }
       + [class*="keybind"] { colors: $lighter, 0, 0; }
     }
