@@ -1363,21 +1363,27 @@
 
   // * Cards.
   [class*="card-"]:not([class*="emojiRow-"]) {
-    colors: 0, $shadow, $dark;
+    colors: 0, $darker, $darker;
     [class*="title-"], [class*="primary-"] { colors: $light, 0, 0; }
     [class*="desc-"] { colors: $lighter, 0, 0; }
     [class*="anchor-"] { colors: $accent, 0, 0; }
     [class*="checkbox-"] {
-      colors: 0, $darker, 0;
-      &[class*="checked-"] { colors: 0, 0, $darker; }
+      colors: 0, $dark, 0;
+      &[class*="checked-"] { colors: 0, 0, $dark; }
     }
+    // Checkmarks.
+    [name*="Checkmark"] polyline[stroke*="#7289da"] { stroke: $accent; }
+    // Colorized cards.
+    &[style*="rgb(67"] { colors: 0, $green, $green; }
+    &[style*="rgb(250"] { colors: 0, $orange, $orange; }
+    &[style*="rgb(240"] { colors: 0, $red, $red; }
   }
   // * Username and such.
-  [class*="cardPrimary-"] {
+  [class*="cardPrimary"] {
     colors: $light, $dark, $dark;
     input {
-      colors: $light, $shadow, $shadow;
-      &:focus { colors: 0, $accent, 0; }
+      colors: $lighter, $dark, $dark;
+      &:focus { colors: $light, $accent, 0; }
     }
     [class*="viewBody-"] { colors: $light, 0, 0; }
   }
