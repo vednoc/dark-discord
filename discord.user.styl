@@ -1332,6 +1332,14 @@
       [class*="divider-"] { colors: 0, 0, $shadow; }
       [class*="value-label-"] { colors: $light, 0, 0; }
     }
+    // Close button.
+    [class*="closeButton-"] {
+      colors: 0, $dark, 0;
+      transition: 0.2s ease;
+      &:hover { colors: 0, 0, $dark; }
+      path[fill*="#dcddde"] { fill: $lighter; }
+      + [class*="keybind"] { colors: $lighter, 0, 0; }
+    }
   }
 
   // * Emoji section.
