@@ -1341,6 +1341,30 @@
       path[fill*="#dcddde"] { fill: $lighter; }
       + [class*="keybind"] { colors: $lighter, 0, 0; }
     }
+    // * Audit log.
+    [class*="auditLog-"] {
+      colors: $lighter, $darker, 0;
+      // Different headers.
+      [class*="headerClickable"] { colors: $lighter, 0, $dark; }
+      [class*="headerExpanded"] { colors: $lighter, 0, $darker; }
+      // Text colors.
+      [class*="userHook-"] {
+        strong, > span:first-child, { colors: $light, 0, 0; }
+      }
+      // Metadata.
+      [class*="changeStr-"], [class*="timeWrap-"] {
+        &, strong { colors: $light, 0, 0; }
+      }
+      // Discriminators and secondary text.
+      [class*="discrim-"], [class*="timestamp-"] {
+        opacity: 1;
+        colors: $lighter, 0, 0;
+      }
+      // Colors.
+      [class*="typeUpdate-"] { colors: $yellow, 0, 0; }
+      [class*="typeCreate-"] { colors: $green, 0, 0; }
+      [class*="typeDelete-"] { colors: $red, 0, 0; }
+    }
   }
 
   // * Emoji section.
