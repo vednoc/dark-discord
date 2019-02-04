@@ -688,7 +688,7 @@
       }
 
       // Selected channel.
-      [class*="contentSelectedText-"], [class*="contentHoveredText-"] {
+      [class*="contentSelected"], [class*="contentHovered"] {
         colors: 0, 0, $dark;
         [class*="Text-"] { colors: $light, 0, 0; }
       }
@@ -696,15 +696,14 @@
       [class*="containerDefault-"] {
         // Defaults.
         [class*="nameDefault-"] { colors: $light, 0, 0; }
-        [class*="contentDefaultText"] > div {
+        // Text/voice channels.
+        [class*="contentDefault"] > div {
           opacity: 0.6;
           colors: $lighter, 0, 0;
         }
         // Unread messages.
         [class*="unread-"] { colors: 0, 0, $accent; }
-        [class*="contentUnreadText"] > div {
-          colors: $accent, 0, 0;
-        }
+        [class*="contentUnreadText"] > div { colors: $accent, 0, 0; }
         // Collapsed containers.
         [class*="Collapsed-"] {
           colors: $lighter, 0, 0;
@@ -716,7 +715,7 @@
           colors: $lighter, 0, 0;
         }
         // Hovered containers.
-        [class*="nameHovered-"] { colors: $light, 0, 0; }
+        [class*="nameHovered"] { colors: $light, 0, 0; }
       }
     }
 
