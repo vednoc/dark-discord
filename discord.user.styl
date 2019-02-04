@@ -1282,6 +1282,10 @@
     [class*="header"], [class*="username"] { colors: $light, 0, 0; }
     [class*="tips"], [class*="content"], [class*="note"] { colors: $lighter, 0, 0; }
     [class*="icon"] { colors: $icon, 0, 0; }
+    [class*="keybindShortcut-"] span {
+      colors: $light, $dark, $darker;
+      box-shadow: inset 0 -4px 0 $accent;
+    }
   }
 
   // * Dropdown menus.
