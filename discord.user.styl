@@ -1301,6 +1301,12 @@
   [class^="contextMenu"] { colors: $light, $dark, $dark; box-shadow: $bshadow; }
   .checkbox .checkbox-inner input[type="checkbox"]:checked + span { colors: 0, $accent, $accent; }
 
+  // * ReactSelect dropdown.
+  .Select {
+    &-control { colors: $lighter, $darker, $dark; }
+    &-value-label { colors: $lighter, 0, 0; }
+  }
+
   // * Mentions .
   [class^="messagesPopoutWrap"] {
     colors: $light, $shadow, $darker;
