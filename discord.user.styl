@@ -436,6 +436,17 @@
     }
   }
 
+  // * User status menu.
+  [class^="menu"] {
+    colors: $light, 0, $dark;
+    border-radius: inset !important;
+    [class^="item"] {
+      colors: $light, 0, 0;
+      &:hover { colors: $light, 0, $darker; }
+      [class*="helper-"] { colors: $lighter, 0, 0; }
+    }
+  }
+
   // * User controls.
   [class^="channels"][class*="vertical"] > div:last-child {
     colors: $lighter, 0, $t;
@@ -1296,14 +1307,7 @@
     }
   }
 
-  // * Dropdown menus.
-  [class^="menu"] {
-    colors: $light, 0, $dark;
-    [class^="item"] {
-      colors: $light, 0, 0;
-      &:hover { colors: $light, 0, $darker; }
-    }
-  }
+  // TODO: Find a better place to put this.
   [class^="itemGroup"] {
     [class^="item"] {
     colors: $light, $dark, $dark;
