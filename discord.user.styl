@@ -358,6 +358,13 @@
         colors: $light, 0, 0;
         &:focus { colors: 0, 0, $dark; }
       }
+      // ? Mutual servers/friends.
+      [class*="listRow-"] {
+        colors: $lighter, 0, 0;
+        &:hover { colors: $light, 0, $dark; }
+        [class*="guildNick-"] { colors: $lighter, 0, 0; }
+        [class*="discriminator"] { colors: $light, 0, 0; }
+      }
       // ? Reset misaligned elements due to Firefox polyfill.
       [class*="firefoxFixScrollFlex-"] {
         padding-right: 0px;
