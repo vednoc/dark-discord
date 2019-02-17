@@ -323,6 +323,8 @@
       // Text colors.
       [class*="content-"], [class*="TextNormal-"] { colors: $lighter, 0, 0; }
       [class*="weight"] { colors: $lighter, 0, 0; }
+      [class*="lookOutlined-"] { colors: $lighter, $dark, 0; }
+      [class*="listenAlongIcon-"] path { fill: $lighter; }
       [class*="activityName-"] { colors: $light, 0, 0; }
       // Progress bar.
       [class*="bar-"] {
@@ -400,7 +402,20 @@
     }
     // * Different modes.
     // TODO Should we include different colors?
-    [class*="Spotify"] { colors: 0, 0, $darker; }
+    [class*="Spotify"] {
+      colors: 0, 0, $darker;
+      // Text colors.
+      [class*="content-"], [class*="TextNormal-"] { colors: $lighter, 0, 0; }
+      [class*="weight"] { colors: $lighter, 0, 0; }
+      [class*="lookOutlined-"] { colors: $lighter, $dark, 0; }
+      [class*="listenAlongIcon-"] path { fill: $lighter; }
+      [class*="activityName-"] { colors: $light, 0, 0; }
+      // Progress bar.
+      [class*="bar-"] {
+        colors: 0, 0, $dark;
+        [class*="barInner-"] { colors: 0, 0, $accent; }
+      }
+    }
     [class*="headerPlaying"] { colors: 0, 0, $darker; }
     [class*="activityUserPopout"] {
       border-top: 1px solid;
