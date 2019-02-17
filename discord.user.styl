@@ -358,6 +358,11 @@
         colors: $light, 0, 0;
         &:focus { colors: 0, 0, $dark; }
       }
+      // ? Reset misaligned elements due to Firefox polyfill.
+      [class*="firefoxFixScrollFlex-"] {
+        padding-right: 0px;
+        [class*="userInfoSection-"] { margin-right: 4px; }
+      }
     }
     // * Connected accounts.
     [class*="userInfoSection"] {
