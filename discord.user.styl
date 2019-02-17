@@ -308,9 +308,8 @@
       // Send friend request button.
       & + [class*="lookInverted"] {
         colors: $green, 0, $dark;
-        box-shadow: inset 0 0 0 1px $shadow;
         transition: 0.2s ease-in-out;
-        &:hover { colors: $accent, 0, 0; }
+        &:hover { colors: $light, 0, 0; }
       }
     }
     // * Activities.
@@ -364,7 +363,8 @@
     [class*="userInfoSection"] {
       colors: 0, $shadow, 0;
       [class*="Accounts"] > [class*="Account"] {
-        colors: 0, $shadow, $dark;
+        border-radius: $radius;
+        colors: 0, $dark, $dark;
         [class*="AccountName"] { colors: $lighter, 0, 0; }
       }
     }
@@ -402,6 +402,9 @@
     }
     // * Different modes.
     // TODO Should we include different colors?
+    [class*="headerNormal-"] {
+      colors: 0, 0, $darker;
+    }
     [class*="Spotify"] {
       colors: 0, 0, $darker;
       // Text colors.
@@ -433,7 +436,7 @@
       // Headers.
       [class*="bodyTitle"] { colors: $lighter, 0, 0; }
       // Add role button.
-      [class*="actionButton"] { colors: $lighter, $dark, $darker; }
+      [class*="actionButton"] { colors: $lighter, $lighter, $darker; }
       // Note section.
       [class*="note"] > textarea {
         colors: $lighter, 0, 0;
@@ -451,7 +454,7 @@
       // Tip color.
       [class*="tip"] { colors: $lighter, 0, 0; }
       // Message $user.
-      [class*="quickMessage"] { colors: $light, $shadow, $dark; }
+      [class*="quickMessage"] { colors: $light, $dark, $dark; }
     }
   }
 
