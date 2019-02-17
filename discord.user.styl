@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Dark Discord
 @namespace    gitlab.com/vednoc/dark-discord
-@version      0.10.0
+@version      0.11.0
 @description  Customizable dark theme for Discord.
 @author       vednoc
 @homepageURL  https://gitlab.com/vednoc/dark-discord
@@ -46,7 +46,7 @@
 
 @-moz-document domain("discordapp.com") {
   :root {
-    --note    : "Dark-Discord v0.10.0";
+    --note    : "Dark-Discord v0.11.0";
     --dark    : dark;
     --darker  : darker;
     --light   : light;
@@ -140,7 +140,7 @@
   // * Userstyle version.
   [class*="userSettingsAccount"] > h2::after {
     content: " | Theme: " var(--note);
-    text-transform: capitalize;
+    text-transform: initial;
   }
 
   // * Global reset/overwrites.
