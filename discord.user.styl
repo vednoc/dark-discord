@@ -334,10 +334,10 @@
     }
     [class*="Playing-"] {
       colors: 0, 0, $darker;
-      [class^="headerFill-"] {
-        border-top: 1px solid;
-        colors: 0, $shadow, $t;
-      }
+      [class*="headerFill-"] { colors: 0, 0, $t; }
+      [class*="content-"] { colors: $lighter, 0, 0; }
+      [class*="lookOutlined-"] { colors: $lighter, $dark, $dark; }
+      [class*="headerText-"], [class*="activityName-"] { colors: $light, 0, 0; }
     }
     [class*="topSectionNormal-"] {
       colors: 0, 0, $darker;
@@ -416,7 +416,12 @@
         [class*="barInner-"] { colors: 0, 0, $accent; }
       }
     }
-    [class*="headerPlaying"] { colors: 0, 0, $darker; }
+    [class*="Playing-"] {
+      colors: 0, 0, $darker;
+      [class*="content-"] { colors: $lighter, 0, 0; }
+      [class*="lookOutlined-"] { colors: $lighter, $dark, $dark; }
+      [class*="headerText-"], [class*="activityName-"] { colors: $light, 0, 0; }
+    }
     [class*="activityUserPopout"] {
       border-top: 1px solid;
       colors: 0, $shadow, $t;
