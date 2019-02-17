@@ -393,9 +393,8 @@
   [class*="userPopout"] {
     border-radius: $radius;
     colors: 0, 0, $darker;
-    > [class^="headerNormal-"] {
-      colors: $light, 0, $darker;
-      // Username/discriminator colors.
+    // Username/discriminator colors.
+    [class^="headerText-"] {
       [class*="Name"] { colors: $light, 0, 0; }
       [class*="Tag"] { colors: $lighter, 0, 0; }
     }
