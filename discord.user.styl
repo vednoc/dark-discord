@@ -1372,13 +1372,38 @@
     &-value-label { colors: $lighter, 0, 0; }
   }
 
-  // * Mentions .
-  [class^="messagesPopoutWrap"] {
+  // * Mentions.
+  [class^="messagesPopoutWrap-"] {
     colors: $light, $shadow, $darker;
-    [class^="header"]:not([class^="headerCozy"]) { colors: $light, $shadow, $darker; }
+    [class^="header-"]:not([class^="headerCozy"]) {
+      colors: $light, $shadow, $darker;
+      box-shadow: 0 2px 8px -1px $shadow;
+      [class*="title-"] { colors: $light, 0, 0; }
+      // ? Tabs.
+      // TODO: Refactor this since it's a global component.
+      [class^="tabBar"] {
+        colors: 0, $shadow, $t;
+        [class*="tabBarItem"] { colors: $lighter, 0, 0; }
+        [class*="tabBarItem"]:hover { colors: 0, $accent, 0; }
+        [class*="selected"] { colors: $light, $accent, 0; }
+      }
+      // ? Filters.
+      [class*="mentionFilter-"] {
+        [class*="label"] { colors: $lighter, 0, 0; }
+        [class*="value-"] {
+          colors: $light, 0, 0;
+          font-weight: bold;
+        }
+      }
+    }
     [class^="messageGroupWrapper"] { colors: $light, $shadow, $dark; }
     [class^="jumpButton"] { colors: $light, $shadow, $t; }
     [class^="actionButtons"] { colors: $light, $shadow, $t; transition: none !important; box-shadow: none !important; }
+    [class*="emptyPlaceholder-"] [class*="body-"] { colors: $lighter, 0, 0; }
+    [class*="footer-"][class*="footer-"] {
+      colors: 0, 0, $dark;
+      [class*="tip-"] { colors: $lighter, 0, 0; }
+    }
   }
 
   // * Settings.
