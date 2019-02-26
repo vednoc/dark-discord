@@ -9,6 +9,7 @@
 @updateURL    https://gitlab.com/vednoc/dark-discord/raw/master/discord.user.styl
 @preprocessor stylus
 
+@var checkbox remove_notifications "Notification-free mode" 0
 @var checkbox min_guilds "Minimize width of guild area" 0
 @var checkbox smol_guild "Minimize height of guild icons" 0
 @var checkbox mid_guilds "Smaller guild icons" 0
@@ -1768,6 +1769,20 @@
         line: true, false;
         // colors: 0, $red, 0;
       }
+    }
+
+  // * Notification-free mode.
+  if remove_notifications {
+    [class*="guildsWrapper-"] {
+      [class*="dms-"],
+      [class*="unreadMentions"],
+      [class*="guild-"] [class*="badge-"] {
+        display: none;
+      }
+    }
+    [class*="unread-"] [class*="bar-"],
+    [class*="contentUnread"] [class*="iconSpacing-"] {
+      display: none;
     }
   }
 }
