@@ -1316,25 +1316,17 @@
       box-shadow: 2px 2px 8px -2px $shadow;
       font-family: var(--codearea), Consolas, Liberation Mono, Menlo, Courier, monospace;
     }
-  }
-  .hljs {
-    &-name, &-section, &-selector-class, &-selector-id, &-title {
-      color: $blue !important;
-    }
-    &-attr, &-attribute, &-class , &-template-variable, &-type, &-variable {
-      color: $orange !important;
-    }
-    &-built_in, &-deletion {
-      color: $red !important;
-    }
-    &-doctag, &-literal, &-meta &-meta-string, &-number, &-regexp, &-string {
-      color: $cyan !important;
-    }
-    &-addition, &-keyword, &-selector-tag {
-      color: $green !important;
-    }
-    &-comment, &-quote {
-      color: $light !important;
+    // Syntax highlighting.
+    .hljs {
+      &-name, &-title, &-section { colors: $blue, 0, 0; }
+      &-selector-class, &-selector-id { colors: $blue, 0, 0; }
+      &-attr, &-attribute, &-type { colors: $orange, 0, 0; }
+      &-class, &-template-variable, &-variable { colors: $orange, 0, 0; }
+      &-built_in, &-deletion { colors: $red, 0, 0; }
+      &-doctag, &-literal, &-meta &-meta-string { colors: $cyan, 0, 0; }
+      &-number, &-regexp, &-string { colors: $cyan, 0, 0; }
+      &-addition, &-keyword, &-selector-tag { colors: $green, 0, 0; }
+      &-comment, &-quote { colors: $light, 0, 0; }
     }
   }
 
