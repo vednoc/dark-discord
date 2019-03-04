@@ -180,9 +180,10 @@
 
   // * Firefox scrollbar polyfill.
   if not scrollbars_firefox {
-    // ? Activity/Store/Friends/Chat.
+    // ? Activity/Store/Friends/QuickSwitcher/Chat.
     [class*="feed-"] +, [class*="Store-"] +,
     [class*="friendsTableBody-"] +,
+    [class*="quickswitcher-"],
     [class*="messages-"] + {
       [class^="scrollbar-"] {
         colors: 0, $t, $dark;
