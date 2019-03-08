@@ -1664,47 +1664,58 @@
 
   // * Smaller guild icons.
   if mid_guilds {
-    [class*="guildsWrapper-"] {
-      width: 60px;
-      // > [class*="scrollerWrap-"] { width: 80px; }
-    }
-    [class*="guilds-"] {
-      padding: 10px;
-      // Online friends and separators.
+    $size = 40px;
+    // ? Set the width of guilds wrapper.
+    [class*="layer-"] > div > [class*="wrapper-"] {
+      width: ($size + 20px);
+      // ? Increase width to account for scrollbar polyfill.
+      > [class*="Polyfill-"] { width: ($size + 38px); }
+      // ? Online friends and separators.
       [class*="friendsOnline-"], [class*="guildSeparator-"] {
         width: auto;
-        max-width: 40px;
+        margin-left: 0;
+        max-width: $size;
+        overflow: hidden;
       }
     }
-    // Main parent element.
-    [class*="guild-"] {
-      height: 40px;
-      width: 40px;
-      // Unread messages.
-      &[class*="unread-"]::before {
-        opacity: 0.6;
-        colors: 0, 0, $lighter;
-      }
-      // Selected.
+    // * Guilds wrapper.
+    [class*="layer-"] [class*="wrapper-"] > div > div > [class*="container-"] {
+      margin-bottom: 10px;
+      height: $size !important;
+      width: $size !important;
+      // ? Selected guild.
       &[class*="selected-"]::before {
-        margin-top: -15px;
-        height: 30px;
+        margin-top: ($size / -3.5);
+        height: ($size / 1.75);
         colors: 0, 0, $lighter;
       }
-      // Guild icons.
-      [class*="guildInner-"] {
-        height: 40px;
-        width: 40px;
-        // Inherit sizes recursively.
-        a, a > [class*="icon-"], [class*="avatar-"] {
-          height: inherit !important;
-          width: inherit !important;
-          background-size: cover !important;
+      // ? Guild icons.
+      [class*="dragfix-"], [class*="avatar-"] {
+        height: $size;
+        width: $size;
+        // ? Set icon sizes.
+        a, a > [class*="icon-"], [class*="inner-"] {
+          height: $size;
+          width: $size;
         }
-        // Guilds without icons.
-        [class*="noIcon"] {
-          line-height: 40px;
-          colors: $lighter, 0, 0;
+        // ? Guilds without icons.
+        [class*="noIcon"] { line-height: $size; }
+      }
+      // ? Home button.
+      [class*="homeButton-"] {
+        height: $size;
+        width: $size;
+      }
+      // ? Badges.
+      [class*="badge-"] { top: ($size - 16px) !important; }
+      // ? Join/Create a new server.
+      + div[class=""] [class*="circleIconButton"] {
+        height: $size;
+        width: $size;
+        line-height: $size;
+        [class*="plus"] {
+          line-height: $size;
+          font-size: 2em;
         }
       }
     }
