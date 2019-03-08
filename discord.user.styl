@@ -604,31 +604,48 @@
     // * Minimize height of guild icons.
     if smol_guild {
       $height = 30px;
-      [class*="guild-"] {
+      [class*="container-"] {
         max-height: $height;
-        // Set guild border-radius and background-color.
-        [class*="guildInner"], [class*="avatar-"] {
+        // ? Set channel border-radius and height.
+        [class*="dragfix-"] > [class*="wrapper"], [class*="homeButton-"] {
           height: $height;
-          border-radius: 15px !important;
-          colors: 0, 0, $darker;
+          border-radius: ($height / 2) !important;
           a { height: $height; }
-          // Guild image element.
-          a [class*="icon"] {
+          // ? Guild image height.
+          a [class*="icon"], a [class*="inner-"][class*="inner-"] {
             line-height: $height;
             height: $height;
-            background-size: cover;
           }
         }
-        // ? Home icon.
-        svg[class*="homeIcon-"] {
-          height: 50px;
-          margin-top: -10px;
-          padding: 10px !important;
+        // ? Badges.
+        [class*="badge-"] { top: ($height - 16px) !important; }
+        // ? Special DM selectors. xd
+        [class*="wrapper-"][style*="border-radius:"] {
+          colors: 0, 0, $t;
+          box-shadow: 0 0 0 1px inset $darker;
+          height: $height;
+          border-radius: ($height / 2) !important;
+          [class*="avatar-"] { height: $height; }
+          [class*="inner-"] {
+            margin-top: -10px;
+            padding: 10px 0;
+            background-image: cover !important;
+          }
         }
-      }
-      [class*="guildsAdd"] {
-        line-height: $height;
-        border-radius: $height;
+        // ? Resize Discord logo because it shrinks down.
+        svg[class*="homeIcon-"] { transform: scale(1.5); }
+        // ? Join/Create a new server.
+        + div[class=""] > [class*="circleIconButton"] {
+          height: $height;
+          line-height: $height;
+          border-radius: ($height / 2);
+          [class*="plus"] {
+            line-height: $height;
+            font-size: 2em;
+          }
+        }
+        // ? Separate DMs from guilds.
+        &[style*="height:"] { margin-bottom: 10px; }
       }
     }
   }
