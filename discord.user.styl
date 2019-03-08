@@ -541,26 +541,49 @@
   [class*="nameTag"] > [class*="username"] { color: inherit !important; }
 
   // * Guilds.
-  [class^="guildsWrapper"] {
-    colors: 0, 0, $dark;
+  [class*="layer-"] > div[style="flex: 1 1 auto;"] > [class*="wrapper-"] {
+    border-right: 1px solid;
+    colors: 0, $darker, $dark;
     [class*="downloadAppButton-"] { display: none !important; }
     [class^="friendsOnline"], [class^="download"] { colors: $lighter, 0, 0; }
     [class*="Separator"]::after { colors: 0, 0, $darker; }
 
-    // * Home icon above guilds.
-    [class^="guildInner"][draggable="false"] {
-      colors: 0, 0, $darker;
-      transition-duration: 0.15s !important;
-      &[class*="background"] [class*="noIcon"] { colors: $light, 0, 0; }
-      &[style$="rgb(114\, 137\, 218);"] { colors: 0, 0, $accent; }
-    }
-
-    // * Unread messages.
-    [class*="dms-"], [class*="guild-"] {
+    // * Guild wrapper.
+    [class*="container-"] {
+      // ? Indicator -> New messages.
+      &[class*="unread"]::before { colors: 0, 0, $lighter; }
+      // ? Indicator -> Active guild.
+      &[class*="selected-"]::before { colors: 0, 0, $accent; }
+      // ? Unread messages.
       [class*="badge-"] {
         colors: $dark, 0, $accent;
         box-shadow: 2px 2px 0 0 $darker;
       }
+      // ? Home icon above guilds.
+      > [class*="homeButton-"][class*="wrapper-"] {
+        transition-duration: 0.15s !important;
+        colors: 0, 0, $t;
+        box-shadow: 0 0 0 1px inset $darker;
+        [class*="homeIcon"] { colors: $light, 0, 0; }
+        // ? Colors when active.
+        &[style$="rgb(114\, 137\, 218);"] {
+          colors: 0, 0, $darker;
+          [class*="homeIcon"] { colors: $accent, 0, 0; }
+        }
+      }
+      // ? Guild colors.
+      [class*="dragfix-"] > [class*="wrapper-"] {
+        colors: $lighter, 0, $t;
+        box-shadow: 0 0 0 1px inset $darker;
+        [class*="Icon-"] {
+          transition: 0.15s ease;
+          background-size: cover;
+          colors: $lighter, 0, $t;
+          &:hover { colors: $light, 0, $darker; }
+        }
+      }
+      // ? Add/Join a new server.
+      + [class=""] > [class*="circleIcon"] { colors: $lighter, $darker, $dark; }
     }
     [class*="unreadMentionsBar-"] {
       colors: $dark, 0, $accent;
@@ -576,7 +599,6 @@
       transition-delay: 0.5s;
       max-width: 10px;
       &:hover { max-width: 70px; }
-      [class*="guild-"][class*="unread"]::before { colors: 0, 0, $lighter; }
     }
 
     // * Minimize height of guild icons.
