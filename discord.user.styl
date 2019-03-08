@@ -1858,10 +1858,11 @@
 
   // * Notification-free mode.
   if remove_notifications {
-    [class*="guildsWrapper-"] {
-      [class*="dms-"],
+    [class*="wrapper-"] {
+      // ? DMs/Mentions/Badges.
+      [class*="friendsOnline-"] ~ [class*="container-"][style*="opacity"],
       [class*="unreadMentions"],
-      [class*="guild-"] [class*="badge-"] {
+      [class*="container-"] [class*="badge-"] {
         display: none;
       }
     }
