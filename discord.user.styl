@@ -12,7 +12,8 @@
 @var checkbox remove_notifications "Notification-free mode" 0
 @var checkbox min_guilds "Minimize width of guild area" 0
 @var checkbox smol_guild "Minimize height of guild icons" 0
-@var checkbox mid_guilds "Smaller guild icons" 0
+@var text guild_size "Custom small guild icon size" 40px
+@var checkbox mid_guilds "Small guild icons" 0
 @var checkbox paddingless_cozy "Remove padding for cozy messages" 0
 @var checkbox compact_cozy "Compact mode for cozy messages" 0
 @var checkbox compact_lines "Compact mode visual lines" 0
@@ -1664,7 +1665,7 @@
 
   // * Smaller guild icons.
   if mid_guilds {
-    $size = 40px;
+    $size = guild_size;
     // ? Set the width of guilds wrapper.
     [class*="layer-"] > div > [class*="wrapper-"] {
       width: ($size + 20px);
