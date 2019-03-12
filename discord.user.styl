@@ -181,10 +181,11 @@
 
   // * Firefox scrollbar polyfill.
   if not scrollbars_firefox {
-    // ? Activity/Store/Friends/QuickSwitcher/Chat.
+    // ? Activity/Store/Friends/QuickSwitcher/Mentions/Chat.
     [class*="feed-"] +, [class*="Store-"] +,
     [class*="friendsTableBody-"] +,
     [class*="quickswitcher-"],
+    [class*="messagesPopout-"] +,
     [class*="messages-"] + {
       [class^="scrollbar-"] {
         colors: 0, $t, $dark;
@@ -193,9 +194,8 @@
         [class^="pad"] { colors: 0, 0, $dark; }
       }
     }
-    // ? Search/Pinned/Channels/Notifications.
+    // ? Search/Channels/Notifications.
     [class*="searchResultsWrap-"] > div:last-child,
-    [class*="messagesPopout-"] +,
     [class*="scrollerFade-"] >,
     [class*="sizeMedium-"] {
       [class*="scrollbar-"] {
