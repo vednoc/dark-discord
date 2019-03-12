@@ -1422,11 +1422,12 @@
 
   // * Mentions.
   [class^="messagesPopoutWrap-"] {
-    colors: $light, $shadow, $darker;
+    border-radius: $radius;
+    colors: $light, $darker, $dark;
     [class^="header-"]:not([class^="headerCozy"]) {
-      colors: $light, $shadow, $darker;
-      box-shadow: 0 2px 8px -1px $shadow;
-      [class*="title-"] { colors: $light, 0, 0; }
+      colors: $light, $darker, $dark;
+      box-shadow: 0 1px 0 0 $darker;
+      [class*="title-"] { colors: $lighter, 0, 0; }
       // ? Tabs.
       // TODO: Refactor this since it's a global component.
       [class^="tabBar"] {
@@ -1444,9 +1445,17 @@
         }
       }
     }
-    [class^="messageGroupWrapper"] { colors: $light, $shadow, $dark; }
-    [class^="jumpButton"] { colors: $light, $shadow, $t; }
-    [class^="actionButtons"] { colors: $light, $shadow, $t; transition: none !important; box-shadow: none !important; }
+    [class*="channelSeparator-"] {
+      [class*="channel"] { colors: $light, 0, 0; }
+      [class*="guild"] { colors: $lighter, 0, 0; }
+    }
+    [class^="messageGroupWrapper"] { colors: $light, $darker, $dark; }
+    [class^="jumpButton"] { colors: $light, $t, $darker; }
+    [class^="actionButtons"] {
+      transition: none !important;
+      colors: $light, $t, $t;
+      box-shadow: none !important;
+    }
     [class*="emptyPlaceholder-"] [class*="body-"] { colors: $lighter, 0, 0; }
     [class*="footer-"][class*="footer-"] {
       colors: 0, 0, $dark;
