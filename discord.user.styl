@@ -496,7 +496,8 @@
 
   // * User controls.
   [class^="channels"][class*="vertical"] > div:last-child {
-    colors: $lighter, 0, $t;
+    border-top: 1px solid;
+    colors: $lighter, $darker, $t;
     [class^="username"] { colors: $light, 0, 0; }
     [class*="discriminator"] { opacity: 0.6; colors: $lighter, 0, 0; }
   }
@@ -776,7 +777,8 @@
 
     // ? Global channels.
     [class*="channels"] {
-      colors: 0, 0, $darker;
+      border-right: 1px solid;
+      colors: 0, $darker, $dark;
 
       // Title and stuff.
       [class*="container-"] > [class*="header-"] {
@@ -796,8 +798,9 @@
 
       // Selected channel.
       [class*="contentSelected"], [class*="contentHovered"] {
-        colors: 0, 0, $dark;
+        colors: 0, 0, $darker;
         [class*="Text-"] { colors: $light, 0, 0; }
+        svg path { fill: $light !important; }
       }
       // Channel containers.
       [class*="containerDefault-"] {
@@ -838,14 +841,15 @@
 
     // * Search bar.
     [class*="privateChannels-"] > [class*="searchBar-"] {
-      box-shadow: 0 1px 0 0 $shadow;
+      border-bottom: 1px solid $darker;
+      box-shadow: none;
       // Wrapper element.
       [class*="searchBarComponent-"] { colors: $t, $t, $t; }
       // The actual search bar.
       [class*="searchBarInner-"] {
         border-radius: $radius;
-        colors: $lighter, $dark, $dark;
-        box-shadow: 0 2px 1px 0 $shadow;
+        colors: $lighter, $darker, $dark;
+        box-shadow: 0 2px 4px 0 $shadow;
       }
     }
 
@@ -1278,21 +1282,25 @@
     [class^="channel-"] {
       colors: $light, 0, 0;
       // Usernames.
-      a, [class^="name-"] { colors: $lighter, 0, 0; }
+      a, [class^="name-"] {
+        border-radius: $radius;
+        colors: $lighter, 0, 0;
+      }
       // ? Text opacity.
       [class^="name-"] { opacity: 0.6; }
       // On hover/select states.
       &:hover [class*="name-"],
       &[class*="selected-"] [class*="name-"] { opacity: 1; }
+      &:hover a, &[class*="selected-"] a { colors: 0, 0, $darker; }
+      // On hover status border colors.
+      &:hover [class*="status-"] { colors: 0, $darker, 0; }
       // Activities.
       [class^="name-"] > [class^="activity"] { colors: $lighter, 0, 0; }
       [class*="activityText-"] { colors: $lighter, 0, 0; }
-      // On hover/active state.
-      &:hover a, &[class*="selected-"] a { colors: 0, 0, $dark; }
     }
     // ? Reset scroller padding so it takes less space.
     [class*="scrollerWrapPolyfill"] > [class^="scroller-"] {
-      padding: 0 !important;
+      padding: 0 8px 0 0 !important;
     }
   }
 
