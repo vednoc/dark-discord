@@ -827,6 +827,11 @@
         // Hovered containers.
         [class*="nameHovered"] { colors: $light, 0, 0; }
       }
+
+      // ? Reset scroller padding so it takes less space.
+      [class*="scrollerWrapPolyfill"] > [class^="scroller-"] {
+        padding: 0 8px 0 0 !important;
+      }
     }
 
     // * Guild members list.
