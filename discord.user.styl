@@ -1090,15 +1090,22 @@
   [class^="channelTextArea"] {
     border-top-color: $dark;
     // Input container.
-    > [class^="inner"] { colors: 0, 0, $darker; }
+    > [class^="inner"] {
+      colors: 0, 0, $dark;
+      border-radius: $radius;
+      border: 1px solid $darker;
+      &[class*="innerAutocomplete-"] { border-radius: 0 0 $radius $radius; }
+    }
     // Input text color.
     textarea { colors: $light, 0, 0; }
     // Dividers.
-    [class*="divider"], [class*="Divider"] { colors: 0, 0, $shadow; }
+    [class*="divider"], [class*="Divider"] { colors: 0, 0, $darker; }
     // ? Emojis, mentions, commands popout.
     [class*="autocomplete-"][class*="autocomplete-"] {
-      colors: 0, 0, $darker;
-      box-shadow: 0 1px 0 0px $shadow;
+      margin-bottom: -1px;
+      colors: 0, 0, $dark;
+      border-radius: $radius $radius 0 0;
+      box-shadow: 0 0px 0 1px $darker;
       [class*="autocompleteInner-"] {
         border: none !important;
         // Command mode icons.
@@ -1108,7 +1115,7 @@
         [class*="contentTitle"] strong { colors: $light, 0, 0; }
         // Main content.
         [class*="content-"] { colors: $light, 0, 0; }
-        [class*="selectorSelected-"] { colors: 0, 0, $dark; }
+        [class*="selectorSelected-"] { colors: 0, 0, $darker; }
       }
     }
   }
