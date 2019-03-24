@@ -1301,12 +1301,12 @@
       }
       // ? Text opacity.
       [class^="name-"] { opacity: 0.6; }
-      // On hover/select states.
-      &:hover [class*="name-"],
-      &[class*="selected-"] [class*="name-"] { opacity: 1; }
-      &:hover a, &[class*="selected-"] a { colors: 0, 0, $darker; }
-      // On hover status border colors.
-      &:hover [class*="status-"] { colors: 0, $darker, 0; }
+      // ? Different states.
+      &:hover, &[class*="selected-"] {
+        a { colors: 0, 0, $darker; }
+        [class*="name-"] { opacity: 1; }
+        [class*="status-"] { colors: 0, $darker, 0; }
+      }
       // Activities.
       [class^="name-"] > [class^="activity"] { colors: $lighter, 0, 0; }
       [class*="activityText-"] { colors: $lighter, 0, 0; }
