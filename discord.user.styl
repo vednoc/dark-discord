@@ -1299,17 +1299,18 @@
         border-radius: $radius;
         colors: $lighter, 0, 0;
       }
-      // ? Text opacity.
-      [class^="name-"] { opacity: 0.6; }
+      // ? Text colors.
+      [class^="name-"] {
+        opacity: 0.6;
+        // Activities.
+        > [class*="activity"] { colors: $lighter, 0, 0; }
+      }
       // ? Different states.
       &:hover, &[class*="selected-"] {
         a { colors: 0, 0, $darker; }
         [class*="name-"] { opacity: 1; }
         [class*="status-"] { colors: 0, $darker, 0; }
       }
-      // Activities.
-      [class^="name-"] > [class^="activity"] { colors: $lighter, 0, 0; }
-      [class*="activityText-"] { colors: $lighter, 0, 0; }
     }
     // ? Reset scroller padding so it takes less space.
     [class*="scrollerWrapPolyfill"] > [class^="scroller-"] {
