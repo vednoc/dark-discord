@@ -1877,6 +1877,23 @@
           // colors: 0, $cyan, 0;
         }
       }
+      // Spoilers.
+      [class*="containerCozy-"] > div[class*="spoilerContainer-"] {
+        overflow: visible;
+        margin-left: 15px;
+        box-shadow: none !important;
+        &::before {
+          nav: 0, 0, 0, -12px;
+          line: true, false;
+          // colors: 0, $green, 0;
+        }
+        // Fix blur overflow.
+        [aria-hidden] {
+          overflow: hidden;
+          border-radius: $radius;
+          box-shadow: 2px 2px 4px 0 $shadow;
+        }
+      }
     }
     // Invites.
     [class*="containerCozy-"] > [class*="cursorDefault-"] {
