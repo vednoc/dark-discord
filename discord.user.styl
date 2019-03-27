@@ -19,6 +19,7 @@
 @var checkbox compact_lines "Compact mode visual lines" 0
 @var checkbox unified_header "WIP: Make the header transparent" 0
 @var checkbox disable_images "WIP: Disable images and show their links" 0
+@var checkbox scrollbars_enabled "Always show scrollbar tracks" 0
 @var checkbox scrollbars_chromium "Disable scrollbars in Chromium" 0
 @var checkbox scrollbars_firefox "Disable scrollbars in Firefox" 0
 @var checkbox msg_options "Highlight message by hovering over buttons" 0
@@ -207,6 +208,10 @@
     }
     // ? Various hacks.
     [class*="scrollbar-"] {
+      // ? Custom setting -> Always show scrollbar tracks.
+      if ( scrollbars_enabled == 1 ) {
+        > [class*="track-"] { opacity: 1 !important; }
+      }
       // ? Hide 0px height thumb scrollbar thumb.
       > div[style*="height: 0px;"] { border-width: 0px !important; }
     }
