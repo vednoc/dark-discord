@@ -205,6 +205,11 @@
         [class^="pad"] { colors: 0, 0, $darker; }
       }
     }
+    // ? Various hacks.
+    [class*="scrollbar-"] {
+      // ? Hide 0px height thumb scrollbar thumb.
+      > div[style*="height: 0px;"] { border-width: 0px !important; }
+    }
   }
 
   // * Dirty Firefox sidebar(s) hacks.
