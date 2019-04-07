@@ -1530,7 +1530,8 @@
     colors: 0, 0, $dark;
     // * Sidebar.
     [class^="sidebarRegion-"] {
-      colors: $light, 0, $darker;
+      colors: $light, 0, $dark;
+      [class*="separator-"] { colors: 0, 0, $darker; }
       [class^="header-"] { opacity: 0.5; colors: $lighter, 0, 0; }
       [class^="itemSelected-"] { colors: $light, 0, $accent; }
       [class*="itemDefault-"]:hover { colors: $light, 0, $darker; }
@@ -1539,6 +1540,7 @@
     // * Main content.
     [class^="contentRegion-"] {
       colors: $light, 0, $dark;
+      box-shadow: 1px 0 0 0 inset $darker;
       // Text colors.
       [class*="titleDefault-"], [class*="title-"] { colors: $lighter, 0, 0; }
       [class*="description-"] {
