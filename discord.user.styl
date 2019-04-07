@@ -918,8 +918,8 @@
 
       // ? Channel title-bar.
       > [class^="titleWrapper"] > [class*="title"] {
-        colors: 0, 0, $darker;
-        box-shadow: 0 1px 0 0 $shadow !important;
+        colors: 0, 0, $dark;
+        box-shadow: 0 1px 0 0 $darker !important;
         [class*="channelName-"] { colors: $light, 0, 0; }
         [class*="channelIcon-"], [class*="topic-"] { colors: $lighter, 0, 0; }
         [class*="topic-"] {
@@ -1225,8 +1225,8 @@
   [class^="applicationStore-"] {
     colors: 0, 0, $dark;
     [class*="headerBar-"] {
-      colors: 0, 0, $darker;
-      box-shadow: 0 1px 0 0 $shadow;
+      colors: 0, 0, $dark;
+      box-shadow: 0 1px 0 0 $darker;
       [class*="title-"] { colors: $light, 0, 0; }
     }
     // * Header.
@@ -1278,8 +1278,8 @@
   [class^="activityFeed-"], [class^="gameLibrary-"] {
     colors: 0, 0, $dark;
     [class*="headerBar-"] {
-      colors: 0, 0, $darker;
-      box-shadow: 0 1px 0 0 $shadow !important;
+      colors: 0, 0, $dark;
+      box-shadow: 0 1px 0 0 $darker !important;
       [class*="title-"] { colors: $light, 0, 0; }
     }
     [class*="emptyStateText-"] {
@@ -1814,7 +1814,7 @@
     [class*="chat-"] > [class*="titleWrapper-"] {
       > [class*="title"][class*="headerBar"] {
         colors: 0, 0, $t;
-        box-shadow: none !important;
+        box-shadow: 0 1px 0 0 $darker !important;
       }
     }
     // ? Pseudo background for members section.
