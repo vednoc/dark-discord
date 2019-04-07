@@ -984,6 +984,14 @@
         [class^="messagesWrapper"] {
           colors: 0, 0, $t;
           & + form { colors: 0, 0, $t; }
+
+          // ? LocalBot messages.
+          [class*="isLocalBot-"] {
+            colors: $lighter, $green, $dark;
+            background-image: linear-gradient(60deg, $t 50%, $darker);
+            box-shadow: 0 0 0 1px $darker;
+            [class*="localBotMessage-"] a { colors: $accent, 0, 0; }
+          }
         }
         // ? Group welcome message.
         [class*="messages-"] [class*="default-"] h1 {
