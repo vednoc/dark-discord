@@ -794,10 +794,16 @@
       border-right: 1px solid;
       colors: 0, $darker, $dark;
 
-      // Title and stuff.
-      [class*="container-"] > [class*="header-"] {
+      // ? Guild name/menu.
+      [class*="hasDropdown-"] > [class*="header-"] {
         colors: $light, 0, 0;
-        box-shadow: 0 1px 0 0 $shadow;
+        box-shadow: 0 1px 0 0 $darker;
+        &:hover { colors: 0, 0, $darker; }
+      }
+
+      // ? Remove unnecessary shadow on notification bar.
+      [class*="positionedContainer-"] > [class*="unreadTop-"] > div {
+        box-shadow: none !important;
       }
 
       // Notices.
