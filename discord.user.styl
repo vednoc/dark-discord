@@ -432,8 +432,7 @@
 
   // * User popout.
   [class*="userPopout"] {
-    border-radius: $radius;
-    colors: 0, 0, $darker;
+    colors: 0, 0, $dark;
     // Username/discriminator colors.
     [class^="headerText-"] {
       [class*="Name"] { colors: $light, 0, 0; }
@@ -441,37 +440,35 @@
     }
     // * Different modes.
     // TODO Should we include different colors?
-    [class*="headerNormal-"] {
-      colors: 0, 0, $darker;
+    [class*="header-"] {
+      border-radius: $radius $radius 0 0;
+      colors: 0, 0, $t;
+      [class*="content-"] { colors: $lighter, 0, 0; }
+      [class*="lookOutlined-"] { colors: $lighter, $dark, $dark; }
+      [class*="headerText-"], [class*="activityName-"] { colors: $light, 0, 0; }
+      // Activity.
+      [class*="activityUserPopout"] {
+        border-top: 1px solid $darker;
+        colors: 0, 0, $t;
+      }
     }
     [class*="Spotify"] {
-      colors: 0, 0, $darker;
       // Text colors.
       [class*="content-"], [class*="TextNormal-"] { colors: $lighter, 0, 0; }
       [class*="weight"] { colors: $lighter, 0, 0; }
-      [class*="lookOutlined-"] { colors: $lighter, $dark, 0; }
+      [class*="lookOutlined-"] { colors: $lighter, $darker, 0; }
       [class*="listenAlongIcon-"] path { fill: $lighter; }
       [class*="activityName-"] { colors: $light, 0, 0; }
       // Progress bar.
       [class*="bar-"] {
-        colors: 0, 0, $dark;
+        colors: 0, 0, $darker;
         [class*="barInner-"] { colors: 0, 0, $accent; }
       }
-    }
-    [class*="Playing-"] {
-      colors: 0, 0, $darker;
-      [class*="content-"] { colors: $lighter, 0, 0; }
-      [class*="lookOutlined-"] { colors: $lighter, $dark, $dark; }
-      [class*="headerText-"], [class*="activityName-"] { colors: $light, 0, 0; }
-    }
-    [class*="activityUserPopout"] {
-      border-top: 1px solid;
-      colors: 0, $shadow, $t;
     }
     // * Body.
     > [class^="body-"] {
       border-top: 1px solid;
-      colors: $lighter, $shadow, $t;
+      colors: $lighter, $darker, $t;
       // Headers.
       [class*="bodyTitle"] { colors: $lighter, 0, 0; }
       // Add role button.
