@@ -420,12 +420,13 @@
   // * Popout menus.
   // ? For example: Spotify invitation/Upload a File/etc.
   [class*="popouts-"] [class*="attachPopout-"] {
-    colors: $light, 0, $darker;
+    border-radius: $radius;
+    colors: $light, 0, $dark;
     // Text color.
     [class*="RowText"] { colors: $lighter, 0, 0; }
     // On hover event.
     > [class*="attachPopoutRow"]:hover {
-      colors: $lighter, 0, $shadow;
+      colors: 0, 0, $darker;
       [class*="RowText"] { colors: $light, 0, 0; }
     }
   }
