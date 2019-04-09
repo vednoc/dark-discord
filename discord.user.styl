@@ -1928,6 +1928,17 @@
       > [class*="messageCozy-"]:nth-last-child(2) [class*="embedSpotify-"]::before {
         display: none !important;
       }
+      // Spotify -> Party invite.
+      [class*="containerCozy-"] > [class*="invite-"] {
+        position: relative;
+        overflow: visible;
+        margin-left: 16px;
+        &::before {
+          nav: 0, 0, 0px, -14px;
+          line: true, false;
+          // colors: 0, $red, 0;
+        }
+      }
       // Reactions.
       [class*="containerCozy"] > span[class*="reactions-"] {
         position: relative;
