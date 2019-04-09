@@ -500,16 +500,20 @@
       // Headers.
       [class*="bodyTitle"] { colors: $lighter, 0, 0; }
       // Add role button.
-      [class*="actionButton"] { colors: $lighter, $lighter, $darker; }
+      [class*="actionButton"] {
+        transition: 0.15s ease;
+        colors: $lighter, $darker, $dark;
+        &:hover { colors: 0, 0, $darker; }
+      }
       // Note section.
       [class*="note"] > textarea {
         colors: $lighter, 0, 0;
-        &:focus { colors: $light, 0, $dark; }
+        &:focus { colors: $light, 0, $darker; }
       }
     }
     // * Footer.
     > [class^="footer-"] {
-      colors: $light, $shadow, $t;
+      colors: $light, $darker, $t;
       // Wumpus!
       [class*="wumpusShown-"] [class*="wumpusTooltip-"] {
         colors: $lighter, 0, $dark;
@@ -517,8 +521,8 @@
       }
       // Tip color.
       [class*="tip"] { colors: $lighter, 0, 0; }
-      // Message $user.
-      [class*="quickMessage"] { colors: $light, $dark, $dark; }
+      // Message user.
+      [class*="quickMessage"] { colors: $light, $darker, $dark; }
     }
   }
 
