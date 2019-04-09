@@ -431,6 +431,17 @@
     }
   }
 
+  // * Add role popout.
+  [class*="popoutInvert-"], [class*="popoutBottom-"] {
+    [class*="headerText-"] { colors: $light, 0, 0; }
+    [class*="sectionTag-"] {
+      colors: $lighter, 0, $t;
+      [class*="selected-"] {
+        background: linear-gradient(90deg, $t, $darker);
+      }
+    }
+  }
+
   // * User popout.
   [class*="userPopout"] {
     colors: 0, 0, $dark;
