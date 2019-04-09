@@ -1967,6 +1967,14 @@
           box-shadow: 2px 2px 4px 0 $shadow;
         }
       }
+      // Remove visual lines from the very last message with spoiler.
+      > div:nth-last-child(2) [class*="spoilerContainer-"]::before {
+        display: none !important;
+      }
+      // Remove reaction's visual lines from the very last message.
+      > [class*="messageCozy-"]:nth-last-child(2) [class*="reactions"]::before {
+        display: none !important;
+      }
     }
     // Invites.
     [class*="containerCozy-"] > [class*="cursorDefault-"] {
