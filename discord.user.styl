@@ -1900,11 +1900,19 @@
       [class*="containerCozy-"] > a[class*="embed"] {
         overflow: visible;
         margin-left: 15px;
+        border-radius: $radius;
+        box-shadow: 0 0 0 1px inset $darker;
+        // colors: 0, 0, $darker;
         &::before {
           nav: 0, 0, 0, -12px;
           line: true, false;
           // colors: 0, $green, 0;
         }
+        img { border-radius: $radius; }
+      }
+      // Image you sent, no text.
+      [class*="containerCozy"] > div[class*="imageWrapper-"] {
+        margin-left: 15px;
       }
       // Reactions.
       [class*="containerCozy"] > span[class*="reactions-"] {
