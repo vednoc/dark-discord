@@ -361,7 +361,21 @@
         // Icons.
         [class*="listenAlongIcon-"] path { fill: $lighter; }
       }
+      // Fake border.
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0; right: 0; left: 0;
+        border-radius: $radius $radius 0 0;
+        border-top: $radius solid $t;
+        // colors: 0, 0, $dark;
+      }
     }
+    // Various modes.
+    [class*="Playing-"]::before { colors: 0, $blue, 0; }
+    [class*="Spotify-"]::before { colors: 0, $green, 0; }
+    [class*="Streaming-"]::before { colors: 0, $violet, 0; }
+    [class*="Xbox-"]::before { colors: 0, $violet, 0; }
 
     // * Tab bar.
     [class^="tabBar"] {
