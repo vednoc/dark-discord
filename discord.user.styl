@@ -370,41 +370,48 @@
     }
     // * Tab bar.
     [class^="tabBar"] {
-      colors: 0, $shadow, $t;
-      [class*="tabBarItem"] { colors: $lighter, 0, 0; }
-      [class*="tabBarItem"]:hover { colors: 0, $accent, 0; }
-      [class*="selected"] { colors: $light, $accent, 0; }
+      colors: 0, $darker, $t;
+      [class*="item-"] {
+        transition: 0.15s ease;
+        colors: $lighter, 0, 0;
+        &:hover { colors: 0, $accent, 0; }
+        &[class*="selected-"] { colors: $light, $accent, 0; }
+      }
     }
     // * Body.
     > [class*="body-"] {
-      border-top: 1px solid;
-      colors: 0, $shadow, $darker;
+      border-top: 1px solid $darker;
+      colors: 0, 0, $t;
       // Text color.
       [class*="Info"] { colors: $lighter, 0, 0; }
       [class*="note"] > textarea {
         colors: $light, 0, 0;
-        &:focus { colors: 0, 0, $dark; }
+        &:focus { colors: 0, 0, $darker; }
       }
       // ? Mutual servers/friends.
       [class*="listRow-"] {
         colors: $lighter, 0, 0;
-        &:hover { colors: $light, 0, $dark; }
+        &:hover { colors: $light, 0, $darker; }
         [class*="guildNick-"] { colors: $lighter, 0, 0; }
         [class*="discriminator"] { colors: $light, 0, 0; }
       }
       // ? Reset misaligned elements due to Firefox polyfill.
       [class*="firefoxFixScrollFlex-"] {
         padding-right: 0px;
-        [class*="userInfoSection-"] { margin-right: 4px; }
+        [class*="userInfoSection-"] { margin-right: 16px; }
       }
     }
     // * Connected accounts.
     [class*="userInfoSection"] {
-      colors: 0, $shadow, 0;
+      colors: 0, $darker, 0;
       [class*="Accounts"] > [class*="Account"] {
         border-radius: $radius;
-        colors: 0, $dark, $dark;
-        [class*="AccountName"] { colors: $lighter, 0, 0; }
+        colors: 0, $darker, $dark;
+        &:hover [class*="AccountName"] { colors: $light, 0, 0; }
+        [class*="AccountName"] {
+          transition: 0.15s ease;
+          colors: $lighter, 0, 0;
+        }
       }
     }
   }
