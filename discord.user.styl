@@ -1914,6 +1914,20 @@
       [class*="containerCozy"] > div[class*="imageWrapper-"] {
         margin-left: 15px;
       }
+      // Spotify -> Embedded song.
+      [class*="containerCozy"] > div[class*="embedSpotify-"] {
+        position: relative;
+        margin-left: 15px;
+        &::before {
+          nav: -20px, 0, 0px, -12px;
+          line: true, false;
+          colors: 0, $green, 0;
+        }
+      }
+      // Spotify -> Reset visual lines on the last message.
+      > [class*="messageCozy-"]:nth-last-child(2) [class*="embedSpotify-"]::before {
+        display: none !important;
+      }
       // Reactions.
       [class*="containerCozy"] > span[class*="reactions-"] {
         position: relative;
