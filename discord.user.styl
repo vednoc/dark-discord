@@ -329,45 +329,40 @@
 
   // * User modal.
   [class^="modal-"] > div > [class*="root"] {
+    border-radius: $radius;
+    colors: 0, 0, $dark;
+    box-shadow: 0 0 0 1px $darker;
+
     [class*="header-"] > [class*="Info"] {
       [class*="username"] { colors: $light, 0, 0; }
       [class*="discriminator"] { colors: $lighter, 0, 0; }
-      // Send friend request button.
+      // Send message/request button.
       & + [class*="lookInverted"] {
-        colors: $green, 0, $dark;
-        transition: 0.2s ease-in-out;
-        &:hover { colors: $light, 0, 0; }
+        colors: $lighter, 0, $darker;
+        transition: 0.15s ease;
+        &:hover { colors: $accent, 0, 0; }
       }
     }
-    // * Activities.
-    [class*="Spotify-"] {
-      colors: 0, 0, $darker;
-      [class^="headerFill-"] {
-        border-top: 1px solid;
-        colors: 0, $shadow, $t;
-      }
-      // Text colors.
-      [class*="content-"], [class*="TextNormal-"] { colors: $lighter, 0, 0; }
-      [class*="weight"] { colors: $lighter, 0, 0; }
-      [class*="lookOutlined-"] { colors: $lighter, $dark, 0; }
-      [class*="listenAlongIcon-"] path { fill: $lighter; }
-      [class*="activityName-"] { colors: $light, 0, 0; }
-      // Progress bar.
-      [class*="bar-"] {
-        colors: 0, 0, $dark;
-        [class*="barInner-"] { colors: 0, 0, $accent; }
-      }
-    }
-    [class*="Playing-"] {
-      colors: 0, 0, $darker;
+    [class*="topSection"] {
+      colors: 0, 0, $t;
       [class*="headerFill-"] { colors: 0, 0, $t; }
-      [class*="content-"] { colors: $lighter, 0, 0; }
-      [class*="lookOutlined-"] { colors: $lighter, $dark, $dark; }
-      [class*="headerText-"], [class*="activityName-"] { colors: $light, 0, 0; }
+      [class*="activityProfile-"] {
+        border-top: 1px solid $darker;
+        colors: 0, 0, $t;
+        // Timestamps/secondary text.
+        [class*="weight"], [class*="content-"] { colors: $lighter, 0, 0; }
+        // Activities/header text.
+        [class*="activityName-"], [class*="xtNormal-"] { colors: $light, 0, 0; }
+        // Progress bar.
+        [class*="bar-"] {
+          colors: 0, 0, $darker;
+          [class*="barInner-"] { colors: 0, 0, $accent; }
+        }
+        // Icons.
+        [class*="listenAlongIcon-"] path { fill: $lighter; }
+      }
     }
-    [class*="topSectionNormal-"] {
-      colors: 0, 0, $darker;
-    }
+
     // * Tab bar.
     [class^="tabBar"] {
       colors: 0, $darker, $t;
