@@ -463,34 +463,37 @@
     colors: 0, 0, $dark;
     // Username/discriminator colors.
     [class^="headerText-"] {
-      [class*="Name"] { colors: $light, 0, 0; }
-      [class*="Tag"] { colors: $lighter, 0, 0; }
+      [class*="Name"], .username { colors: $light, 0, 0; }
+      [class*="Tag"], .discrimnator { colors: $lighter, 0, 0; }
     }
-    // * Different modes.
-    // TODO Should we include different colors?
+    // Various modes.
     [class*="header-"] {
+      position: relative;
       border-radius: $radius $radius 0 0;
       colors: 0, 0, $t;
-      [class*="content-"] { colors: $lighter, 0, 0; }
-      [class*="lookOutlined-"] { colors: $lighter, $dark, $dark; }
+      [class*="lookOutlined-"] {
+        colors: $lighter, $darker, 0;
+        &:hover { colors: $light, 0, $darker; }
+      }
       [class*="headerText-"], [class*="activityName-"] { colors: $light, 0, 0; }
       // Activity.
       [class*="activityUserPopout"] {
         border-top: 1px solid $darker;
         colors: 0, 0, $t;
-      }
-    }
-    [class*="Spotify"] {
-      // Text colors.
-      [class*="content-"], [class*="TextNormal-"] { colors: $lighter, 0, 0; }
-      [class*="weight"] { colors: $lighter, 0, 0; }
-      [class*="lookOutlined-"] { colors: $lighter, $darker, 0; }
-      [class*="listenAlongIcon-"] path { fill: $lighter; }
-      [class*="activityName-"] { colors: $light, 0, 0; }
-      // Progress bar.
-      [class*="bar-"] {
-        colors: 0, 0, $darker;
-        [class*="barInner-"] { colors: 0, 0, $accent; }
+        // Timestamps/secondary text.
+        [class*="weight"] { colors: $lighter, 0, 0; }
+        [class*="content-"] {
+          &, [class*="details-"] { colors: $lighter, 0, 0; }
+        }
+        // Activities/header text.
+        [class*="activityName-"], [class*="xtNormal-"] { colors: $light, 0, 0; }
+        // Progress bar.
+        [class*="bar-"] {
+          colors: 0, 0, $darker;
+          [class*="barInner-"] { colors: 0, 0, $accent; }
+        }
+        // Icons.
+        [class*="listenAlongIcon-"] path { fill: $lighter; }
       }
     }
     // * Body.
