@@ -724,7 +724,9 @@
 
   // * Search results.
   [class*="popout-"] > [class*="container-"] {
-    colors: $red, 0, $dark;
+    border-radius: $radius;
+    colors: 0, 0, $dark;
+    box-shadow: 0 0 0 1px $darker;
     // * "Search for" selector.
     > [class*="queryContainer-"] {
       colors: $light, $dark, $darker;
