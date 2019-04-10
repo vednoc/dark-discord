@@ -823,10 +823,14 @@
         [class*="friendsColumn-"] { colors: $lighter, 0, 0; }
         [class*="statusText-"] { colors: $light, 0, 0; }
         [class*="noIcon-"] { colors: $light, 0, $darker; }
-        [class*="friendsRow"] { border-color: $darker; }
-        [class*="friendsRow-"]:hover {
-          colors: 0, 0, $darker;
-          box-shadow: 0 2px 4px 0 $shadow !important;
+        [class*="friendsRow"] {
+          padding: 8px;
+          margin: 0 16px;
+          border-color: $darker;
+          &:hover {
+            colors: 0, 0, $darker;
+            box-shadow: 0 2px 4px -2px $shadow !important;
+          }
         }
       }
     }
