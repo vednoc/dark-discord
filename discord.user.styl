@@ -1294,16 +1294,20 @@
 
   // * Emote menu.
   [class*="emojiPicker-"] {
-    colors: $red, $darker, $darker;
+    border-width: 0px;
+    colors: $lighter, $darker, $dark;
     box-shadow: 0 0 6px 0 var(--shadow);
     // Header.
-    [class*="searchBar-"] {
-      colors: 0, 0, $t; // not necessary?
-      [class*="searchBarInner-"] { colors: $lighter, 0, $dark; }
-      [class*="searchBarInner-"] input { colors: $light, 0, 0; }
+    [class*="header-"] {
+      colors: 0, $darker, 0;
+      [class*="searchBar-"] {
+        colors: 0, 0, $t; // not necessary?
+        [class*="searchBarInner-"] { colors: $lighter, 0, $darker; }
+        [class*="searchBarInner-"] input { colors: $light, 0, 0; }
+      }
     }
     // Frequently used.
-    [class*="stickyHeader-"] { colors: 0, 0, $darker; }
+    [class*="stickyHeader-"] { colors: 0, 0, $dark; }
     [class*="category-"], [class*="sadImage-"] + div { colors: $lighter, 0, 0; }
     // Selected emote.
     [class*="row-"] [class*="selected-"] { colors: 0, 0, $accent; }
@@ -1312,7 +1316,7 @@
     // Dimmed overlay.
     [class*="visible-"]:not([class*="icon-"] ) {
       opacity: 0.8;
-      colors: 0, 0, $darker;
+      colors: 0, 0, $dark;
     }
     // Diversity selector.
     [class*="popout-"] {
@@ -1322,7 +1326,7 @@
     // ? Fix scrollbar polyfill.
     [class*="scrollbar-"] > [class*="pad"] {
       left: -2px !important;
-      colors: 0, 0, $darker;
+      colors: 0, 0, $dark;
     }
   }
 
