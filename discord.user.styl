@@ -1195,12 +1195,14 @@
       // * Invite embed.
       [class*="wrapper-"][class*="userSelectNone"] {
         colors: 0, $darker, $dark;
-        box-shadow: 0 2px 4px 0 $shadow;
+        box-shadow: 0 2px 4px -1px $shadow;
         [class*="title-"], [class*="guildDetail-"] { colors: $lighter, 0, 0; }
         [class*="guildName-"] { colors: $light, 0, 0; }
+        [class*="guildNameExpired-"] { colors: $red, 0, 0; }
         [class*="statusOnline-"] { colors: 0, 0, $green; }
         [class*="statusOffline-"] { colors: 0, 0, $darker; }
         [class*="lookOutlined-"] { colors: 0, $darker, 0; }
+        [class*="lookOutlined-"]:hover { colors: 0, $darker, $darker; }
       }
 
       // * Typing section.
