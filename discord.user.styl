@@ -146,12 +146,17 @@
     text-transform: initial;
   }
 
-  // * Global reset/overwrites.
+  // * Global -> Browser defaults.
   ::placeholder, [class*="emptyPlaceholder"] { colors: $lighter, 0, 0; }
   ::selection { colors: $dark, 0, $lighter; }
   ::-moz-selection { colors: $dark, 0, $lighter; }
-  // Bot tags.
+  // * Global -> Bot tags.
   [class*="botTag"] { colors: $light, 0, $accent; }
+  // * Global -> Checkboxes.
+  [class*="checkbox-"] {
+    colors: 0, $dark, $darker;
+    &[class*="checked-"] svg polyline { stroke: $accent; }
+  }
 
   // * No channel. (=
   [class*="noChannel-"] { colors: 0, 0, $dark; }
@@ -301,6 +306,7 @@
     [class*="footer-"] {
       colors: 0, 0, $darker;
       box-shadow: inset 0 1px 0 0 $darker;
+      [class*="label"] * { colors: $lighter, 0, 0; }
       // Cancel button.
       [class*="lookLink-"] {
         colors: $lighter, 0, 0;
@@ -1537,7 +1543,6 @@
     }
   }
   [class^="contextMenu"] { colors: $light, $dark, $dark; box-shadow: $bshadow; }
-  .checkbox .checkbox-inner input[type="checkbox"]:checked + span { colors: 0, $accent, $accent; }
 
   // * ReactSelect dropdown.
   .Select {
@@ -1701,9 +1706,6 @@
     &[disabled] { colors: $light, $darker, $darker; }
     &:hover { opacity: 0.8 !important; }
   }
-
-  // * Check slider.
-  [class*="valueChecked"] { colors: $lighter, 0, $accent; }
 
   if hideCarousel {
     [class*="carousel"] { display: none !important; }
