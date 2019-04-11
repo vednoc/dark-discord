@@ -153,15 +153,22 @@
   // * Global -> Bot tags.
   [class*="botTag"] { colors: $light, 0, $accent; }
   // * Global -> Checkboxes.
-  [class*="checkbox-"] {
+  [class*="checkbox-"]:not([class*="wrapper" i]) {
     colors: 0, $dark, $darker;
-    &[class*="checked-"] svg polyline { stroke: $accent; }
+    &[class*="checked-"] svg polyline { stroke: $light; }
+    &[class*="round-"] {
+      colors: 0, $darker, $dark;
+      &[class*="checked-"] {
+        colors: 0, $green, 0;
+        svg polyline { stroke: $green; }
+      }
+    }
   }
   // * Global -> Switches.
   [class*="switch-"] {
     colors: 0, 0, $dark;
     box-shadow: 0 0 0 2px inset $darker !important;
-    &::after { colors: 0, 0, $lighter; }
+    &::before, &::after { colors: 0, 0, $lighter; }
     &[class*="valueChecked"] {
       colors: 0, 0, $accent;
       box-shadow: 0 0 0 2px inset $accent !important;
@@ -1689,8 +1696,6 @@
       colors: 0, $dark, 0;
       &[class*="checked-"] { colors: 0, 0, $dark; }
     }
-    // Checkmarks.
-    [name*="Checkmark"] polyline[stroke*="#7289da"] { stroke: $accent; }
     // Colorized cards.
     &[style*="rgb(67"] { colors: 0, $green, $green; }
     &[style*="rgb(250"] { colors: 0, $orange, $orange; }
