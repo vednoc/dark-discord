@@ -183,6 +183,7 @@
   // * Firefox scrollbar polyfill.
   if not scrollbars_firefox {
     // ? Activity/Store/Friends/QuickSwitcher/Channels/Chat.
+    [class*="modal-"][class*="modal-"][class*="size-"],
     [class*="feed-"] +, [class*="Store-"] +,
     [class*="friendsTableBody-"] +,
     [class*="quickswitcher-"],
@@ -319,8 +320,8 @@
 
   // * Channel info modal.
   [class*="inner-"] > [class*="modal-"][class*="size-"] {
-    colors: $light, 0, $darker;
-    box-shadow: 0 2px 10px 0 $shadow, 0 0 0 1px $dark;
+    colors: $light, 0, $dark;
+    box-shadow: 0 2px 4px -1px $shadow, 0 0 0 1px $darker;
     // Close icon.
     [class*="close-"] { color: $lighter, 0, 0; }
     // Text color.
