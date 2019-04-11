@@ -1296,12 +1296,12 @@
   [class*="emojiPicker-"] {
     border-width: 0px;
     colors: $lighter, $darker, $dark;
-    box-shadow: 0 0 6px 0 var(--shadow);
+    box-shadow: 0 2px 4px -1 $shadow;
     // Header.
     [class*="header-"] {
       colors: 0, $darker, 0;
       [class*="searchBar-"] {
-        colors: 0, 0, $t; // not necessary?
+        colors: 0, 0, $t;
         [class*="searchBarInner-"] { colors: $lighter, 0, $darker; }
         [class*="searchBarInner-"] input { colors: $light, 0, 0; }
       }
@@ -1312,7 +1312,10 @@
     // Selected emote.
     [class*="row-"] [class*="selected-"] { colors: 0, 0, $accent; }
     // Selected category.
-    [class*="categories-"] [class*="selected-"] { colors: 0, $accent, 0; }
+    [class*="categories-"] {
+      [class*="item-"]:hover { colors: 0, $darker, 0; }
+      [class*="selected-"] { colors: 0, $accent, 0; }
+    }
     // Dimmed overlay.
     [class*="visible-"]:not([class*="icon-"] ) {
       opacity: 0.8;
@@ -1321,7 +1324,9 @@
     // Diversity selector.
     [class*="popout-"] {
       padding: 2px;
-      colors: 0, $dark, $darker;
+      colors: 0, $darker, $dark;
+      box-shadow: 0 2px 4px -1px $shadow;
+      [class*="item-"]:hover { colors: 0, 0, $darker; }
     }
     // ? Fix scrollbar polyfill.
     [class*="scrollbar-"] > [class*="pad"] {
