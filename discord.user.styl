@@ -954,10 +954,13 @@
       colors: 0, 0, $dark;
       [class*="membersGroup-"] { opacity: 0.8; colors: $light, 0, 0; }
       [class*="activityText-"] { colors: $lighter, 0, 0; }
-      [class*="member"][class*="-open"], [class*="member-"]:hover {
+      [class*="member-"] {
+        margin: 1px 8px;
         border-radius: $radius;
-        [class*="content-"] { colors: 0, 0, $darker; }
-        [class*="status-"] { colors: 0, $darker, 0; }
+        &[class*="-open"], &:hover {
+          [class*="content-"] { colors: 0, 0, $darker; }
+          [class*="status-"] { colors: 0, $darker, 0; }
+        }
       }
     }
 
