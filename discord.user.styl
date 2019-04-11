@@ -1205,6 +1205,16 @@
         [class*="lookOutlined-"]:hover { colors: 0, $darker, $darker; }
       }
 
+      // * Spotify party invite.
+      [class*="invite-"][class*="container-"] {
+        border-radius: $radius;
+        colors: 0, $darker, $dark;
+        [class*="coverImaageWrapper-"] { border-radius: 0 $radius $radius 0; }
+        [class*="helpIcon-"] { colors: 0, 0, $darker; }
+        [class*="header-"] { colors: $lighter, 0, 0; }
+        [class*="partyStatus-"], [class*="textLink-"] { colors: $light, 0, 0; }
+      }
+
       // * Typing section.
       [class^="typing"] {
         colors: $light, 0, $t;
@@ -2054,6 +2064,7 @@
         display: none !important;
       }
       // Remove reaction's visual lines from the very last message.
+      > [class*="messageCozy-"]:nth-last-child(2) [class*="invite-"]::before,
       > [class*="messageCozy-"]:nth-last-child(2) [class*="reactions"]::before {
         display: none !important;
       }
