@@ -157,6 +157,16 @@
     colors: 0, $dark, $darker;
     &[class*="checked-"] svg polyline { stroke: $accent; }
   }
+  // * Global -> Switches.
+  [class*="switch-"] {
+    colors: 0, 0, $dark;
+    box-shadow: 0 0 0 2px inset $darker !important;
+    &::after { colors: 0, 0, $lighter; }
+    &[class*="valueChecked"] {
+      colors: 0, 0, $accent;
+      box-shadow: 0 0 0 2px inset $accent !important;
+    }
+  }
 
   // * No channel. (=
   [class*="noChannel-"] { colors: 0, 0, $dark; }
