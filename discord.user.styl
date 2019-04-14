@@ -1591,13 +1591,14 @@
   // * QuickSwitcher.
   [class*="quickswitcher"] {
     colors: $light, 0, $dark;
-    box-shadow: 0 8px 16px 0 $shadow;
+    box-shadow: 0 4px 8px -2px $shadow, 0 0 0 1px inset $darker;
     [class*="input"] {
       padding: 16px;
       height: unset;
       line-height: unset;
-      colors: $light, 0, $darker;
-      box-shadow: 0 4px 8px 0 $shadow;
+      colors: $light, 0, $dark;
+      box-shadow: 0 2px 4px -2px $shadow, 0 0 0 1px inset $darker;
+      &:focus { box-shadow: 0 2px 8px -2px $shadow, 0 0 0 1px inset $accent; }
     }
     [class*="match"], [class*="header"] { colors: $accent, 0, 0; }
     [class*="header"], [class*="username"] { colors: $light, 0, 0; }
