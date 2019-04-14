@@ -1243,6 +1243,7 @@
 
       // * Invite embed.
       [class*="wrapper-"][class*="userSelectNone"] {
+        radius: $radius;
         colors: 0, $darker, $dark;
         box-shadow: 0 2px 4px -1px $shadow;
         [class*="title-"], [class*="guildDetail-"] { colors: $lighter, 0, 0; }
@@ -1256,7 +1257,7 @@
 
       // * Spotify party invite.
       [class*="invite-"][class*="container-"] {
-        border-radius: $radius;
+        radius: $radius;
         colors: 0, $darker, $dark;
         [class*="coverImaageWrapper-"] { border-radius: 0 $radius $radius 0; }
         [class*="helpIcon-"] { colors: 0, 0, $darker; }
@@ -1336,6 +1337,7 @@
 
   // * Emote menu.
   [class*="emojiPicker-"] {
+    radius: $radius;
     border-width: 0px;
     colors: $lighter, $darker, $dark;
     box-shadow: 0 2px 4px -1 $shadow;
