@@ -145,6 +145,19 @@
   svg[class*="button"] path[stroke="#FFF"] {
     stroke: $lighter !important;
   }
+  // * Icons -> Non-svg mic/headphone/cogwheel reset.
+  [class*="accountDetails-"] + div {
+    > div, > button {
+      radius: $radius;
+      transition: 0.15s ease;
+      &:hover { colors: 0, 0, $darker; }
+    }
+    // Image invert.
+    [style*="/assets/"] {
+      filter: invert(1) hue-rotate(180deg) !important;
+      &:hover { colors: 0, 0, $t; }
+    }
+  }
 
   // * Userstyle version.
   [class*="userSettingsAccount"] > h2::after {
