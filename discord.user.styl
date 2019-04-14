@@ -43,6 +43,7 @@
 @var color blue    "Blue color.   " #5f819d
 @var color cyan    "Cyan color.   " #5e8d87
 @var color green   "Green color.  " #8c9440
+@var color white   "White color.  " #ffffff
 @var color shadow  "Shadow color. " #00000020
 
 ==/UserStyle== */
@@ -66,6 +67,7 @@
     --blue    : blue;
     --cyan    : cyan;
     --green   : green;
+    --white   : white;
     --t       : transparent !important;
     --radius  : b_radius;
     --textarea: input_height;
@@ -90,6 +92,7 @@
   $blue    = var(--blue);
   $cyan    = var(--cyan);
   $green   = var(--green);
+  $white   = var(--white);
   $t       = var(--t);
   $radius  = var(--radius);
 
@@ -1743,9 +1746,9 @@
 
   // * Buttons.
   [class*="lookFilled"] {
-    colors: $lighter, $accent, $accent;
+    colors: $white, $accent, $accent;
     transition: all 0.15s ease-in-out;
-    &[class*="colorGreen"] { colors: $light, $green, $green; }
+    &[class*="colorGreen"] { colors: 0, $green, $green; }
     &[disabled] { colors: $light, $darker, $darker; }
     &:hover { opacity: 0.8 !important; }
   }
