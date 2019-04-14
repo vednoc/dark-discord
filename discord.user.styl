@@ -1686,10 +1686,22 @@
     [class^="sidebarRegion-"] {
       colors: $light, 0, $dark;
       [class*="separator-"] { colors: 0, 0, $darker; }
-      [class^="header-"] { opacity: 0.5; colors: $lighter, 0, 0; }
-      [class^="itemSelected-"] { colors: $light, 0, $accent; }
-      [class*="itemDefault-"]:hover { colors: $light, 0, $darker; }
-      [class^="itemDefault-"], [class^="itemHover-"] { colors: $lighter, 0, 0; }
+      [class^="header-"] {
+        opacity: 0.5;
+        colors: $lighter, 0, 0;
+      }
+      // Menu items!
+      [class*="item-"] {
+        radius: $radius;
+        transition: 0.15s ease;
+        colors: $lighter, 0, 0;
+        &[class^="itemSelected-"] { colors: $white, 0, $accent; }
+        &:hover:not([class*="Selected-"]) { colors: $light, 0, $darker; }
+        &[style*="rgb(240"] {
+          colors: $red, 0, 0;
+          &:hover{ colors: $white, 0, $red; }
+        }
+      }
     }
     // * Main content.
     [class^="contentRegion-"] {
