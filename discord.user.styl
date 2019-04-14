@@ -1746,8 +1746,21 @@
       }
       [class*="divider-"] { colors: 0, 0, $darker; }
       [class*="value-label-"] { colors: $light, 0, 0; }
+      // ? User info.
+      [class*="userInfoViewing-"], [class*="userInfoEditing-"] {
+        radius: $radius;
+        colors: 0, $darker, $dark;
+      }
+      // ? Consent element.
+      [class*="consent-"] {
+        radius: $radius;
+        colors: 0, $darker, $dark;
+        box-shadow: 0 0 0 1px inset $darker;
+        [class*="title-" i] { colors: $light, 0, 0; }
+        [class*="body-" i] { colors: $lighter, 0, 0; }
+      }
     }
-    // Close button.
+    // * Close button.
     [class*="closeButton-"] {
       colors: 0, $darker, 0;
       transition: 0.2s ease;
