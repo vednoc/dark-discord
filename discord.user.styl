@@ -1960,7 +1960,7 @@
       }
     }
     // * Guilds wrapper.
-    [class*="layer-"] [class*="wrapper-"] > div > div > [class*="container-"] {
+    [class*="layer-"] [class*="wrapper-"] > div > div > [class*="container-" i] {
       margin-bottom: 10px;
       height: $size !important;
       width: $size !important;
@@ -1989,15 +1989,15 @@
       }
       // ? Badges.
       [class*="badge-"] { top: ($size - 16px) !important; }
-      // ? Join/Create a new server.
-      + div[class=""] [class*="circleIconButton"] {
+      // Icons with dashed borders.
+      [class*="circleIconButton-"] {
         height: $size;
         width: $size;
-        line-height: $size;
-        [class*="plus"] {
-          line-height: $size;
-          font-size: 2em;
-        }
+        transition: 0.15s ease;
+        colors: $lighter, $darker, $dark;
+        &:hover { colors: $light, 0, $darker; }
+        [class*="plus"] { font-size: $size; }
+        svg { height: ($size / 2); }
       }
     }
   }
