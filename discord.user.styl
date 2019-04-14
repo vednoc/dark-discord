@@ -231,12 +231,13 @@
 
   // * Firefox scrollbar polyfill.
   if not scrollbars_firefox {
-    // ? Activity/Store/Friends/QuickSwitcher/Channels/Chat.
+    // ? ChannelInfo/Activity/Store/Friends/QuickSwitcher/Channels/Context/Chat.
     [class*="modal-"][class*="modal-"][class*="size-"],
     [class*="feed-"] +, [class*="Store-"] +,
     [class*="friendsTableBody-"] +,
     [class*="quickswitcher-"],
     [class*="scrollerFade-"] >,
+    [class*="contextMenu-"],
     [class*="messages-"] + {
       [class^="scrollbar-"] {
         colors: 0, $t, $dark;
@@ -1622,14 +1623,43 @@
     }
   }
 
-  // TODO: Find a better place to put this.
-  [class^="itemGroup"] {
-    [class^="item"] {
-    colors: $light, $dark, $dark;
-    &:hover { colors: $light, 0, $darker; }
+  // * Context menu.
+  [class*="contextMenu-"] {
+    radius: $radius;
+    colors: 0, 0, $dark;
+    box-shadow: 0 2px 4px -1px $shadow, 0 0 0 1px $darker !important;
+    [class*="itemGroup-"] {
+      colors: 0, $darker, 0;
+      [class*="item-"] {
+        radius: 0;
+        colors: $lighter, 0, 0;
+        &:hover { colors: $accent, 0, $darker; }
+      }
+      // Reset child elements of item groups and sub-menus.
+      &:first-child, [class*="itemSubMenu-"] {
+        [class*="item-"]:first-child {
+          margin-top: 0px;
+          radius: $radius $radius 0 0;
+        }
+      }
+      &:last-child, [class*="itemSubMenu-"] {
+        [class*="item-"]:last-child {
+          margin-bottom: 0px;
+          radius: 0 0 $radius $radius;
+        }
+      }
+    }
+    // Fix scrolllbars.
+    [class*="firefoxFixScrollFlex-"] {
+      overflow-x: hidden;
+      radius: $radius;
+      // ! Ugh... Native scrollbars. )=
+      [class*="scroller-"] + [class*="scrollbar-"] {
+        // top: 1px; right: 1px; bottom: 1px;
+        border-radius: 0 $radius $radius 0;
+      }
     }
   }
-  [class^="contextMenu"] { colors: $light, $dark, $dark; box-shadow: $bshadow; }
 
   // * ReactSelect dropdown.
   .Select {
