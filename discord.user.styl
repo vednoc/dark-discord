@@ -189,9 +189,13 @@
   }
   // * Global -> Switches.
   [class*="switch-"] {
-    colors: 0, 0, $dark;
+    colors: 0, 0, $darker;
     box-shadow: 0 0 0 2px inset $darker !important;
-    &::before, &::after { colors: 0, 0, $lighter; }
+    &::before { colors: 0, 0, $accent; }
+    &::after {
+      colors: 0, 0, $white;
+      box-shadow: 0 2px 4px $shadow !important;
+    }
     &[class*="valueChecked"] {
       colors: 0, 0, $accent;
       box-shadow: 0 0 0 2px inset $accent !important;
