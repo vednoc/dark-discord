@@ -9,6 +9,7 @@
 @updateURL    https://gitlab.com/vednoc/dark-discord/raw/master/discord.user.styl
 @preprocessor stylus
 
+@var checkbox ic_invert "Icon inversion" 0
 @var checkbox remove_notifications "Notification-free mode" 0
 @var checkbox min_guilds "Minimize width of guild area" 0
 @var checkbox smol_guild "Minimize height of guild icons" 0
@@ -72,6 +73,7 @@
     --radius  : b_radius;
     --textarea: input_height;
     --codearea: code_font;
+    --icinvert: ic_invert;
   }
 
   // * Use stylus-lang variables with CSS variables.
@@ -154,7 +156,9 @@
     }
     // Image invert.
     [style*="/assets/"] {
-      filter: invert(1) hue-rotate(180deg) !important;
+      filter: hue-rotate(
+        calc(var(--icinvert) * 180deg)
+      ) invert(var(--icinvert)) !important;
       &:hover { colors: 0, 0, $t; }
     }
   }
