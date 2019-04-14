@@ -1072,9 +1072,22 @@
 
       // ? Welcome section.
       [class*="welcomeMessage-"] {
+        position: relative;
         h1, strong { colors: $light, 0, 0; }
         p { colors: $lighter, 0, 0; }
         a { colors: $accent, 0, 0; }
+        [class*="base-"] {
+          filter: invert(
+            calc((1 + var(--icinvert)) * var(--icinvert))
+          ) !important;
+          colors: 0, $t, 0;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          right: 20px; bottom: 20px; left: 20px;
+          border-bottom: 1px solid $darker;
+        }
       }
 
       // ? Load more messages bar.
