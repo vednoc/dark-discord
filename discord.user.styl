@@ -1002,7 +1002,7 @@
       [class*="searchBarInner-"] {
         border-radius: $radius;
         colors: $lighter, $darker, $dark;
-        box-shadow: 0 2px 4px 0 $shadow;
+        box-shadow: 0 2px 4px -2px $shadow;
       }
     }
 
@@ -1018,8 +1018,8 @@
       &[class*="focused"] {
         > [class*="searchBar-"][class*="searchBar-"] {
           min-width: 240px;
-          colors: 0, 0, $darker;
-          box-shadow: 0 2px 8px 1px $shadow;
+          colors: 0, 0, $dark;
+          box-shadow: 0 2px 4px -2px $shadow, 0 0 0 1px inset $darker;
         }
       }
       // ? Some magic for placeholder text.
