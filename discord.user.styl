@@ -1866,57 +1866,62 @@
   if mid_guilds {
     $size = guild_size;
     // ? Set the width of guilds wrapper.
-    [class*="layer-"] > div > [class*="wrapper-"] {
+    [class*="layer-"] > div[style="flex: 1 1 auto;"] > [class*="wrapper-"] {
       width: ($size + 20px);
       // ? Increase width to account for scrollbar polyfill.
-      > [class*="Polyfill-"] { width: ($size + 38px); }
-      // ? Online friends and separators.
-      [class*="friendsOnline-"], [class*="guildSeparator-"] {
-        width: auto;
-        margin-left: 0;
-        max-width: $size;
-        overflow: hidden;
+      > [class*="wrap-" i] { width: ($size + 40px); }
+      // Separators.
+      [class*="separator-" i] { width: $size; }
+      // Mentions bar.
+      [class*="unreadMentionsIndicator"] {
+        padding: 4px !important;
+        [class*="bar-"] {
+          width: ($size + 12px) !important;
+        }
       }
     }
     // * Guilds wrapper.
-    [class*="layer-"] [class*="wrapper-"] > div > div > [class*="container-" i] {
-      margin-bottom: 10px;
-      height: $size !important;
-      width: $size !important;
-      // ? Selected guild.
-      &[class*="selected-"]::before {
-        margin-top: ($size / -3.5);
-        height: ($size / 1.75);
-        colors: 0, 0, $lighter;
+    [class*="listItem-"] {
+      justify-content: flex-start;
+      padding-left: 10px;
+      height: unset !important;
+      width: unset !important;
+      [class*="pill-"] {
+        top: ($size / 6);
+        // Center pill vertically.
+        &, [class*="item-"][style*="40px"] { height: ($size / 1.5) !important; }
       }
-      // ? Guild icons.
-      [class*="dragfix-"], [class*="avatar-"] {
-        height: $size;
-        width: $size;
-        // ? Set icon sizes.
-        a, a > [class*="icon-"], [class*="inner-"] {
-          height: $size;
+      // Home icon.
+      [class*="blob-"] {
+        &, svg {
           width: $size;
+          height: $size;
         }
-        // ? Guilds without icons.
-        [class*="noIcon"] { line-height: $size; }
       }
-      // ? Home button.
-      [class*="homeButton-"] {
-        height: $size;
-        width: $size;
+      // Guild icons.
+      [class*="blobContainer-"] {
+        // margin-left: ($size / 18) !important;
+        [class*="wrapper-"] {
+          height: unset;
+          width: unset;
+        }
+        &, [class*="wrapper"] > svg {
+          width: $size;
+          height: $size;
+        }
       }
-      // ? Badges.
-      [class*="badge-"] { top: ($size - 16px) !important; }
-      // Icons with dashed borders.
-      [class*="circleIconButton-"] {
-        height: $size;
-        width: $size;
-        transition: 0.15s ease;
-        colors: $lighter, $darker, $dark;
-        &:hover { colors: $light, 0, $darker; }
-        [class*="plus"] { font-size: $size; }
-        svg { height: ($size / 2); }
+      // Circle icons.
+      [class*="circleButtonMask-"] {
+        &, [class*="svg-"] {
+          width: $size;
+          height: $size;
+        }
+      }
+      // Badges.
+      [class*="badgeWrapper-"] {
+        left: 2px !important;
+        top: ($size + 2px) !important;
+        [class*="numberBadge-"] { box-shadow: 0 0 0 3px $dark !important; }
       }
     }
   }
