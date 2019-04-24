@@ -138,6 +138,7 @@
 
   // * Icons.
   [class*="mobileIndicator-"],
+  [class*="addButtonIcon-"] polygon,
   svg path[class*="attachButtonPlus-"],
   svg[name="Gear"] path[fill="currentColor"],
   svg[class*="icon"] path[fill="currentColor"],
@@ -907,15 +908,14 @@
         box-shadow: 0 1px 0 0 $darker;
         &:hover { colors: 0, 0, $darker; }
       }
-
       // ? Remove unnecessary shadow on notification bar.
-      [class*="positionedContainer-"] > [class*="unreadTop-"] > div {
+      [class*="positionedContainer-"] > [class*="unread"] > div {
         box-shadow: none !important;
       }
 
       // Notices.
       [class*="channelNotice-"] {
-        colors: 0, 0, $dark;
+        colors: 0, 0, $t;
         box-shadow: 0 -1px 0 0 inset $darker;
         [class*="message-"] {
           colors: $lighter, 0, 0;
@@ -927,40 +927,31 @@
         }
       }
 
-      // Selected channel.
-      [class*="contentSelected"], [class*="contentHovered"] {
-        colors: 0, 0, $darker;
-        [class*="Text-"] { colors: $light, 0, 0; }
-        svg path { fill: $light !important; }
-      }
+      // ? Channels.
       // Channel containers.
       [class*="containerDefault-"] {
         [class*="content-"] {
+          opacity: 0.6;
           margin: 0 0 0 8px;
           border-radius: $radius;
         }
         // Defaults.
-        [class*="nameDefault-"] { colors: $light, 0, 0; }
-        // Text/voice channels.
-        [class*="contentDefault"] > div {
-          opacity: 0.6;
-          colors: $lighter, 0, 0;
-        }
+        [class*="name-"] { colors: $lighter, 0, 0; }
+        // Highlight unread channels.
+        [class*="unread-"] + [class*="content-"] { opacity: 0.9 !important; }
         // Unread messages.
-        [class*="unread-"] { colors: 0, 0, $accent; }
-        [class*="contentUnreadText"] > div { colors: $accent, 0, 0; }
+        [class*="unread-"] { colors: 0, 0, $lighter; }
         // Collapsed containers.
-        [class*="Collapsed-"] {
-          colors: $lighter, 0, 0;
-          &:hover { colors: $light, 0, 0; }
+        [class*="collapsed-"] {
+          [class*="name-"] { colors: $lighter, 0, 0; }
+          [class*="name-"]:hover { colors: $light, 0, 0; }
         }
-        // Muted containers.
-        [class*="Muted-"] {
-          opacity: 0.6;
-          colors: $lighter, 0, 0;
+        &:hover [class*="content-"], &[class*="selected-"] [class*="content-"] {
+          opacity: 1;
+          colors: 0, 0, $darker;
+          [class*="name-"] { colors: $light, 0, 0; }
+          svg path { fill: $light !important; }
         }
-        // Hovered containers.
-        [class*="nameHovered"] { colors: $light, 0, 0; }
       }
 
       // ? Reset scroller padding so it takes less space.
