@@ -979,7 +979,7 @@
 
       // ? Reset scroller padding so it takes less space.
       [class*="scrollerWrapPolyfill"] > [class^="scroller-"] {
-        padding: 0 8px 0 0 !important;
+        padding: 0 10px 0 0 !important;
       }
     }
 
@@ -1490,31 +1490,22 @@
   // * Private channels.
   [class^="privateChannels-"] {
     // Headers.
-    header { opacity: 0.5; colors: $light, 0, 0; }
+    header { colors: $lighter, 0, 0; }
     // Channel related styles.
     [class^="channel-"] {
       colors: $light, 0, 0;
       // Usernames.
-      a, [class^="name-"] {
+      a[href] {
         border-radius: $radius;
-        colors: $lighter, 0, 0;
-      }
-      // ? Text colors.
-      [class^="name-"] {
-        opacity: 0.6;
-        // Activities.
-        > [class*="activity"] { colors: $lighter, 0, 0; }
+        // Text colors.
+        [class^="name-"] { &, > [class*="activity"] { colors: $lighter, 0, 0; }}
       }
       // ? Different states.
-      &:hover, &[class*="selected-"] {
+      &:hover, &:active, &[class*="selected-"] {
         a { colors: 0, 0, $darker; }
-        [class*="name-"] { opacity: 1; }
+        [class*="name-"] { colors: $light, 0, 0; }
         [class*="status-"] { colors: 0, $darker, 0; }
       }
-    }
-    // ? Reset scroller padding so it takes less space.
-    [class*="scrollerWrapPolyfill"] > [class^="scroller-"] {
-      padding: 0 8px 0 0 !important;
     }
   }
 
