@@ -889,19 +889,24 @@
       }
     }
 
-    // ? Header in friends area.
-    [class*="headerBar-"] {
+    // ? Friends -> Title-bar.
+    [class*="channels-"] + [class*="container-"] > [class*="container-"] {
       colors: 0, 0, $dark;
       box-shadow: 0 1px 0 0 $darker !important;
-      [class*="tabBar-"] {
-        colors: 0, $shadow, $t;
-        [class*="itemDefault-"]:not([class*="primary-"]) {
-          colors: $lighter, 0, 0;
-          transition: 0.2s ease;
-          &:hover { colors: $light, 0, $darker; }
+      [class*="children-"] {
+        &::after { display: none; }
+        [class*="title-"] { colors: $light, 0, 0; }
+        [class*="divider-"] { colors: 0, 0, $darker; }
+        [class*="tabBar-"] {
+          colors: 0, $shadow, $t;
+          [class*="item-"]:not([class*="primary-"]):not([class*="selected-"]) {
+            colors: $lighter, 0, $t;
+            transition: 0.15s ease;
+            &:hover { colors: $light, 0, $darker; }
+          }
+          [class*="item-"][class*="selected-"] { colors: $accent, 0, $t; }
+          [class*="item-"][class*="primary-"] { colors: 0, 0, $accent; }
         }
-        [class*="selected-"] { colors: $accent, 0, $t; }
-        [class*="primary-"] { colors: 0, 0, $accent; }
       }
     }
 
