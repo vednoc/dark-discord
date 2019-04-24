@@ -670,52 +670,30 @@
     border-radius: 0px;
     border-right: 1px solid;
     colors: 0, $darker, $dark;
-    [class*="downloadAppButton-"] { display: none !important; }
-    [class^="friendsOnline"], [class^="download"] { colors: $lighter, 0, 0; }
-    [class*="Separator"]::after { colors: 0, 0, $darker; }
-
+    [class*="separator-" i]{ colors: 0, 0, $darker; }
     // * Guild wrapper.
-    [class*="container-"] {
+    [class*="listItem-"] {
       // ? Indicator -> New messages.
-      &[class*="unread"]::before { colors: 0, 0, $lighter; }
-      // ? Indicator -> Active guild.
-      &[class*="selected-"]::before { colors: 0, 0, $accent; }
-      // ? Unread messages.
-      [class*="badge-"] {
-        colors: $dark, 0, $accent;
-        box-shadow: 2px 2px 0 0 $darker;
-      }
-      // ? Home icon above guilds.
-      > [class*="homeButton-"][class*="wrapper-"] {
-        transition-duration: 0.15s !important;
-        colors: 0, 0, $t;
+      [class*="pill-"] > [class*="item"] { colors: 0, 0, $lighter; }
+      // ? Indicator -> Unread badges.
+      [class*="numberBadge-"] { colors: $white, 0, $accent; }
+      // Icons.
+      a[href] > [class*="acronym-"], [class*="circleIconButton-"] {
+        colors: $lighter, 0, $darker;
         box-shadow: 0 0 0 1px inset $darker;
-        [class*="homeIcon"] { colors: $light, 0, 0; }
-        // ? Colors when active.
-        &[style$="rgb(114\, 137\, 218);"] {
-          colors: 0, 0, $darker;
-          [class*="homeIcon"] { colors: $accent, 0, 0; }
-        }
       }
-      // ? Guild colors.
-      [class*="dragfix-"] > [class*="wrapper-"] {
-        colors: $lighter, 0, $t;
-        box-shadow: 0 0 0 1px inset $darker;
-        [class*="Icon-"] {
-          transition: 0.15s ease;
-          background-size: cover;
-          colors: $lighter, 0, $t;
-          &:hover { colors: $light, 0, $darker; }
-        }
+      // ? Home icon.
+      &:first-child [class*="button-"] {
+        colors: 0, 0, $darker;
+        [class*="homeIcon"] { colors: $lighter, 0, 0; }
+        &[class*="selected-"] [class*="homeIcon"] { colors: $accent, 0, 0; }
       }
-      // ? Add/Join a new server.
-      + [class=""] > [class*="circleIcon"] { colors: $lighter, $darker, $dark; }
     }
     [class*="unreadMentionsBar-"] {
-      colors: $dark, 0, $accent;
+      colors: $white, 0, $accent;
       box-shadow: 2px 2px 0 0 $darker;
-      transition: 0.2s ease;
-      svg { colors: $dark, 0, 0; }
+      transition: 0.15s ease;
+      svg { colors: $white, 0, 0; }
       &:hover { opacity: 0.8; }
     }
 
