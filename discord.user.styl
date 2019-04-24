@@ -12,9 +12,8 @@
 @var checkbox ic_invert "Icon inversion" 0
 @var checkbox remove_notifications "Notification-free mode" 0
 @var checkbox min_guilds "Minimize width of guild area" 0
-@var checkbox smol_guild "Minimize height of guild icons" 0
-@var text guild_size "Custom small guild icon size" 40px
 @var checkbox mid_guilds "Small guild icons" 0
+@var text guild_size "Custom small guild icon size" 40px
 @var checkbox paddingless_cozy "Remove padding for cozy messages" 0
 @var checkbox compact_cozy "Compact mode for cozy messages" 0
 @var checkbox compact_lines "Compact mode visual lines" 0
@@ -720,54 +719,6 @@
       max-width: 10px;
       &:hover { max-width: 70px; }
     }
-
-    // * Minimize height of guild icons.
-    if smol_guild {
-      $height = 30px;
-      [class*="container-"] {
-        max-height: $height;
-        // ? Set channel border-radius and height.
-        [class*="dragfix-"] > [class*="wrapper"], [class*="homeButton-"] {
-          height: $height;
-          border-radius: ($height / 2) !important;
-          a { height: $height; }
-          // ? Guild image height.
-          a [class*="icon"], a [class*="inner-"][class*="inner-"] {
-            line-height: $height;
-            height: $height;
-          }
-        }
-        // ? Badges.
-        [class*="badge-"] { top: ($height - 16px) !important; }
-        // ? Special DM selectors. xd
-        [class*="wrapper-"][style*="border-radius:"] {
-          colors: 0, 0, $t;
-          box-shadow: 0 0 0 1px inset $darker;
-          height: $height;
-          border-radius: ($height / 2) !important;
-          [class*="avatar-"] { height: $height; }
-          [class*="inner-"] {
-            margin-top: -10px;
-            padding: 10px 0;
-            background-image: cover !important;
-          }
-        }
-        // ? Resize Discord logo because it shrinks down.
-        svg[class*="homeIcon-"] { transform: scale(1.5); }
-        // ? Join/Create a new server.
-        + div[class=""] > [class*="circleIconButton"] {
-          height: $height;
-          line-height: $height;
-          border-radius: ($height / 2);
-          [class*="plus"] {
-            line-height: $height;
-            font-size: 2em;
-          }
-        }
-        // ? Separate DMs from guilds.
-        &[style*="height:"] { margin-bottom: 10px; }
-      }
-    }
   }
 
   // * Search results.
@@ -1460,15 +1411,6 @@
         mask: linear-gradient(0deg, $t, $dark 150%);
       }
     }
-  }
-
-  // * Tab bar.
-  #friends .tab-bar {
-    .tab-bar-item:not(.tab-bar-item-primary) {
-      colors: $lighter, 0, 0;
-      &.selected, &:hover { colors: $light, 0, $dark; }
-    }
-    .tab-bar-separator { colors: 0, 0, $shadow; }
   }
 
   // * Private channels.
