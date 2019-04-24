@@ -140,11 +140,18 @@
   [class*="mobileIndicator-"],
   [class*="addButtonIcon-"] polygon,
   svg path[class*="attachButtonPlus-"],
-  svg[name="Gear"] path[fill="currentColor"],
-  svg[class*="icon"] path[fill="currentColor"],
-  svg[class*="icon"] g[fill="currentColor"] > path,
-  svg[class*="icon"] path[fill^="#FFF"] {
+  svg[name="Gear"] path[fill="currentColor"] {
     fill: $lighter !important;
+  }
+  [class*="icon"] {
+    // Base colors.
+    path[fill="currentColor"], g[fill="currentColor"] > path, path[fill^="#FFF"] {
+      fill: $lighter !important;
+    }
+    // Selected/active icons.
+    &[class*="selected-"] path[fill] { fill: $accent !important; }
+    // Muted channel.
+    path[fill][class*="strikethrough-"] { fill: $red !important; }
   }
   svg[class*="button"] path[stroke="#FFF"] {
     stroke: $lighter !important;
