@@ -1942,11 +1942,9 @@
   // * Unified header.
   if unified_header {
     // * Transparetinze title bar.
-    [class*="chat-"] > [class*="titleWrapper-"] {
-      > [class*="title"][class*="headerBar"] {
-        colors: 0, 0, $t;
-        box-shadow: 0 1px 0 0 $darker !important;
-      }
+    [class*="base"] [class*="chat-"] > [class*="title-"] {
+      colors: 0, 0, $t;
+      box-shadow: 0 1px 0 0 $darker !important;
     }
     // ? Pseudo background for members section.
     [class*="searchResultsWrap-"]::before {
