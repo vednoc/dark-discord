@@ -1001,15 +1001,11 @@
 
     // * Search bar.
     [class*="privateChannels-"] > [class*="searchBar-"] {
-      border-bottom: 1px solid $darker;
-      box-shadow: none;
-      // Wrapper element.
-      [class*="searchBarComponent-"] { colors: $t, $t, $t; }
+      box-shadow: 0 1px 0 0 $darker;
       // The actual search bar.
-      [class*="searchBarInner-"] {
-        border-radius: $radius;
-        colors: $lighter, $darker, $dark;
-        box-shadow: 0 2px 4px -2px $shadow;
+      [class*="searchBarComponent-"] {
+        colors: 0, $darker, $t;
+        input { colors: $light, 0, 0; }
       }
     }
 
