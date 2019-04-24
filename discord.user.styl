@@ -484,6 +484,14 @@
       border-radius: $radius !important;
       box-shadow: 0 0 0 1px $darker, 0 2px 4px -1px $shadow;
     }
+    // Message context menu.
+    [role="menu"] {
+      padding: 4px;
+      [class*="item-"] {
+        colors: $lighter, 0, 0;
+        &:hover { colors: $light, 0, $darker; }
+      }
+    }
   }
 
   // * Popout menus.
