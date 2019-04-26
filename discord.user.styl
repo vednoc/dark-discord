@@ -1888,6 +1888,7 @@
       width: unset !important;
       [class*="pill-"] {
         top: ($size / 6);
+        [class*="item-"] { margin-left: -3px; }
         // Center pill vertically.
         &, [class*="item-"][style*="40px"] { height: ($size / 1.5) !important; }
       }
@@ -1922,6 +1923,13 @@
         left: 2px !important;
         top: ($size + 2px) !important;
         [class*="numberBadge-"] { box-shadow: 0 0 0 3px $dark !important; }
+      }
+      // DM icons.
+      ~ div[style] {
+        margin-bottom: 8px;
+        height: $size !important;
+        // Fix badge placement.
+        [class*="badgeWrapper-"] { top: 2px !important; }
       }
     }
   }
