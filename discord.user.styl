@@ -1045,9 +1045,13 @@
 
       // ? New messages.
       [class*="newMessagesBar-"] {
-        background-image: linear-gradient(90deg, $t -400%, $accent);
+        background-image: linear-gradient(90deg, $darker, $accent 300%);
         colors: $lighter, 0, $t;
-        button { colors: $lighter, 0, 0; }
+        button {
+          transition: 0.15s ease;
+          colors: $lighter, 0, 0;
+          &:hover { colors: $light, 0, 0; }
+        }
       }
 
       // * Spinners.
