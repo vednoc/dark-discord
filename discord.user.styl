@@ -181,8 +181,10 @@
   ::placeholder, [class*="emptyPlaceholder"] { colors: $lighter, 0, 0; }
   ::selection { colors: $dark, 0, $lighter; }
   ::-moz-selection { colors: $dark, 0, $lighter; }
+
   // * Global -> Bot tags.
-  [class*="botTag"] { colors: $light, 0, $accent; }
+  [class*="botTag"] { colors: $white, 0, $accent; }
+
   // * Global -> Checkboxes.
   [class*="checkbox-"]:not([class*="wrapper" i]) {
     colors: 0, $dark, $darker;
@@ -195,6 +197,7 @@
       }
     }
   }
+
   // * Global -> Switches.
   [class*="switch-"] {
     colors: 0, 0, $darker;
