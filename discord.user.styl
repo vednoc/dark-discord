@@ -278,10 +278,12 @@
 
   // * Firefox scrollbar polyfill.
   if not scrollbars_firefox {
-    // ? ChannelInfo/Activity/Store/Friends/QuickSwitcher/Channels/Context/Chat.
+    // ? ChannelInfo/Activity/Store/Friends/ActivityFeed
+    // ? /QuickSwitcher/Channels/Context/Chat.
     [class*="modal-"][class*="modal-"][class*="size-"],
     [class*="feed-"] +, [class*="Store-"] +,
     [class*="friendsTableBody-"] +,
+    [class*="activityFeed-"],
     [class*="quickswitcher-"],
     [class*="scrollerFade-"] >,
     [class*="contextMenu-"],
