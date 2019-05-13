@@ -240,6 +240,15 @@
     }
   }
 
+  // * Global -> GDPR complience.
+  [class*="gdprWrapper-"] {
+    radius: $radius;
+    colors: $lighter 0 $darker;
+    [class*="header-"] { colors: $light 0 0 }
+    [class*="lookInverted-"] { colors: $accent 0 $dark }
+    [class*="anchor-"], [class*="lookLink-"] { colors: $lighter 0 0 }
+  }
+
   // * No channel. (=
   [class*="noChannel-"] { colors: 0, 0, $dark; }
 
