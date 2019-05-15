@@ -23,8 +23,6 @@
 @var checkbox scrollbars_chromium "Disable scrollbars in Chromium" 0
 @var checkbox scrollbars_firefox "Disable scrollbars in Firefox" 0
 @var checkbox msg_options "Highlight message by hovering over buttons" 0
-@var checkbox hideCarousel "Hide carousel from activity page" 0
-@var checkbox hideNews "Hide news from activity page" 0
 @var text code_font "Custom font for code blocks" ""font-name""
 @var text input_height "Input bar maximum height" 140px
 @var text b_radius "Custom border radius" 5px
@@ -1828,15 +1826,6 @@
     &[class*="colorGreen"] { colors: 0, $green, $green; }
     &[disabled] { colors: $light, $darker, $darker; }
     &:hover { opacity: 0.8 !important; }
-  }
-
-  if hideCarousel {
-    [class*="carousel"] { display: none !important; }
-  }
-  if hideNews {
-    [class*="card"][class*="card"] {
-      [class*="cardBody"] > div:last-child { display: none !important; }
-    }
   }
 
   // * Deprecated elements.
