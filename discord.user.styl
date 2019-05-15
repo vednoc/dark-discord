@@ -1963,12 +1963,16 @@
           height: $size;
         }
       }
-      // Circle icons.
-      [class*="circleButtonMask-"] {
+      // Circle/Error icons.
+      [class*="circleButtonMask-"], [class*="guildsError-"] {
         &, [class*="svg-"] {
           width: $size;
           height: $size;
         }
+      }
+      [class*="guildsError-"] {
+        colors: $light $red $dark
+        &:hover { colors: $white 0 $red }
       }
       // Badges.
       [class*="badgeWrapper-"] {
