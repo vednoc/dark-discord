@@ -672,11 +672,27 @@
   }
 
   // * User controls.
-  [class^="channels"][class*="vertical"] > div:last-child {
-    border-top: 1px solid;
-    colors: $lighter, $darker, $t;
-    [class^="username"] { colors: $light, 0, 0; }
-    [class*="discriminator"] { opacity: 0.6; colors: $lighter, 0, 0; }
+  [class^="channels"][class*="vertical"] {
+    // VC status.
+    > div:nth-last-child(2) {
+      border-bottom: none;
+      border-top: 1px solid;
+      colors: 0 $darker $t
+      [class*="status-connected"] { colors: $green 0 0 }
+      [class*="status-connecting"] { colors: $orange 0 0 }
+      [class*="status-error"] { colors: $red 0 0 }
+      [class*="channel-"] {
+        opacity: 1;
+        colors: $lighter 0 0
+      }
+    }
+    // Controls.
+    > div:last-child {
+      border-top: 1px solid;
+      colors: $lighter, $darker, $t;
+      [class^="username"] { colors: $light, 0, 0; }
+      [class*="discriminator"] { opacity: 0.6; colors: $lighter, 0, 0; }
+    }
   }
 
   // * User status.
