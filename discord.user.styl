@@ -152,6 +152,8 @@
     &[class*="selected-"] path[fill] { fill: $accent !important; }
     // Muted channel.
     path[fill][class*="strikethrough-"] { fill: $red !important; }
+    // Guild/DM owner.
+    &[class*="ownerIcon-"] path { fill: $orange !important }
   }
   svg[class*="button"] path[stroke="#FFF"] {
     stroke: $lighter !important;
@@ -1934,9 +1936,13 @@
       width: unset !important;
       [class*="pill-"] {
         top: ($size / 6);
-        [class*="item-"] { margin-left: -3px; }
-        // Center pill vertically.
-        &, [class*="item-"][style*="40px"] { height: ($size / 1.5) !important; }
+        [class*="item-"] {
+          margin-left: -3px;
+          // Hack for centering pill vertically.
+          ../, &:not([style*="height: 8px"]) {
+            height: ($size / 1.5) !important
+          }
+        }
       }
       // Home icon.
       [class*="blob-"] {
