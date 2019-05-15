@@ -1161,6 +1161,15 @@
         [class^="markup-"] {
           colors: $light, 0, 0;
           a { colors: $accent, 0, 0; }
+          // ? Spoilers.
+          [class*="spoilerText-"] {
+            &[class*="hidden-"] {
+              radius: $radius;
+              transition: 0.15s ease;
+              colors: 0 0 $darker;
+              &:hover { opacity: 0.8 }
+            }
+          }
         }
         [class*="operations"] {
           colors: $lighter, 0, 0;
