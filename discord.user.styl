@@ -1972,9 +1972,24 @@
       }
       // Badges.
       [class*="badgeWrapper-"] {
-        left: 2px !important;
-        top: ($size + 2px) !important;
-        [class*="numberBadge-"] { box-shadow: 0 0 0 3px $dark !important; }
+        [class*="upperBadge-"] {
+          radius: 20%;
+          colors: 0 0 $dark;
+        }
+        [class*="lowerBadge-"] {
+          right: -2px !important;
+          top: ($size - 14px) !important;
+        }
+        // Unread messages.
+        [class*="numberBadge-"],  {
+          height: 14px !important;
+          box-shadow: 0 0 0 2px $dark !important
+        }
+        // Voice chat.
+        [class*="iconBadge-"] {
+          colors: 0 0 $darker;
+          box-shadow: 0 0 0 2px $dark !important
+        }
       }
       // DM icons.
       ~ div[style] {
