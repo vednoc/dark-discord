@@ -1309,7 +1309,8 @@
 
   // * Embeds.
   [class^="embedInner"] {
-    colors: $light, $darker, $darker;
+    radius: 0 $radius $radius 0;
+    colors: $light $darker $dark;
     // Descriptions and such.
     [class*="Provider-"], [class*="Description-"] {
       colors: $lighter, 0, 0;
@@ -1326,7 +1327,11 @@
     [class*="TitleLink-"] { colors: $accent, 0, 0; }
   }
   // ? Left bar color; we don't want to overwrite it.
-  // [class^="embedPill"] { colors: 0, 0, $accent; }
+  [class*="embedPill-"] {
+    radius: $radius 0 0 $radius;
+    &[style*="rgb(255\, 255\, 255)"] { colors: 0 0 $lighter }
+    &[style*="rgb(255\, 0\, 0)"] { colors: 0 0 $red }
+  }
 
   // * Emote menu.
   [class*="emojiPicker-"] {
