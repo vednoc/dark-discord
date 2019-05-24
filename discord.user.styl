@@ -152,6 +152,12 @@
     path[fill][class*="strikethrough-"] { fill: $red !important; }
     // Guild/DM owner.
     &[class*="ownerIcon-"] path { fill: $orange !important }
+    // Partnered guilds.
+    svg[class*="flowerStar-"] {
+      stroke: $dark !important;
+      path[fill] { fill: $accent !important }
+      + [class*="childContainer-"] path[fill] { fill: $white !important }
+    }
   }
   svg[class*="button"] path[stroke="#FFF"] {
     stroke: $lighter !important;
