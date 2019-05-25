@@ -1745,7 +1745,7 @@
       }
     }
     // * Main content.
-    [class^="contentRegion-"] {
+    [class*="contentRegion-"] {
       colors: $light, 0, $dark;
       box-shadow: 1px 0 0 0 inset $darker;
       // Text colors.
@@ -1754,8 +1754,18 @@
         colors: $light, 0, 0;
         [class*="anchor-"] { colors: $accent, 0, 0; }
       }
-      [class*="divider-"] { colors: 0, 0, $darker; }
+      [class*="divider-"] { colors: 0 $darker $t }
       [class*="value-label-"] { colors: $light, 0, 0; }
+      // Buttons.
+      [class*="removeButton-"] {
+        colors: $lighter 0 0;
+        &:hover { colors: $red 0 0 }
+      }
+      [class*="lookOutlined"][class*="White-"] {
+        radius: $radius;
+        colors: $lighter $darker $dark;
+        &:hover { colors: $light 0 $darker }
+      }
       // ? User info.
       [class*="userInfoViewing-"], [class*="userInfoEditing-"] {
         radius: $radius;
