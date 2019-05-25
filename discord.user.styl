@@ -1767,6 +1767,20 @@
         [class*="title-" i] { colors: $light, 0, 0; }
         [class*="body-" i] { colors: $lighter, 0, 0; }
       }
+      // ? Select component.
+      [class*="-control"] {
+        colors: $lighter $darker $dark;
+        div { color: inherit }
+        + [class*="-menu"] {
+          colors: 0 $darker $dark;
+          box-shadow: 0 2px 4px 0 $shadow;
+          span { colors: $lighter 0 0 }
+          [class*="-option"]:hover, [class*="12o7ek3"] {
+            colors: 0 0 $darker;
+            span { colors: $light 0 0 }
+          }
+        }
+      }
     }
     // * Close button.
     [class*="closeButton-"] {
