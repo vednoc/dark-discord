@@ -1719,23 +1719,26 @@
   [class*="standardSidebarView-"] {
     colors: 0, 0, $dark;
     // * Sidebar.
-    [class^="sidebarRegion-"] {
-      colors: $light, 0, $dark;
+    [class*="sidebarRegion-"] {
+      colors: $lighter 0 $t;
       [class*="separator-"] { colors: 0, 0, $darker; }
-      [class^="header-"] {
-        opacity: 0.5;
-        colors: $lighter, 0, 0;
-      }
+      [class*="header-"] { colors: $lighter 0 0 }
       // Menu items!
       [class*="item-"] {
         radius: $radius;
         transition: 0.15s ease;
         colors: $lighter, 0, 0;
-        &[class^="itemSelected-"] { colors: $white, 0, $accent; }
-        &:hover:not([class*="Selected-"]) { colors: $light, 0, $darker; }
+        &[class*="selected-"] { colors: $white 0 $accent }
+        &:hover:not([class*="selected-"]) { colors: $light 0 $darker }
+        // Nitro.
+        &[style*="rgb(114"] {
+          colors: $blue 0 $t;
+          &:hover { colors: $white 0 $blue }
+        }
+        // Logout.
         &[style*="rgb(240"] {
           colors: $red, 0, 0;
-          &:hover{ colors: $white, 0, $red; }
+          &:hover { colors: $white 0 $red }
         }
       }
     }
