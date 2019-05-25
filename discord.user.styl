@@ -162,6 +162,8 @@
   svg[class*="button"] path[stroke="#FFF"] {
     stroke: $lighter !important;
   }
+  // Overflow icon in server members.
+  [class*="overflowIconFg-"] { fill: $lighter !important }
   // * Icons -> Non-svg mic/headphone/cogwheel reset.
   [class*="accountDetails-"] + div {
     > div, > button {
@@ -1781,6 +1783,16 @@
           }
         }
       }
+      // ? Members.
+      [class*="member-"] {
+        [class*="name-"] { colors: $light 0 0 }
+        [class*="tag-"], [class*="roleName-"] { colors: $lighter 0 0 }
+        &::before {
+          radius: $radius;
+          colors: 0 $darker $darker;
+          box-shadow: 0 2px 4px -2px $shadow;
+        }
+      }
     }
     // * Close button.
     [class*="closeButton-"] {
@@ -1834,7 +1846,7 @@
   }
 
   // * Cards.
-  [class*="card-"]:not([class*="emojiRow-"]) {
+  [class*="card-"]:not([class*="emojiRow-"]):not([class*="member"]) {
     colors: 0, $darker, $darker;
     [class*="title-"], [class*="primary-"] { colors: $light, 0, 0; }
     [class*="desc-"] { colors: $lighter, 0, 0; }
