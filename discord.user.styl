@@ -23,7 +23,7 @@
 @var checkbox scrollbars_chromium "Disable scrollbars in Chromium" 0
 @var checkbox scrollbars_firefox "Disable scrollbars in Firefox" 0
 @var checkbox msg_options "Highlight message by hovering over buttons" 0
-@var text code_font "Custom font for code blocks" ""font-name""
+@var text code_font "Custom font for code blocks" "'custom_font', Consolas, Liberation Mono, Menlo, Courier, monospace"
 @var text input_height "Input bar maximum height" 140px
 @var text b_radius "Custom border radius" 5px
 
@@ -1618,15 +1618,22 @@
 
   // * Code blocks.
   [class*="markup-"] {
-    pre {
-      border-radius: $radius;
-      colors: $light, $darker, $darker;
+    code {
+      font-family: var(--codearea);
+      &.inline {
+        colors: 0 0 $dark;
+        box-shadow: 0 0 0 1px $darker;
+      }
     }
-    code, code[class*="inline"] {
-      border-radius: $radius;
-      colors: $light, 0, $darker;
-      box-shadow: 2px 2px 8px -2px $shadow;
-      font-family: var(--codearea), Consolas, Liberation Mono, Menlo, Courier, monospace;
+    pre {
+      radius: $radius;
+      colors: 0 $darker $dark;
+      border-width: 1px !important;
+      box-shadow: 0 2px 4px 0 $shadow;
+      code {
+        radius: $radius;
+        colors: $light $t $t;
+      }
     }
     // Syntax highlighting.
     .hljs {
