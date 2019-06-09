@@ -286,9 +286,10 @@
 
   // * Firefox scrollbar polyfill.
   if not scrollbars_firefox {
-    // ? ChannelInfo/Activity/Store/Friends/ActivityFeed
+    // ? ChannelInfo/SearchResults/Activity/Store/Friends/ActivityFeed
     // ? /QuickSwitcher/Channels/Context/Chat.
     [class*="modal-"][class*="modal-"][class*="size-"],
+    [class*="searchResultsWrap-"] > div:last-child,
     [class*="feed-"] +, [class*="Store-"] +,
     [class*="friendsTableBody-"] +,
     [class*="activityFeed-"],
@@ -303,8 +304,7 @@
         [class^="pad"] { colors: 0, 0, $dark; }
       }
     }
-    // ? Search/Pinned/Notifications.
-    [class*="searchResultsWrap-"] > div:last-child,
+    // ? Pinned/Notifications.
     [class*="messagesPopout-"] +,
     [class*="sizeMedium-"] {
       [class*="scrollbar-"] {
