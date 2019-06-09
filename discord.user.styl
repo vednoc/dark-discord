@@ -1219,9 +1219,22 @@
       }
 
       // * Mentions.
-      [class*="markup-"] [class*="mention"] {
-        colors: $accent, 0, $t;
-        &:hover { text-decoration: underline; }
+      [class*="markup-"] {
+        [class*="wrapper-"][class*="wrapperHover-"] {
+          transition: 0.15s ease;
+          position: relative;
+          radius: 3px;
+          colors: $accent 0 $t;
+          &::before {
+            content: "";
+            nav: 0 0 0 0;
+            opacity: 0.15;
+            position: absolute;
+            radius: 3px;
+            colors: 0 0 $accent;
+          }
+          &:hover { colors: $white 0 $accent }
+        }
       }
 
       // * Mention bar.
