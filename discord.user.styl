@@ -908,14 +908,16 @@
         [class*="title-"] { colors: $light, 0, 0; }
         [class*="divider-"] { colors: 0, 0, $darker; }
         [class*="tabBar-"] {
-          colors: 0, $shadow, $t;
-          [class*="item-"]:not([class*="primary-"]):not([class*="selected-"]) {
-            colors: $lighter, 0, $t;
+          colors: 0 0 $t;
+          [class*="item-"] {
             transition: 0.15s ease;
-            &:hover { colors: $light, 0, $darker; }
+            &:not([class*="primary-"]):not([class*="selected-"]) {
+              colors: $lighter 0 $t;
+              &:hover { colors: $light 0 $darker }
+            }
+            &[class*="selected-"] { colors: $accent 0 $t }
+            &[class*="primary-"] { colors: 0 0 $accent }
           }
-          [class*="item-"][class*="selected-"] { colors: $accent, 0, $t; }
-          [class*="item-"][class*="primary-"] { colors: 0, 0, $accent; }
         }
       }
     }
