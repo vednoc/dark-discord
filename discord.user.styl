@@ -26,7 +26,7 @@
 @var checkbox code_ln "Enable code line numbers" 1
 @var text code_font "Custom font for code blocks" "'custom_font', Consolas, Liberation Mono, Menlo, Courier, monospace"
 @var text input_height "Input bar maximum height" 140px
-@var text b_radius "Custom border radius" 5px
+@var text b_radius "Custom border radius" 4px
 
 @var color dark    "Dark color.   " #222222
 @var color darker  "Darker color. " #2f2f2f
@@ -1072,6 +1072,8 @@
         [class*="searchFilter-"], [class*="searchAnswer"] {
           colors: $light, 0, $darker;
         }
+        [class*="searchFilter-"] { radius: $radius 0 0 $radius }
+        [class*="searchAnswer-"] { radius: 0 $radius $radius 0 }
       }
 
       // ? Group DM header.
@@ -1188,6 +1190,7 @@
           a { colors: $accent, 0, 0; }
           // ? Spoilers.
           [class*="spoilerText-"] {
+            radius: $radius;
             &[class*="hidden-"] {
               radius: $radius;
               transition: 0.15s ease;
@@ -1390,8 +1393,10 @@
     [class*="row-"] [class*="selected-"] { colors: 0, 0, $accent; }
     // Selected category.
     [class*="categories-"] {
-      [class*="item-"]:hover { colors: 0, $darker, 0; }
-      [class*="selected-"] { colors: 0, $accent, 0; }
+      [class*="item-"] {
+        &[class*="selected-"] { colors: 0 $accent 0 }
+        &:hover { colors: 0 $darker 0 }
+      }
     }
     // Dimmed overlay.
     [class*="visible-"]:not([class*="icon-"] ) {
