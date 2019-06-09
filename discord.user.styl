@@ -1531,39 +1531,62 @@
 
   // * Search results.
   [class*="searchResultsWrap-"] {
-    colors: 0, 0, $darker;
+    colors: 0 0 $dark;
+    box-shadow: -1px 0 0 0 $darker;
     [class*="searchHeader-"] {
-      colors: 0, 0, $darker;
-      box-shadow: 0 1px 0 0 $dark !important;
+      colors: 0 0 $dark;
+      box-shadow: 0 1px 0 0 $darker !important;
       // Text color.
-      [class*="tab-"], [class*="totalResults-"] {
-        opacity: 0.6;
-        colors: $lighter, 0, 0;
-      }
-      [class*="tab-"][class*="selected-"] {
+      [class*="totalResults-"] {
         opacity: 1;
-        colors: $light, $accent, 0;
+        colors: $light 0 0;
+      }
+      [class*="tab-"] {
+        opacity: 1;
+        colors: $lighter 0 0;
+        &:hover, &[class*="selected-"] { colors: $light $accent 0 }
       }
     }
     [class*="resultsWrapper-"] {
+      padding: 0 10px;
       // Name and separator.
       [class*="channelSeparator-"] {
-        &::before { colors: 0, $dark, 0; }
-        [class*="channelName-"] { colors: $lighter, 0, $darker; }
+        &::before { colors: 0 $darker 0 }
+        [class*="channelName-"] { colors: $light 0 $dark }
       }
       // Single result.
       [class*="searchResult-"] {
+        overflow: unset !important;
+        &[class*="expanded-"] {
+          border-radius: $radius;
+          border-width: 1px;
+          colors: 0 $darker 0;
+          > div:last-of-type {
+            border-top-width: 1px;
+            border-radius: 0 0 $radius $radius !important;
+          }
+        }
         // Remove unnecessary gradients.
         &::before, &::after { background: none !important; }
         // Matching message.
         [class*="hit"] {
-          border-radius: $radius;
-          colors: 0, $dark, $dark;
-          box-shadow: 0 0 30px 6px $darker;
-         }
+          border-width: 1px !important;
+          colors: 0 $darker $dark;
+          box-shadow: 0 2px 4px 0 $shadow;
+          ../:not([class*="expanded-"]) [class*="hit"] { border-radius: $radius }
+        }
+        [class*="jumpButton-"] { colors: $light 0 $darker }
       }
       // Pages.
-      [class*="pagination-"] { colors: $lighter, 0, 0; }
+      [class*="pagination-"] {
+        padding-bottom: 10px;
+        colors: $lighter 0 0;
+        > div[class] {
+          filter: invert(
+            calc((1 + var(--icinvert)) * var(--icinvert))
+          ) !important;
+        }
+      }
     }
   }
 
