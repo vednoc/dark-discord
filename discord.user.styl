@@ -682,10 +682,10 @@
   // * User controls.
   [class^="channels"][class*="vertical"] {
     // VC status.
-    > div:nth-last-child(2) {
+    > div {
       border-bottom: none;
-      border-top: 1px solid;
-      colors: 0 $darker $t
+      colors: 0 0 $t;
+      &:nth-child(2) { box-shadow: 0 1px 0 0 inset $darker }
       [class*="status-connected"] { colors: $green 0 0 }
       [class*="status-connecting"] { colors: $orange 0 0 }
       [class*="status-error"] { colors: $red 0 0 }
@@ -696,8 +696,8 @@
     }
     // Controls.
     > div:last-child {
-      border-top: 1px solid;
-      colors: $lighter, $darker, $t;
+      colors: $lighter 0 $t;
+      box-shadow: 0 1px 0 0 inset $darker;
       [class^="username"] { colors: $light, 0, 0; }
       [class*="discriminator"] { opacity: 0.6; colors: $lighter, 0, 0; }
     }
