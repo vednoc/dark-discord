@@ -13,7 +13,7 @@
 @var checkbox remove_notifications "Notification-free mode" 0
 @var checkbox min_guilds "Minimize width of guild area" 0
 @var checkbox mid_guilds "Small guild icons" 0
-@var text guild_size "Custom small guild icon size" 40px
+@var text guild_size "Small guild icons size" 40px
 @var checkbox paddingless_cozy "Remove padding for cozy messages" 0
 @var checkbox compact_cozy "Compact mode for cozy messages" 0
 @var checkbox compact_lines "Compact mode visual lines" 0
@@ -1972,7 +1972,7 @@
     }
   }
 
-  // * Smaller guild icons.
+  // * Feature -> Smaller guild icons.
   if mid_guilds {
     $size = guild_size;
     // ? Set the width of guilds wrapper.
@@ -2007,11 +2007,12 @@
         }
       }
       // Home icon.
-      [class*="blob-"] {
-        &, svg {
+      &:first-child {
+        &, [class*="Wrapper-"], svg {
           width: $size;
           height: $size;
         }
+        svg[class*="homeIcon-"] { transform: scale(0.9) }
       }
       // Guild icons.
       [class*="blobContainer-"] {
@@ -2061,8 +2062,10 @@
       ~ div[style] {
         margin-bottom: 8px;
         height: $size !important;
-        // Fix badge placement.
-        [class*="badgeWrapper-"] { top: 2px !important; }
+        [class*="svg-"] , div[class*="wrapper-"] {
+          height: $size !important;
+          width: $size !important;
+        }
       }
     }
   }
