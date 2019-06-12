@@ -17,6 +17,7 @@
 @var checkbox paddingless_cozy "Remove padding for cozy messages" 0
 @var checkbox compact_cozy "Compact mode for cozy messages" 0
 @var checkbox compact_lines "Compact mode visual lines" 0
+@var checkbox msg_dividers "Chat: Enable message dividers" 1
 @var checkbox unified_header "WIP: Make the header transparent" 0
 @var checkbox disable_images "WIP: Disable images and show their links" 0
 @var checkbox scrollbars_enabled "Always show scrollbar tracks" 0
@@ -1275,6 +1276,8 @@
 
       // ? Message dividers.
       [class*="divider-"] {
+        // * Feature -> Enable message dividers.
+        if ( msg_dividers != 1 ) { colors: 0 $t 0 }
         // Base styles.
         > [class*="dividerContent-"] {
           line-height: 10px;
