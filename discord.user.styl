@@ -1192,7 +1192,18 @@
           a { colors: $accent, 0, 0; }
           // ? Spoilers.
           [class*="spoilerText-"] {
+            position: relative;
             radius: $radius;
+            colors: 0 0 $t;
+            &::before {
+              z-index: -1;
+              content: "";
+              nav: 0 0 0 0;
+              radius: $radius;
+              position: absolute;
+              colors: 0 0 $darker;
+              opacity: 0.3;
+            }
             &[class*="hidden-"] {
               radius: $radius;
               transition: 0.15s ease;
