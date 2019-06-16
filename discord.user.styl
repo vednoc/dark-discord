@@ -136,13 +136,21 @@
     [class*="lookFilled-"] { colors: $white 0 $blue }
   }
 
-  // * Icons.
+  // * Icons -> Misc.
   [class*="mobileIndicator-"],
   [class*="addButtonIcon-"] polygon,
-  svg path[class*="attachButtonPlus-"],
-  svg[name="Gear"] path[fill="currentColor"] {
+  svg path[class*="attachButtonPlus-"] {
     fill: $lighter !important;
   }
+  // * Icons -> User controls.
+  [class*="Icon-"] {
+    &[name="Gear"] path[fill] { fill: $lighter }
+    &[name*="Headset"], &[name*="Microphone"] {
+      path[fill]:not([class*="red-"]) { fill: $lighter }
+      path[fill][class*="red-"] { fill: $red }
+    }
+  }
+  // * Icons -> Global.
   [class*="icon"] {
     // Base colors.
     path[fill="currentColor"], g[fill="currentColor"] > path, path[fill^="#FFF"] {
@@ -727,6 +735,11 @@
     > div:last-child {
       colors: $lighter 0 $t;
       box-shadow: 0 1px 0 0 inset $darker;
+      button {
+        radius: $radius;
+        transition: 0.15s ease;
+        &:hover { colors: 0 0 $darker }
+      }
       [class^="username"] { colors: $light, 0, 0; }
       [class*="discriminator"] { opacity: 0.6; colors: $lighter, 0, 0; }
     }
