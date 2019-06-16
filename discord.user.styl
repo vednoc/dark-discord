@@ -740,8 +740,6 @@
         transition: 0.15s ease;
         &:hover { colors: 0 0 $darker }
       }
-      [class^="username"] { colors: $light, 0, 0; }
-      [class*="discriminator"] { opacity: 0.6; colors: $lighter, 0, 0; }
     }
   }
 
@@ -781,11 +779,16 @@
   }
 
   // ? All usernames except the ones that have custom colors.
-  [class^="username"]:not([style^="color"]) { colors: $lighter, 0, 0; }
-  // ? Default no-role color in right sidebar.
-  [class^="nameTag"]:not([style^="color"]) { colors: $lighter, 0, 0; }
-  // ? Inherit custom color in right sidebar.
-  [class*="nameTag"] > [class*="username"] { color: inherit !important; }
+  [class^="username"]:not([style^="color"]) { colors: $light 0 0 }
+  // ? Discriminators.
+  [class*="discriminator"] { colors: $lighter 0 0 }
+  // ? Roles.
+  [class^="nameTag"] {
+    // ? Default no-role color in right sidebar.
+    &:not([style^="color"]) { colors: $lighter, 0, 0; }
+    // ? Inherit custom color in right sidebar.
+    > [class*="username"] { color: inherit !important; }
+  }
 
   // * Guilds.
   [class*="layer-"] > div[style="flex: 1 1 auto;"] > [class*="wrapper-"] {
