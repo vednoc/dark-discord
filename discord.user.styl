@@ -352,6 +352,7 @@
 
   // * Modals.
   [class*="modal-"] {
+    &[class*="size"] {
       radius: $radius;
       colors: 0 0 $dark;
       box-shadow: 0 0 0 1px $darker, 0 4px 8px 0 $shadow;
@@ -359,6 +360,7 @@
         radius: $radius;
         &[style*="114\, 137\, 218"] { colors: 0 $accent $accent }
       }
+      [class*="reactors-"], [class*="sidebar-"] { colors: 0 0 $t }
     }
     // Default-ish colors.
     [class*="primary-"] { colors: $light, 0, 0; }
