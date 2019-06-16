@@ -389,6 +389,28 @@
       colors: $lighter, 0, 0;
       [class*="textLink"] { colors: $light, 0, 0; }
     }
+    // ? Region select.
+    [class*="regionSelectModal-"] {
+      radius: $radius;
+      colors: 0 0 $dark;
+      box-shadow: 0 0 0 1px inset $darker, 0 2px 4px 0 $shadow;
+      [class*="Option-"] {
+        radius: $radius;
+        colors: 0 $darker $dark;
+        &:hover {
+          colors: 0 $accent 0;
+          box-shadow: 0 2px 4px 0 $shadow;
+        }
+        [class*="Flag-"] {
+          colors: 0 0 $t;
+          transition: 0.3s ease;
+          box-shadow: 0 2px 4px 0 $shadow;
+          ../:hover [class*="Flag-"] { transform: translateY(-4px) !important }
+        }
+        [class*="Name-"] { colors: $lighter 0 0 }
+      }
+      [class*="Footer-"] { colors: $lighter 0 0 }
+    }
   }
 
   // * Upload modal.
