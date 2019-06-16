@@ -1949,6 +1949,16 @@
       [class*="typeCreate-"] { colors: $green, 0, 0; }
       [class*="typeDelete-"] { colors: $red, 0, 0; }
     }
+    // Change server region.
+    [class*="container-"][role="button"] {
+      colors: 0 $darker $dark;
+      [class*="name-"] { colors: $light 0 0 }
+      [class*="button-"] {
+        radius: $radius;
+        &[class*="colorGrey-"] { colors: $lighter 0 $darker }
+        ../ [class*="button-"] { colors: $light 0 $darker }
+      }
+    }
   }
 
   // * Emoji section.
