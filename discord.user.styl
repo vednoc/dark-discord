@@ -76,7 +76,6 @@
   }
 
   // * Use stylus-lang variables with CSS variables.
-  // TODO try to make this more compact.
   $dark    = var(--dark);
   $darker  = var(--darker);
   $light   = var(--light);
@@ -98,12 +97,17 @@
   $radius  = var(--radius);
 
   // * Color mixin.
-  // ? All colors -> colors: $light, $darker, $dark;
-  // ? Only background-color -> colors: 0, 0, $dark;
+  // ? All colors -> colors: $light $darker $dark;
+  // ? Only background-color -> colors: 0 0 $dark;
   colors(x, y, z) {
     if x is a 'call' { color: x !important; }
     if y is a 'call' { border-color: y !important; }
     if z is a 'call' { background-color: z !important; }
+  }
+
+  s(x, y = 0) {
+    if x is a 'call' { fill: x !important }
+    if y is a 'call' { stroke: y !important; }
   }
 
   // * Border radius mixin.
@@ -140,42 +144,42 @@
   [class*="mobileIndicator-"],
   [class*="addButtonIcon-"] polygon,
   svg path[class*="attachButtonPlus-"] {
-    fill: $lighter !important;
+    s: $lighter;
   }
   // * Icons -> User controls.
   [class*="Icon-"] {
-    &[name="Gear"] path[fill] { fill: $lighter }
+    &[name="Gear"] path[fill] { s: $lighter }
     &[name*="Headset"], &[name*="Microphone"] {
-      path[fill]:not([class*="red-"]) { fill: $lighter }
-      path[fill][class*="red-"] { fill: $red }
+      path[fill]:not([class*="red-"]) { s: $lighter }
+      path[fill][class*="red-"] { s: $red }
     }
   }
   // * Icons -> Global.
   [class*="icon"] {
     // Base colors.
-    path[fill="currentColor"], g[fill="currentColor"] > path, path[fill^="#FFF"] {
-      fill: $lighter !important;
+    path[fill="currentColor"],
+    g[fill="currentColor"] > path,
+    path[fill^="#FFF"] {
+      s: $lighter
     }
     // Selected/active icons.
-    &[class*="selected-"] path[fill] { fill: $accent !important; }
+    &[class*="selected-"] path[fill] { s: $accent }
     // Muted channel.
-    path[fill][class*="strikethrough-"] { fill: $red !important; }
+    path[fill][class*="strikethrough-"] { s: $red }
     // Guild/DM owner.
-    &[class*="ownerIcon-"] path { fill: $orange !important }
+    &[class*="ownerIcon-"] path { s: $orange }
     // Partnered guilds.
     svg[class*="flowerStar-"] {
-      stroke: $dark !important;
-      path[fill] { fill: $accent !important }
-      + [class*="childContainer-"] path[fill] { fill: $white !important }
+      s: 0 $dark;
+      path[fill] { s: $accent }
+      + [class*="childContainer-"] path[fill] { s: $white }
     }
     // Nitro-Booster!
-    &[class*="premiumIcon-"] path { fill: $violet !important }
+    &[class*="premiumIcon-"] path { s: $violet }
   }
-  svg[class*="button"] path[stroke="#FFF"] {
-    stroke: $lighter !important;
-  }
+  svg[class*="button"] path[stroke="#FFF"] { s: 0 $lighter }
   // Overflow icon in server members.
-  [class*="overflowIconFg-"] { fill: $lighter !important }
+  [class*="overflowIconFg-"] { s: $lighter }
   // * Icons -> Non-svg mic/headphone/cogwheel reset.
   [class*="accountDetails-"] + div {
     > div, > button {
@@ -209,12 +213,12 @@
   // * Global -> Checkboxes.
   [class*="checkbox-"]:not([class*="wrapper" i]) {
     colors: 0, $dark, $darker;
-    &[class*="checked-"] svg polyline { stroke: $light; }
+    &[class*="checked-"] svg polyline { s: 0 $light }
     &[class*="round-"] {
       colors: 0, $darker, $dark;
       &[class*="checked-"] {
         colors: 0, $green, 0;
-        svg polyline { stroke: $green; }
+        svg polyline { s: 0 $green }
       }
     }
   }
@@ -507,7 +511,7 @@
           [class*="barInner-"] { colors: 0, 0, $accent; }
         }
         // Icons.
-        [class*="listenAlongIcon-"] path { fill: $lighter; }
+        [class*="listenAlongIcon-"] path { s: $lighter }
       }
       // Fake border.
       &::before {
@@ -660,7 +664,7 @@
           [class*="barInner-"] { colors: 0, 0, $accent; }
         }
         // Icons.
-        [class*="listenAlongIcon-"] path { fill: $lighter; }
+        [class*="listenAlongIcon-"] path { s: $lighter }
       }
       // Fake border.
       &::before {
@@ -1034,7 +1038,7 @@
           opacity: 1;
           colors: 0, 0, $darker;
           [class*="name-"] { colors: $light, 0, 0; }
-          svg path { fill: $light !important; }
+          svg path { s: $light }
         }
       }
 
@@ -1408,7 +1412,7 @@
       [class*="autocompleteInner-"] {
         border: none !important;
         // Command mode icons.
-        [class*="iconForeground"] { fill: $icon; }
+        [class*="iconForeground"] { s: $icon }
         // Title/description selectors.
         [class*="Title"], [class*="description"] { colors: $lighter, 0, 0; }
         [class*="contentTitle"] strong { colors: $light, 0, 0; }
@@ -1771,7 +1775,7 @@
     [class*="keybindShortcut-"] span {
       colors: $lighter, $darker, $dark;
       box-shadow: inset 0 -4px 0 $darker;
-      [class*="bindArrow-"] > g { fill: $lighter; }
+      [class*="bindArrow-"] > g { s: $lighter }
     }
   }
 
@@ -1950,7 +1954,7 @@
       colors: 0, $darker, 0;
       transition: 0.2s ease;
       &:hover { colors: 0, 0, $darker; }
-      path[fill*="#dcddde"] { fill: $lighter; }
+      path[fill*="#dcddde"] { s: $lighter }
       + [class*="keybind"] { colors: $lighter, 0, 0; }
     }
     // * Audit log.
