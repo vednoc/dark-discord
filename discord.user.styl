@@ -826,7 +826,10 @@
       svg { colors: $white, 0, 0; }
       &:hover { opacity: 0.8; }
     }
+  }
 
+  // * Feature -> Minimize width option.
+  [class*="layer-"] > div[style="flex: 1 1 auto;"] > [class*="wrapper-"] {
     // * Minimize width of guild area.
     if min_guilds {
       transition: 0.3s cubic-bezier(0, 0, 0.2, 1);
