@@ -478,7 +478,6 @@
   [class^="modal-"] > div > [class*="root"] {
     border-radius: $radius;
     colors: 0, 0, $dark;
-    // inset 0 0 0 1px $darker;
     border: 1px solid $darker;
     box-shadow: 0 2px 4px 0 $shadow;
 
@@ -574,18 +573,30 @@
     }
   }
 
-  // * Global popout borders.
+  // * Global -> Popouts.
   [class*="popouts-"] {
-    > [class*="popout-"], [class*="userPopout-"] {
-      border-radius: $radius !important;
-      box-shadow: 0 0 0 1px $darker, 0 2px 4px -1px $shadow;
+    colors: 0 0 $dark;
+    > [class*="popout-" i] {
+      radius: $radius;
+      border: 1px solid;
+      colors: 0 $darker $dark;
+      box-shadow: 0 2px 8px 0 $shadow;
+      > [class*="popout-" i] {
+        radius: $radius;
+        box-shadow: none;
+        box-shadow: 0 2px 4px 0 $shadow;
+      }
     }
-    // Message context menu.
-    [role="menu"] {
-      padding: 4px;
-      [class*="item-"] {
-        colors: $lighter, 0, 0;
-        &:hover { colors: $light, 0, $darker; }
+    // * User/message status menus.
+    [class^="menu-"], [role="menu"] {
+      radius: $radius;
+      colors: 0 0 $t;
+      box-shadow: none;
+      [class^="item"] {
+        colors: $lighter 0 0;
+        transition: 0.15s ease;
+        &:hover { colors: $light 0 $darker }
+        [class*="helper-"] { colors: $lighter 0 0 }
       }
     }
   }
