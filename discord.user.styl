@@ -478,7 +478,9 @@
   [class^="modal-"] > div > [class*="root"] {
     border-radius: $radius;
     colors: 0, 0, $dark;
-    box-shadow: 0 0 0 1px $darker;
+    // inset 0 0 0 1px $darker;
+    border: 1px solid $darker;
+    box-shadow: 0 2px 4px 0 $shadow;
 
     [class*="header-"] > [class*="Info"] {
       [class*="username"] { colors: $light, 0, 0; }
@@ -615,7 +617,6 @@
 
   // * User popout.
   [class*="userPopout"] {
-    colors: 0, 0, $dark;
     // Username/discriminator colors.
     [class^="headerText-"] {
       [class*="Name"], .username { colors: $light, 0, 0; }
@@ -703,17 +704,6 @@
       [class*="tip"] { colors: $lighter, 0, 0; }
       // Message user.
       [class*="quickMessage"] { colors: $light, $darker, $dark; }
-    }
-  }
-
-  // * User status menu.
-  [class^="menu"] {
-    colors: $light, 0, $dark;
-    border-radius: inset !important;
-    [class^="item"] {
-      colors: $light, 0, 0;
-      &:hover { colors: $light, 0, $darker; }
-      [class*="helper-"] { colors: $lighter, 0, 0; }
     }
   }
 
