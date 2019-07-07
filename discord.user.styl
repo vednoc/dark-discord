@@ -1826,13 +1826,15 @@
   }
 
   // * Mentions.
-  [class^="messagesPopoutWrap-"] {
-    border-radius: $radius;
-    colors: $light, $darker, $dark;
+  [class*="messagesPopoutWrap-"] {
+    width: auto;
+    radius: $radius;
+    border: none !important;
+    colors: $light $darker $dark;
     [class^="header-"]:not([class^="headerCozy"]) {
-      colors: $light, $darker, $dark;
-      box-shadow: 0 1px 0 0 $darker;
-      [class*="title-"] { colors: $lighter, 0, 0; }
+      colors: 0 0 $t;
+      box-shadow: 0 1px $darker;
+      [class*="title-"] { colors: $light 0 0 }
       // ? Filters.
       [class*="mentionFilter-"] {
         [class*="label"] { colors: $lighter, 0, 0; }
@@ -1846,7 +1848,15 @@
       [class*="channel"] { colors: $light, 0, 0; }
       [class*="guild"] { colors: $lighter, 0, 0; }
     }
-    [class^="messageGroupWrapper"] { colors: $light, $darker, $dark; }
+    [class^="messageGroupWrapper-"] {
+      radius: $radius;
+      colors: $light $darker $dark;
+      box-shadow: 0 2px 4px 0 $shadow;
+      > div[class] { margin: 0 0 0 -15px !important; }
+      [class*="markup-"], [class*="embed"] {
+        &::before, &::after { display: none }
+      }
+    }
     [class^="jumpButton"] { colors: $light, $t, $darker; }
     [class^="actionButtons"] {
       transition: none !important;
