@@ -1950,16 +1950,6 @@
           }
         }
       }
-      // ? Members.
-      [class*="member-"] {
-        [class*="name-"] { colors: $light 0 0 }
-        [class*="tag-"], [class*="roleName-"] { colors: $lighter 0 0 }
-        &::before {
-          radius: $radius;
-          colors: 0 $darker $darker;
-          box-shadow: 0 2px 4px -2px $shadow;
-        }
-      }
     }
     // * Close button.
     [class*="closeButton-"] {
@@ -2003,6 +1993,19 @@
         ../ [class*="button-"] { colors: $light 0 $darker }
       }
     }
+    // Confirm/reset the settings.
+    [class*="elevationHigh-"] {
+      &[style*="rgba(32"] {
+        colors: 0 0 $darker;
+        box-shadow: 0 2px 8px 0 $shadow;
+        [style*="rgb(255"] { colors: $light 0 0 }
+      }
+      &[style*="rgba(24"] {
+        colors: 0 0 $red;
+        box-shadow: 0 2px 8px 0 $shadow;
+        [style*="rgb(255"] { colors: $white 0 0 }
+      }
+    }
   }
 
   // * Emoji section.
@@ -2023,8 +2026,8 @@
   }
 
   // * Cards.
-  [class*="card-"]:not([class*="emojiRow-"]):not([class*="member"]) {
-    colors: 0, $darker, $darker;
+  [class*="card-"]{
+    colors: 0 $darker $darker;
     [class*="title-"], [class*="primary-"] { colors: $light, 0, 0; }
     [class*="desc-"] { colors: $lighter, 0, 0; }
     [class*="anchor-"] { colors: $accent, 0, 0; }
@@ -2032,16 +2035,29 @@
       colors: 0, $dark, 0;
       &[class*="checked-"] { colors: 0, 0, $dark; }
     }
+    // Main cards.
+    &[class*="cardPrimary"] {
+      radius: $radius;
+      colors: 0 $darker $dark;
+      &[style*="114\, 137\, 218"] { colors: 0 $accent 0 }
+    }
     // Colorized cards.
-    &[style*="rgb(67"] { colors: 0, $green, $green; }
-    &[style*="rgb(250"] { colors: 0, $orange, $orange; }
-    &[style*="rgb(240"] { colors: 0, $red, $red; }
+    // Various table elements.
+    &[class*="member-"],
+    &[class*="emojiRow-"],
+    &[class*="sInviteRow-"],
+    &[class*="bannedUser-"] {
+      colors: 0 0 $t;
+      [class*="name-"] { colors: $light 0 0 }
+      [class*="tag-"], [class*="roleName-"] { colors: $lighter 0 0 }
+      &::before {
+        radius: $radius;
+        colors: 0 $darker $darker;
+        box-shadow: 0 2px 4px -2px $shadow;
+      }
+    }
   }
-  // * Username and such.
-  [class*="cardPrimary"] {
-    colors: $light, $dark, $dark;
-    [class*="viewBody-"] { colors: $light, 0, 0; }
-  }
+  // TODO: Rewrite/move this somewhere.
   [class*="faded"] { color: $light !important; opacity: .5; }
   [class*="colorPrimary"] { colors: $light, 0, 0; }
 
