@@ -2042,6 +2042,17 @@
       &[style*="114\, 137\, 218"] { colors: 0 $accent 0 }
     }
     // Colorized cards.
+    &[style*="rgb(67"] { colors: 0 $green $green }
+    &[style*="rgb(114"] { colors: 0 $accent $accent }
+    &[style*="rgb(250"] { colors: 0 $yellow $yellow }
+    &[style*="rgb(245"] { colors: 0 $orange $orange }
+    &[style*="rgb(240"] { colors: 0 $red $red }
+    // Colorized cards text.
+    [class*="title-"][style*="rgb(67"] { colors: $green 0 0 }
+    [class*="title-"][style*="rgb(250"] { colors: $yellow 0 0 }
+    [class*="title-"][style*="rgb(245"] { colors: $orange 0 0 }
+    [class*="title-"][style*="rgb(240"] { colors: $red 0 0 }
+    &[style*="rgb("] > [class*="info-"] > * { colors: $white 0 0 }
     // Various table elements.
     &[class*="member-"],
     &[class*="emojiRow-"],
