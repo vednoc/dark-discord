@@ -341,8 +341,10 @@
       > div[style*="height: 0px;"] { border-width: 0px !important; }
     }
     // ? Remove unnecessary padding throughout the app.
-    [class*="scrollerWrapPolyfill-"] > [class*="systemPad-"] {
-      padding-right: 2px !important;
+    [class*="systemPad-"] {
+      &[class*="messages-"] {
+        padding-right: 0px !important;
+      }
     }
   }
 
