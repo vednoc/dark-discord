@@ -1279,6 +1279,13 @@
           a { colors: $light, 0, 0; }
         }
 
+        // Attachments.
+        [class*="attachment-"] {
+          radius: $radius;
+          colors: 0 $darker $dark;
+          box-shadow: 0 2px 4px 0 $shadow;
+        }
+
         // ? Reactions.
         [class*="reactions-"] > [class*="reaction-"] {
           colors: 0, 0, $darker;
