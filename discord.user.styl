@@ -1329,17 +1329,17 @@
         position: relative;
         colors: 0, 0, $t;
         &::before {
-          opacity: 0.2;
+          opacity: 0.15;
           z-index: -1;
           content: ""; position: absolute;
           top: 0; right: 0; bottom: 0; left: 0;
           border-radius: 0 3px 3px 0;
-          colors: 0, 0, $accent;
+          colors: 0 0 $yellow;
         }
         &::after {
           opacity: 0.6;
           left: -4px;
-          colors: 0, $accent, $t;
+          colors: 0 $yellow $t;
         }
       }
 
