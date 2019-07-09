@@ -1435,7 +1435,7 @@
 
   // * Embeds.
   [class^="embedInner"] {
-    radius: 0 $radius $radius 0;
+    border-left: none;
     colors: $light $darker $dark;
     // Descriptions and such.
     [class*="Provider-"], [class*="Description-"] {
@@ -1454,7 +1454,8 @@
   }
   // ? Left bar color; we don't want to overwrite it.
   [class*="embedPill-"] {
-    radius: $radius 0 0 $radius;
+    &:not([style]) { colors: 0 0 $darker }
+    &[style*="rgb(30\, 35\, 39)"] { colors: 0 0 $orange }
     &[style*="rgb(255\, 255\, 255)"] { colors: 0 0 $lighter }
     &[style*="rgb(255\, 0\, 0)"] { colors: 0 0 $red }
   }
