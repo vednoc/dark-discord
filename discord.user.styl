@@ -2361,6 +2361,20 @@
           // colors: 0, $blue, 0;
         }
       }
+      // Attachments.
+      [class*="containerCozy-"] > [class*="attachment-"] {
+        position: relative;
+        margin-left: 16px;
+        &::before {
+          z-index: -1;
+          nav: 0 0 0 -14px;
+          line: true, false;
+          // colors: 0 $blue 0;
+        }
+      }
+      > [class*="messageCozy-"]:nth-last-child(2) [class*="attachment-"]::before {
+        display: none !important;
+      }
       // Images/videos/embeds.
       [class*="containerCozy-"] > [class*="embed-"] {
         margin-left: 16px;
