@@ -634,7 +634,9 @@
   }
 
   // * User popout.
-  [class*="userPopout"] {
+  [class*="userPopout-"] {
+    colors: 0 0 $dark;
+    box-shadow: 0 2px 4px $shadow, inset 0 0 0 1px $darker;
     // Username/discriminator colors.
     [class^="headerText-"] {
       [class*="Name"], .username { colors: $light, 0, 0; }
