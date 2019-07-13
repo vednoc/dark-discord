@@ -1321,6 +1321,7 @@
           transition: 0.15s ease;
           position: relative;
           radius: 3px;
+          text-decoration: none;
           colors: $accent 0 $t;
           &::before {
             content: "";
@@ -1854,6 +1855,11 @@
       colors: 0 0 $t;
       box-shadow: 0 1px $darker;
       [class*="title-"] { colors: $light 0 0 }
+      // Tabs.
+      [class*="tabBarItem-"] {
+        &[style*="transparent"] { colors: $lighter 0 0 }
+        &:not([style*="transparent"]) { colors: $light $accent 0 }
+      }
       // ? Filters.
       [class*="mentionFilter-"] {
         [class*="label"] { colors: $lighter, 0, 0; }
@@ -1873,7 +1879,12 @@
       box-shadow: 0 2px 4px 0 $shadow;
       > div[class] { margin: 0 0 0 -15px !important; }
       [class*="markup-"], [class*="embed"] {
+        colors: $light 0 0;
         &::before, &::after { display: none }
+        .mention {
+          radius: 3px;
+          colors: $white 0 $accent;
+        }
       }
     }
     [class^="jumpButton"] { colors: $light, $t, $darker; }
