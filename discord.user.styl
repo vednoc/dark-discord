@@ -1023,10 +1023,9 @@
       // ? Channels.
       // Channel containers.
       [class*="containerDefault-"] {
-        [class*="content-"] {
-          opacity: 0.6;
+        > [class*="content-"] {
           margin: 0 0 0 8px;
-          border-radius: $radius;
+          radius: $radius;
         }
         // Defaults.
         [class*="name-"] { colors: $lighter, 0, 0; }
@@ -1039,11 +1038,20 @@
           [class*="name-"] { colors: $lighter, 0, 0; }
           [class*="name-"]:hover { colors: $light, 0, 0; }
         }
-        &:hover [class*="content-"], &[class*="selected-"] [class*="content-"] {
-          opacity: 1;
-          colors: 0, 0, $darker;
-          [class*="name-"] { colors: $light, 0, 0; }
-          svg path { s: $light }
+        // Text channels.
+        &:hover, &[class*="selected-"] {
+          > div > [class*="content-"] {
+            colors: 0 0 $darker;
+            [class*="name-"] { colors: $light 0 0 }
+            svg path { s: $light }
+          }
+        }
+        // Voice channels.
+        [class*="listDefault-"] {
+          [class*="clickable-"]:hover, [class*="selected-"] {
+            > [class*="content-"] { colors: 0 0 $darker }
+            [class*="username"] { colors: $light 0 0 }
+          }
         }
       }
 
