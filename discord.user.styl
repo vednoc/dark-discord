@@ -139,7 +139,8 @@
     [class*="subTitle-"] { colors: $lighter 0 0 }
     [class*="lookFilled-"] { colors: $white 0 $blue }
   }
-
+  // Voice chat controls.
+  [class*="buttonIcon-"] path { s: $lighter }
   // * Icons -> Misc.
   [class*="mobileIndicator-"],
   [class*="addButtonIcon-"] polygon,
@@ -740,20 +741,21 @@
       [class*="status-connected"] { colors: $green 0 0 }
       [class*="status-connecting"] { colors: $orange 0 0 }
       [class*="status-error"] { colors: $red 0 0 }
-      [class*="channel-"] {
+      [class*="description-"] > [class*="channel-"] {
         opacity: 1;
-        colors: $lighter 0 0
+        colors: $lighter 0 0;
       }
     }
     // Controls.
     > div:last-child {
       colors: $lighter 0 $t;
       box-shadow: 0 1px 0 0 inset $darker;
-      button {
-        radius: $radius;
-        transition: 0.15s ease;
-        &:hover { colors: 0 0 $darker }
-      }
+    }
+    button {
+      radius: $radius;
+      colors: $lighter 0 0;
+      transition: 0.15s ease;
+      &:hover:not([class*="disabled"]) { colors: 0 0 $darker }
     }
   }
 
