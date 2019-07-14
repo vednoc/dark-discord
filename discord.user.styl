@@ -1030,16 +1030,21 @@
       // ? Channels.
       // Channel containers.
       [class*="containerDefault-"] {
-        > [class*="content-"] {
-          margin: 0 0 0 8px;
+        > div[class] > [class*="content-"] {
           radius: $radius;
+          > [class*="icon-"] { opacity: 0.3 }
         }
         // Defaults.
-        [class*="name-"] { colors: $lighter, 0, 0; }
-        // Highlight unread channels.
-        [class*="unread-"] + [class*="content-"] { opacity: 0.9 !important; }
+        [class*="name-"] {
+          opacity: 0.6;
+          colors: $lighter 0 0;
+        }
         // Unread messages.
-        [class*="unread-"] { colors: 0, 0, $lighter; }
+        [class*="unread-"] {
+          colors: 0 0 $lighter;
+          // Highlight unread channels.
+          & + [class*="content-"] > [class*="name-"] { opacity: 1 }
+        }
         // Collapsed containers.
         [class*="collapsed-"] {
           [class*="name-"] { colors: $lighter, 0, 0; }
@@ -1049,7 +1054,10 @@
         &:hover, &[class*="selected-"] {
           > div > [class*="content-"] {
             colors: 0 0 $darker;
-            [class*="name-"] { colors: $light 0 0 }
+            [class*="name-"] {
+              opacity: 1;
+              colors: $light 0 0;
+            }
             svg path { s: $light }
           }
         }
