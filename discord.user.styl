@@ -1969,9 +1969,32 @@
         &:hover { colors: $light 0 $darker }
       }
       // ? User info.
-      [class*="userInfoViewing-"], [class*="userInfoEditing-"] {
+      [class*="userInfo"][class*="cardPrimary-"] {
         radius: $radius;
-        colors: 0, $darker, $dark;
+        colors: 0 $darker $dark;
+        small { colors: $lighter 0 0 }
+        [class*="viewBody-"] {
+          colors: $light 0 0;
+          span[style*="opacity"] { opacity: 1 !important }
+        }
+        [class*="faded-"] { colors: $lighter 0 0 }
+        [class*="avatarUploaderInner-"] {
+          colors: 0 0 $darker;
+          &:hover { box-shadow: none }
+          // Avatar container.
+          > div:first-child {
+            opacity: 0;
+            radius: 50%;
+            visibility: visible;
+            colors: $white 0 $darker;
+            transition: 0.15s ease-in;
+            ../:hover > div:first-child { opacity: 0.9 }
+          }
+        }
+      }
+      [class*="avatarUploaderIndicator-"] {
+        colors: 0 0 $darker;
+        box-shadow: 0 2px 4px 0 $shadow;
       }
       // ? Consent element.
       [class*="consent-"] {
@@ -2114,7 +2137,6 @@
     }
   }
   // TODO: Rewrite/move this somewhere.
-  [class*="faded"] { color: $light !important; opacity: .5; }
   [class*="colorPrimary"] { colors: $light, 0, 0; }
 
   // * Buttons.
