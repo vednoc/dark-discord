@@ -1860,6 +1860,24 @@
     &-control { colors: $lighter, $darker, $dark; }
     &-value-label { colors: $lighter, 0, 0; }
   }
+  // Modals -> Notifications overrides.
+  div[class*="select-"] > [class*="-container"] {
+    > [class*="-control"] {
+      colors: 0 $darker $dark;
+      transition: 0.15s ease;
+      [class*="-placeholder"] {
+        opacity: 1;
+        colors: $lighter 0 0;
+      }
+      &:hover { box-shadow: 0 2px 4px 0 $shadow }
+    }
+    > [class*="-menu"] {
+      colors: 0 $darker $dark;
+      box-shadow: 0 2px 4px 0 $shadow;
+      // Selected item.
+      [class*="-1gnr91b-"], [class*="-option"]:hover { colors: 0 0 $darker }
+    }
+  }
 
   // * Mentions.
   [class*="messagesPopoutWrap-"] {
