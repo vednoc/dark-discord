@@ -2155,12 +2155,13 @@
     &[class*="sInviteRow-"],
     &[class*="bannedUser-"] {
       colors: 0 0 $t;
-      [class*="name-"] { colors: $light 0 0 }
+      box-shadow: 0 1px 0 0 $darker;
+      [class*="code-" i], [class*="name-" i] { colors: $light 0 0 }
       [class*="tag-"], [class*="roleName-"] { colors: $lighter 0 0 }
       &::before {
         radius: $radius;
-        colors: 0 $darker $darker;
-        box-shadow: 0 2px 4px -2px $shadow;
+        colors: 0 $darker $dark;
+        box-shadow: 0 2px 4px 0 $shadow;
       }
     }
   }
