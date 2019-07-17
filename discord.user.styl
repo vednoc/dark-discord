@@ -2039,6 +2039,13 @@
           }
         }
       }
+      // Add role button.
+      [class*="actionButton-"] {
+        transition: 0.15s ease;
+        colors: $lighter $darker $dark;
+        &:hover { colors: 0 0 $darker }
+        svg path { s: $lighter }
+      }
     }
     // * Close button.
     [class*="closeButton-"] {
