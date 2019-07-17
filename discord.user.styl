@@ -2102,6 +2102,12 @@
         ../ [class*="button-"] { colors: $light 0 $darker }
       }
     }
+    // Connected accounts.
+    [class*="connectedAccounts-"] button[class] {
+      radius: $radius;
+      colors: 0 $darker $dark;
+      &:hover { colors: 0 0 $darker }
+    }
     // Confirm/reset the settings.
     [class*="elevationHigh-"] {
       &[style*="rgba(32"] {
