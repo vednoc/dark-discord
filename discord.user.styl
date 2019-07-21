@@ -2135,11 +2135,26 @@
         box-shadow: 0 2px 8px 0 $shadow;
         [style*="rgb(255"] { colors: $light 0 0 }
       }
-      &[style*="rgba(24"] {
+      &[style*="rgba(24"], &[style*="rgb(29"] {
         colors: 0 0 $red;
         box-shadow: 0 2px 8px 0 $shadow;
         [style*="rgb(255"] { colors: $white 0 0 }
       }
+    }
+    // Connected accounts.
+    [class*="elevationLow-"] {
+      box-shadow: 0 2px 8px 0 $shadow;
+      &[style*="background-color: rgb(0\, 154"] { c: 0 0 $cyan }
+      &[style*="background-color: rgb(203\, 33"] { c: 0 0 $red }
+      &[style*="background-color: rgb(29\, 161"] { c: 0 0 $blue }
+      &[style*="background-color: rgb(29\, 185"] { c: 0 0 $green }
+      &[style*="background-color: rgb(89\, 54"] { c: 0 0 $violet }
+      &[style*="background-color: rgb(24\, 35"] { c: 0 0 $magenta }
+      > [class*="Header-"] {
+        radius: $radius $radius 0 0;
+        c: 0 $shadow #00000010;
+      }
+      [class*="titleDefault-"], [class*="description-"] { c: $white 0 0 }
     }
   }
 
