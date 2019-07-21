@@ -776,19 +776,33 @@
     }
   }
 
-  // * User status.
-  [class*="online-"] { colors: 0, $dark, $green; }
-  [class*="idle-"] { colors: 0, $dark, $orange; }
-  [class*="dnd-"] { colors: 0, $dark, $red; }
-  [class*="offline-"] { colors: 0, $dark, 0; }
-  [class*="invisible-"] { colors: 0, $dark, 0; }
-  [class*="unknown-"] { colors: 0, $dark, 0; }
+  // * Global -> Status indicators.
+  [class*="status-"] {
+    &[class*="Red"] { c: $red }
+    &[class*="Green"] { c: $green }
+    &[class*="Orange"] { c: $orange }
+    &[class*="Yellow"] { c: $yellow }
+    &[class*="Online-" i] { c: 0 0 $green }
+    &[class*="Offline-" i] { c: 0 0 gray }
+
+    &[style*="240\, 71\, 71"] { c: 0 0 $red }
+    &[style*="67\, 181\, 129"] { c: 0 0 $green }
+    &[style*="250\, 166\, 26"] { c: 0 0 $orange }
+    &[style*="116\, 127\, 141"] { c: 0 0 gray }
+
+    [fill*="240\, 71\, 71"] { s: $red }
+    [fill*="67\, 181\, 129"] { s: $green }
+    [fill*="250\, 166\, 26"] { s: $orange }
+    [fill*="116\, 127\, 141"] { s: gray }
+  }
+  [class*="pointerEvents-"] {
+    &[fill="#f04747" i] { s: $red }
+    &[fill="#43b581" i] { s: $green }
+    &[fill="#faa61a" i] { s: $orange }
+    &[fill="#747f8d" i] { s: gray }
+  }
 
   // * Text status.
-  [class*="statusGreen"], [style$="(67\, 181\, 129);"] { colors: $green, 0, 0; }
-  [class*="statusOrange"], [style$="(250\, 166\, 26);"] { colors: $orange, 0, 0; }
-  [class*="statusRed"], [style$="(240\, 71\, 71);"] { colors: $red, 0, 0; }
-  [class*="statusYellow"] { colors: $yellow, 0, 0; }
   [class*="titleChecked"], [class*="descChecked"] { colors: $light, 0, 0; }
 
   // * Loading page.
@@ -1417,8 +1431,6 @@
         [class*="title-"], [class*="guildDetail-"] { colors: $lighter, 0, 0; }
         [class*="guildName-"] { colors: $light, 0, 0; }
         [class*="guildNameExpired-"] { colors: $red, 0, 0; }
-        [class*="statusOnline-"] { colors: 0, 0, $green; }
-        [class*="statusOffline-"] { colors: 0, 0, $darker; }
         [class*="lookOutlined-"] { colors: 0, $darker, 0; }
         [class*="lookOutlined-"]:hover { colors: 0, $darker, $darker; }
       }
