@@ -18,6 +18,7 @@
 @var checkbox compact_cozy "Compact mode for cozy messages" 0
 @var checkbox compact_lines "Compact mode visual lines" 0
 @var checkbox msg_dividers "Chat: Enable message dividers" 1
+@var checkbox disable_acm "Disable avatar context menu" 0
 @var checkbox unified_header "WIP: Make the header transparent" 0
 @var checkbox disable_images "WIP: Disable images and show their links" 0
 @var checkbox scrollbars_enabled "Always show scrollbar tracks" 0
@@ -2646,4 +2647,11 @@
     }
   }
 
+  // Feature -> Disable avatar context menu.
+  if ( disable_acm == 1 ) {
+    [class*="avatar-"] {
+      img { text-indent: unset }
+      * { pointer-events: unset }
+    }
+  }
 }
