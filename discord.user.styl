@@ -797,10 +797,12 @@
     [fill*="116\, 127\, 141"] { s: gray }
   }
   [class*="pointerEvents-"] {
-    &[fill="#f04747" i] { s: $red }
-    &[fill="#43b581" i] { s: $green }
-    &[fill="#faa61a" i] { s: $orange }
-    &[fill="#747f8d" i] { s: gray }
+    &[fill="#ffffff" i] { s: $dark }
+    &[mask*="status-off"] { s: gray }
+    &[mask*="status-dnd"] { s: $red }
+    &[mask*="status-onl"] { s: $green }
+    &[mask*="status-idl"] { s: $orange }
+    &[mask*="status-str"] { s: $violet }
   }
 
   // * Text status.
