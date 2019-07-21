@@ -2282,10 +2282,13 @@
       // Fix divider.
       [class*="divider"] { margin: auto 10px !important; }
       // Avatars.
-      [class*="avatar-"] {
-        margin: 1px 4px 0 8px;
-        height: auto; width: auto;
-        [class*="image-"] { height: 16px; width: 16px; }
+      div[class*="avatar-"] {
+        margin: 0 8px 0 8px;
+        // Override inline styles.
+        > div[style] {
+          width: 16px !important;
+          height: @width;
+        }
       }
       // Message content.
       [class*="contentCozy-"] {
@@ -2454,10 +2457,11 @@
     }
     [class*="containerCozyBounded-"] {
       // Avatars.
-      [class*="avatar-"] {
+      div[class*="avatar-"] {
         z-index: 1;
+        radius: 50%;
         colors: 0 0 $darker;
-        box-shadow: 0 0 0 2px $darker;
+        box-shadow: 0 0 0 2.5px $darker;
         &:hover { opacity: 1; }
       }
       // Markup.
