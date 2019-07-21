@@ -973,26 +973,20 @@
 
     // * Friends list.
     [class*="friendsTable-"] {
-      margin-top: 0px; // TODO Remove when fixed on upstream.
-      colors: 0, 0, $dark;
-      [class*="friendsTableHeader-"] {
-        colors: 0, $darker, 0;
-        [class*="friendsColumn-"] { colors: $lighter, 0, 0; }
-        [class*="ColumnSeparator-"] { colors: 0, 0, $darker; }
-      }
-      [class*="friendsTableBody-"] {
-        colors: 0, $shadow, 0;
-        [class*="friendsColumn-"] { colors: $lighter, 0, 0; }
-        [class*="statusText-"] { colors: $light, 0, 0; }
-        [class*="noIcon-"] { colors: $light, 0, $darker; }
-        [class*="friendsRow"] {
-          padding: 8px;
-          margin: 0 16px;
-          border-color: $darker;
-          &:hover {
-            colors: 0, 0, $darker;
-            box-shadow: 0 2px 4px -2px $shadow !important;
-          }
+      margin-top: 0px; // @upstream
+      c: 0 0 $dark;
+      [class*="TableHeader-"] { c: 0 $darker }
+      [class*="Text-"], [class*="Column-"] { c: $light }
+      [class*="Action-"], [class*="Separator-"] { c: 0 0 $darker }
+      [class*="noIcon-"] { c: $light 0 $darker }
+      [class*="friendsRow-"] {
+        padding: 8px;
+        margin: 0 8px 0 16px;
+        border: none !important;
+        box-shadow: 0 1px $darker;
+        &:hover {
+          c: 0 $t $dark;
+          box-shadow: 0 0 0 1px $darker, 0 2px 4px 0 $shadow;
         }
       }
     }
