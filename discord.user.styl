@@ -315,7 +315,7 @@
   // * Firefox scrollbar polyfill.
   if not scrollbars_firefox {
     // ? ChannelInfo/SearchResults/Activity/Store/Modals/Friends/Notifications
-    // ? ActivityFeed/QuickSwitcher/Channels/Context/Chat.
+    // ? ActivityFeed/QuickSwitcher/Channels/Autocomplete/Context/Chat.
     [class*="modal-"][class*="modal-"][class*="size-"],
     [class*="searchResultsWrap-"] > div:last-child,
     [class*="feed-"] +, [class*="Store-"] +,
@@ -325,6 +325,7 @@
     [class*="activityFeed-"],
     [class*="quickswitcher-"],
     [class*="scrollerFade-"] >,
+    [class*="autocomplete-"],
     [class*="contextMenu-"],
     [class*="messages-"] + {
       [class^="scrollbar-"] {
@@ -1477,6 +1478,39 @@
       colors: 0, 0, $dark;
       border-radius: $radius $radius 0 0;
       box-shadow: 0 0px 0 1px $darker;
+      [class*="header-"] {
+        box-shadow: 0 1px $darker;
+        [class*="backButton-"], [class*="title-"] { c: $light }
+        [class*="searchBar-"] {
+          c: 0 0 $dark;
+          box-shadow: inset 0 0 0 1px $darker;
+          input[class] { c: $light $darker $dark }
+        }
+      }
+      [class*="content-"] {
+        [class*="result-"] {
+          &::after { radius: $radius; }
+          &:hover::after {
+            box-shadow: inset 0 0 0 2px $accent, inset 0 0 0 3px $dark;
+          }
+          [class*="gif-"] { radius: $radius }
+        }
+        [class*="Fade-"] {
+          opacity: 0.8;
+          radius: $radius;
+          c: 0 0 $darker;
+        }
+        [class*="FadeBlurple-"] {
+          opacity: 0.8;
+          radius: $radius;
+          c: 0 0 $accent;
+        }
+        [class*="emptyHintCard-"] {
+          radius: $radius;
+          c: $light 0 $darker;
+        }
+        [class*="Text-"] { c: $lighter }
+      }
       [class*="autocompleteInner-"] {
         border: none !important;
         // Command mode icons.
