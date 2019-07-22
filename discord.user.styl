@@ -613,16 +613,20 @@
         box-shadow: 0 2px 4px 0 $shadow;
       }
     }
-    // * User/message status menus.
-    [class^="menu-"], [role="menu"] {
+  }
+
+  // * Global -> User status menu popout.
+  [id^="popout_"] {
+    [class*="menu-"] {
       radius: $radius;
-      colors: 0 0 $t;
-      box-shadow: none;
+      c: 0 0 $dark;
+      box-shadow: inset 0 0 0 1px $darker, 0 2px 4px $shadow;
+      [class*="separator-"] { c: 0 $darker }
       [class^="item"] {
-        colors: $lighter 0 0;
+        c: $lighter 0 0;
         transition: 0.15s ease;
-        &:hover { colors: $light 0 $darker }
-        [class*="helper-"] { colors: $lighter 0 0 }
+        &:hover { c: $light 0 $darker }
+        [class*="helper-"] { c: $lighter }
       }
     }
   }
