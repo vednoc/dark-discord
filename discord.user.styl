@@ -1942,7 +1942,8 @@
     [class^="messageGroupWrapper-"] {
       radius: $radius;
       colors: $light $darker $dark;
-      box-shadow: 0 2px 4px 0 $shadow;
+      box-shadow: 0 2px 8px 0 $shadow;
+      [class*="Meta-"] *:not([class*="username-"]) { c: $lighter }
       > div[class] { margin: 0 0 0 -15px !important; }
       [class*="markup-"], [class*="embed"] {
         colors: $light 0 0;
