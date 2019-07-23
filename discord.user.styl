@@ -894,6 +894,11 @@
     border-radius: $radius;
     colors: 0, 0, $dark;
     box-shadow: 0 0 0 1px $darker;
+    // Message context menu.
+    > [class*="item-"][class*="button-"] {
+      c: $lighter;
+      &:hover { c: $light 0 $darker }
+    }
     // * "Search for" selector.
     > [class*="queryContainer-"] {
       colors: $light, $dark, $darker;
