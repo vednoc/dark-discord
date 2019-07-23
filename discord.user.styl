@@ -1781,9 +1781,12 @@
         padding-bottom: 10px;
         colors: $lighter 0 0;
         > div[class] {
-          filter: invert(
-            calc((1 + var(--icinvert)) * var(--icinvert))
-          ) !important;
+          c: $light;
+          background: none;
+          transform: unset;
+          &:not([class*="disabled-"]) { opacity: 1 }
+          &[class*="Next-"]::before { content: "(>)" }
+          &[class*="Previous-"]::before { content: "(<)" }
         }
       }
     }
