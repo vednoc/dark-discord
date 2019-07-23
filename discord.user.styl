@@ -502,7 +502,7 @@
 
   // * User modal.
   [class^="modal-"] > div > [class*="root"] {
-    border-radius: $radius;
+    radius: $radius;
     colors: 0, 0, $dark;
     border: 1px solid $darker;
     box-shadow: 0 2px 4px 0 $shadow;
@@ -541,7 +541,7 @@
         content: "";
         position: absolute;
         top: 0; right: 0; left: 0;
-        border-radius: $radius $radius 0 0;
+        radius: $radius $radius 0 0;
         border-top: $radius solid $t;
         // colors: 0, 0, $dark;
       }
@@ -589,7 +589,7 @@
     [class*="userInfoSection"] {
       colors: 0, $darker, 0;
       [class*="Accounts"] > [class*="Account"] {
-        border-radius: $radius;
+        radius: $radius;
         colors: 0, $darker, $dark;
         &:hover [class*="AccountName"] { colors: $light, 0, 0; }
         [class*="AccountName"] {
@@ -635,7 +635,7 @@
   // * Popout menus.
   // ? For example: Spotify invitation/Upload a File/etc.
   [class*="popouts-"] [class*="attachPopout-"] {
-    border-radius: $radius;
+    radius: $radius;
     colors: $light, 0, $dark;
     // Text color.
     [class*="RowText"] { colors: $lighter, 0, 0; }
@@ -669,7 +669,7 @@
     // Various modes.
     [class*="header-"] {
       position: relative;
-      border-radius: $radius $radius 0 0;
+      radius: $radius $radius 0 0;
       colors: 0, 0, $t;
       [class*="lookOutlined-"] {
         colors: $lighter, $darker, 0;
@@ -701,7 +701,7 @@
         content: "";
         position: absolute;
         top: 0; right: 0; left: 0;
-        border-radius: $radius $radius 0 0;
+        radius: $radius $radius 0 0;
         border-top: $radius solid $t;
         // colors: 0, 0, $dark;
       }
@@ -847,7 +847,7 @@
 
   // * Guilds.
   [class*="layer-"] > div[style="flex: 1 1 auto;"] > [class*="wrapper-"] {
-    border-radius: 0px;
+    radius: 0px;
     border-right: 1px solid;
     colors: 0, $darker, $dark;
     [class*="separator-" i]{ colors: 0, 0, $darker; }
@@ -891,7 +891,7 @@
 
   // * Search results.
   [class*="popout-"] > [class*="container-"] {
-    border-radius: $radius;
+    radius: $radius;
     colors: 0, 0, $dark;
     box-shadow: 0 0 0 1px $darker;
     // Message context menu.
@@ -1141,7 +1141,7 @@
       > [class*="searchBar-"] {
         width: auto;
         min-width: 144px;
-        border-radius: $radius;
+        radius: $radius;
         transition: min-width 0.2s ease-in-out 0.1s;
       }
       // ? On event.
@@ -1398,7 +1398,7 @@
           z-index: -1;
           content: ""; position: absolute;
           top: 0; right: 0; bottom: 0; left: 0;
-          border-radius: 0 3px 3px 0;
+          radius: 0 3px 3px 0;
           colors: 0 0 $yellow;
         }
         &::after {
@@ -1442,7 +1442,7 @@
       [class*="invite-"][class*="container-"] {
         radius: $radius;
         colors: 0, $darker, $dark;
-        [class*="coverImaageWrapper-"] { border-radius: 0 $radius $radius 0; }
+        [class*="coverImaageWrapper-"] { radius: 0 $radius $radius 0; }
         [class*="helpIcon-"] { colors: 0, 0, $darker; }
         [class*="header-"] { colors: $lighter, 0, 0; }
         [class*="partyStatus-"], [class*="textLink-"] { colors: $light, 0, 0; }
@@ -1469,9 +1469,9 @@
     // Input container.
     > [class^="inner"] {
       colors: 0, 0, $dark;
-      border-radius: $radius;
+      radius: $radius;
       border: 1px solid $darker;
-      &[class*="innerAutocomplete-"] { border-radius: 0 0 $radius $radius; }
+      &[class*="innerAutocomplete-"] { radius: 0 0 $radius $radius; }
     }
     // Input text color.
     textarea { colors: $light, 0, 0; }
@@ -1481,7 +1481,7 @@
     [class*="autocomplete-"][class*="autocomplete-"] {
       margin-bottom: -1px;
       colors: 0, 0, $dark;
-      border-radius: $radius $radius 0 0;
+      radius: $radius $radius 0 0;
       box-shadow: 0 0px 0 1px $darker;
       [class*="header-"] {
         box-shadow: 0 1px $darker;
@@ -1718,7 +1718,7 @@
       colors: $light, 0, 0;
       // Usernames.
       a[href] {
-        border-radius: $radius;
+        radius: $radius;
         // Text colors.
         [class^="name-"] { &, > [class*="activity"] { colors: $lighter, 0, 0; }}
       }
@@ -1762,12 +1762,12 @@
       [class*="searchResult-"] {
         overflow: unset !important;
         &[class*="expanded-"] {
-          border-radius: $radius;
+          radius: $radius;
           border-width: 1px;
           colors: 0 $darker 0;
           > div:last-of-type {
             border-top-width: 1px;
-            border-radius: 0 0 $radius $radius !important;
+            radius: 0 0 $radius $radius !important;
           }
         }
         // Remove unnecessary gradients.
@@ -1777,7 +1777,7 @@
           border-width: 1px !important;
           colors: 0 $darker $dark;
           box-shadow: 0 2px 4px 0 $shadow;
-          ../:not([class*="expanded-"]) [class*="hit"] { border-radius: $radius }
+          ../:not([class*="expanded-"]) [class*="hit"] { radius: $radius }
         }
         [class*="jumpButton-"] { colors: $light 0 $darker }
       }
@@ -1879,7 +1879,7 @@
     }
     // Highlighted channel.
     [class*="resultFocused-"] {
-      border-radius: $radius;
+      radius: $radius;
       colors: 0, 0, $darker;
     }
     // Keybinds.
@@ -1923,7 +1923,7 @@
       // ! Ugh... Native scrollbars. )=
       [class*="scroller-"] + [class*="scrollbar-"] {
         // top: 1px; right: 1px; bottom: 1px;
-        border-radius: 0 $radius $radius 0;
+        radius: 0 $radius $radius 0;
       }
     }
   }
@@ -2525,7 +2525,7 @@
         &::after {
           size: 9px, 30px;
           nav: -20px, 0, 0, -13px;
-          border-radius: 0 0 0 6px;
+          radius: 0 0 0 6px;
           line: true, true;
           // colors: 0, $cyan, 0;
         }
@@ -2576,7 +2576,7 @@
       [class*="containerCozy-"] > a[class*="embed"] {
         overflow: visible;
         margin-left: 15px;
-        border-radius: $radius;
+        radius: $radius;
         box-shadow: 0 0 0 1px inset $darker;
         // colors: 0, 0, $darker;
         &::before {
@@ -2584,7 +2584,7 @@
           line: true, false;
           // colors: 0, $green, 0;
         }
-        img { border-radius: $radius; }
+        img { radius: $radius; }
       }
       // Image you sent, no text.
       [class*="containerCozy"] > div[class*="imageWrapper-"] {
@@ -2639,7 +2639,7 @@
         // Fix blur overflow.
         [aria-hidden] {
           overflow: hidden;
-          border-radius: $radius;
+          radius: $radius;
           box-shadow: 2px 2px 4px 0 $shadow;
         }
       }
