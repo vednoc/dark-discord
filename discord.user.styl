@@ -614,6 +614,18 @@
         box-shadow: 0 2px 4px 0 $shadow;
       }
     }
+    // Reset server options menu.
+    [class*="menu-"] {
+      width: unset;
+      radius: unset;
+      c: 0 0 $t;
+      box-shadow: none;
+      [class*="item-"] {
+        c: $lighter 0 0;
+        transition: 0.15s ease;
+        &:hover { c: $light 0 $darker }
+      }
+    }
   }
 
   // * Global -> User status menu popout.
@@ -623,7 +635,7 @@
       c: 0 0 $dark;
       box-shadow: inset 0 0 0 1px $darker, 0 2px 4px $shadow;
       [class*="separator-"] { c: 0 $darker }
-      [class^="item"] {
+      [class*="item-"] {
         c: $lighter 0 0;
         transition: 0.15s ease;
         &:hover { c: $light 0 $darker }
