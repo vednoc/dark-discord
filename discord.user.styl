@@ -13,7 +13,7 @@
 @var checkbox remove_notifications "Notification-free mode" 0
 @var checkbox min_guilds "Minimize width of guild area" 0
 @var checkbox mid_guilds "Small guild icons" 0
-@var text guild_size "Small guild icons size" 40px
+@var text guild_size "Small guild icons size" 32px
 @var checkbox paddingless_cozy "Remove padding for cozy messages" 0
 @var checkbox compact_cozy "Compact mode for cozy messages" 0
 @var checkbox compact_lines "Compact mode visual lines" 0
@@ -2383,8 +2383,42 @@
           width: ($size + 12px) !important;
         }
       }
+      // Folders!
+      > div[class] > div[class] > [class*="wrapper-"] {
+        c: 0 0 $t;
+        [class*="FolderBackground-"]:not([class*="collapsed"]) {
+          left: 10px;
+          width: $size;
+          radius: 12px;
+          c: 0 0 $dark;
+          box-shadow: 0 0 0 2px $dark, 0 0 0 4px $darker;
+        }
+        [class*="listItem-"] {
+          > [draggable] {
+            [class*="wrapper-"], svg {
+              width: $size;
+              height: $size;
+            }
+            [class*="folder-"] {
+              c: 0 0 $darker;
+            }
+          }
+          [class*="badgeWrapper-"] [class*="lowerBadge-"] {
+            right: 0 !important;
+            top: unset !important;
+          }
+        }
+        [class*="expandedGuilds-"] {
+          height: unset !important;
+          [class*="pill-"] { top: 0 !important }
+          [class*="blobContainer-"] [class*="wrapper-"] {
+            width: unset;
+            height: unset;
+          }
+        }
+      }
     }
-    // * Guilds wrapper.
+    // Guilds!
     [class*="listItem-"] {
       justify-content: flex-start;
       padding-left: 10px;
