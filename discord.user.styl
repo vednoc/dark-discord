@@ -2792,10 +2792,14 @@
     }
   }
 
-  // Feature -> Better wide emojis!
-  .emoji[aria-label*="wide"] {
-    width: 2rem !important;
-    height: 2rem !important;
-    margin-right: -1px !important;
+  // Feature -> Better long/wide emotes!
+  .emoji {
+    &[aria-label*="long" i],
+    &[aria-label*="wide" i] {
+      width: 2rem !important;
+      height: 2rem !important;
+      margin-right: -1px !important;
+      margin-bottom: -3px !important;
+    }
   }
 }
