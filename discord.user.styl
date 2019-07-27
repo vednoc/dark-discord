@@ -390,6 +390,15 @@
         &[style*="114\, 137\, 218"] { colors: 0 $accent $accent }
       }
       [class*="reactors-"], [class*="sidebar-"] { colors: 0 0 $t }
+      // Confirm message deletion.
+      [class*="content-"] > [class*="message-"] {
+        radius: $radius;
+        border: 1px solid;
+        c: 0 $darker $dark;
+        box-shadow: 0 2px 4px 0 $shadow;
+        [class*="markup-"] { c: $light }
+        [class*="timestamp"] { c: $lighter }
+      }
     }
     // Default-ish colors.
     [class*="primary-"] { colors: $light, 0, 0; }
