@@ -510,6 +510,19 @@
     [class*="content-"] > [class*="primary-"] { color: $lighter, 0, 0; }
   }
 
+  // Modals -> Folder settings.
+  [class*="small-"][role="dialog"] {
+    c: 0 0 $dark;
+    box-shadow: inset 0 0 0 1px $darker, 0 2px 8px $shadow;
+    h5 { c: $lighter }
+    [class*="close-"] { c: $lighter }
+    [class*="defaultColor-"] { c: $light }
+    [class*="colorPickerSwatch-"] { c: 0 $shadow }
+    [class*="footer-"] {
+      c: 0 0 $t;
+      box-shadow: inset 0 1px $darker;
+    }
+  }
   // * User modal.
   [class^="modal-"] > div > [class*="root"] {
     radius: $radius;
