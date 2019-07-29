@@ -2615,13 +2615,24 @@
           line: true, false;
           // colors: 0, $red, 0;
         }
-        // Curved line.
-        &::after {
-          size: 9px, 30px;
-          nav: -20px, 0, 0, -13px;
-          radius: 0 0 0 6px;
-          line: true, true;
-          // colors: 0, $cyan, 0;
+        if ! compact_cozy {
+          // Curved line.
+          &::after {
+            size: 9px, 15px;
+            nav: -5px, 0, 0, -13px;
+            radius: 0 0 0 6px;
+            line: true, true;
+            // colors: 0, $cyan, 0;
+          }
+        } else {
+          // Curved line.
+          &::after {
+            size: 9px, 30px;
+            nav: -20px, 0, 0, -13px;
+            radius: 0 0 0 6px;
+            line: true, true;
+            // colors: 0, $cyan, 0;
+          }				
         }
       }
       // Reset for the last pseudo elements.
