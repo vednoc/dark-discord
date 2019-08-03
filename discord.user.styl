@@ -1356,7 +1356,11 @@
         [class^="markup-"] {
           colors: $light, 0, 0;
           a { colors: $accent, 0, 0; }
-          // ? Spoilers.
+
+          // Quotes.
+          blockquote { c: $lighter $lighter }
+
+          // Spoilers.
           [class*="spoilerText-"] {
             position: relative;
             radius: $radius;
