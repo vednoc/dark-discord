@@ -114,7 +114,7 @@
   }
 
   // SVG colors.
-  s(x, y = 0, xi = 1, yi = 1) {
+  v(x, y = 0, xi = 1, yi = 1) {
     if x is a 'call' or x is a 'rgba' {   fill: xi is 0 ? x : x !important }
     if y is a 'call' or y is a 'rgba' { stroke: yi is 0 ? y : y !important }
   }
@@ -150,19 +150,19 @@
     [class*="lookFilled-"] { colors: $white 0 $blue }
   }
   // Voice chat controls.
-  [class*="buttonIcon-"] path { s: $lighter }
+  [class*="buttonIcon-"] path { v: $lighter }
   // * Icons -> Misc.
   [class*="mobileIndicator-"],
   [class*="addButtonIcon-"] polygon,
   svg path[class*="attachButtonPlus-"] {
-    s: $lighter;
+    v: $lighter;
   }
   // * Icons -> User controls.
   [class*="Icon-"] {
-    &[name="Gear"] path[fill] { s: $lighter }
+    &[name="Gear"] path[fill] { v: $lighter }
     &[name*="Headset"], &[name*="Microphone"] {
-      path[fill]:not([class*="red-"]) { s: $lighter }
-      path[fill][class*="red-"] { s: $red }
+      path[fill]:not([class*="red-"]) { v: $lighter }
+      path[fill][class*="red-"] { v: $red }
     }
   }
   // * Icons -> Global.
@@ -171,28 +171,28 @@
     path[fill="currentColor"],
     g[fill="currentColor"] > path,
     path[fill^="#FFF"] {
-      s: $lighter
+      v: $lighter
     }
     // Selected/active icons.
-    &[class*="selected-"] path[fill] { s: $accent }
+    &[class*="selected-"] path[fill] { v: $accent }
     // Muted channel.
-    path[fill][class*="strikethrough-"] { s: $red }
+    path[fill][class*="strikethrough-"] { v: $red }
     // Guild/DM owner.
-    &[class*="ownerIcon-"] path { s: $orange }
+    &[class*="ownerIcon-"] path { v: $orange }
     // Partnered guilds.
     svg[class*="flowerStar-"] {
-      s: 0 $dark;
-      path[fill] { s: $accent }
-      + [class*="childContainer-"] path[fill] { s: $white }
+      v: 0 $dark;
+      path[fill] { v: $accent }
+      + [class*="childContainer-"] path[fill] { v: $white }
     }
     // Nitro-Booster!
-    &[class*="premiumIcon-"] path { s: $violet }
+    &[class*="premiumIcon-"] path { v: $violet }
   }
-  svg[class*="button"] path[stroke="#FFF"] { s: 0 $lighter }
+  svg[class*="button"] path[stroke="#FFF"] { v: 0 $lighter }
   // Server owner icon.
-  [class*="ownerHelpIcon-"] path { s: $orange }
+  [class*="ownerHelpIcon-"] path { v: $orange }
   // Overflow icon in server members.
-  [class*="overflowIconFg-"] { s: $lighter }
+  [class*="overflowIconFg-"] { v: $lighter }
   // * Icons -> Non-svg mic/headphone/cogwheel reset.
   [class*="accountDetails-"] + div {
     > div, > button {
@@ -226,12 +226,12 @@
   // * Global -> Checkboxes.
   [class*="checkbox-"]:not([class*="wrapper" i]) {
     colors: 0, $dark, $darker;
-    &[class*="checked-"] svg polyline { s: 0 $light }
+    &[class*="checked-"] svg polyline { v: 0 $light }
     &[class*="round-"] {
       colors: 0, $darker, $dark;
       &[class*="checked-"] {
         colors: 0, $green, 0;
-        svg polyline { s: 0 $green }
+        svg polyline { v: 0 $green }
       }
     }
   }
@@ -559,7 +559,7 @@
           [class*="barInner-"] { colors: 0, 0, $accent; }
         }
         // Icons.
-        [class*="listenAlongIcon-"] path { s: $lighter }
+        [class*="listenAlongIcon-"] path { v: $lighter }
       }
       // Fake border.
       &::before {
@@ -730,7 +730,7 @@
           [class*="barInner-"] { colors: 0, 0, $accent; }
         }
         // Icons.
-        [class*="listenAlongIcon-"] path { s: $lighter }
+        [class*="listenAlongIcon-"] path { v: $lighter }
       }
       // Fake border.
       &::before {
@@ -833,25 +833,25 @@
     &[style*="250\, 166\, 26"] { c: 0 0 $orange }
     &[style*="116\, 127\, 141"] { c: 0 0 gray }
 
-    [fill*="240\, 71\, 71"] { s: $red }
-    [fill*="67\, 181\, 129"] { s: $green }
-    [fill*="250\, 166\, 26"] { s: $orange }
-    [fill*="116\, 127\, 141"] { s: gray }
+    [fill*="240\, 71\, 71"] { v: $red }
+    [fill*="67\, 181\, 129"] { v: $green }
+    [fill*="250\, 166\, 26"] { v: $orange }
+    [fill*="116\, 127\, 141"] { v: gray }
   }
   // Primary status indicator.
   [class*="cursorDefault-"] {
-    [fill*="240\, 71\, 71"] { s: $red }
-    [fill*="67\, 181\, 129"] { s: $green }
-    [fill*="250\, 166\, 26"] { s: $orange }
+    [fill*="240\, 71\, 71"] { v: $red }
+    [fill*="67\, 181\, 129"] { v: $green }
+    [fill*="250\, 166\, 26"] { v: $orange }
   }
   // Secondary status indicator.
   [class*="pointerEvents-"] {
-    &[fill="#ffffff" i] { s: $dark }
-    &[mask*="status-off"] { s: gray }
-    &[mask*="status-dnd"] { s: $red }
-    &[mask*="status-onl"] { s: $green }
-    &[mask*="status-idl"] { s: $orange }
-    &[mask*="status-str"] { s: $violet }
+    &[fill="#ffffff" i] { v: $dark }
+    &[mask*="status-off"] { v: gray }
+    &[mask*="status-dnd"] { v: $red }
+    &[mask*="status-onl"] { v: $green }
+    &[mask*="status-idl"] { v: $orange }
+    &[mask*="status-str"] { v: $violet }
   }
 
   // * Text status.
@@ -1140,7 +1140,7 @@
               opacity: 1;
               colors: $light 0 0;
             }
-            svg path { s: $light }
+            svg path { v: $light }
           }
         }
         // Voice channels.
@@ -1567,7 +1567,7 @@
       [class*="autocompleteInner-"] {
         border: none !important;
         // Command mode icons.
-        [class*="iconForeground"] { s: $icon }
+        [class*="iconForeground"] { v: $icon }
         // Title/description selectors.
         [class*="Title"], [class*="description"] { colors: $lighter, 0, 0; }
         [class*="contentTitle"] strong { colors: $light, 0, 0; }
@@ -1939,7 +1939,7 @@
     [class*="keybindShortcut-"] span {
       colors: $lighter, $darker, $dark;
       box-shadow: inset 0 -4px 0 $darker;
-      [class*="bindArrow-"] > g { s: $lighter }
+      [class*="bindArrow-"] > g { v: $lighter }
     }
   }
 
@@ -2170,7 +2170,7 @@
         transition: 0.15s ease;
         colors: $lighter $darker $dark;
         &:hover { colors: 0 0 $darker }
-        svg path { s: $lighter }
+        svg path { v: $lighter }
       }
     }
     // * Close button.
@@ -2178,7 +2178,7 @@
       colors: 0, $darker, 0;
       transition: 0.2s ease;
       &:hover { colors: 0, 0, $darker; }
-      path[fill*="#dcddde"] { s: $lighter }
+      path[fill*="#dcddde"] { v: $lighter }
       + [class*="keybind"] { colors: $lighter, 0, 0; }
     }
     // * Audit log.
