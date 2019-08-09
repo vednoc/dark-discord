@@ -31,6 +31,7 @@
 @var text b_radius "Custom border radius" 4px
 
 @var color dark    "Dark color.   " #222222
+@var color darken  "Darken color. " #262626
 @var color darker  "Darker color. " #2f2f2f
 @var color light   "Light color.  " #d1d1d1
 @var color lighter "Lighter color." #c9c9c9
@@ -53,11 +54,11 @@
   :root {
     --note    : "Dark-Discord v0.24.2";
     --dark    : dark;
+    --darken  : darken;
     --darker  : darker;
     --light   : light;
     --lighter : lighter;
     --accent  : accent;
-    --icon    : icon;
     --shadow  : shadow;
     --bshadow : 0 2px 3px 0 var(--shadow);
     --yellow  : yellow;
@@ -78,11 +79,11 @@
 
   // * Use stylus-lang variables with CSS variables.
   $dark    = var(--dark);
+  $darken  = var(--darken);
   $darker  = var(--darker);
   $light   = var(--light);
   $lighter = var(--lighter);
   $accent  = var(--accent);
-  $icon    = var(--icon);
   $shadow  = var(--shadow);
   $bshadow = var(--box-shadow);
   $yellow  = var(--yellow);
@@ -1567,7 +1568,7 @@
       [class*="autocompleteInner-"] {
         border: none !important;
         // Command mode icons.
-        [class*="iconForeground"] { v: $icon }
+        [class*="iconForeground"] { v: $light }
         // Title/description selectors.
         [class*="Title"], [class*="description"] { colors: $lighter, 0, 0; }
         [class*="contentTitle"] strong { colors: $light, 0, 0; }
@@ -1924,7 +1925,7 @@
     [class*="match"], [class*="header"] { colors: $accent, 0, 0; }
     [class*="header"], [class*="username"] { colors: $light, 0, 0; }
     [class*="tips"], [class*="content"], [class*="note"] { colors: $lighter, 0, 0; }
-    [class*="icon"] { colors: $icon, 0, 0; }
+    [class*="icon"] { c: $light }
     // Unread messages badge.
     [class*="badge-"] {
       colors: $dark, 0, $accent;
