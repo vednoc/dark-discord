@@ -1478,7 +1478,7 @@
       // * Invite embed.
       [class*="wrapper-"][class*="userSelectNone"] {
         radius: $radius;
-        colors: 0, $darker, $dark;
+        c: 0 $darker $darken;
         box-shadow: 0 2px 4px -1px $shadow;
         [class*="title-"], [class*="guildDetail-"] { colors: $lighter, 0, 0; }
         [class*="guildName-"] { colors: $light, 0, 0; }
@@ -1490,7 +1490,7 @@
       // * Spotify party invite.
       [class*="invite-"][class*="container-"] {
         radius: $radius;
-        colors: 0, $darker, $dark;
+        c: 0 $darker $darken;
         [class*="coverImaageWrapper-"] { radius: 0 $radius $radius 0; }
         [class*="helpIcon-"] { colors: 0, 0, $darker; }
         [class*="header-"] { colors: $lighter, 0, 0; }
@@ -1517,7 +1517,7 @@
     colors: 0, $darker, 0;
     // Input container.
     > [class^="inner"] {
-      colors: 0, 0, $dark;
+      c: 0 0 $darken;
       radius: $radius;
       border: 1px solid $darker;
       &[class*="innerAutocomplete-"] { radius: 0 0 $radius $radius; }
@@ -1528,10 +1528,9 @@
     [class*="divider"], [class*="Divider"] { colors: 0, 0, $darker; }
     // ? Emojis, mentions, commands popout.
     [class*="autocomplete-"][class*="autocomplete-"] {
-      margin-bottom: -1px;
-      colors: 0, 0, $dark;
+      c: 0 0 $darken;
       radius: $radius $radius 0 0;
-      box-shadow: 0 0px 0 1px $darker;
+      box-shadow: 0 0 0 1px $darker;
       [class*="header-"] {
         box-shadow: 0 1px $darker;
         [class*="backButton-"], [class*="title-"] { c: $light }
@@ -1870,7 +1869,7 @@
     }
     pre {
       radius: $radius;
-      colors: 0 $darker $dark;
+      c: 0 $darker $darken;
       border-width: 1px !important;
       box-shadow: 0 2px 4px 0 $shadow;
       code {
