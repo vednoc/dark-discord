@@ -226,8 +226,11 @@
 
   // * Global -> Checkboxes.
   [class*="checkbox-"]:not([class*="wrapper" i]) {
-    colors: 0, $dark, $darker;
-    &[class*="checked-"] svg polyline { v: 0 $light }
+    c: 0 $darker $dark;
+    &[class*="checked-"] {
+      c: 0 0 $darker;
+      svg polyline { v: 0 $accent }
+    }
     &[class*="round-"] {
       colors: 0, $darker, $dark;
       &[class*="checked-"] {
@@ -462,8 +465,8 @@
 
   // * Upload modal.
   [class*="uploadModal-"] {
+    border: 1px solid $darker;
     colors: 0, 0, $dark;
-    box-shadow: inset 0 0 0 2px $darker;
     [class*="inner-"] {
       colors: $lighter, $darker, 0;
       // Different file-types.
@@ -482,7 +485,8 @@
     }
     // ? Controls.
     [class*="footer-"] {
-      colors: 0, 0, $darker;
+      radius: 0 0 10px 10px;
+      c: 0 0 $darken;
       box-shadow: inset 0 1px 0 0 $darker;
       [class*="label"] * { colors: $lighter, 0, 0; }
       // Cancel button.
@@ -545,7 +549,7 @@
     }
     [class*="topSection"] {
       colors: 0, 0, $t;
-      [class*="headerFill-"] { colors: 0, 0, $t; }
+      [class*="header-"], [class*="headerFill-"] { c: 0 0 $darken }
       [class*="activityProfile-"] {
         border-top: 1px solid $darker;
         colors: 0, 0, $t;
@@ -705,10 +709,10 @@
       [class*="Tag"], .discrimnator { colors: $lighter, 0, 0; }
     }
     // Various modes.
-    [class*="header-"] {
+    > [class*="header-"] {
       position: relative;
       radius: $radius $radius 0 0;
-      colors: 0, 0, $t;
+      c: 0 0 $darken;
       [class*="lookOutlined-"] {
         colors: $lighter, $darker, 0;
         &:hover { colors: $light, 0, $darker; }
@@ -1989,7 +1993,7 @@
   // Modals -> Notifications overrides.
   div[class*="select-"] > [class*="-container"] {
     > [class*="-control"] {
-      colors: 0 $darker $dark;
+      colors: 0 $darker $darken;
       transition: 0.15s ease;
       [class*="-placeholder"] {
         opacity: 1;
@@ -2000,6 +2004,7 @@
     > [class*="-menu"] {
       colors: 0 $darker $dark;
       box-shadow: 0 2px 4px 0 $shadow;
+      > * { c: 0 0 $darken }
       // Selected item.
       [class*="-1gnr91b-"], [class*="-option"]:hover { colors: 0 0 $darker }
     }
@@ -2013,7 +2018,7 @@
     border: none !important;
     colors: $light $darker $dark;
     [class^="header-"]:not([class^="headerCozy"]) {
-      colors: 0 0 $t;
+      colors: 0 0 $darken;
       box-shadow: 0 1px $darker;
       [class*="title-"] { colors: $light 0 0 }
       // Tabs.
@@ -2057,7 +2062,7 @@
     }
     [class*="emptyPlaceholder-"] [class*="body-"] { colors: $lighter, 0, 0; }
     [class*="footer-"][class*="footer-"] {
-      colors: 0 0 $t;
+      colors: 0 0 $darken;
       box-shadow: inset 0 1px $darker;
       [class*="tip-"] {
         colors: $lighter 0 0;
@@ -2118,7 +2123,7 @@
       // ? User info.
       [class*="userInfo"][class*="cardPrimary-"] {
         radius: $radius;
-        colors: 0 $darker $dark;
+        c: 0 $darker $darken;
         small { colors: $lighter 0 0 }
         [class*="viewBody-"] {
           colors: $light 0 0;
@@ -2275,13 +2280,13 @@
     [class*="desc-"] { colors: $lighter, 0, 0; }
     [class*="anchor-"] { colors: $accent, 0, 0; }
     [class*="checkbox-"] {
-      colors: 0, $dark, 0;
+      c: 0 $darker $dark;
       &[class*="checked-"] { colors: 0, 0, $dark; }
     }
     // Main cards.
     &[class*="cardPrimary"] {
       radius: $radius;
-      colors: 0 $darker $dark;
+      colors: 0 $darker $darken;
       &[style*="114\, 137\, 218"] { colors: 0 $accent 0 }
     }
     // Colorized cards.
