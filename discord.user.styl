@@ -656,6 +656,10 @@
         &:hover { c: $light 0 $darker }
       }
     }
+    // Fix blurry text ono server options menu.
+    > [style*="translateX"] {
+      transform: translateX(-100px) !important;
+    }
   }
 
   // * Global -> User status menu popout.
