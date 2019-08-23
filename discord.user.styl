@@ -1363,7 +1363,10 @@
           a { colors: $accent, 0, 0; }
 
           // Quotes.
-          blockquote { c: $lighter $lighter }
+          [class*="blockquoteContainer-"] {
+            [class*="Divider-"] { c: 0 0 $lighter }
+            blockquote { c: $lighter }
+          }
 
           // Spoilers.
           [class*="spoilerText-"] {
