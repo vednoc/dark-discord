@@ -1052,7 +1052,7 @@
         border: none !important;
         box-shadow: 0 1px $darker;
         &:hover {
-          c: 0 $t $dark;
+          c: 0 $t $darken;
           box-shadow: 0 0 0 1px $darker, 0 2px 4px 0 $shadow;
         }
       }
@@ -1363,7 +1363,7 @@
         }
         [class*="timestampCozy-"] {
           opacity: 0.5;
-          colors: $light, 0, 0;
+          c: $lighter;
         }
         [class*="edited-"] { colors: $lighter, 0, 0; }
         [class^="markup-"] {
@@ -1387,8 +1387,8 @@
               nav: 0 0 0 0;
               radius: $radius;
               position: absolute;
-              colors: 0 0 $darker;
-              opacity: 0.3;
+              colors: 0 0 $darken;
+              opacity: 0.5;
             }
             &[class*="hidden-"] {
               radius: $radius;
@@ -1630,7 +1630,7 @@
     [class*="header-"] {
       colors: 0, $darker, 0;
       input { colors: $light 0 0 }
-      [class*="searchBar-"] { colors: 0 0 $t }
+      [class*="searchBar-"] { c: 0 0 $darken }
     }
     // Frequently used.
     [class*="stickyHeader-"] { colors: 0, 0, $dark; }
@@ -2323,7 +2323,7 @@
       [class*="tag-"], [class*="roleName-"] { colors: $lighter 0 0 }
       &::before {
         radius: $radius;
-        colors: 0 $darker $dark;
+        c: 0 $darker $darken;
         box-shadow: 0 2px 4px 0 $shadow;
       }
     }
