@@ -1428,7 +1428,9 @@
         // ? Message separators; sibling of message-* selectors.
         if msg_options {
           [class*="buttonContainer"]:hover + [class^="markup"] {
-            colors: 0, 0, $darker;
+            radius: 3px;
+            c: 0 0 $darken;
+            box-shadow: 0 0 0 2px $darken;
           }
         }
       }
