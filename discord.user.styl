@@ -657,7 +657,7 @@
       }
     }
     // Fix blurry text ono server options menu.
-    > [style*="translateX"] {
+    > [style*="translateY(0%) translateX(-50%) translateZ(0px)"] {
       transform: translateX(-100px) !important;
     }
   }
@@ -669,7 +669,10 @@
       radius: $radius;
       c: 0 0 $dark;
       box-shadow: 0 2px 4px $shadow;
-      [class*="separator-"] { c: 0 $darker }
+      [class*="separator-"] {
+        c: 0 $darker;
+        &:last-child { border: none }
+      }
       [class*="item-"] {
         c: $lighter 0 0;
         transition: 0.15s ease;
