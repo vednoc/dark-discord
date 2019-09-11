@@ -1965,31 +1965,19 @@
     }
   }
 
-  // * Context menu.
+  // Global -> Context menu.
   [class*="contextMenu-"] {
     radius: $radius;
-    colors: 0, 0, $dark;
+    c: 0 0 $dark;
     box-shadow: 0 2px 4px -1px $shadow, 0 0 0 1px $darker !important;
     [class*="itemGroup-"] {
-      colors: 0, $darker, 0;
+      c: 0 $darker;
       [class*="item-"] {
         radius: 0;
-        colors: $lighter, 0, 0;
-        &:hover { colors: $accent, 0, $darker; }
+        c: $lighter;
+        &:hover { c: $light 0 $darken }
       }
-      // Reset child elements of item groups and sub-menus.
-      &:first-child, [class*="itemSubMenu-"] {
-        [class*="item-"]:first-child {
-          margin-top: 0px;
-          radius: $radius $radius 0 0;
-        }
-      }
-      &:last-child, [class*="itemSubMenu-"] {
-        [class*="item-"]:last-child {
-          margin-bottom: 0px;
-          radius: 0 0 $radius $radius;
-        }
-      }
+      [class *= 'label-'] { c: $lighter }
     }
     // Fix scrolllbars.
     [class*="firefoxFixScrollFlex-"] {
