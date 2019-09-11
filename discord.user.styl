@@ -1036,10 +1036,6 @@
 
   // * Main area.
   [class*="base"] {
-    // ? Make guild channels have transparent background.
-    > [class*="spacer"] > [class*="channels"] > [class*="noWrap"] {
-      colors: 0, 0, $t;
-    }
 
     // * Friends list.
     [class*="friendsTable-"] {
@@ -1061,10 +1057,10 @@
       }
     }
 
-    // ? Friends -> Title-bar.
-    [class*="channels-"] + [class*="container-"] > [class*="container-"] {
-      colors: 0, 0, $dark;
-      box-shadow: 0 1px 0 0 $darker !important;
+    // Friends -> Title-bar.
+    [class*="sidebar-"] + [class*="container-"] > [class*="container-"] {
+      c: 0 0 $dark;
+      box-shadow: 0 1px $darker;
       [class*="children-"] {
         &::after { display: none; }
         [class*="title-"] { colors: $light, 0, 0; }
