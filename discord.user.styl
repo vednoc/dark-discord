@@ -1352,26 +1352,24 @@
         }
       }
 
-      // * Messages.
-      [class*="message-"] {
-        // ? Style all but the ones that don't have OnHover class.
-        [class*="timestampCompact"]:not([class*="OnHover"]) {
-          opacity: 0.5;
-          colors: $lighter, 0, 0;
+      /// Messages.
+      [class*="messages-"] {
+        /// Compact -> Message timestamps.
+        [class *= 'messageCompact-'] {
+          [class *= 'timestamp']:not([class *= 'VisibleOnHover-']),
+          &:hover [class *= 'VisibleOnHover-'] {
+            c: $lighter;
+          }
         }
-        // ? Apply styles regardless of class on every hover event.
-        &:hover [class*="timestampCompact"] {
-          opacity: 1;
-          colors: $light, 0, 0;
-        }
+        /// Message elements.
+        [class*="edited-"],
         [class*="timestampCozy-"] {
           opacity: 0.5;
           c: $lighter;
         }
-        [class*="edited-"] { colors: $lighter, 0, 0; }
         [class^="markup-"] {
-          colors: $light, 0, 0;
-          a { colors: $accent, 0, 0; }
+          c: $light;
+          a { c: $accent }
 
           // Quotes.
           [class*="blockquoteContainer-"] {
