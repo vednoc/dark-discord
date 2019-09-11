@@ -1084,16 +1084,17 @@
       }
     }
 
-    // ? Global channels.
-    [class*="channels"] {
+    // Sidebar -> Channels.
+    [class*="sidebar-"] {
       border-right: 1px solid;
       colors: 0, $darker, $dark;
-
+      /// Remove background.
+      > [class *= 'container-'] { c: 0 0 $t }
       // ? Guild name/menu.
-      [class*="hasDropdown-"] > [class*="header-"] {
-        colors: $light, 0, 0;
-        box-shadow: 0 1px 0 0 $darker;
-        &:hover { colors: 0, 0, $darker; }
+      [class *= 'header-'] {
+        c: $light;
+        box-shadow: 0 1px $darker;
+        &:hover { c: 0 0 $darken }
       }
       // ? Remove unnecessary shadow on notification bar.
       [class*="positionedContainer-"] > [class*="unread"] > div {
@@ -1128,35 +1129,37 @@
       // ? Channels.
       // Channel containers.
       [class*="containerDefault-"] {
-        > div[class] > [class*="content-"] {
-          radius: $radius;
-          > [class*="icon-"] { opacity: 0.3 }
+        /// Defaults.
+        :not([class *= 'mode']) [class *= 'content-'] {
+          > svg path, > [class*="name-"] {
+            opacity: 0.6;
+            c: $lighter;
+          }
         }
-        // Defaults.
-        [class*="name-"] {
+        /// Unread messages.
+        [class *= 'modeUnread-'] {
+          [class *= 'unread-'] { c: 0 0 $lighter }
+          [class *= 'name-'] { c: $light }
+        }
+        /// Muted channels.
+        [class *= 'modeMuted-'] {
+          [class *= 'name-'], [class *= "icon-"] { opacity: 0.6 }
+        }
+        /// Muted text.
+        [class *= 'muted-'] {
           opacity: 0.6;
-          colors: $lighter 0 0;
+          [class *= 'name-'] { c: $lighter }
+          [class *= 'name-']:hover { c: $light }
         }
-        // Unread messages.
-        [class*="unread-"] {
-          colors: 0 0 $lighter;
-          // Highlight unread channels.
-          & + [class*="content-"] > [class*="name-"] { opacity: 1 }
+        /// Collapsed.
+        [class *= 'clickable-'], [class *= 'collapsed-'] {
+          [class *= 'name-'] { c: $lighter }
         }
-        // Collapsed containers.
-        [class*="collapsed-"] {
-          [class*="name-"] { colors: $lighter, 0, 0; }
-          [class*="name-"]:hover { colors: $light, 0, 0; }
-        }
-        // Text channels.
+        // On event.
         &:hover, &[class*="selected-"] {
-          > div > [class*="content-"] {
+          [class *= 'content-'] {
             colors: 0 0 $darker;
-            [class*="name-"] {
-              opacity: 1;
-              colors: $light 0 0;
-            }
-            svg path { v: $light }
+            [class *= 'name-'] { c: $light }
           }
         }
         // Voice channels.
