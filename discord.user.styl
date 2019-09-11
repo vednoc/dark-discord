@@ -807,8 +807,11 @@
     }
   }
 
-  // * User controls.
-  [class^="channels"][class*="vertical"] {
+  // Sidebar -> User controls.
+  [class *= 'sidebar-'] > [class *= 'panels-'] {
+    c: 0 0 $dark;
+    [class *= 'title-'] { c: $light }
+    [class *= 'subtext-'] { c: $lighter }
     // VC status.
     > div {
       border-bottom: none;
