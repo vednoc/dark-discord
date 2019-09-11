@@ -906,10 +906,10 @@
   }
 
   // * Guilds.
-  [class*="layer-"] > div[style="flex: 1 1 auto;"] > [class*="wrapper-"] {
+  [class *= 'guilds-'] {
     radius: 0px;
-    border-right: 1px solid;
-    colors: 0, $darker, $dark;
+    c: 0 0 $dark;
+    box-shadow: inset -1px 0 $darker;
     [class*="separator-" i]{ colors: 0, 0, $darker; }
     // * Guild wrapper.
     [class*="listItem-"] {
