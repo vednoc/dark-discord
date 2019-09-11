@@ -1772,33 +1772,31 @@
     }
   }
 
-  // * Private channels.
+  // Sidebar -> Private channels.
   [class^="privateChannels-"] {
-    // Headers.
-    header {
-      opacity: 1;
-      colors: $lighter 0 0;
+    c: 0 0 $t;
+    /// Headers.
+    [class *= 'header'] {
+      c: $lighter;
+      box-shadow: none !important;
     }
-    // Channel related styles.
+    /// Channels.
     [class^="channel-"] {
-      colors: $light, 0, 0;
-      // Usernames.
-      a[href] {
-        radius: $radius;
-        // Text colors.
-        [class^="name-"] { &, > [class*="activity"] { colors: $lighter, 0, 0; }}
-      }
-      // ? Different states.
+      c: $light;
+      /// Text.
+      [class^="name-"] { c: $light }
+      [class^="activity-"] { c: $lighter }
+      /// Different states.
       &:hover, &:active, &[class*="selected-"] {
-        a[href] {
-          colors: 0 0 $darker;
+        > * {
+          c: 0 0 $darker;
           [class*="name-"] { colors: $light 0 0 }
           [class*="status-"] { colors: 0 $darker 0 }
         }
       }
-      // Fade similarly to guild channels.
+      /// Fade similarly to guild channels.
       &:not(:hover):not([class*="selected-"]) {
-        [class*="name-"] { opacity: 0.6; }
+        [class *= 'name-'], [class *= 'activity-'] { opacity: 0.6 }
       }
     }
   }
