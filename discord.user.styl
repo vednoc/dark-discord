@@ -878,7 +878,7 @@
     > [class*="username"] { color: inherit !important; }
   }
 
-  // * Guilds.
+  // Guilds.
   [class *= 'guilds-'] {
     radius: 0px;
     c: 0 0 $dark;
@@ -895,11 +895,15 @@
         colors: $lighter, 0, $darker;
         box-shadow: 0 0 0 1px inset $darker;
       }
-      // ? Home icon.
-      &:first-child [class*="button-"] {
-        colors: 0, 0, $darker;
-        [class*="homeIcon"] { colors: $lighter, 0, 0; }
-        &[class*="selected-"] [class*="homeIcon"] { colors: $accent, 0, 0; }
+      /// Home icon.
+      a[href = '/channels/@me'] {
+        c: 0 0 $darker;
+        [class *= 'homeIcon-'] { c: $light }
+        [class *= 'childWrapper-'] { c: 0 0 $t }
+        &[class *= 'selected-'] {
+          c: 0 0 $accent;
+          [class *= 'homeIcon-'] { c: $white }
+        }
       }
     }
     [class*="unreadMentionsBar-"] {
