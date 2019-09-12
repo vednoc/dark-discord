@@ -2398,7 +2398,7 @@
   if mid_guilds {
     $size = guild_size;
     // ? Set the width of guilds wrapper.
-    [class*="layer-"] > div[style="flex: 1 1 auto;"] > [class*="wrapper-"] {
+    [class *= 'guilds-'] {
       width: ($size + 20px);
       // ? Increase width to account for scrollbar polyfill.
       > [class*="wrap-" i] { width: ($size + 40px); }
@@ -2457,6 +2457,8 @@
           }
         }
       }
+      /// Fix base.
+      + [class *= 'base-'] { left: ($size + 20px) }
     }
     // Guilds!
     [class*="listItem-"] {
@@ -2533,6 +2535,12 @@
           height: $size !important;
           width: $size !important;
         }
+      }
+      /// Fix for dragging guilds.
+      > [class *= 'pill-'] + [class = ''][draggable = 'false'] svg {
+        width: $size !important;
+        height: $size !important;
+        div { c: 0 0 $darker }
       }
     }
   }
