@@ -191,6 +191,9 @@
     }
     // Nitro-Booster!
     &[class*="premiumIcon-"] path { v: $violet }
+    /// Server options.
+    [name *= 'Subscriber'] path { v: $violet }
+    [name *= '_UserAdd'] path { v: $accent }
   }
   svg[class*="button"] path[stroke="#FFF"] { v: 0 $lighter }
   // Server owner icon.
@@ -633,54 +636,21 @@
     }
   }
 
-  // * Global -> Popouts.
-  [class*="popouts-"] {
-    colors: 0 0 $dark;
-    > [class*="popout-" i] {
-      radius: $radius;
-      border: 1px solid;
-      colors: 0 $darker $dark;
-      box-shadow: 0 2px 8px 0 $shadow;
-      > [class*="popout-" i] {
-        radius: $radius;
-        box-shadow: none;
-        box-shadow: 0 2px 4px 0 $shadow;
-      }
-    }
-    // Reset server options menu.
-    [class*="menu-"] {
-      width: unset;
-      radius: unset;
-      c: 0 0 $t;
-      box-shadow: none;
-      [class*="item-"] {
-        c: $lighter 0 0;
-        transition: 0.15s ease;
-        &:hover { c: $light 0 $darken }
-      }
-    }
-    // Fix blurry text ono server options menu.
-    > [style*="translateY(0%) translateX(-50%) translateZ(0px)"] {
-      transform: translateX(-100px) !important;
-    }
-  }
-
-  // * Global -> User status menu popout.
-  [id^="popout_"] {
-    [class*="menu-"] {
+  // Global -> User status menu popout.
+  [id ^= 'popout_'] {
+    [class *= 'menu-'] {
       border: 1px solid $darker;
       radius: $radius;
       c: 0 0 $dark;
       box-shadow: 0 2px 4px $shadow;
-      [class*="separator-"] {
-        c: 0 $darker;
-        &:last-child { border: none }
-      }
-      [class*="item-"] {
-        c: $lighter 0 0;
+      [class *= 'separator-'] { c: 0 $darker }
+      [class *= 'itemBase-'] {
+        c: $lighter;
         transition: 0.15s ease;
-        &:hover { c: $light 0 $darken }
-        [class*="helper-"] { c: $lighter }
+        &:hover { c: 0 0 $darken }
+        &[class *= 'invite-'] { c: $accent }
+        [class*='helper-'] { c: $lighter }
+        div:not([class]) { c: $light }
       }
     }
   }
