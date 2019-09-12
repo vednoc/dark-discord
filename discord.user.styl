@@ -1112,10 +1112,14 @@
         }
         /// Muted channels.
         [class *= 'modeMuted-'] {
-          [class *= 'name-'], [class *= "icon-"] { opacity: 0.6 }
+          [class *= 'name-'], [class *= "icon-"] {
+            opacity: 0.3;
+            c: $lighter;
+          }
         }
-        /// Muted text.
-        [class *= 'muted-'] {
+        /// Muted/locked channels.
+        [class *= 'muted-'],
+        [class *= 'modeLocked-'] {
           opacity: 0.6;
           [class *= 'name-'] { c: $lighter }
           [class *= 'name-']:hover { c: $light }
@@ -1129,6 +1133,7 @@
           [class *= 'content-'] {
             colors: 0 0 $darker;
             [class *= 'name-'] { c: $light }
+            [class *= 'icon-'] path { opacity: 0.6 }
           }
         }
         // Voice channels.
