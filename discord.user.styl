@@ -1176,15 +1176,16 @@
       }
     }
 
-    // * Guild members list.
-    [class*="membersWrap-"] [class*="members-"] {
+    // Sidebar -> Members list.
+    [class *= 'membersWrap-'] [class *= 'members-'] {
       border-left: 1px solid $darker;
       c: 0 0 $dark;
-      [class*="membersGroup-"] { c: $light }
-      [class*="activityText-"] { c: $lighter }
-      [class*="member-"] {
+      [class *= 'Group-'], [class *= 'activity-'] { c: $lighter }
+      [class *= 'member-'] {
         radius: $radius;
-        &[class*="-open"], &:hover { c: 0 0 $darker }
+        c: $lighter;
+        &:hover, &:active { c: $light 0 $darken }
+        &[class *= 'selected-'] > div { c: $light 0 $darker }
       }
     }
 
