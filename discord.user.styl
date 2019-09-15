@@ -17,7 +17,7 @@
 @var checkbox min_guilds "Minimize width of guild area" 0
 @var checkbox mid_guilds "Small guild icons" 0
 @var text guild_size "Small guild icons size" 32px
-@var checkbox paddingless_cozy "Decrease padding for cozy messages" 0
+@var checkbox msg_padding "Chat: Decrease padding for cozy messages" 0
 @var checkbox compact_cozy "Compact mode for cozy messages" 0
 @var checkbox compact_lines "Compact mode visual lines" 0
 @var checkbox msg_dividers "Chat: Enable message dividers" 1
@@ -2347,11 +2347,12 @@
   }
 
   // Feat -> Message padding.
-  if ( paddingless_cozy == 1 ) {
+  if ( msg_padding == 1 ) {
     [class *= 'messages-'] {
       > [class *= 'containerCozy-'] {
         padding: 10px 0;
       }
+      [class *= 'dividerContent-'] { line-height: 10px }
       hr { margin: 10px 20px -10px !important }
     }
   }
