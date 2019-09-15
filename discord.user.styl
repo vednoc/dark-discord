@@ -576,7 +576,8 @@
         border-top: 1px solid $darker;
         colors: 0, 0, $t;
         // Timestamps/secondary text.
-        [class*="weight"], [class*="content-"] { colors: $lighter, 0, 0; }
+        [class *= 'text-'], [class *= 'content'] { c: $lighter }
+        [class *= 'weight-'] { c: $light }
         // Activities/header text.
         [class*="activityName-"], [class*="xtNormal-"] { colors: $light, 0, 0; }
         [class*="details-"] { colors: $lighter 0 0 }
@@ -728,7 +729,7 @@
         border-top: 1px solid $darker;
         colors: 0, 0, $t;
         // Timestamps/secondary text.
-        [class*="weight"] { colors: $lighter, 0, 0; }
+        [class *= 'text-'], [class *= 'weight'] { c: $lighter }
         [class*="content-"] {
           &, [class*="details-"] { colors: $lighter, 0, 0; }
         }
