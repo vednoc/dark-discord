@@ -1456,21 +1456,23 @@
         }
       }
 
-      // ? Message dividers.
+      /// Message dividers.
       [class*="divider-"] {
-        colors: 0 0 $t;
-        // * Feature -> Enable message dividers.
-        if ( msg_dividers != 1 ) { colors: 0 $t 0 }
-        // Base styles.
-        > [class*="dividerContent-"] {
-          line-height: 10px;
-          colors: $lighter, 0, 0;
-          &::before, &::after { colors: 0, $darker, 0; }
+        /// Feat -> Enable message dividers.
+        if ( msg_dividers != 1 ) {
+          &[class *= 'dividerEnabled-'] { c: 0 $t }
+        } else {
+          &[class *= 'dividerEnabled-'] { c: 0 $darker }
         }
-        // New messages.
-        &[class*="dividerRed-"] > [class*="Content-"] {
-          colors: $red, 0, 0;
-          &::before, &::after { colors: 0, $red, 0; }
+        /// Base styles.
+        > [class *= 'dividerContent-'] {
+          c: $lighter $darken;
+          &::before, &::after { c: 0 0 $darker }
+        }
+        /// New messages.
+        &[class *= 'dividerRed-'] > [class *= 'dividerContent-'] {
+          c: $red;
+          &::before, &::after { c: 0 0 $red }
         }
       }
 
