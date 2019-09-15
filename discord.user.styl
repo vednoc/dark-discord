@@ -63,7 +63,7 @@
     --lighter : lighter;
     --accent  : accent;
     --shadow  : shadow;
-    --bshadow : 0 2px 3px 0 var(--shadow);
+    --bshadow : 0 2px 4px var(--shadow);
     --yellow  : yellow;
     --orange  : orange;
     --red     : red;
@@ -88,7 +88,7 @@
   $lighter = var(--lighter);
   $accent  = var(--accent);
   $shadow  = var(--shadow);
-  $bshadow = var(--box-shadow);
+  $bshadow = var(--bshadow);
   $yellow  = var(--yellow);
   $orange  = var(--orange);
   $red     = var(--red);
@@ -1607,13 +1607,12 @@
   // * Emote menu.
   [class*="emojiPicker-"] {
     radius: $radius;
-    border-width: 0px;
-    colors: $lighter, $darker, $dark;
-    box-shadow: 0 2px 4px -1 $shadow;
+    c: $lighter $darker $dark;
+    box-shadow: $bshadow;
     // Header.
     [class*="header-"] {
       colors: 0, $darker, 0;
-      input { colors: $light 0 0 }
+      input { c: $light }
       [class*="searchBar-"] { c: 0 0 $darken }
     }
     // Frequently used.
@@ -1641,11 +1640,8 @@
       box-shadow: 0 2px 4px -1px $shadow;
       [class*="item-"]:hover { colors: 0, 0, $darker; }
     }
-    // ? Fix scrollbar polyfill.
-    [class*="scrollbar-"] > [class*="pad"] {
-      left: -2px !important;
-      colors: 0, 0, $dark;
-    }
+    /// Scrollbars -> Fix thumb height.
+    [class *= 'thumb-'] { min-height: 14px }
     // ? Fix 'no matching emoji' image.
     [class*="sadImage-"] {
       filter: invert(calc((var(--icinvert)) + 0.8)) !important;
