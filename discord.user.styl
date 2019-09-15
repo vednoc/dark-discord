@@ -655,17 +655,25 @@
     }
   }
 
-  // * Popout menus.
-  // ? For example: Spotify invitation/Upload a File/etc.
-  [class*="popouts-"] [class*="attachPopout-"] {
-    radius: $radius;
-    colors: $light, 0, $dark;
-    // Text color.
-    [class*="RowText"] { colors: $lighter, 0, 0; }
-    // On hover event.
-    > [class*="attachPopoutRow"]:hover {
-      colors: 0, 0, $darker;
-      [class*="RowText"] { colors: $light, 0, 0; }
+  // Global -> Context/invite popouts.
+  [class *= 'popouts-'] {
+    /// Chat -> Message context menu.
+    > div > [class *= 'container-'][role = 'menu'] {
+      [class *= 'itemGroup-'] {
+        [class *= 'itemBase-']:hover { c: 0 0 $darken }
+        [class *= 'label-'] { c: $light }
+      }
+    }
+    /// Spotify invitation/Upload a File/etc.
+    [class *= 'attachPopout-'] {
+      radius: $radius;
+      c: $light 0 $dark;
+      // Text color.
+      [class *= 'RowText'] { c: $lighter }
+      > [class *= 'attachPopoutRow']:hover {
+        c: 0 0 $darker;
+        [class *= 'RowText'] { c: $light }
+      }
     }
   }
 
