@@ -1019,6 +1019,21 @@
     }
   }
 
+  // App -> Base.
+  /// NOTE: Rewrites go here.
+  [class *= 'base-'] {
+    /// Global announcements (sort of).
+    > [class *= 'noticePremium'] {
+      radius: 0;
+      c: $white;
+      background-image: linear-gradient(270deg, $blue, $violet);
+      a[href]:hover {
+        text-decoration: none;
+        c: $accent;
+      }
+    }
+  }
+
   // * Main area.
   [class*="base"] {
 
