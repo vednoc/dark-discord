@@ -2838,9 +2838,11 @@
         line-height: 1.3 !important;
       }
     }
+    input[class *= 'input-'],
     textarea[class *= 'textArea-'] {
       font-size: 0.9375rem !important;
     }
+    ::placeholder { font-weight: 400 !important }
   }
   // Feat -> Sub-pixel rendering.
   if ( fix_pixels == 1 ) {
