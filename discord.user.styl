@@ -2034,29 +2034,24 @@
     }
   }
 
-  // * Mentions.
-  [class*="messagesPopoutWrap-"] {
-    width: auto;
-    min-width: 420px;
+  // Popouts -> Recent mentions.
+  [class *= 'messagesPopoutWrap-'] {
     radius: $radius;
-    border: none !important;
-    colors: $light $darker $dark;
-    [class^="header-"]:not([class^="headerCozy"]) {
+    c: $light $darker $dark;
+    > [class *= 'header-'] {
       colors: 0 0 $darken;
-      box-shadow: 0 1px $darker;
-      [class*="title-"] { colors: $light 0 0 }
-      // Tabs.
-      [class*="tabBarItem-"] {
-        &[style*="transparent"] { colors: $lighter 0 0 }
-        &:not([style*="transparent"]) { colors: $light $accent 0 }
+      box-shadow: inset 0 -1px $darker;
+      [class *= 'title-'] { c: $light }
+      /// Tabs.
+      [class *= 'tabBarItem-'] {
+        border-bottom-width: 1px;
+        &[style *= 'tr'] { c: $lighter }
+        &:not([style *= 'tr']) { c: $light $accent }
       }
-      // ? Filters.
-      [class*="mentionFilter-"] {
-        [class*="label"] { colors: $lighter, 0, 0; }
-        [class*="value-"] {
-          colors: $light, 0, 0;
-          font-weight: bold;
-        }
+      /// Filters.
+      [class *= 'mentionFilter-'] {
+        [class *= 'label-'] { c: $lighter }
+        [class *= 'value-'] { c: $light }
       }
     }
     [class*="channelSeparator-"] {
