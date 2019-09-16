@@ -146,6 +146,16 @@
 
   body {
     c: 0 0 $dark;
+    /// App -> Core.
+    [class *= 'appMount-'] {
+      c: 0 0 $t;
+      /// Skeleton/crashed page.
+      > [class *= 'themeDark-'] {
+        c: 0 0 $dark;
+        [class *= 'text-'] > h4 { c: $light }
+        [class *= 'note-'] { c: $lighter }
+      }
+    }
   }
 
   // App -> Login.
@@ -882,13 +892,6 @@
       [class*="Text"] { colors: $lighter, 0, 0; }
       [class*="anchor"] { colors: $accent, 0, 0; }
     }
-  }
-
-  // * Skeleton/crashed page.
-  [class*="appMount-"] > [class*="themeDark-"] {
-    colors: 0, 0, $dark;
-    [class*="text-"] > h4 { colors: $light, 0, 0; }
-    [class*="note-"] { colors: $lighter, 0, 0; }
   }
 
   // ? All usernames except the ones that have custom colors.
