@@ -804,10 +804,8 @@
         &::after { border-color: $t $dark $t $t; }
       }
       // Tip color.
-      [class*="tip-"] {
-        opacity: 1 !important;
-        colors: $lighter 0 0;
-      }
+      [class *= 'statusGreen-'] { c: $green }
+      [class*="tip-"] { c: $light }
       // Message user.
       [class*="quickMessage"] { colors: $light, $darker, $dark; }
     }
@@ -2095,10 +2093,8 @@
     [class*="footer-"][class*="footer-"] {
       colors: 0 0 $darken;
       box-shadow: inset 0 1px $darker;
-      [class*="tip-"] {
-        colors: $lighter 0 0;
-        opacity: 1 !important;
-      }
+      [class *= 'statusGreen-'] { c: $green }
+      [class*="tip-"] { c: $light }
     }
   }
 
