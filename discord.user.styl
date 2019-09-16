@@ -29,7 +29,7 @@
 @var checkbox scrollbars_firefox "Disable scrollbars in Firefox" 0
 @var checkbox msg_options "Highlight msg by hovering over options" 0
 @var checkbox code_ln "Enable code line numbers" 1
-@var text code_font "Custom font for code blocks" "'custom_font', Consolas, Liberation Mono, Menlo, Courier, monospace"
+@var text code_font "Custom mono font" "'font_name'"
 @var text input_height "Input bar maximum height" 140px
 @var text b_radius "Custom border radius" 4px
 
@@ -76,7 +76,8 @@
     --t       : transparent !important;
     --radius  : b_radius;
     --textarea: input_height;
-    --codearea: code_font;
+    --codearea: code_font, Consolas, Liberation Mono,
+      Menlo, Courier, monospace;
     --icinvert: ic_invert;
   }
 
