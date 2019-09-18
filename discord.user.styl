@@ -1283,6 +1283,12 @@
         input[class*="input-"]:focus { colors: 0, 0, $dark; }
       }
 
+      /// Channel -> NSFW warning.
+      > [class *= 'content-'] > div > div > [class *= 'wrapper-'] {
+        [class *= 'title-'] { c: $light }
+        [class *= 'description-'] { c: $lighter }
+        [class *= 'separator-'] { c: 0 0 $darker }
+      }
       /// Channel -> Welcome section.
       [class *= 'welcomeMessage-'] {
         position: relative;
