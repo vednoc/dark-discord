@@ -444,11 +444,19 @@
     [class*="primary-"] { colors: $light, 0, 0; }
     [class*="titleDefault-"], [class*="h5-"] { colors: $light, 0, 0; }
     [class*="description-"], [class*="guildName-"] { colors: $lighter, 0, 0; }
-    // Footer.
-    [class*="footer-"] {
-      colors: 0 0 $t;
+    /// Spotify invitation.
+    [class *= 'invite-'][class *= 'preview-'] {
+      c: 0 $darker $darken;
+      [class *= 'partyStatus-'] {
+        c: $lighter;
+        [class *= 'textLink-'] { c: $light }
+      }
+    }
+    /// Footer.
+    [class *= 'footer-'] {
+      c: 0 0 $t;
       radius: 0 0 $radius $radius;
-      box-shadow: inset 0 1px 0 0 $darker;
+      box-shadow: inset 0 1px $darker;
     }
     // Highlighted friends.
     [class*="friend-"] { colors: $light, 0, 0; }
@@ -462,11 +470,6 @@
     // Text color.
     [class*="defaultColor"] { colors: $light, 0, 0; }
     [class*="Header"], [class*="header-"] { colors: $lighter, 0, 0; }
-    // Spotify invitation.
-    [class*="partyStatus"] {
-      colors: $lighter, 0, 0;
-      [class*="textLink"] { colors: $light, 0, 0; }
-    }
     // ? Region select.
     [class*="regionSelectModal-"] {
       radius: $radius;
