@@ -1323,14 +1323,16 @@
           box-shadow: 0 4px 8px 0px $shadow;
         }
       }
-
-      // ? New messages.
-      [class*="newMessagesBar-"] {
-        background-image: linear-gradient(90deg, $t -500%, $accent 300%);
-        c: $lighter 0 $t;
+      /// New messages.
+      [class *= 'newMessagesBar-'] {
+        radius: 0 0 $radius $radius;
+        c: 0 0 $darker;
+        box-shadow: $bshadow;
         button {
-          transition: 0.15s ease;
-          c: $light;
+          c: $lighter;
+          ../:hover button { c: $light }
+        }
+      }
         }
       }
 
