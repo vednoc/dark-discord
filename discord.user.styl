@@ -1283,35 +1283,32 @@
         input[class*="input-"]:focus { colors: 0, 0, $dark; }
       }
 
-      // ? Welcome section.
-      [class*="welcomeMessage-"] {
+      /// Channel -> Welcome section.
+      [class *= 'welcomeMessage-'] {
         position: relative;
-        h1, strong { colors: $light, 0, 0; }
-        p { colors: $lighter, 0, 0; }
-        a { colors: $accent, 0, 0; }
-        [class*="base-"] {
+        h1, strong { c: $light }
+        p { c: $lighter }
+        a { c: $accent }
+        [class *= 'base-'] {
           filter: invert(
             calc((1 + var(--icinvert)) * var(--icinvert))
           ) !important;
-          colors: 0, $t, 0;
+          c: 0 $t;
         }
         &::after {
-          content: "";
+          content: '';
           position: absolute;
           right: 20px; bottom: 20px; left: 20px;
           border-bottom: 1px solid $darker;
         }
       }
-
-      // ? Load more messages bar.
-      [class*="hasMore-"] button {
-        colors: $lighter, $darker, $darker;
-        box-shadow: 0 2px 8px -2px $shadow;
-        transition: 0.2s ease;
-        &:hover {
-          colors: $light, 0, 0;
-          box-shadow: 0 4px 8px 0px $shadow;
-        }
+      /// Load more messages bar.
+      [class *= 'hasMore-'] {
+        border: 1px solid $darker;
+        c: $lighter 0 $darken;
+        box-shadow: $bshadow;
+        transition: 0.15s ease;
+        &:hover { c: $light }
       }
       /// New messages.
       [class *= 'newMessagesBar-'] {
