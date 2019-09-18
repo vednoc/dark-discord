@@ -1208,7 +1208,7 @@
       [class *= 'member-'] {
         radius: $radius;
         c: $lighter;
-        &:hover, &:active { c: $light 0 $darken }
+        &:hover, &:active { > div { c: $light 0 $darken }}
         &[class *= 'selected-'] > div { c: $light 0 $darker }
       }
     }
