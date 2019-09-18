@@ -29,6 +29,7 @@
 @var checkbox scrollbars_firefox "Disable scrollbars in Firefox" 0
 @var checkbox msg_options "Highlight msg by hovering over options" 0
 @var checkbox code_ln "Enable code line numbers" 1
+@var text ui_font "Custom UI font" "'font_name'"
 @var text code_font "Custom mono font" "'font_name'"
 @var text input_height "Input bar maximum height" 140px
 @var text b_radius "Custom border radius" 4px
@@ -146,6 +147,11 @@
 
   body {
     c: 0 0 $dark;
+    /// Feat -> Custom UI font.
+    &, button, input, select, textarea, ::placeholder {
+      font-family: ui_font, Whitney, Helvetica Neue,
+        Helvetica, Arial, sans-serif;
+    }
     /// App -> Core.
     [class *= 'appMount-'] {
       c: 0 0 $t;
