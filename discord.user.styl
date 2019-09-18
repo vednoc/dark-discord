@@ -1127,8 +1127,8 @@
           colors: $lighter, 0, 0;
           [class*="btn-"] {
             transition: 0.15s ease;
-            colors: $lighter, $darker, $dark;
-            &:hover { colors: $light, 0, $darker; }
+            c: $lighter $darker $darker;
+            &:hover { c: $light }
           }
         }
         // Custom close button.
@@ -1986,7 +1986,9 @@
     }
     [class*="match"], [class*="header"] { colors: $accent, 0, 0; }
     [class*="header"], [class*="username"] { colors: $light, 0, 0; }
-    [class*="tips"], [class*="content"], [class*="note"] { colors: $lighter, 0, 0; }
+    [class*="tips"], [class*="content"], [class*="note"], [class *= 'misc-'] {
+      c: $lighter;
+    }
     [class*="icon"] { c: $light }
     // Unread messages badge.
     [class*="badge-"] {
