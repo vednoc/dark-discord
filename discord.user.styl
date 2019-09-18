@@ -719,71 +719,57 @@
     }
   }
 
-  // * User popout.
-  [class*="userPopout-"] {
+  // Popouts -> User popout.
+  [class *= 'userPopout-'] {
+    border: 1px solid $darker;
     colors: 0 0 $dark;
-    box-shadow: 0 2px 4px $shadow, inset 0 0 0 1px $darker;
-    // Username/discriminator colors.
-    [class^="headerText-"] {
-      [class*="Name"], .username { colors: $light, 0, 0; }
-      [class*="Tag"], .discrimnator { colors: $lighter, 0, 0; }
+    box-shadow: $bshadow;
+    [class *= 'headerText-'] {
+      [class *= 'Name'] { c: $light }
+      [class *= 'Tag'] { c: $lighter }
     }
-    // Various modes.
-    > [class*="header-"] {
+    /// Various modes.
+    > [class *= 'header-'] {
       position: relative;
       radius: $radius $radius 0 0;
       c: 0 0 $darken;
-      [class*="lookOutlined-"] {
-        colors: $lighter, $darker, 0;
-        &:hover { colors: $light, 0, $darker; }
+      /// Buttons.
+      [class *= 'lookOutlined-'] {
+        c: $lighter $darker $darker;
+        &:hover { c: $light }
       }
-      [class*="headerText-"], [class*="activityName-"] { colors: $light, 0, 0; }
-      // Activity.
+      /// Activity section.
       [class*="activityUserPopout"] {
         border-top: 1px solid $darker;
-        colors: 0, 0, $t;
-        // Timestamps/secondary text.
-        [class *= 'text-'], [class *= 'weight'] { c: $lighter }
-        [class*="content-"] {
-          &, [class*="details-"] { colors: $lighter, 0, 0; }
+        c: 0 0 $t;
+        /// Text reset.
+        [class *= 'activityName-'], [class *= 'Bold-'] { c: $light }
+        [class *= 'content-'] [class *= 'details-'] { c: $lighter }
+        [class *= 'content-'], [class *= 'text-'] { c: $lighter }
+        /// Progress bar.
+        [class *= 'bar-'] {
+          c: 0 0 $darker;
+          [class *= 'barInner-'] { c: 0 0 $accent }
         }
-        // Activities/header text.
-        [class*="activityName-"], [class*="xtNormal-"] { colors: $light, 0, 0; }
-        // Progress bar.
-        [class*="bar-"] {
-          colors: 0, 0, $darker;
-          [class*="barInner-"] { colors: 0, 0, $accent; }
-        }
-        // Icons.
-        [class*="listenAlongIcon-"] path { v: $lighter }
       }
-      // Fake border.
+      /// Activity indicator.
       &::before {
         z-index: 0;
-        content: "";
+        content: '';
         position: absolute;
         top: 0; right: 0; left: 0;
         radius: $radius $radius 0 0;
         border-top: $radius solid $t;
-        // colors: 0, 0, $dark;
       }
-      &[class*="Playing-"]::before {
-        colors: 0, $blue, 0;
-      }
-      &[class*="Spotify-"]::before {
-        colors: 0, $green, 0;
-      }
-      &[class*="Streaming-"]::before {
-        colors: 0, $violet, 0;
-      }
-      &[class*="Xbox-"]::before {
-        colors: 0, $violet, 0;
-      }
+      &[class *= 'Xbox-']::before { c: 0 $magenta }
+      &[class *= 'Playing-']::before { c: 0 $blue }
+      &[class *= 'Spotify-']::before { c: 0 $green }
+      &[class *= 'Streaming-']::before { c: 0 $violet }
     }
-    // * Body.
-    > [class^="body-"] {
-      border-top: 1px solid;
-      colors: $lighter, $darker, $t;
+    /// Body.
+    > [class ^= 'body-'] {
+      border-top: 1px solid $darker;
+      c: $lighter 0 $t;
       // Headers.
       [class*="bodyTitle"] { colors: $lighter, 0, 0; }
       // Add role button.
