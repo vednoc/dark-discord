@@ -1333,6 +1333,14 @@
           ../:hover button { c: $light }
         }
       }
+      /// Jump to present.
+      [class *= 'jumpToPresentBar-'] {
+        radius: $radius $radius 0 0;
+        c: 0 0 $darken;
+        box-shadow: $bshadow;
+        button {
+          c: $lighter;
+          ../:hover button { c: $light }
         }
       }
 
