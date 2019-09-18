@@ -14,7 +14,7 @@
 
 @var checkbox ic_invert "Icon inversion" 0
 @var checkbox remove_notifications "Notification-free mode" 0
-@var checkbox min_guilds "Minimize width of guild area" 0
+@var checkbox min_guilds "Minimize width of guilds area" 0
 @var checkbox mid_guilds "Small guild icons" 0
 @var text guild_size "Small guild icons size" 32px
 @var checkbox msg_padding "Chat: Decrease padding for cozy messages" 0
@@ -929,16 +929,22 @@
       svg { colors: $white, 0, 0; }
       &:hover { opacity: 0.8; }
     }
-  }
-
-  // * Feature -> Minimize width option.
-  [class*="layer-"] > div[style="flex: 1 1 auto;"] > [class*="wrapper-"] {
-    // * Minimize width of guild area.
-    if min_guilds {
+    /// Feat -> Minimize guild width.
+    if ( min_guilds == 1 ) {
       transition: 0.3s cubic-bezier(0, 0, 0.2, 1);
-      transition-delay: 0.5s;
       max-width: 10px;
-      &:hover { max-width: 70px; }
+      &:hover {
+        max-width: (guild_size + 20px);
+        transition-delay: 0.6s;
+        + [class *= 'base-'] {
+          left: (guild_size + 20px) !important;
+          transition-delay: 0.6s;
+        }
+      }
+      + [class *= 'base-'] {
+        transition: 0.3s cubic-bezier(0, 0, 0.2, 1);
+        left: 10px !important;
+      }
     }
   }
 
