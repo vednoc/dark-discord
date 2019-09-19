@@ -190,6 +190,8 @@
   // * Icons -> Misc.
   [class*="mobileIndicator-"],
   [class*="addButtonIcon-"] polygon,
+  [class *= 'OpenIcon-'] path[fill],
+  [class *= 'ActionsIcon-'] path[fill],
   svg path[class*="attachButtonPlus-"] {
     v: $lighter;
   }
@@ -1091,6 +1093,7 @@
       box-shadow: 0 1px $darker;
       [class*="children-"] {
         &::after { display: none; }
+        [class *= 'numberBadge-'] { c: $white 0 $accent }
         [class*="title-"] { colors: $light, 0, 0; }
         [class*="divider-"] { colors: 0, 0, $darker; }
         [class*="tabBar-"] {
@@ -1145,8 +1148,7 @@
       }
 
       // ? Guild mentions.
-      [class*="mentionsBadge-"] > [class*="numberBadge-"],
-      [class*="bar-"][class*="mention-"] {
+      [class *= 'numberBadge-'], [class *= 'bar-'][class *= 'mention-'] {
         colors: $white 0 $accent;
       }
 
