@@ -1064,15 +1064,24 @@
       [class*="Text-"], [class*="Column-"] { c: $light }
       [class*="Action-"], [class*="Separator-"] { c: 0 0 $darker }
       [class*="noIcon-"] { c: $light 0 $darker }
+      /// Actions.
+      [class *= 'friendsAction-']:not(#z) {
+        c: $light 0 $darker;
+        &[class *= 'actionAccept-']:hover { c: $white 0 $green }
+        &[class *= 'actionDeny-']:hover { c: $white 0 $red }
+      }
       [class*="friendsRow-"] {
         padding: 8px;
         margin: 0 8px 0 16px;
         border: none !important;
         box-shadow: 0 1px $darker;
         &:hover {
+          radius: 4px;
           c: 0 $t $darken;
           box-shadow: 0 0 0 1px $darker, 0 2px 4px 0 $shadow;
         }
+        /// Fix actions.
+        [class *= 'ColumnActions'] { padding-right: 0 }
       }
     }
 
