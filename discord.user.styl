@@ -1735,10 +1735,6 @@
       [class*="viewAllGames-"] { colors: $light, 0, 0; }
       [class*="announcing"] { font-weight: bold !important; colors: $red, 0, 0; }
     }
-    [class*="button-"][class*="lookOutlined-"][class*="colorWhite-"] {
-      colors: $light, $darker, 0;
-      &:hover { colors: 0, 0, $darker; }
-    }
     // Links.
     [class*="announcing"] { colors: $accent, 0, 0; }
     [class*="tilePrice-"] {
@@ -2175,11 +2171,6 @@
         colors: $lighter 0 0;
         &:hover { colors: $red 0 0 }
       }
-      [class*="lookOutlined"][class*="White-"] {
-        radius: $radius;
-        colors: $lighter $darker $dark;
-        &:hover { colors: $light 0 $darker }
-      }
       // ? User info.
       [class*="userInfo"][class*="cardPrimary-"] {
         radius: $radius;
@@ -2380,13 +2371,22 @@
   // TODO: Rewrite/move this somewhere.
   [class*="colorPrimary"] { colors: $light, 0, 0; }
 
-  // * Buttons.
-  [class*="lookFilled"] {
-    colors: $white, $accent, $accent;
-    transition: all 0.15s ease-in-out;
-    &[class*="colorGreen"] { colors: 0, $green, $green; }
-    &[disabled] { colors: $light, $darker, $darker; }
-    &:hover { opacity: 0.8 !important; }
+  // Global -> Buttons.
+  [class *= 'button-'] {
+    &[class *= 'Outlined-'] {
+      &[class *= 'Red-'] { c: $red $red }
+      &[class *= 'Red-']:hover { c: $white 0 $red }
+    }
+    &[class *= 'Filled-'] {
+      transition: all 0.15s ease;
+      &[class *= 'Primary-'] { c: $light 0 $darken }
+      &[class *= 'Brand-'] { c: $white 0 $accent }
+      &[class *= 'Green-'] { c: $white 0 $green }
+      &[class *= 'White-'] { c: $white $white }
+      &[class *= 'Grey-'] { c: $light 0 $darker }
+      &[disabled] { c: $light $darken $darken }
+      &:not([disabled]):hover { opacity: 0.8 !important }
+    }
   }
 
   // * Deprecated elements.
