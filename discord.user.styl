@@ -902,7 +902,8 @@
     radius: 0px;
     c: 0 0 $dark;
     box-shadow: inset -1px 0 $darker;
-    [class*="separator-" i]{ colors: 0, 0, $darker; }
+    [class *= 'scroller-'] { c: 0 0 $t }
+    [class *= 'Separator-'] { c: 0 0 $darker }
     // * Guild wrapper.
     [class*="listItem-"] {
       // ? Indicator -> New messages.
@@ -1112,9 +1113,9 @@
     // Sidebar -> Channels.
     [class*="sidebar-"] {
       border-right: 1px solid;
-      colors: 0, $darker, $dark;
+      c: 0 $darker $dark;
       /// Remove background.
-      > [class *= 'container-'] { c: 0 0 $t }
+      [class *= 'scroller-'], > [class *= 'container-'] { c: 0 0 $t }
       // ? Guild name/menu.
       [class *= 'header-'] {
         c: $light;
@@ -1128,8 +1129,8 @@
 
       // Notices.
       [class*="channelNotice-"] {
-        colors: 0, 0, $t;
-        box-shadow: 0 -1px 0 0 inset $darker;
+        c: 0 0 $darken;
+        box-shadow: inset 0 -1px $darker;
         [class*="message-"] {
           colors: $lighter, 0, 0;
           [class*="btn-"] {
@@ -1397,6 +1398,7 @@
 
       /// Messages.
       [class*="messages-"] {
+        c: 0 0 $t;
         /// Compact -> Message timestamps.
         [class *= 'messageCompact-'] {
           [class *= 'timestamp']:not([class *= 'VisibleOnHover-']),
@@ -1450,8 +1452,8 @@
         // Attachments.
         [class*="attachment-"] {
           radius: $radius;
-          colors: 0 $darker $dark;
-          box-shadow: 0 2px 4px 0 $shadow;
+          colors: 0 $darker $darken;
+          box-shadow: $bshadow;
           [class*="fileNameLink-"] { colors: $accent 0 0 }
           [class*="metadata-"] { colors: $light 0 0 }
           [class*="filenameWrapper-"] * { colors: $lighter 0 0 }
@@ -1550,12 +1552,14 @@
       [class*="wrapper-"][class*="userSelectNone"] {
         radius: $radius;
         c: 0 $darker $darken;
-        box-shadow: 0 2px 4px -1px $shadow;
-        [class*="title-"], [class*="guildDetail-"] { colors: $lighter, 0, 0; }
-        [class*="guildName-"] { colors: $light, 0, 0; }
-        [class*="guildNameExpired-"] { colors: $red, 0, 0; }
-        [class*="lookOutlined-"] { colors: 0, $darker, 0; }
-        [class*="lookOutlined-"]:hover { colors: 0, $darker, $darker; }
+        box-shadow: $bshadow;
+        [class*="title-"], [class*="guildDetail-"] { c: $lighter }
+        [class*="guildName-"] { c: $light }
+        [class*="guildNameExpired-"] { c: $red }
+        [class*="Outlined-"] {
+          c: 0 $darker $darker;
+          &:hover { opacity: 0.8 }
+        }
       }
 
       // * Spotify party invite.
@@ -1589,15 +1593,17 @@
     }
   }
 
-  // * Input section.
-  [class^="channelTextArea"] {
-    colors: 0, $darker, 0;
+  /// Inputbar.
+  [class *= 'channelTextArea-'] {
+    c: 0 $darker;
     // Input container.
-    > [class^="inner"] {
-      c: 0 0 $darken;
-      radius: $radius;
+    > [class *= 'inner-'] {
       border: 1px solid $darker;
+      radius: $radius;
+      c: 0 0 $darken;
       &[class*="innerAutocomplete-"] { radius: 0 0 $radius $radius; }
+      [class *= 'buttons-'] { align-self: center }
+
     }
     // Input text color.
     textarea { colors: $light, 0, 0; }
@@ -2137,7 +2143,7 @@
   [class*="standardSidebarView-"] {
     colors: 0, 0, $dark;
     // * Sidebar.
-    [class*="sidebarRegion-"] {
+    [class*="sidebarRegionScroller-"] {
       colors: $lighter 0 $t;
       [class*="separator-"] { colors: 0, 0, $darker; }
       [class*="header-"] { colors: $lighter 0 0 }
@@ -2161,7 +2167,7 @@
       }
     }
     // * Main content.
-    [class*="contentRegion-"] {
+    [class*="contentRegionScroller-"] {
       colors: $light, 0, $dark;
       box-shadow: 1px 0 0 0 inset $darker;
       // Text colors.
@@ -2235,6 +2241,7 @@
         svg path { v: $lighter }
       }
     }
+    [class *= 'sidebarScrollable-'] [class *= 'scroller-'] { c: 0 0 $t }
     // * Close button.
     [class*="closeButton-"] {
       colors: 0, $darker, 0;
