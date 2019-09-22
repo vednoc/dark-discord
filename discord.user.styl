@@ -738,11 +738,13 @@
     /// Various modes.
     > [class *= 'header-'] {
       position: relative;
+      border-bottom: 1px solid $darker;
       radius: $radius $radius 0 0;
       c: 0 0 $darken;
       /// Buttons.
       [class *= 'lookOutlined-'] {
         c: $lighter $darker $darker;
+        box-shadow: $bshadow;
         &:hover { c: $light }
       }
       /// Activity section.
@@ -774,8 +776,7 @@
       &[class *= 'Streaming-']::before { c: 0 $violet }
     }
     /// Body.
-    > [class ^= 'body-'] {
-      border-top: 1px solid $darker;
+    [class *= 'bodyInner-'] {
       c: $lighter 0 $t;
       // Headers.
       [class*="bodyTitle"] { colors: $lighter, 0, 0; }
