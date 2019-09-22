@@ -808,17 +808,17 @@
     c: 0 0 $t;
     [class *= 'title-'] { c: $light }
     [class *= 'subtext-'] { c: $lighter }
-    // VC status.
-    > div {
+    /// VC status.
+    > div:first-child:not(:last-child) {
+      border-top: 1px solid $darker;
       border-bottom: none;
-      colors: 0 0 $t;
-      &:nth-child(2) { box-shadow: 0 1px 0 0 inset $darker }
-      [class*="status-connected"] { colors: $green 0 0 }
-      [class*="status-connecting"] { colors: $orange 0 0 }
-      [class*="status-error"] { colors: $red 0 0 }
+      c: 0 0 $darken;
+      [class*="Error"] { c: $red }
+      [class*="Connected"] { c: $green }
+      [class*="Connecting"] { c: $orange }
       [class*="description-"] > [class*="channel-"] {
         opacity: 1;
-        colors: $lighter 0 0;
+        c: $lighter;
       }
     }
     // Controls.
