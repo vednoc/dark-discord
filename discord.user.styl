@@ -1585,6 +1585,12 @@
         colors: 0, 0, $dark;
         box-shadow: 0 8px 16px 0 $shadow;
       }
+      /// Announcements 'follow' area.
+      [class *= 'form-'] > [class *= 'wrapper-'] {
+        c: 0 0 $darker;
+        box-shadow: $bshadow;
+        [class *= 'content-'] { c: $light }
+      }
     }
   }
 
