@@ -2597,28 +2597,21 @@
         colors: $light $red $dark
         &:hover { colors: $white 0 $red }
       }
-      // Badges.
-      [class*="badgeWrapper-"] {
-        [class*="upperBadge-"] {
-          radius: 20%;
-          colors: 0 0 $dark;
-        }
-        [class*="lowerBadge-"] {
-          right: -2px !important;
-          top: ($size - 14px) !important;
-        }
-        // Unread messages.
-        [class*="numberBadge-"],  {
-          height: 14px !important;
-          box-shadow: 0 0 0 2px $dark !important
-        }
-        // Voice chat.
-        [class*="iconBadge-"] {
-          colors: 0 0 $darker;
-          box-shadow: 0 0 0 2px $dark !important
-        }
+      /// Badges.
+      [class *= 'upperBadge-'] { c: 0 0 $dark }
+      [class *= 'lowerBadge-'] { top: ($size - 16px) !important }
+      /// Unread messages.
+      [class *= 'numberBadge-'],  {
+        height: 14px !important;
+        box-shadow: 0 0 0 3px $dark;
       }
-      // DM icons.
+      /// Voice chat.
+      [class *= 'iconBadge-'] {
+        c: 0 0 $green;
+        box-shadow: 0 0 0 3px $dark;
+        [class *= 'icon-'] path[fill] { v: $white }
+      }
+      /// DM icons.
       ~ div[style] {
         margin-bottom: 8px;
         height: $size !important;
