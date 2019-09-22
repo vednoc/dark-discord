@@ -1058,21 +1058,23 @@
   // * Main area.
   [class*="base"] {
 
-    // * Friends list.
-    [class*="friendsTable-"] {
+    /// Friends -> List.
+    [class *= 'friendsTable-'] {
       margin-top: 0px; // @upstream
       c: 0 0 $dark;
-      [class*="TableHeader-"] { c: 0 $darker }
-      [class*="Text-"], [class*="Column-"] { c: $light }
-      [class*="Action-"], [class*="Separator-"] { c: 0 0 $darker }
-      [class*="noIcon-"] { c: $light 0 $darker }
+      [class *= 'TableHeader-'] { c: 0 $darker }
+      [class *= 'TableBody-'] { c: 0 0 $t }
+      [class *= 'Text-'], [class *= 'Column-'] { c: $light }
+      [class *= 'Action-'], [class *= 'Separator-'] { c: 0 0 $darker }
+      [class *= 'noIcon-'] { c: $light 0 $darker }
       /// Actions.
       [class *= 'friendsAction-']:not(#z) {
         c: $light 0 $darker;
         &[class *= 'actionAccept-']:hover { c: $white 0 $green }
         &[class *= 'actionDeny-']:hover { c: $white 0 $red }
       }
-      [class*="friendsRow-"] {
+      /// Items.
+      [class *= 'friendsRow-'] {
         padding: 8px;
         margin: 0 8px 0 16px;
         border: none !important;
