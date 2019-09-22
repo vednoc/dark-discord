@@ -409,20 +409,15 @@
     }
   }
 
-  // * Dirty Firefox sidebar(s) hacks.
+  // HACK: Firefox inputbar height.
   @supports (-moz-user-select: none) {
-    // .scrollerWrap-2lJEkd { margin-right: -24px !important; }
-    [class*="directionColumn"][class*="firefoxFixScrollFlex"] { overflow: hidden; }
-    // ? Fixes input element in *fox-based browsers.
-    [class*="channelTextArea-"] textarea[class*="textArea-"] {
-      margin: 0; padding: 0 10px;
-      // ? Center input text on the first row of text.
-      &[style*="height: auto"], &[style*="height: 21px"] {
-        padding-top: 10px;
+    [class *= 'channelTextArea-'] textarea[class *= 'textArea-'] {
+      margin: 0;
+      padding: 16px;
+      &[rows = '1']:not([style *= 'height:']) {
+        padding: 10px 16px 0;
         margin: 1px 0 -3px;
       }
-      // ? Reset padding whenever there are two or more rows of text.
-      &:not([style*="height: auto"]) { padding: 10px; }
     }
   }
 
