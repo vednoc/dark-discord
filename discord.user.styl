@@ -261,8 +261,8 @@
   ::selection { colors: $dark, 0, $lighter; }
   ::-moz-selection { colors: $dark, 0, $lighter; }
 
-  // * Global -> Bot tags.
-  [class*="botTag"] { colors: $white, 0, $accent; }
+  // Global -> Bot tags.
+  [class*="botTag-"]:not(#z) { c: $white 0 $accent }
 
   // * Global -> Checkboxes.
   [class*="checkbox-"]:not([class*="wrapper" i]) {
@@ -2089,6 +2089,9 @@
   [class *= 'messagesPopoutWrap-'] {
     radius: $radius;
     c: $light $darker $dark;
+    box-shadow: 0 4px 8px $shadow !important;
+    [class *= 'messagesPopout-'] { c: 0 0 $t }
+    /// Header.
     > [class *= 'header-'] {
       colors: 0 0 $darken;
       box-shadow: inset 0 -1px $darker;
@@ -2111,10 +2114,11 @@
     }
     [class^="messageGroupWrapper-"] {
       radius: $radius;
-      colors: $light $darker $dark;
+      c: $light $darker $darken;
       box-shadow: 0 2px 8px 0 $shadow;
       [class*="Meta-"] *:not([class*="username-"]) { c: $lighter }
       > div[class] { margin: 0 0 0 -15px !important; }
+      [class *= 'markup-'] > a[class *= 'anchor-'] { c: $accent }
       [class*="markup-"], [class*="embed"] {
         colors: $light 0 0;
         &::before, &::after { display: none }
