@@ -1988,10 +1988,12 @@
   }
 
   // Global -> QuickSwitcher.
-  [class *= 'quickswitcher'] {
-    border: 1px solid $darker;
-    c: $light 0 $dark;
-    box-shadow: 0 4px 8px $shadow;
+  [class *= 'quickswitcher-'] {
+    &:not([class *= 'channelNotice-']) {
+      border: 1px solid $darker;
+      c: $light 0 $dark;
+      box-shadow: 0 4px 8px $shadow;
+    }
     /// Inputbox.
     [class *= 'input'] {
       padding: 16px;
