@@ -1248,11 +1248,11 @@
       }
     }
 
-    // * Chat section.
-    [class*="chat"] {
+    // Chat.
+    [class *= 'chat-'] {
       c: 0 0 $dark;
       /// Channel title-bar.
-      > [class *= 'title'] {
+      > [class *= 'title-'] {
         c: 0 0 $dark;
         box-shadow: 0 1px $darker !important;
         [class *= 'title-'] { c: $light }
@@ -1265,6 +1265,8 @@
           box-shadow: $bshadow;
         }
         [class *= 'divider-'], [class *= 'topic']::before { c: 0 0 $darker }
+        /// Chat -> Remove top shadow.
+        + [class ^= 'content-']::before { content: none }
       }
 
       // ? Title-bar search messages.
