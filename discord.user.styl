@@ -2558,6 +2558,11 @@
     [class*="listItem-"] {
       justify-content: flex-start;
       padding-left: 10px;
+      [class *= 'listItemWrapper-'] > [class *= 'wrapper-'] {
+        width: $size;
+        height: $size;
+      }
+      /// Unread indicators.
       [class*="pill-"] {
         top: ($size / 6);
         [class*="item-"] {
