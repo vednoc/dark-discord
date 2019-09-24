@@ -367,6 +367,7 @@
     [class*="modal-"][class*="modal-"][class*="size-"],
     [class*="searchResultsWrap-"] > div:last-child,
     [class*="feed-"] +, [class*="Store-"] +,
+    [class*="contentRegionScroller-"] +,
     [class*="modal-"][class*="size"],
     [class*="friendsTableBody-"] +,
     [class*="messagesPopout-"] +,
@@ -400,12 +401,6 @@
       }
       // ? Hide 0px height thumb scrollbar thumb.
       > div[style*="height: 0px;"] { border-width: 0px !important; }
-    }
-    // ? Remove unnecessary padding throughout the app.
-    [class*="systemPad-"] {
-      &[class*="messages-"] {
-        padding-right: 0px !important;
-      }
     }
   }
 
