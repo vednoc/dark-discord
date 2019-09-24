@@ -568,22 +568,18 @@
     }
   }
 
-  // * User modal.
-  [class^="modal-"] > div > [class*="root"] {
-    radius: $radius;
-    colors: 0, 0, $dark;
+  // Modals -> User profile.
+  [class^='modal-'] > div > [class *= 'root'] {
     border: 1px solid $darker;
-    box-shadow: 0 2px 4px 0 $shadow;
-
-    [class*="header-"] > [class*="Info"] {
-      [class*="username"] { colors: $light, 0, 0; }
-      [class*="discriminator"] { colors: $lighter, 0, 0; }
-      // Send message/request button.
-      & + [class*="lookInverted"] {
-        colors: $lighter, 0, $darker;
-        transition: 0.15s ease;
-        &:hover { colors: $accent, 0, 0; }
-      }
+    radius: $radius;
+    c: 0 0 $dark;
+    box-shadow: $bshadow;
+    /// Header.
+    [class *= 'header-'] > [class *= 'headerInfo-'] {
+      [class *= 'username-'] { c: $light }
+      [class *= 'discriminator-'] { c: $lighter }
+      /// Send button.
+      & + [class *= 'lookFilled-'] { c: $light 0 $darker }
     }
     [class*="topSection"] {
       colors: 0, 0, $t;
@@ -620,26 +616,26 @@
     [class*="Spotify-"]::before { colors: 0, $green, 0; }
     [class*="Streaming-"]::before { colors: 0, $violet, 0; }
     [class*="Xbox-"]::before { colors: 0, $violet, 0; }
-
-    // * Tab bar.
-    [class^="tabBarContainer-"] {
-      colors: 0 $darker $t;
-      [class*="item-"] {
+    /// Tabs.
+    [class *= 'tabBarContainer-'] {
+      c: 0 $darker $darken;
+      box-shadow: inset 0 -1px $darker;
+      [class *= 'item-'] {
+        border-bottom-width: 1px;
         transition: 0.15s ease;
-        colors: $lighter 0 0;
-        &:hover { colors: 0 $darker 0 }
-        &[style*="color: rgb("] { colors: $light $accent 0 }
+        c: $lighter $t 0;
+        &:hover { c: $light }
+        &[class *= 'selected-'] { c: $light $accent }
       }
     }
-    // * Body.
-    > [class*="body-"] {
-      border-top: 1px solid $darker;
-      colors: 0, 0, $t;
-      // Text color.
-      [class*="Info"] { colors: $lighter, 0, 0; }
-      [class*="note"] > textarea {
-        colors: $light, 0, 0;
-        &:focus { colors: 0, 0, $darker; }
+    /// Body.
+    > [class *= 'body-'] {
+      c: 0 0 $t;
+      /// Text.
+      [class *= 'Info-'] { c: $lighter }
+      [class *= 'note-'] > textarea {
+        c: $light;
+        &:focus { c: 0 0 $darken }
       }
       // ? Mutual servers/friends.
       [class*="listRow-"] {
@@ -654,17 +650,13 @@
         [class*="userInfoSection-"] { margin-right: 16px; }
       }
     }
-    // * Connected accounts.
-    [class*="userInfoSection"] {
-      colors: 0, $darker, 0;
-      [class*="Accounts"] > [class*="Account"] {
+    /// Connected accounts.
+    [class *= 'userInfoSection'] {
+      c: 0 $darker;
+      [class *= 'Accounts'] > [class *= 'Account'] {
         radius: $radius;
-        colors: 0, $darker, $dark;
-        &:hover [class*="AccountName"] { colors: $light, 0, 0; }
-        [class*="AccountName"] {
-          transition: 0.15s ease;
-          colors: $lighter, 0, 0;
-        }
+        c: 0 $darker $darken;
+        [class *= 'AccountName-'] { c: $light }
       }
     }
   }
