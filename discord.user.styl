@@ -2567,12 +2567,13 @@
         }
       }
       // Home icon.
-      &:first-child {
-        &, [class*="Wrapper-"], svg {
-          width: $size;
-          height: $size;
+      &:first-child svg {
+        width: $size;
+        height: $size;
+        &[class*="homeIcon-"] {
+          max-width: ($size / 2 + 16px);
+          max-height: @max-width;
         }
-        svg[class*="homeIcon-"] { transform: scale(0.9) }
       }
       // Guild icons.
       [class*="blobContainer-"] {
