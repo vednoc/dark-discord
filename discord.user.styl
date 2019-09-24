@@ -1794,38 +1794,41 @@
     }
   }
 
-  // * Activity page.
-  [class^="activityFeed-"] {
-    // Title-bar.
-    [class*="container-"] {
-      colors: $lighter $darker $dark;
-      box-shadow: 0 1px 0 0 $darker;
-      [class*="children-"] {
+  // Activity page.
+  [class *= 'activityFeed-'] {
+    /// Title-bar.
+    [class *= 'container-'] {
+      c: $lighter $darker $dark;
+      box-shadow: 0 1px $darker;
+      [class *= 'children-'] {
         &::after { background: none }
-        [class*="title-"] { colors: $light 0 0 }
+        [class *= 'title-'] { c: $light }
       }
     }
-    // Content.
-    div[class*="card-"][class*="card"] {
-      radius: $radius;
-      colors: 0 0 $dark;
-      box-shadow: 0 0 0 1px inset $darker;
-      [class*="content-"] + [class*="wrapper-"] {
-        box-shadow: 0 1px 0 0 inset $darker;
-      }
-      [class*="imageWrapper-"] { radius: $radius $radius 0 0; }
-      [class*="coloredBackground-"] {
-        colors: 0 0 $darker;
-        background-image: url("/assets/0858a3392fd80f98d8957ad7c3e195d3.svg");
-      }
-      [class*="colorStandard-"] { colors: $light 0 0; }
-      [class*="colorMuted-"] { colors: $lighter 0 0; }
-      [class*="whiteButton-"] { color: $white 0 0; }
+    /// Cards.
+    [class *= 'placeholderWrapper-'] {
+      c: $light $darker $darken;
     }
-    aside > [class*="wrapper-"] {
+    /// Content.
+    div[class *= 'card-'][class *= 'card'] {
       radius: $radius;
-      colors: 0 0 $dark;
-      box-shadow: 0 0 0 1px inset $darker;
+      c: 0 0 $darken;
+      box-shadow: inset 0 0 0 1px $darker;
+      [class *= 'imageWrapper-'] { radius: $radius $radius 0 0; }
+      [class *= 'coloredBackground-'] {
+        c: 0 0 $t;
+        background-image: url('/assets/0858a3392fd80f98d8957ad7c3e195d3.svg');
+      }
+      [class *= 'colorStandard-'] { c: $light }
+      [class *= 'colorMuted-'] { c: $lighter }
+      [class *= 'colorWhite-'] { c: 0 $accent $accent }
+      [class *= 'whiteButton-'] { c: $white }
+    }
+    aside > [class *= 'wrapper-'] {
+      radius: $radius;
+      c: 0 $darker $darken;
+      [class *= 'header-'] { c: $light }
+      [class *= 'body-'] { c: $lighter }
     }
   }
 
