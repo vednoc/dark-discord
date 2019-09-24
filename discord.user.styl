@@ -773,33 +773,32 @@
     /// Body.
     [class *= 'bodyInner-'] {
       c: $lighter 0 $t;
-      // Headers.
-      [class*="bodyTitle"] { colors: $lighter, 0, 0; }
-      // Add role button.
-      [class*="actionButton"] {
+      /// Headers.
+      [class *= 'bodyTitle-'] { c: $lighter }
+      /// Add role button.
+      [class *= 'actionButton'] {
         transition: 0.15s ease;
-        colors: $lighter, $darker, $dark;
-        &:hover { colors: 0, 0, $darker; }
+        c: $lighter $darker $darken;
       }
-      // Note section.
-      [class*="note"] > textarea {
-        colors: $lighter, 0, 0;
-        &:focus { colors: $light, 0, $darker; }
+      /// Add note.
+      [class *= 'note-'] > textarea {
+        c: $light;
+        &:focus { c: 0 0 $darken }
       }
     }
-    // * Footer.
-    > [class^="footer-"] {
-      colors: $light, $darker, $t;
-      // Wumpus!
-      [class*="wumpusShown-"] [class*="wumpusTooltip-"] {
-        colors: $lighter, 0, $dark;
-        &::after { border-color: $t $dark $t $t; }
+    /// Footer.
+    > [class *= 'footer-'] {
+      c: $light $darker $t;
+      /// Wumpus!
+      [class *= 'wumpusShown-'] [class *= 'wumpusTooltip-'] {
+        c: $light 0 $darker;
+        &::after { border-color: $t $darker $t $t; }
       }
-      // Tip color.
+      /// Tips.
       [class *= 'statusGreen-'] { c: $green }
-      [class*="tip-"] { c: $light }
-      // Message user.
-      [class*="quickMessage"] { colors: $light, $darker, $dark; }
+      [class *= 'tip-'] { c: $light }
+      /// Message user.
+      [class *= 'quickMessage-'] { c: $light $darker $darken }
     }
   }
 
