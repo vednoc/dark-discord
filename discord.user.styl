@@ -324,13 +324,13 @@
     }
   }
 
-  // * Global -> GDPR complience.
-  [class*="gdprWrapper-"] {
+  // Global -> GDPR complience.
+  [class *= 'gdprWrapper-'] {
     radius: $radius;
-    colors: $lighter 0 $darker;
-    [class*="header-"] { colors: $light 0 0 }
-    [class*="lookInverted-"] { colors: $accent 0 $dark }
-    [class*="anchor-"], [class*="lookLink-"] { colors: $lighter 0 0 }
+    c: $lighter $darker $darken;
+    [class *= 'header-'] { c: $light }
+    [class *= 'lookInverted-'] { c: $white 0 $accent }
+    [class *= 'anchor-'], [class *= 'lookLink-'] { c: $lighter }
   }
 
   // * No channel. (=
