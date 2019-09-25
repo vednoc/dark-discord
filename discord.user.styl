@@ -1856,65 +1856,74 @@
     }
   }
 
-  // * Search results.
-  [class*="searchResultsWrap-"] {
-    colors: 0 0 $dark;
-    box-shadow: -1px 0 0 0 $darker;
-    [class*="searchHeader-"] {
-      colors: 0 0 $dark;
-      box-shadow: 0 1px 0 0 $darker !important;
-      // Text color.
-      [class*="totalResults-"] {
+  // Chat -> Search results.
+  [class *= 'searchResultsWrap-'] {
+    border-left: 1px solid $darker;
+    c: 0 0 $dark;
+    [class *= 'searchHeader-'] {
+      c: 0 0 $darken;
+      box-shadow: inset 0 -1px $darker !important;
+      /// Text.
+      [class *= 'totalResults-'] {
         opacity: 1;
-        colors: $light 0 0;
+        c: $lighter;
       }
-      [class*="tab-"] {
+      /// Tabs.
+      [class *= 'tab-'] {
         opacity: 1;
-        colors: $lighter 0 0;
-        &:hover, &[class*="selected-"] { colors: $light $accent 0 }
+        c: $lighter;
+        border-width: 1px !important;
+        &:hover { c: $light $t }
+        &[class *= 'selected-'] { c: $light $accent }
       }
     }
-    [class*="resultsWrapper-"] {
-      padding: 0 10px;
-      // Name and separator.
-      [class*="channelSeparator-"] {
-        &::before { colors: 0 $darker 0 }
-        [class*="channelName-"] { colors: $light 0 $dark }
+    [class *= 'resultsWrapper-'] {
+      /// Name and separator.
+      [class *= 'channelSeparator-'] {
+        &::before { c: 0 $darker }
+        [class *= 'channelName-'] { c: $light 0 $dark }
       }
-      // Single result.
-      [class*="searchResult-"] {
+      /// Single result.
+      [class *= 'searchResult-'] {
         overflow: unset !important;
-        &[class*="expanded-"] {
+        [class *= 'clickOverride-'] { display: none }
+        &[class *= 'expanded-'] {
           radius: $radius;
           border-width: 1px;
-          colors: 0 $darker 0;
+          c: 0 $darker;
           > div:last-of-type {
             border-top-width: 1px;
             radius: 0 0 $radius $radius !important;
           }
         }
-        // Remove unnecessary gradients.
+        /// Remove msg gradients.
         &::before, &::after { content: none !important; }
-        // Matching message.
-        [class*="hit"] {
+        /// Matching message.
+        [class *= 'hit'] {
           border-width: 1px !important;
-          colors: 0 $darker $dark;
-          box-shadow: 0 2px 4px 0 $shadow;
-          ../:not([class*="expanded-"]) [class*="hit"] { radius: $radius }
+          c: 0 $darker $darken;
+          box-shadow: $bshadow;
+          ../:not([class *= 'expanded-']) [class *= 'hit'] { radius: $radius }
         }
-        [class*="jumpButton-"] { colors: $light 0 $darker }
+        [class *= 'jumpButton-'] { c: $light 0 $darker }
+        [class *= 'timestamp'] { c: $lighter }
+        [class *= 'markup-'] {
+          c: $light;
+          > [class *= 'anchor-'] { c: $accent }
+        }
       }
-      // Pages.
-      [class*="pagination-"] {
+      /// Pages.
+      [class *= 'pagination-'] {
         padding-bottom: 10px;
         colors: $lighter 0 0;
         > div[class] {
           c: $light;
           background: none;
           transform: unset;
-          &:not([class*="disabled-"]) { opacity: 1 }
-          &[class*="Next-"]::before { content: "(>)" }
-          &[class*="Previous-"]::before { content: "(<)" }
+          &::before { padding: 4px 8px }
+          &:not([class *= 'disabled-']) { opacity: 1 }
+          &[class *= 'Next-']::before { content: '→' }
+          &[class *= 'Previous-']::before { content: '←' }
         }
       }
     }
