@@ -1049,6 +1049,7 @@
     [class *= 'friendsTable-'] {
       margin-top: 0px; // @upstream
       c: 0 0 $dark;
+      &::before { content: none }
       [class *= 'TableHeader-'] { c: 0 $darker }
       [class *= 'TableBody-'] { c: 0 0 $t }
       [class *= 'Text-'], [class *= 'Column-'] { c: $light }
@@ -1789,6 +1790,7 @@
 
   // Activity page.
   [class *= 'activityFeed-'] {
+    > [class *= 'container-']::before { content: none }
     /// Title-bar.
     [class *= 'container-'] {
       c: $lighter $darker $dark;
