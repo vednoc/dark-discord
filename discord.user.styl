@@ -574,43 +574,47 @@
       [class *= 'username-'] { c: $light }
       [class *= 'discriminator-'] { c: $lighter }
       /// Send button.
-      & + [class *= 'lookFilled-'] { c: $light 0 $darker }
-    }
-    [class*="topSection"] {
-      colors: 0, 0, $t;
-      [class*="header-"], [class*="headerFill-"] { c: 0 0 $darken }
-      [class*="activityProfile-"] {
-        border-top: 1px solid $darker;
-        colors: 0, 0, $t;
-        // Timestamps/secondary text.
-        [class *= 'text-'], [class *= 'content'] { c: $lighter }
-        [class *= 'weight-'] { c: $light }
-        // Activities/header text.
-        [class*="activityName-"], [class*="xtNormal-"] { colors: $light, 0, 0; }
-        [class*="details-"] { colors: $lighter 0 0 }
-        // Progress bar.
-        [class*="bar-"] {
-          colors: 0, 0, $darker;
-          [class*="barInner-"] { colors: 0, 0, $accent; }
-        }
-        // Icons.
-        [class*="listenAlongIcon-"] path { v: $lighter }
+      + [class *= 'button-'] {
+        c: $light 0 $darker;
+        &:hover { opacity: 0.8 }
       }
-      // Fake border.
+    }
+    /// Activity.
+    [class *= 'topSection'] {
+      c: 0 0 $t;
+      [class ^= 'header'] { c: 0 0 $darken }
+      [class *= 'activityProfile-'] {
+        border-top: 1px solid $darker;
+        c: 0 0 $t;
+        /// Text.
+        [class *= 'Text-'], [class *= 'content'] { c: $lighter }
+        [class *= 'details-'], [class *= 'weight-'] { c: $lighter }
+        [class *= 'text-'], [class *= 'activityName-'] { c: $light }
+        /// Progress bar.
+        [class *= 'bar-'] {
+          c: 0 0 $darker;
+          [class *= 'barInner-'] { c: 0 0 $accent }
+        }
+        /// Buttons.
+        [class *= 'lookOutlined-'] {
+          c: $lighter $darker $darker;
+          &:hover { opacity: 0.8 }
+        }
+      }
+      /// Indicator.
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         top: 0; right: 0; left: 0;
         radius: $radius $radius 0 0;
         border-top: $radius solid $t;
-        // colors: 0, 0, $dark;
       }
     }
-    // Various modes.
-    [class*="Playing-"]::before { colors: 0, $blue, 0; }
-    [class*="Spotify-"]::before { colors: 0, $green, 0; }
-    [class*="Streaming-"]::before { colors: 0, $violet, 0; }
-    [class*="Xbox-"]::before { colors: 0, $violet, 0; }
+    /// Various activities.
+    [class *= 'Xbox-']::before { c: 0 $violet }
+    [class *= 'Playing-']::before { c: 0 $blue }
+    [class *= 'Spotify-']::before { c: 0 $green }
+    [class *= 'Streaming-']::before { c: 0 $violet }
     /// Tabs.
     [class *= 'tabBarContainer-'] {
       c: 0 $darker $darken;
