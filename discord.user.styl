@@ -261,6 +261,14 @@
   ::selection { colors: $dark, 0, $lighter; }
   ::-moz-selection { colors: $dark, 0, $lighter; }
 
+  /// Global -> Tooltips.
+  [class *= 'tooltip-'] {
+    border: 1px solid $lighter;
+    c: $light 0 $dark;
+    box-shadow: 0 2px 8px $shadow !important;
+    [class *= 'Pointer-'] { border-top-color: $lighter !important }
+  }
+
   // Global -> Bot tags.
   [class*="botTag-"]:not(#z) { c: $white 0 $accent }
 
