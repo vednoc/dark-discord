@@ -647,17 +647,16 @@
         c: $light;
         &:focus { c: 0 0 $darken }
       }
-      // ? Mutual servers/friends.
-      [class*="listRow-"] {
-        colors: $lighter, 0, 0;
-        &:hover { colors: $light, 0, $darker; }
-        [class*="guildNick-"] { colors: $lighter, 0, 0; }
-        [class*="discriminator"] { colors: $light, 0, 0; }
+      /// Mutual servers/friends.
+      [class *= 'listRow-'] {
+        c: $lighter;
+        &:hover { c: $light 0 $darken }
+        [class *= 'guildNick-'] { c: $lighter }
       }
-      // ? Reset misaligned elements due to Firefox polyfill.
-      [class*="firefoxFixScrollFlex-"] {
+      /// Scrollbar polyfil tweaks.
+      [class *= 'firefoxFixScrollFlex-'] {
         padding-right: 0px;
-        [class*="userInfoSection-"] { margin-right: 16px; }
+        [class *= 'InfoSection-'], [class *= 'listRow-'] { margin-right: 12px }
       }
     }
     /// Connected accounts.
