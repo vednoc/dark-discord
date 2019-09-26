@@ -174,16 +174,7 @@
       c: $light;
       &[class *= 'h5-'] { c: $lighter }
     }
-    [class *= 'colorBrand-'] {
-      c: $accent;
-      &[class *= 'linkButton-']:hover > div[class] {
-        background-image: linear-gradient(
-          0deg, $t, $t 1px, $accent 0, $accent 2px, $t 0
-        );
-      }
-    }
     [class*="subTitle-"] { c: $lighter }
-    [class*="lookFilled-"] { c: $white 0 $blue }
   }
   // Voice chat controls.
   [class*="buttonIcon-"] path { v: $lighter }
@@ -530,20 +521,6 @@
       c: 0 0 $darken;
       box-shadow: inset 0 1px 0 0 $darker;
       [class*="label"] * { colors: $lighter, 0, 0; }
-      // Cancel button.
-      [class*="lookLink-"] {
-        colors: $lighter, 0, 0;
-        &:hover [class*="contents-"] {
-          background-image: none;
-          box-shadow: inset 0 -1px 0 0 $accent;
-        }
-      }
-      // Upload button.
-      [class*="lookInverted-"] {
-        transition: 0.2s ease;
-        colors: $lighter, 0, $dark;
-        &:hover { filter: opacity(0.8); }
-      }
     }
   }
 
@@ -581,11 +558,6 @@
     [class *= 'header-'] > [class *= 'headerInfo-'] {
       [class *= 'username-'] { c: $light }
       [class *= 'discriminator-'] { c: $lighter }
-      /// Send button.
-      + [class *= 'button-'] {
-        c: $light 0 $darker;
-        &:hover { opacity: 0.8 }
-      }
     }
     /// Activity.
     [class *= 'topSection'] {
@@ -2420,23 +2392,39 @@
       }
     }
   }
-  // TODO: Rewrite/move this somewhere.
-  [class*="colorPrimary"] { colors: $light, 0, 0; }
 
   // Global -> Buttons.
   [class *= 'button-'] {
+    &[class *= 'Link-'] {
+      &[class *= 'Grey-'] { c: $lighter }
+      &[class *= 'Brand-'] { c: $accent }
+      &[class *= 'White-'] { c: $lighter }
+      &[class *= 'Primary-'] { c: $light }
+      &:hover > div {
+        background-image: none !important;
+        opacity: 0.8 !important;
+      }
+    }
+    &[class *= 'Inverted-'] {
+      &[class *= 'Brand-'] { c: $white 0 $accent }
+      &[class *= 'Green-'] { c: $white 0 $green }
+      &:hover { opacity: 0.8 !important }
+    }
     &[class *= 'Outlined-'] {
       &[class *= 'Red-'] { c: $red $red }
-      &[class *= 'Red-']:hover { c: $white 0 $red }
+      &[class *= 'Brand-'] { c: $accent $accent }
+      &[class *= 'White-'] { c: $lighter $lighter }
+      // &:hover { c: 0 0 $darken }
+      &:hover { opacity: 0.8 !important }
     }
     &[class *= 'Filled-'] {
       transition: all 0.15s ease;
+      &[disabled] { c: $light $darken $darken }
       &[class *= 'Primary-'] { c: $light 0 $darken }
       &[class *= 'Brand-'] { c: $white 0 $accent }
       &[class *= 'Green-'] { c: $white 0 $green }
       &[class *= 'White-'] { c: $white $white }
       &[class *= 'Grey-'] { c: $light 0 $darker }
-      &[disabled] { c: $light $darken $darken }
       &:not([disabled]):hover { opacity: 0.8 !important }
     }
   }
