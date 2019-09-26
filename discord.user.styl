@@ -1812,14 +1812,14 @@
       }
     }
     /// Cards.
-    [class *= 'placeholderWrapper-'] {
+    [class *= 'placeholderWrapper-'], article[class *= 'wrapper-'] {
       c: $light $darker $darken;
     }
     /// Content.
     div[class *= 'card-'][class *= 'card'] {
       radius: $radius;
       c: 0 0 $darken;
-      box-shadow: inset 0 0 0 1px $darker;
+      &[class *= 'interactive'] { box-shadow: inset 0 0 0 1px $darker }
       [class *= 'imageWrapper-'] { radius: $radius $radius 0 0; }
       [class *= 'coloredBackground-'] {
         c: 0 0 $t;
@@ -1829,12 +1829,29 @@
       [class *= 'colorMuted-'] { c: $lighter }
       [class *= 'colorWhite-'] { c: 0 $accent $accent }
       [class *= 'whiteButton-'] { c: $white }
+      > [class *= 'wrapper-'] { box-shadow: inset 0 1px $darker }
+
     }
-    aside > [class *= 'wrapper-'] {
-      radius: $radius;
-      c: 0 $darker $darken;
-      [class *= 'header-'] { c: $light }
-      [class *= 'body-'] { c: $lighter }
+    /// Activities.
+    aside {
+      h5 { c: $lighter }
+      > [class *= 'wrapper-'] {
+        radius: $radius;
+        c: 0 $darker $darken;
+        [class *= 'header-'] { c: $light }
+        [class *= 'body-'] { c: $lighter }
+      }
+      [class *= 'popoutContainer-']:hover { c: 0 0 $darker }
+    }
+    /// Popout.
+    [class *= 'hideOnMouseLeave-'] {
+      border: 1px solid $darker;
+      c: 0 0 $dark;
+      box-shadow: $bshadow;
+      h3 { c: $lighter }
+      [class *= 'ListItem-']:hover {
+        &:not([class *= 'Disabled-']) { c: 0 0 $darken }
+      }
     }
   }
 
