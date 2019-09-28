@@ -1061,24 +1061,24 @@
     }
 
     // Friends -> Title-bar.
-    [class*="sidebar-"] + [class*="container-"] > [class*="container-"] {
+    [class *= 'sidebar-'] + [class *= 'container-'] > [class *= 'container-'] {
       c: 0 0 $dark;
       box-shadow: 0 1px $darker;
-      [class*="children-"] {
-        &::after { display: none; }
+      [class *= 'children-'] {
+        &::after { display: none }
         [class *= 'numberBadge-'] { c: $white 0 $accent }
-        [class*="title-"] { colors: $light, 0, 0; }
-        [class*="divider-"] { colors: 0, 0, $darker; }
-        [class*="tabBar-"] {
-          colors: 0 0 $t;
-          [class*="item-"] {
+        [class *= 'title-'] { c: $light }
+        [class *= 'divider-'] { c: 0 0 $darker }
+        [class *= 'tabBar-'] {
+          c: 0 0 $t;
+          [class *= 'item-'] {
             transition: 0.15s ease;
-            &:not([class*="primary-"]):not([class*="selected-"]) {
-              colors: $lighter 0 $t;
-              &:hover { colors: $light 0 $darker }
+            &:not([class *= 'primary-']):not([class *= 'selected-']) {
+              c: $lighter 0 $t;
+              &:hover { c: $light 0 $darken }
             }
-            &[class*="selected-"] { colors: $accent 0 $t }
-            &[class*="primary-"] { colors: 0 0 $accent }
+            &[class *= 'selected-'] { c: $accent 0 $t }
+            &[class *= 'primary-'] { c: 0 0 $accent }
           }
         }
       }
