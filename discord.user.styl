@@ -241,10 +241,13 @@
     }
   }
 
-  // * Userstyle version.
-  [class*="userSettingsAccount"] > h2::after {
-    content: " | Theme: " var(--note);
+  // Settings -> Userstyle version.
+  [class *= 'userSettingsAccount'] > h2::before {
+    display: block;
+    content: var(--note);
     text-transform: initial;
+    padding: 0.5rem 0 2rem;
+    font-size: 1.2rem;
   }
 
   // * Global -> Browser defaults.
