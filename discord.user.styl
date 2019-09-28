@@ -1030,12 +1030,13 @@
 
     /// Friends -> List.
     [class *= 'friendsTable-'] {
-      margin-top: 0px; // @upstream
+      padding-top: 2px; // @upstream
       c: 0 0 $dark;
       &::before { content: none }
       [class *= 'TableHeader-'] { c: 0 $darker }
       [class *= 'TableBody-'] { c: 0 0 $t }
-      [class *= 'Text-'], [class *= 'Column-'] { c: $light }
+      [class *= 'title-'], [class *= 'text-'] { c: $lighter }
+      [class *= 'Text-'], [class *= 'Column-'] { c: $light $darker }
       [class *= 'Action-'], [class *= 'Separator-'] { c: 0 0 $darker }
       [class *= 'noIcon-'] { c: $light 0 $darker }
       /// Actions.
@@ -1057,6 +1058,13 @@
         }
         /// Fix actions.
         [class *= 'ColumnActions'] { padding-right: 0 }
+      }
+      /// Add friends.
+      [class *= 'friendTableAddHeader-'] {
+        c: 0 $darker;
+        h2, input { c: $light }
+        [class *= 'Hint-'], [class *= 'Description-'] { c: $lighter }
+        form[class *= 'wrapper-'] { c: 0 $darker $darken }
       }
     }
 
