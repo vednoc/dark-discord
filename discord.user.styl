@@ -2005,6 +2005,7 @@
 
   // Global -> QuickSwitcher.
   [class *= 'quickswitcher-'] {
+    [class *= 'scroller-'] { c: 0 0 $t }
     &:not([class *= 'channelNotice-']) {
       border: 1px solid $darker;
       c: $light 0 $dark;
