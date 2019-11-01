@@ -2450,7 +2450,7 @@
       &[class *= 'Red-'] { c: $red $red }
       &[class *= 'Brand-'] { c: $accent $accent }
       &[class *= 'White-'] { c: $lighter $lighter }
-      // &:hover { c: 0 0 $darken }
+      &[class *= 'Primary-'] { c: $light $lighter $darken }
       &:hover { opacity: 0.8 !important }
     }
     &[class *= 'Filled-'] {
