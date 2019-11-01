@@ -566,7 +566,11 @@
     [class *= 'topSection'] {
       border-bottom: 1px solid $darker;
       c: 0 0 $t;
-      [class ^= 'header'] { c: 0 0 $darken }
+      [class ^= 'header'] {
+        c: 0 0 $darken;
+        /// Custom status.
+        + div[class = ''] { c: 0 0 $darken }
+      }
       [class *= 'activityProfile-'] {
         border-top: 1px solid $darker;
         c: 0 0 $t;
@@ -2104,6 +2108,19 @@
       > * { c: 0 0 $darken }
       // Selected item.
       [class*="-1gnr91b-"], [class*="-option"]:hover { colors: 0 0 $darker }
+    }
+  }
+
+  // Global -> Select dropdown component.
+  [class *= 'select-'][role] {
+    c: $fg $darker $dark;
+    /// Custom status popout.
+    /[class *= 'popouts-'] .popout-2sKjHu {
+      c: 0 $darker $dark;
+      [class *= 'option-'] {
+        c: $light;
+        &:hover, &[class *= 'optionActive-'] { c: 0 0 $darken }
+      }
     }
   }
 
