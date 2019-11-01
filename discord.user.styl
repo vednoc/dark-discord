@@ -2209,9 +2209,13 @@
       }
     }
     // * Main content.
+    [class*="contentRegion-"] {
+      c: 0 0 $dark;
+      box-shadow: inset 1px 0 $darker;
+    }
     [class*="contentRegionScroller-"] {
       colors: $light, 0, $dark;
-      box-shadow: 1px 0 0 0 inset $darker;
+      box-shadow: inset 1px 0 $darker;
       // Text colors.
       [class*="titleDefault-"], [class*="title-"] { colors: $lighter, 0, 0; }
       [class*="description-"] {
