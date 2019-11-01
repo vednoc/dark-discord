@@ -908,7 +908,7 @@
     }
     [class*="unreadMentionsBar-"] {
       colors: $white, 0, $accent;
-      box-shadow: 2px 2px 0 0 $darker;
+      box-shadow: $bshadow;
       transition: 0.15s ease;
       svg { colors: $white, 0, 0; }
       &:hover { opacity: 0.8; }
@@ -1977,7 +1977,7 @@
         radius: $radius;
         colors: $light $t $t;
 
-        // * Feature -> Code line numbers.
+        // Feat -> Code line numbers.
         if ( code_ln == 1 ) {
           position: relative;
           padding-left: 2.25em !important;
@@ -2549,7 +2549,7 @@
     }
   }
 
-  // * Feature -> Smaller guild icons.
+  // Feat -> Smaller guild icons.
   if mid_guilds {
     $size = guild_size;
     // ? Set the width of guilds wrapper.
@@ -2936,7 +2936,7 @@
     }
   }
 
-  // Feature -> Disable avatar context menu.
+  // Feat -> Disable avatar context menu.
   if ( disable_acm == 1 ) {
     [class*="avatar-"] {
       img { text-indent: unset }
@@ -2944,7 +2944,7 @@
     }
   }
 
-  // Feature -> Better long/wide emotes!
+  // Feat -> Better long/wide emotes!
   .emoji {
     &[aria-label*="long" i],
     &[aria-label*="wide" i] {
