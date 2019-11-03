@@ -2495,6 +2495,15 @@
     }
   }
 
+  // Global -> Placeholders.
+  [class *= 'membersWrap-'] {
+    [class *= 'Placeholder-'],
+    [class *= 'placeholderAvatar-'],
+    [class *= 'placeholderUsername-'] {
+      c: 0 0 $darker;
+    }
+  }
+
   // * Input bar max-height setting.
   [class*="channelTextArea-"] textarea[class*="textArea-"] {
     max-height: var(--textarea);
