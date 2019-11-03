@@ -2938,6 +2938,8 @@
       [class*="container-"] [class*="badge-"] {
         display: none;
       }
+      /// Global Discord alerts.
+      + [class *= 'base-'] > [class *= 'notice']:first-child { display: none }
     }
     [class*="unread-"] [class*="bar-"],
     [class*="contentUnread"] [class*="iconSpacing-"] {
