@@ -344,8 +344,8 @@
     colors: 0, 0, $dark;
   }
 
-  // * Chromium scrollbars.
-  if not scrollbars_chromium {
+  // Feat -> Chromium scrollbars.
+  if ( scrollbars_chromium != 1 ) {
     [class^="chat"], [class*="friends"] {
       ::-webkit-scrollbar {
         &-track { colors: 0, 0, $dark; }
@@ -362,8 +362,8 @@
     }
   }
 
-  // * Firefox scrollbar polyfill.
-  if not scrollbars_firefox {
+  // Feat -> Firefox scrollbar polyfill.
+  if ( scrollbars_firefox != 1 ) {
     // ? ChannelInfo/SearchResults/Activity/Store/Modals/Friends/Notifications
     // ? ActivityFeed/QuickSwitcher/Channels/Autocomplete/Context/Chat.
     [class*="modal-"][class*="modal-"][class*="size-"],
@@ -2520,9 +2520,9 @@
     }
   }
 
-  // * Compact cozy messages.
+  // Feat -> Compact cozy messages.
   // ? Kinda like compact mode but with avatars.
-  if compact_cozy {
+  if ( compact_cozy == 1 ) {
     [class*="containerCozyBounded-"] {
       padding: 0px 10px 0px 10px;
       // Fix divider.
@@ -2540,7 +2540,7 @@
       [class*="contentCozy-"] {
         margin-left: 12px;
         // Default message arrows.
-        if not compact_lines {
+        if ( compact_lines != 1 ) {
           [class*="markup-"]::before {
             opacity: 0.25;
             content: "⤷ ";
@@ -2559,7 +2559,7 @@
   }
 
   // Feat -> Smaller guild icons.
-  if mid_guilds {
+  if ( mid_guilds == 1 ) {
     $size = guild_size;
     // ? Set the width of guilds wrapper.
     [class *= 'guilds-'] {
@@ -2708,8 +2708,8 @@
     }
   }
 
-  // * Replace images with their links.
-  if disable_images {
+  // Feat -> Replace images with their links.
+  if ( disable_images == 1 ) {
     [class*="imageZoom-"] {
       height: auto !important;
       width: auto !important;
@@ -2721,8 +2721,8 @@
     }
   }
 
-  // * Unified header.
-  if unified_header {
+  // Feat -> Unified header.
+  if ( unified_header == 1 ) {
     // * Transparetinze title bar.
     [class*="base"] [class*="chat-"] > [class*="title-"] {
       colors: 0, 0, $t;
@@ -2747,8 +2747,8 @@
     }
   }
 
-  // * Compact mode lines.
-  if compact_lines {
+  // Feat -> Compact mode lines.
+  if ( compact_lines == 1 ) {
     // Fix message buttons issues.
     [class*="buttonContainer-"] + [class*="markup-"] {
       margin-right: 46px;
@@ -2772,7 +2772,7 @@
           line: true, false;
           // colors: 0, $red, 0;
         }
-        if ! compact_cozy {
+        if ( compact_cozy != 1 ) {
           // Curved line.
           &::after {
             size: 9px, 15px;
@@ -2929,8 +2929,8 @@
     }
   }
 
-  // * Notification-free mode.
-  if remove_notifications {
+  // Feat -> Notification-free mode.
+  if ( remove_notifications == 1 ) {
     [class*="wrapper-"] {
       // ? DMs/Mentions/Badges.
       [class*="friendsOnline-"] ~ [class*="container-"][style*="opacity"],
