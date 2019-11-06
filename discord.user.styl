@@ -2500,6 +2500,12 @@
     }
   }
 
+  // Global -> Indicators.
+  [class *= 'indicator-'] {
+    &[class *= 'defaultIndicator-'] { c: $light 0 $darker }
+    &[class *= 'premiumIndicator-'] { c: $white 0 $accent }
+  }
+
   // Global -> Placeholders.
   [class *= 'membersWrap-'] {
     [class *= 'Placeholder-'],
