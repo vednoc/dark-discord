@@ -782,6 +782,11 @@
     }
   }
 
+  // Popouts -> Custom status.
+  [class *= 'customStatus-'] {
+    &, span { c: $light }
+  }
+
   // Sidebar -> User controls.
   [class *= 'sidebar-'] > [class *= 'panels-'] {
     c: 0 0 $t;
