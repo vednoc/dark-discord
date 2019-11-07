@@ -2511,14 +2511,14 @@
       [class *= 'anchor-'] { c: $accent }
       [class *= 'date-'], [class *= 'amount-'] { c: $lighter }
       [class *= 'expand-'] path { stroke: $lighter }
-      [class *= 'payment-'] {
-        c: $light 0 $t;
-        &:hover { c: 0 0 $darken }
-      }
+      [class *= 'payment-'] { c: $light 0 $t }
       [class *= 'expandedInfo-'] {
         c: $light 0 $darker;
         [class *= 'Header-'], [class *= 'Text-'] { c: $light $darken }
       }
+    }
+    [class *= 'scrollbar-'] {
+      &, [class *= 'pad-'] { c: 0 0 $darken }
     }
   }
 
