@@ -2500,6 +2500,27 @@
     }
   }
 
+  // Settings -> Billing.
+  [class *= 'paymentPane-'] {
+    border: 1px solid $darker;
+    c: $light 0 $darken;
+    [class *= 'bottomDivider-'] { c: 0 $darker }
+    [class *= 'paginator-'] {
+      c: $lighter 0 $t;
+      [class *= 'anchor-'] { c: $accent }
+      [class *= 'date-'], [class *= 'amount-'] { c: $lighter }
+      [class *= 'expand-'] path { stroke: $lighter }
+      [class *= 'payment-'] {
+        c: $light 0 $t;
+        &:hover { c: 0 0 $darken }
+      }
+      [class *= 'expandedInfo-'] {
+        c: $light 0 $darker;
+        [class *= 'Header-'], [class *= 'Text-'] { c: $light $darken }
+      }
+    }
+  }
+
   // Global -> Indicators.
   [class *= 'indicator-'] {
     &[class *= 'defaultIndicator-'] { c: $light 0 $darker }
