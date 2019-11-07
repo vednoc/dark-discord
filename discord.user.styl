@@ -2521,6 +2521,15 @@
     }
   }
 
+  // Global -> Pagination.
+  [class *= 'pageActions-'] {
+    [class *= 'pageButton'] {
+      c: 0 $darker;
+      &:hover { c: 0 0 $darker }
+    }
+    [class *= 'pageIndicator-'] { c: $light $darker }
+  }
+
   // Global -> Indicators.
   [class *= 'indicator-'] {
     &[class *= 'defaultIndicator-'] { c: $light 0 $darker }
