@@ -1660,31 +1660,26 @@
     }
   }
 
-  // * Embeds.
-  [class^="embedInner"] {
-    border-left: none;
-    c: $light $darker $darken;
-    // Descriptions and such.
-    [class*="Provider-"], [class*="Description-"] {
+  // Embeds.
+  [class ^= 'embedWrapper-'] {
+    c: $light 0 $darken;
+    /// Base text.
+    [class *= 'Provider-'], [class *= 'Description-'] {
       c: $lighter;
       a { c: $accent }
     }
-    // Fields.
-    [class*="Field-"] {
-      [class*="FieldName-"] { colors: $light, 0, 0; }
-      [class*="FieldValue-"] { colors: $lighter, 0, 0; }
-    }
-    // Titles.
-    [class*="Title-"], [class*="AuthorName-"] { colors: $light, 0, 0; }
-    // Links.
-    [class*="TitleLink-"] { colors: $accent, 0, 0; }
-  }
-  // ? Left bar color; we don't want to overwrite it.
-  [class*="embedPill-"] {
-    &:not([style]) { colors: 0 0 $darker }
-    &[style*="rgb(30\, 35\, 39)"] { colors: 0 0 $orange }
-    &[style*="rgb(255\, 255\, 255)"] { colors: 0 0 $lighter }
-    &[style*="rgb(255\, 0\, 0)"] { colors: 0 0 $red }
+    /// Fields.
+    [class *= 'FieldName-'] { c: $light }
+    [class *= 'FieldValue-'] { c: $lighter }
+    /// Titles.
+    [class *= 'Title-'], [class *= 'AuthorName-'] { c: $light }
+    /// Links.
+    [class *= 'TitleLink-'] { c: $accent }
+    /// Left bar.
+    &:not([style]) { c: 0 $darker }
+    &[style *= 'rgb(255\, 0\, 0)'] { c: 0 $red }
+    &[style *= 'rgb(30\, 35\, 39)'] { c: 0 $orange }
+    &[style *= 'rgb(255\, 255\, 255)'] { c: 0 $lighter }
   }
 
   // * Emote menu.
