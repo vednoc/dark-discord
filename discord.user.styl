@@ -1686,10 +1686,10 @@
   [class*="emojiPicker-"] {
     radius: $radius;
     c: $lighter $darker $dark;
-    box-shadow: $bshadow;
+    box-shadow: 0 0 0 1px $darker, $bshadow;
     // Header.
     [class*="header-"] {
-      colors: 0, $darker, 0;
+      box-shadow: 0 1px $darker;
       input { c: $light }
       [class*="searchBar-"] { c: 0 0 $darken }
     }
@@ -1700,7 +1700,7 @@
     [class*="row-"] [class*="selected-"] { colors: 0, 0, $accent; }
     // Selected category.
     [class*="categories-"] {
-      c: 0 $darker;
+      c: 0 0 $darker;
       [class*="item-"] {
         &[class*="selected-"] { colors: 0 $accent 0 }
         &:hover { colors: 0 $darker 0 }
@@ -1723,6 +1723,11 @@
     // ? Fix 'no matching emoji' image.
     [class*="sadImage-"] {
       filter: invert(calc((var(--icinvert)) + 0.8)) !important;
+    }
+    [class *= 'infoBar-'] {
+      c: 0 0 $darken;
+      [class *= 'EmojiName-'] { c: $light }
+      [class *= 'GuildName-'] { c: $lighter }
     }
   }
 
