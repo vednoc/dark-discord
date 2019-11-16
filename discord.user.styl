@@ -2992,17 +2992,12 @@
     }
   }
 
-  // Feat -> Better long/wide emotes!
+  // Feat -> Smaller jumbo emotes!
   .emoji {
-    &[aria-label*="long" i],
-    &[aria-label*="wide" i] {
-      margin: 0 !important;
-      width: 2em !important;
-      height: 2em !important;
-    }
     &.jumboable {
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 2.0rem;
+      height: 2.0rem;
+      min-height: 2.0rem;
     }
   }
 
