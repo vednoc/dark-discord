@@ -1516,22 +1516,19 @@
         }
       }
 
-      // * Mention bar.
-      [class*="isMentioned"] {
+      /// Mention bar.
+      .isMentioned-N-h9aa {
         position: relative;
-        colors: 0, 0, $t;
+        margin: 0;
+        c: 0 0 $t;
         &::before {
-          opacity: 0.15;
+          opacity: 0.25;
           z-index: -1;
-          content: ""; position: absolute;
-          top: 0; right: 0; bottom: 0; left: 0;
-          radius: 0 3px 3px 0;
-          colors: 0 0 $yellow;
-        }
-        &::after {
-          opacity: 0.6;
-          left: -4px;
-          colors: 0 $yellow $t;
+          content: '' i;
+          position: absolute;
+          pos: 0 0 0 0;
+          radius: 3px;
+          c: 0 $t $green;
         }
       }
 
