@@ -144,6 +144,16 @@
     if c != 'boolean' || c != 'null' { bottom: c; }
     if d != 'boolean' || d != 'null' { left: d; }
   }
+  size(w, h) {
+    if w is a 'unit' { width:  w }
+    if h is a 'unit' { height: h }
+  }
+  pos(a, b, c, d) {
+    if a is a 'unit' { top:    a }
+    if b is a 'unit' { right:  b }
+    if c is a 'unit' { bottom: c }
+    if d is a 'unit' { left:   d }
+  }
 
   body {
     c: 0 0 $dark;
@@ -1426,7 +1436,7 @@
             &::before {
               z-index: -1;
               content: "";
-              nav: 0 0 0 0;
+              pos: 0 0 0 0;
               radius: $radius;
               position: absolute;
               colors: 0 0 $darken;
@@ -1495,7 +1505,7 @@
           colors: $accent 0 $t;
           &::before {
             content: "";
-            nav: 0 0 0 0;
+            pos: 0 0 0 0;
             opacity: 0.15;
             position: absolute;
             radius: 3px;
@@ -1991,7 +2001,7 @@
             opacity: 0.6;
             overflow-y: hidden;
             position: absolute;
-            nav: 0.5em 0 0.5em 0;
+            pos: 0.5em 0 0.5em 0;
             padding: 0 0.25em 0 1em;
             white-space: pre-line;
             text-align: right;
@@ -2791,182 +2801,57 @@
 
   // Feat -> Compact mode lines.
   if ( compact_lines == 1 ) {
-    // Fix message buttons issues.
-    [class*="buttonContainer-"] + [class*="markup-"] {
-      margin-right: 46px;
-    }
-    [class*="containerCozyBounded-"] {
-      // Avatars.
-      div[class*="avatar-"] {
-        z-index: 1;
-        radius: 50%;
-        colors: 0 0 $darker;
-        box-shadow: 0 0 0 2.5px $darker;
-        &:hover { opacity: 1; }
+    [class *= 'chatContent-'] [class *= 'containerCozyBounded-'] {
+      /// Replace margins with padding.
+      [class *= 'containerCozy-B4noqO']:not(:empty) {
+        margin-bottom: 0;
+        padding-bottom: 8px;
       }
-      // Markup.
-      [class*="markup-"] {
+      /// Visual lines.
+      [class *= 'container-'] {
         position: relative;
-        margin-left: 16px;
-        // Straight line.
+        padding-left: 16px;
+        // box-shadow: inset 1px 0 black;
+        /// Vertical lines.
         &::before {
-          nav: 0, false, -10px, -13px;
-          line: true, false;
-          // colors: 0, $red, 0;
+          pos: 0 f 0 2px;
+          line: true false;
+          // c: 0 $red;
         }
-        if ( compact_cozy != 1 ) {
-          // Curved line.
-          &::after {
-            size: 9px, 15px;
-            nav: -5px, 0, 0, -13px;
-            radius: 0 0 0 6px;
-            line: true, true;
-            // colors: 0, $cyan, 0;
-          }
-        } else {
-          // Curved line.
-          &::after {
-            size: 9px, 30px;
-            nav: -20px, 0, 0, -13px;
-            radius: 0 0 0 6px;
-            line: true, true;
-            // colors: 0, $cyan, 0;
-          }
+        /// Horizontal lines.
+        &::after {
+          size: 9px 10px;
+          pos: -2px f f 2px;
+          radius: 0 0 0 6px;
+          line: true true;
+          // c: 0 $cyan;
+        }
+        /// Fix missing space in code blocks.
+        &[class *= '-B4noqO'] {
+          &::before { bottom: -4px }
+          &::after { content: unset }
         }
       }
-      // Reset for the last pseudo elements.
-      > div:nth-last-child(2) [class*="contentCozy-"] {
-        // Reset markup and embeds.
-        [class*="markup-"], [class*="embed-"] {
-          &::before { colors: 0, $t, 0; }
-          // &::after { colors: 0, $yellow, 0; }
+      /// Reset visual lines.
+      > *:nth-last-child(2) {
+        /// Vertical line.
+        [class *= 'containerCozy-336-Cz'] {
+          &::before { content: unset }
         }
-        // Reset your uploaded image.
-        [class*="containerCozy-"] > a[class*="embed"]::before {
-          display: none;
-          // colors: 0, $red, 0;
+        /// Spotify invite.
+        ../ [class *= 'invite-'],
+        /// Last, empty message.
+        [class *= 'containerCozy-B4noqO'] {
+          &::before, &::after { content: unset }
         }
-        // Reset extra server/gift embeds.
-        [class*="containerCozy-"] > [class*="cursorDefault-"]::before {
-          display: none;
-          // colors: 0, $blue, 0;
+        /// System messages.
+        &[class *= 'content-3dzVd8'] {
+          *::before, *::after { content: unset }
         }
-      }
-      // Attachments.
-      [class*="containerCozy-"] > [class*="attachment-"] {
-        position: relative;
-        margin-left: 16px;
-        &::before {
-          z-index: -1;
-          nav: 0 0 0 -14px;
-          line: true, false;
-          // colors: 0 $blue 0;
+        /// Mentioned bar.
+        ../ [class *= 'isMentioned-'] {
+          &::after { background: none }
         }
-      }
-      > [class*="messageCozy-"]:nth-last-child(2) [class*="attachment-"]::before {
-        display: none !important;
-      }
-      // Images/videos/embeds.
-      [class*="containerCozy-"] > [class*="embed-"] {
-        margin-left: 16px;
-        margin-bottom: 8px;
-        &::before {
-          nav: 0, 0, -22px, -13px;
-          line: true, false;
-          // colors: 0, $orange, 0;
-        }
-      }
-      // Your uploaded image embed.
-      [class*="containerCozy-"] > a[class*="embed"] {
-        overflow: visible;
-        margin-left: 15px;
-        radius: $radius;
-        box-shadow: 0 0 0 1px inset $darker;
-        // colors: 0, 0, $darker;
-        &::before {
-          nav: 0, 0, 0, -12px;
-          line: true, false;
-          // colors: 0, $green, 0;
-        }
-        img { radius: $radius; }
-      }
-      // Image you sent, no text.
-      [class*="containerCozy"] > div[class*="imageWrapper-"] {
-        margin-left: 15px;
-      }
-      // Spotify -> Embedded song.
-      [class*="containerCozy"] > div[class*="embedSpotify-"] {
-        position: relative;
-        margin-left: 15px;
-        &::before {
-          nav: -20px, 0, 0px, -12px;
-          line: true, false;
-          // colors: 0, $green, 0;
-        }
-      }
-      // Spotify -> Reset visual lines on the last message.
-      > [class*="messageCozy-"]:nth-last-child(2) [class*="embedSpotify-"]::before {
-        display: none !important;
-      }
-      // Spotify -> Party invite.
-      [class*="containerCozy-"] > [class*="invite-"] {
-        position: relative;
-        overflow: visible;
-        margin-left: 16px;
-        &::before {
-          nav: 0, 0, 0px, -14px;
-          line: true, false;
-          // colors: 0, $red, 0;
-        }
-      }
-      // Reactions.
-      [class*="containerCozy"] > span[class*="reactions-"] {
-        position: relative;
-        margin-top: 8px;
-        &::before {
-          z-index: -1;
-          nav: -10px, 0, 0px, -9px;
-          line: true, false;
-          // colors: 0, $cyan, 0;
-        }
-      }
-      // Spoilers.
-      [class*="containerCozy-"] > div[class*="spoilerContainer-"] {
-        overflow: visible;
-        margin-left: 15px;
-        box-shadow: none !important;
-        &::before {
-          nav: 0, 0, 0, -12px;
-          line: true, false;
-          // colors: 0, $green, 0;
-        }
-        // Fix blur overflow.
-        [aria-hidden] {
-          overflow: hidden;
-          radius: $radius;
-          box-shadow: 2px 2px 4px 0 $shadow;
-        }
-      }
-      /// Remove visual lines from the very last message.
-      > [class = '']:nth-last-child(2) *::before { display: none !important }
-    }
-    // Invites.
-    [class*="containerCozy-"] > [class*="cursorDefault-"] {
-      position: relative;
-      margin-left: 16px;
-      &::before {
-        nav: -10px, false, 0, -14px;
-        line: true, false;
-        // colors: 0, $red, 0;
-      }
-    }
-    // Gifts.
-    [class*="content-"] > [class*="containerCozy-"][style*="position: relative;"] {
-      margin-left: 16px;
-      &::before {
-        nav: 0, 0, 0px, -13px;
-        line: true, false;
-        // colors: 0, $red, 0;
       }
     }
   }
