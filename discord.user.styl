@@ -101,6 +101,7 @@
   $white   = var(--white);
   $t       = var(--t);
   $radius  = var(--radius);
+  i        = !important;
 
   // * Color mixin; use the new one.
   colors(x, y, z) {
@@ -2573,40 +2574,33 @@
   }
 
   // Feat -> Compact cozy messages.
-  // ? Kinda like compact mode but with avatars.
   if ( compact_cozy == 1 ) {
-    [class*="containerCozyBounded-"] {
+    [class *= 'chatContent-'] [class *= 'containerCozyBounded-'] {
       padding: 0px 10px 0px 10px;
-      // Fix divider.
-      [class*="divider"] { margin: auto 10px !important; }
-      // Avatars.
-      div[class*="avatar-"] {
-        margin: 0 8px 0 8px;
-        // Override inline styles.
+      /// Fix dividers.
+      [class *= 'divider'] { margin: auto 10px !important; }
+      /// Avatars.
+      div[class *= 'avatar-'] {
+        margin: 0 8px;
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px $darker;
+        /// Override inline styles.
         > div[style] {
-          width: 16px !important;
+          width: 16px i;
           height: @width;
         }
       }
-      // Message content.
-      [class*="contentCozy-"] {
+      /// Message content.
+      [class *= 'contentCozy-'] {
         margin-left: 12px;
-        // Default message arrows.
+        /// Default message arrows.
         if ( compact_lines != 1 ) {
-          [class*="markup-"]::before {
+          [class *= 'markup-']::before {
             opacity: 0.25;
             content: "⤷ ";
           }
         }
-        // Big emoji!
-        .emoji.jumboable { height: 1.35rem; width: 1.35rem; }
-        // Reactions.
-        [class*="reactions-"] { margin-top: 0; margin-left: 12px; }
       }
-    }
-    // Mentions.
-    [class*="messageGroupWrapperOffsetCorrection-"] {
-      margin: -5px 0px -5px -22px !important;
     }
   }
 
