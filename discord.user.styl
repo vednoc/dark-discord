@@ -1468,14 +1468,14 @@
           [class*="progressBar-"] { colors: 0 0 $accent }
         }
 
-        // ? Reactions.
-        [class*="reactions-"] > [class*="reaction-"] {
-          colors: 0, 0, $darker;
-          &[class*="reactionMe-"] {
-            background-image: linear-gradient(90deg, $accent -200%, $t 300%);
-            [class*="reactionCount-"] { colors: $light, 0, 0; }
+        /// Reactions.
+        [class *= 'reaction-'] {
+          c: $lighter 0 $darker;
+          [class *= 'Count-'] { color: inherit }
+          &[class *= 'Me-'] {
+            c: $accent;
+            background: linear-gradient(90deg, $accent -800%, $t 400%);
           }
-          [class*="reactionCount-"] { colors: $lighter, 0, 0; }
         }
         /// Feat -> Message highlights.
         if ( msg_options == 1 ) {
