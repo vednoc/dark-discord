@@ -1596,23 +1596,29 @@
   [class *= 'channelTextArea-'] {
     c: 0 $darker;
     // Input container.
-    > [class *= 'inner-'] {
+    [class *= 'inner-'] {
       border: 1px solid $darker;
       radius: $radius;
       c: 0 0 $darken;
-      &[class*="innerAutocomplete-"] { radius: 0 0 $radius $radius; }
+      ../[class*="hasAutocomplete-"] [class *= 'inner'] {
+        radius: 0 0 $radius $radius;
+      }
       [class *= 'buttons-'] { align-self: center }
 
     }
+    [class *= 'attachWrapper-'] { c: 0 $darker }
     // Input text color.
-    textarea { c: $light }
+    [class *= 'placeholder-'], textarea { c: $lighter }
+    [class *= 'slateTextArea-'] { c: $light }
     // Dividers.
     [class*="divider"], [class*="Divider"] { c: 0 0 $darker }
     // ? Emojis, mentions, commands popout.
     [class*="autocomplete-"][class*="autocomplete-"] {
       c: 0 0 $darken;
       radius: $radius $radius 0 0;
-      box-shadow: 0 0 0 1px $darker;
+      // box-shadow: inset 0 0 0 1px $darker;
+      border: 1px solid $darker;
+      border-bottom: none;
       [class*="header-"] {
         box-shadow: 0 1px $darker;
         [class*="backButton-"], [class*="title-"] { c: $light }
