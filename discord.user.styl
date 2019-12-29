@@ -665,6 +665,7 @@
         c: $lighter;
         transition: 0.15s ease;
         &:hover { c: 0 0 $darken }
+        &[class *= 'Active'] { c: 0 0 $darken }
         &[class *= 'invite-'] { c: $accent }
         [class*='helper-'] { c: $lighter }
         div:not([class]) { c: $light }
