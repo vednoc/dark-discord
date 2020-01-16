@@ -1596,6 +1596,8 @@
   /// Inputbar.
   [class *= 'channelTextArea-'] {
     c: 0 $darker;
+    /// Fix rounded corners.
+    > div { radius: $radius i }
     // Input container.
     [class *= 'inner-'] {
       border: 1px solid $darker;
