@@ -2883,12 +2883,17 @@
     }
   }
 
-  // Feat -> Smaller jumbo emotes!
   .emoji {
+    /// Feat -> Smaller jumbo emotes!
     &.jumboable {
       width: 2.0rem;
       height: 2.0rem;
       min-height: 2.0rem;
+    }
+    /// Feat -> Larger reaction emotes.
+    /[class *= 'reaction-'] & {
+      height: 1.5rem;
+      width: @height;
     }
   }
 
