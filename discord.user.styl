@@ -1671,6 +1671,10 @@
     [class *= 'fakeLink-'] { c: $accent }
     [class *= 'codeBlockLang-'] { c: $green }
     [class *= 'Syntax-'], [class *= 'After-'], [class *= 'Before-'] { c: $lighter }
+    [class *= 'inlineCode-'] {
+      font-family: var(--codearea);
+      c: 0 0 $darker;
+    }
   }
 
   // Embeds.
