@@ -2558,11 +2558,6 @@
     }
   }
 
-  // * Input bar max-height setting.
-  [class*="channelTextArea-"] textarea[class*="textArea-"] {
-    max-height: var(--textarea);
-  }
-
   // Feat -> Message padding.
   if ( msg_padding == 1 ) {
     [class *= 'messages-'] {
@@ -2916,5 +2911,10 @@
       text-rendering: optimizeLegibility !important;
       -webkit-font-smoothing: auto !important;
     }
+  }
+
+  /// Visible message content while editing/writing a message.
+  [class *= 'scrollableContainer-'] {
+    max-height: var(--textarea) i;
   }
 }
