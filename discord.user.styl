@@ -2002,15 +2002,14 @@
       box-shadow: 0 2px 4px 0 $shadow;
       code {
         radius: $radius;
-        c: $light $t $t;
-
+        c: $light $darker $t;
         // Feat -> Code line numbers.
         if ( code_ln == 1 ) {
           position: relative;
-          padding-left: 2.25em !important;
+          padding-left: 2.5em i;
           &::before {
-            width: 1em;
-            opacity: 0.6;
+            width: 2ch;
+            opacity: 0.3;
             overflow-y: hidden;
             position: absolute;
             pos: 0.5em 0 0.5em 0;
