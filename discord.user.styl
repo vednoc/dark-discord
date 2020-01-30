@@ -1493,10 +1493,11 @@
           z-index: -1;
           content: '' i;
           position: absolute;
-          pos: 0 0 0 0;
-          radius: 3px;
-          c: 0 $t $green;
+          pos: 0 0 0 -2px;
+          radius: 0 3px 3px 0;
+          c: 0 $t $accent;
         }
+        &::after { c: 0 $accent $t }
       }
 
       /// Message dividers.
