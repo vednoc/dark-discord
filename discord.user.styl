@@ -1044,46 +1044,6 @@
   // * Main area.
   [class*="base"] {
 
-    /// Friends -> List.
-    [class *= 'friendsTable-'] {
-      padding-top: 2px; // @upstream
-      c: 0 0 $dark;
-      &::before { content: none }
-      [class *= 'TableHeader-'] { c: 0 $darker }
-      [class *= 'TableBody-'] { c: 0 0 $t }
-      [class *= 'title-'], [class *= 'text-'] { c: $lighter }
-      [class *= 'Text-'], [class *= 'Column-'] { c: $light $darker }
-      [class *= 'Action-'], [class *= 'Separator-'] { c: 0 0 $darker }
-      [class *= 'noIcon-'] { c: $light 0 $darker }
-      /// Actions.
-      [class *= 'friendsAction-']:not(#z) {
-        c: $light 0 $darker;
-        &[class *= 'actionAccept-']:hover { c: $white 0 $green }
-        &[class *= 'actionDeny-']:hover { c: $white 0 $red }
-      }
-      /// Items.
-      [class *= 'friendsRow-'] {
-        padding: 8px;
-        margin: 0 8px 0 16px;
-        border: none !important;
-        box-shadow: 0 1px $darker;
-        &:hover {
-          radius: 4px;
-          c: 0 $t $darken;
-          box-shadow: 0 0 0 1px $darker, 0 2px 4px 0 $shadow;
-        }
-        /// Fix actions.
-        [class *= 'ColumnActions'] { padding-right: 0 }
-      }
-      /// Add friends.
-      [class *= 'friendTableAddHeader-'] {
-        c: 0 $darker;
-        h2, input { c: $light }
-        [class *= 'Hint-'], [class *= 'Description-'] { c: $lighter }
-        form[class *= 'wrapper-'] { c: 0 $darker $darken }
-      }
-    }
-
     // Friends -> Title-bar.
     [class *= 'sidebar-'] + [class *= 'container-'] > [class *= 'container-'] {
       c: 0 0 $dark;
@@ -1104,6 +1064,38 @@
             &[class *= 'selected-'] { c: $accent 0 $t }
             &[class *= 'primary-'] { c: 0 0 $accent }
           }
+        }
+      }
+    }
+
+    /// Friends -> User/Activity tables.
+    [class *= 'tabBody-'] {
+      &::before { box-shadow: none i }
+      [class *= 'peopleList-'] {
+        c: 0 0 $dark;
+        header, [class *= 'subtext-'] { c: $lighter }
+        [class *= 'actionButton-'] { c: 0 0 $darken }
+        [class *= 'ListItem-'] {
+          c: 0 $darken;
+          &:hover {
+            c: 0 0 $darken;
+            [class *= 'actionButton-'] { c: 0 0 $darker }
+            + [class *= 'ListItem-'] { c: 0 $t }
+          }
+        }
+        /// Scrollbars.
+        + [class *= 'scrollbar-'] {
+          &, [class *= 'pad-'] { c: 0 0 $dark }
+          [class *= 'track-'] { c: 0 $dark $darker }
+        }
+      }
+      [class *= 'nowPlayingColumn-'] {
+        c: 0 0 $darken;
+        h3 { c: $lighter }
+        [class *= 'emptyCard-'] {
+          c: 0 0 $darker;
+          h5 { c: $light }
+          div { c: $lighter }
         }
       }
     }
