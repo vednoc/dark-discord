@@ -1587,11 +1587,7 @@
     // Input container.
     [class *= 'inner-'] {
       border: 1px solid $darker;
-      radius: $radius;
       c: 0 0 $darken;
-      ../[class*="hasAutocomplete-"] [class *= 'inner'] {
-        radius: 0 0 $radius $radius;
-      }
       [class *= 'buttons-'] { align-self: center }
       /// Line height of inputbar.
       [class *= 'textArea-'] > div { line-height: 1.375 i }
@@ -1602,6 +1598,11 @@
     [class *= 'slateTextArea-'] { c: $light }
     // Dividers.
     [class*="divider"], [class*="Divider"] { c: 0 0 $darker }
+    /// Rounded corner tweaks.
+    &[class *= 'hasAutocomplete-'] {
+      > div { radius: 0 0 $radius $radius i }
+      > [class *= 'autocomplete-'] { radius: $radius $radius 0 0 i }
+    }
     // ? Emojis, mentions, commands popout.
     [class*="autocomplete-"][class*="autocomplete-"] {
       c: 0 0 $darken;
