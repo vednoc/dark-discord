@@ -793,7 +793,8 @@
 
   // Sidebar -> User controls.
   [class *= 'sidebar-'] > [class *= 'panels-'] {
-    c: 0 0 $t;
+    z-index: 1;
+    c: 0 0 $dark;
     [class *= 'title-'] { c: $light }
     [class *= 'subtext-'] { c: $lighter }
     /// VC status.
