@@ -1090,12 +1090,22 @@
         }
       }
       [class *= 'nowPlayingColumn-'] {
+        border-left: 1px solid $darker;
         c: 0 0 $darken;
         h3 { c: $lighter }
         [class *= 'emptyCard-'] {
           c: 0 0 $darker;
           h5 { c: $light }
           div { c: $lighter }
+        }
+        [class *= 'itemCard-'] {
+          c: 0 0 $darker;
+          [class *= 'Secondary-'] { c: $lighter }
+          [class *= 'inset-'] {
+            c: 0 0 $darken;
+            h4 { c: $light }
+            div { c: $light }
+          }
         }
       }
     }
