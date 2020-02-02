@@ -1089,6 +1089,11 @@
           &, [class *= 'pad-'] { c: 0 0 $dark }
           [class *= 'track-'] { c: 0 $dark $darker }
         }
+        /// Offline section.
+        > div:not([class]) + div:not([class]) {
+          header::after { content: ' hidden' }
+          div { display: none }
+        }
       }
       [class *= 'nowPlayingColumn-'] {
         border-left: 1px solid $darker;
