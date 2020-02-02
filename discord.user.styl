@@ -12,6 +12,7 @@
 @var checkbox fix_fonts "Fix chat font size" 1
 @var checkbox fix_pixels "[Experimental] Fix text sub-pixel rendering" 1
 
+@var checkbox chat_shorter "Shorter chat messages" 0
 @var checkbox ic_invert "Icon inversion" 0
 @var checkbox remove_notifications "Notification-free mode" 0
 @var checkbox min_guilds "Minimize width of guilds area" 0
@@ -2937,5 +2938,39 @@
   /// Visible message content while editing/writing a message.
   [class *= 'scrollableContainer-'] {
     max-height: var(--textarea) i;
+  }
+
+  // Feat -> Smaller chat area.
+  if ( chat_shorter == 1 ) {
+    [class *= 'messages-'] > div {
+      width: 100%;
+      max-width: 80rem;
+      margin-left: auto;
+      margin-right: auto;
+      scrollbar-width: none;
+    }
+    [class *= 'messagesWrapper-'] {
+      /// Bars.
+      > [class *= 'barBase-'] {
+        right: calc(20px + 30px);
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 80rem;
+      }
+      /// Inputbar.
+      + form {
+        width: 100%;
+        max-width: 80rem;
+        padding-right: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        border: none;
+      }
+    }
+    [class *= 'channelTextArea-'] {
+      margin-top: 0;
+      padding-top: 20px;
+      box-shadow: 0 -1px $darker;
+    }
   }
 }
