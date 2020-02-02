@@ -1057,12 +1057,13 @@
         [class *= 'tabBar-'] {
           c: 0 0 $t;
           [class *= 'item-'] {
+            padding: 0.375rem 0.5rem;
             transition: 0.15s ease;
             &:not([class *= 'primary-']):not([class *= 'selected-']) {
               c: $lighter 0 $t;
-              &:hover { c: $light 0 $darken }
+              &:hover { c: 0 0 $darker }
             }
-            &[class *= 'selected-'] { c: $accent 0 $t }
+            &[class *= 'selected-'] { c: $light 0 $darker }
             &[class *= 'primary-'] { c: 0 0 $accent }
           }
         }
