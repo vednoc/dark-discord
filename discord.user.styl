@@ -1233,6 +1233,12 @@
           > div { c: $light 0 $darker }
         }
       }
+      /// Scrollbar reset.
+      + [class *= 'scrollbar-'] {
+        &, [class *= 'pad-'] { c: 0 0 $darken }
+        [class *= 'thumb-'] { c: 0 $darken }
+        [class *= 'track-'] { c: 0 $darken }
+      }
     }
 
     // * Search bar.
