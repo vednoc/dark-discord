@@ -1474,23 +1474,26 @@
         }
       }
 
-      // * Mentions.
-      [class*="markup-"] {
-        [class*="wrapper-"][class*="wrapperHover-"] {
-          transition: 0.15s ease;
+      /// Mentions.
+      [class *= 'markup-'] {
+        .mention {
+          padding: 0 0.125rem;
           position: relative;
-          radius: 3px;
           text-decoration: none;
+          radius: 3px;
           c: $accent 0 $t;
           &::before {
             content: "";
             pos: 0 0 0 0;
-            opacity: 0.15;
+            opacity: 0.2;
             position: absolute;
             radius: 3px;
             c: 0 0 $accent;
+            transition: 0.2s ease;
           }
-          &:hover { c: $white 0 $accent }
+          &:hover, &[class *= '-open'] {
+            &::before { opacity: 0.4 }
+          }
         }
       }
 
