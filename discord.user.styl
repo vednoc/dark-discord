@@ -794,7 +794,7 @@
   // Sidebar -> User controls.
   [class *= 'sidebar-'] > [class *= 'panels-'] {
     z-index: 1;
-    c: 0 0 $dark;
+    c: 0 0 $darken;
     [class *= 'title-'] { c: $light }
     [class *= 'subtext-'] { c: $lighter }
     /// VC status.
@@ -890,10 +890,10 @@
   // Guilds.
   [class *= 'guilds-'] {
     radius: 0px;
-    c: 0 0 $dark;
+    c: 0 0 $darker;
     box-shadow: inset -1px 0 $darker;
     [class *= 'scroller-'] { c: 0 0 $t }
-    [class *= 'Separator-'] { c: 0 0 $darker }
+    [class *= 'Separator-'] { c: 0 0 $darken }
     // * Guild wrapper.
     [class*="listItem-"] {
       // ? Indicator -> New messages.
@@ -902,12 +902,12 @@
       [class*="numberBadge-"] { c: $white 0 $accent }
       // Icons.
       a[href] > [class*="acronym-"], [class*="circleIconButton-"] {
-        c: $lighter 0 $darker;
-        box-shadow: 0 0 0 1px inset $darker;
+        c: $lighter 0 $darken;
+        box-shadow: 0 0 0 1px inset $darken;
       }
       /// Home icon.
       a[aria-label = 'Home'] {
-        c: 0 0 $darker;
+        c: 0 0 $darken;
         [class *= 'homeIcon-'] { c: $light }
         [class *= 'childWrapper-'] { c: 0 0 $t }
         &[class *= 'selected-'] {
@@ -1047,7 +1047,7 @@
 
     // Friends -> Title-bar.
     [class *= 'sidebar-'] + [class *= 'container-'] > [class *= 'container-'] {
-      c: 0 0 $dark;
+      c: 0 0 $darken;
       box-shadow: 0 1px $darker;
       [class *= 'children-'] {
         &::after { display: none }
@@ -1120,7 +1120,7 @@
     // Sidebar -> Channels.
     [class*="sidebar-"] {
       border-right: 1px solid;
-      c: 0 $darker $dark;
+      c: 0 $darker $darken;
       /// Remove background.
       [class *= 'scroller-'], > [class *= 'container-'] { c: 0 0 $t }
       // ? Guild name/menu.
@@ -1212,18 +1212,25 @@
       [class*="scrollerWrapPolyfill"] > [class^="scroller-"] {
         padding: 0 10px 0 0 !important;
       }
+      /// Scrollbar reset.
+      [class *= 'scrollbar-'] {
+        &, [class *= 'pad-'] { c: 0 0 $darken }
+        [class *= 'thumb-'] { c: 0 $darken }
+        [class *= 'track-'] { c: 0 $darken }
+      }
     }
 
     // Sidebar -> Members list.
     [class *= 'membersWrap-'] [class *= 'members-'] {
       border-left: 1px solid $darker;
-      c: 0 0 $dark;
+      c: 0 0 $darken;
       [class *= 'Group-'], [class *= 'activity-'] { c: $lighter }
       [class *= 'member-'] {
         radius: $radius;
         c: $lighter;
-        &:hover, &:active { > div { c: $light 0 $darken }}
-        &[class *= 'selected-'] > div { c: $light 0 $darker }
+        &:hover, &:active, &[class *= 'selected-'] {
+          > div { c: $light 0 $darker }
+        }
       }
     }
 
@@ -1249,15 +1256,12 @@
       &[class*="focused"] {
         > [class*="searchBar-"][class*="searchBar-"] {
           min-width: 240px;
-          c: 0 0 $dark;
+          c: 0 0 $darker;
           box-shadow: 0 2px 4px -2px $shadow, 0 0 0 1px inset $darker;
         }
       }
       // ? Some magic for placeholder text.
-      [class*="Placeholder"]:not([class*="hasFocus"]) {
-        opacity: 0.6;
-        c: $lighter;
-      }
+      [class*="Placeholder"]:not([class*="hasFocus"]) { c: $lighter }
       & + [class*="divider-"] {
         opacity: 0.2;
         c: 0 0 $lighter;
@@ -1269,7 +1273,7 @@
       c: 0 0 $dark;
       /// Channel title-bar.
       > [class *= 'title-'] {
-        c: 0 0 $dark;
+        c: 0 0 $darken;
         box-shadow: 0 1px $darker !important;
         [class *= 'title-'] { c: $light }
         [class *= 'topic-'], [class *= 'nicknames-'] { c: $lighter }
@@ -1287,7 +1291,9 @@
 
       // ? Title-bar search messages.
       [class*="search-"] [class*="searchBar-"] {
-        c: $lighter 0 $dark;
+        height: unset;
+        padding: 0.125rem 0.25rem;
+        c: $lighter 0 $darker;
         box-shadow: inset 0 0 0 1px $darker;
         // Input text color.
         [class*="DraftEditor-"] { c: $lighter }
@@ -2643,7 +2649,7 @@
           &[class*="collapsed-"] { c: 0 0 $dark }
           &:not([class*="collapsed"]) {
             c: 0 0 $dark;
-            box-shadow: 0 0 0 2px $dark, 0 0 0 4px $darker;
+            box-shadow: 0 0 0 2px $dark, 0 0 0 4px $darken;
             // Remove folder background when expanded.
             + [class*="listItem-"] foreignObject {
               radius: 16px;
@@ -2659,13 +2665,13 @@
               height: $size;
             }
             // Folder/badge resets.
-            [class*="folder-"] { c: 0 0 $darker }
+            [class*="folder-"] { c: 0 0 $darken }
             [class*="badgeWrapper-"] [class*="lowerBadge-"] {
               right: 0 !important;
               top: ($size - 16px) !important;
             }
             // Avatar-less servers in folders.
-            [class*="noIcon-"] { c: $light 0 $darker }
+            [class*="noIcon-"] { c: $light 0 $darken }
           }
         }
         // Reset servers within folders.
@@ -2738,12 +2744,12 @@
       /// Unread messages.
       [class *= 'numberBadge-'],  {
         height: 14px !important;
-        box-shadow: 0 0 0 3px $dark;
+        box-shadow: 0 0 0 3px $darker;
       }
       /// Voice chat.
       [class *= 'iconBadge-'] {
         c: 0 0 $green;
-        box-shadow: 0 0 0 3px $dark;
+        box-shadow: 0 0 0 3px $darker;
         [class *= 'icon-'] path[fill] { v: $white }
       }
       /// DM icons.
@@ -2760,7 +2766,7 @@
       > [class *= 'pill-'] + [draggable = 'false'] svg {
         width: $size !important;
         height: $size !important;
-        div { c: 0 0 $darker }
+        div { c: 0 0 $darken }
       }
     }
   }
