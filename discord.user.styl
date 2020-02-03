@@ -1682,12 +1682,8 @@
     [class *= 'Title-'], [class *= 'AuthorName-'] { c: $light }
     /// Links.
     [class *= 'TitleLink-'] { c: $accent }
-    /// Left bar.
-    &[class *= 'Full-'] { c: 0 $darker }
-    &:not([style]) { c: 0 $darker }
-    &[style *= 'rgb(255\, 0\, 0)'] { c: 0 $red }
-    &[style *= 'rgb(30\, 35\, 39)'] { c: 0 $orange }
-    &[style *= 'rgb(255\, 255\, 255)'] { c: 0 $lighter }
+    /// Don't override color bars if a color is already applied.
+    &:not([style *= 'border-color']) { c: 0 $darker }
   }
 
   // * Emote menu.
