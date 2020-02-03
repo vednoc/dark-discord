@@ -1493,29 +1493,6 @@
         }
       }
 
-      /// Mentions.
-      [class *= 'markup-'] {
-        .mention {
-          padding: 0 0.125rem;
-          position: relative;
-          text-decoration: none;
-          radius: 3px;
-          c: $accent 0 $t;
-          &::before {
-            content: "";
-            pos: 0 0 0 0;
-            opacity: 0.2;
-            position: absolute;
-            radius: 3px;
-            c: 0 0 $accent;
-            transition: 0.2s ease;
-          }
-          &:hover, &[class *= '-open'] {
-            &::before { opacity: 0.4 }
-          }
-        }
-      }
-
       /// Mention bar.
       .isMentioned-N-h9aa {
         position: relative;
@@ -1872,8 +1849,9 @@
     }
   }
 
-  /// Code blocks.
-  [class*="markup-"] {
+  /// Chat -> General styles.
+  [class *= 'markup-'] {
+    /// Code.
     code {
       font-family: var(--codearea) !important;
       &.inline {
@@ -1918,7 +1896,7 @@
         }
       }
     }
-    // Syntax highlighting.
+    /// Syntax highlighting.
     .hljs {
       &-name, &-title, &-section { c: $blue }
       &-selector-class, &-selector-id { c: $blue }
@@ -1929,6 +1907,26 @@
       &-number, &-regexp, &-string { c: $cyan }
       &-addition, &-keyword, &-selector-tag { c: $green }
       &-comment, &-quote { c: $lighter }
+    }
+    /// Mentions.
+    .mention {
+      padding: 0 0.125rem;
+      position: relative;
+      text-decoration: none;
+      radius: 3px;
+      c: $accent 0 $t;
+      &::before {
+        content: '';
+        pos: 0 0 0 0;
+        opacity: 0.2;
+        position: absolute;
+        radius: 3px;
+        c: 0 0 $accent;
+        transition: 0.2s ease;
+      }
+      &:hover, &[class *= '-open'] {
+        &::before { opacity: 0.4 }
+      }
     }
   }
 
