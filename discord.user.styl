@@ -674,11 +674,14 @@
   }
 
   // Global -> Context/invite popouts.
-  [class *= 'popouts-'] {
+  [id *= 'popout_'] {
     /// Chat -> Message context menu.
     > div > [class *= 'container-'][role = 'menu'] {
+      border: 1px solid $darker;
+      c: 0 0 $darken;
+      box-shadow: $bshadow;
       [class *= 'itemGroup-'] {
-        [class *= 'itemBase-']:hover { c: 0 0 $darken }
+        [class *= 'itemBase-']:hover { c: 0 0 $darker }
         [class *= 'label-'] { c: $light }
       }
     }
