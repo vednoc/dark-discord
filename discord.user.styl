@@ -385,6 +385,7 @@
     [class*="scrollerFade-"] >,
     [class*="autocomplete-"],
     [class*="contextMenu-"],
+    [class*="measurement-"],
     [class*="messages-"] + {
       [class^="scrollbar-"] {
         c: 0 $t $dark;
@@ -1240,10 +1241,12 @@
         }
       }
       /// Scrollbar reset.
-      + [class *= 'scrollbar-'] {
-        &, [class *= 'pad-'] { c: 0 0 $darken }
-        [class *= 'thumb-'] { c: 0 $darken }
-        [class *= 'track-'] { c: 0 $darken }
+      &, /[class*="ingScroller-"] + {
+        [class *= 'scrollbar-'] {
+          &, [class *= 'pad-'] { c: 0 0 $darken }
+          [class *= 'thumb-'] { c: 0 $darken }
+          [class *= 'track-'] { c: 0 $darken }
+        }
       }
     }
 
@@ -1676,8 +1679,8 @@
     }
   }
 
-  // Embeds.
-  [class ^= 'embedWrapper-'] {
+  /// Embeds.
+  [class *= 'embedWrapper-'] {
     c: $light 0 $darken;
     /// Base text.
     [class *= 'Provider-'], [class *= 'Description-'] {
@@ -1739,6 +1742,7 @@
     }
     [class *= 'infoBar-'] {
       c: 0 0 $darken;
+      box-shadow: inset 0 1px $darker;
       [class *= 'EmojiName-'] { c: $light }
       [class *= 'GuildName-'] { c: $lighter }
     }
@@ -1948,7 +1952,7 @@
     }
     /// Inputbox.
     [class *= 'input'] {
-      padding: 16px;
+      padding: 12px 8px;
       height: unset;
       line-height: unset;
       border: 1px solid $darker;
@@ -2085,6 +2089,7 @@
       box-shadow: 0 2px 8px 0 $shadow;
       [class*="Meta-"] *:not([class*="username-"]) { c: $lighter }
       [class *= 'markup-'] > a[class *= 'anchor-'] { c: $accent }
+      [class *= 'embedWrapper-'] { c: 0 0 $darker }
       [class*="markup-"], [class*="embed"] {
         c: $light;
         &::before, &::after { display: none }
@@ -2312,7 +2317,7 @@
   }
 
   // * Cards.
-  [class*="card-"]{
+  [class *= 'card-'] {
     c: 0 $darker $darker;
     [class*="title-"], [class*="primary-"] { c: $light }
     [class*="desc-"] { c: $lighter }
@@ -2409,18 +2414,17 @@
     a { c: $accent }
   }
   // * Create/join another server.
-  [class*="animator-"][class*="fixClipping-"] {
-    c: 0 0 $t;
-    [class*="modal-"][class*="slide-"][class*="size-"] {
+  [class *= 'measurement-'] {
+    [class*="slide-"][class*="size-"] {
       c: 0 0 $darker;
-      box-shadow: 0 2px 8px -1px $shadow !important;
+      box-shadow: 0 2px 8px -1px $shadow i;
       [class*="action-"] {
         background: none !important;
         c: 0 $shadow $dark;
         box-shadow: 0 2px 8px 0 $shadow;
       }
       [class*="actionBody-"] { c: $lighter }
-      [class*="or-"] { background-image: none !important; }
+      [class*="or-"] { background-image: none i }
     }
   }
 
