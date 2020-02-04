@@ -1389,8 +1389,8 @@
         // ? Messages/input form container.
         [class^="messagesWrapper"] {
           c: 0 0 $t;
-          & + form { c: 0 0 $t }
-
+          /// Inputbar pseudo-element background.
+          & + form::before { background: none i }
           // ? LocalBot messages.
           [class*="isLocalBot-"] {
             c: $lighter $green $dark;
@@ -2849,7 +2849,6 @@
       /// Inputbar.
       + form {
         box-sizing: border-box;
-        &::before { content: none i }
         > div {
           max-width: 80rem;
           margin-left: auto;
