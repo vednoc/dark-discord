@@ -244,6 +244,11 @@
     }
   }
 
+  /// Settings -> Primary buttons.
+  [style *= 'color: rgb\(255\, 255\, 255']:not(#z) { c: $white }
+  /// Settings -> Default values
+  [class *= 'defaultValue-'] [class *= 'markValue-'] { c: $accent }
+
   // Settings -> Userstyle version.
   [class *= 'userSettingsAccount'] > h2::before {
     display: block;
