@@ -1496,20 +1496,28 @@
       }
 
       /// Mention bar.
-      .isMentioned-N-h9aa {
-        position: relative;
-        margin: 0;
+      [class *= 'mentioned-'] {
         c: 0 0 $t;
+        /// Bar.
         &::before {
-          opacity: 0.25;
           z-index: -1;
-          content: '' i;
+          content: '';
+          pos: 0 0 0 0;
           position: absolute;
-          pos: 0 0 0 -2px;
-          radius: 0 3px 3px 0;
+          radius: 3px 0 0 3px;
+          overflow: hidden;
           c: 0 $t $accent;
         }
-        &::after { c: 0 $accent $t }
+        /// Background.
+        &::after {
+          z-index: -1;
+          content: '';
+          pos: 0 0 0 0;
+          opacity: 0.1;
+          radius: 3px;
+          position: absolute;
+          c: 0 $accent $accent;
+        }
       }
 
       /// Message dividers.
