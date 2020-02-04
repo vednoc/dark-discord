@@ -23,7 +23,6 @@
 @var checkbox compact_lines "Compact mode visual lines" 0
 @var checkbox disable_acm "Disable avatar context menu" 0
 @var checkbox unified_header "WIP: Make the header transparent" 0
-@var checkbox disable_images "WIP: Disable images and show their links" 0
 @var checkbox scrollbars_enabled "Always show scrollbar tracks" 0
 @var checkbox scrollbars_chromium "Disable scrollbars in Chromium" 0
 @var checkbox scrollbars_firefox "Disable scrollbars in Firefox" 0
@@ -2659,19 +2658,6 @@
         height: $size !important;
         div { c: 0 0 $darken }
       }
-    }
-  }
-
-  // Feat -> Replace images with their links.
-  if ( disable_images == 1 ) {
-    [class*="imageZoom-"] {
-      height: auto !important;
-      width: auto !important;
-      &::after {
-        color: $lighter;
-        content: "URL: " attr(href);
-      }
-      img { display: none; }
     }
   }
 
