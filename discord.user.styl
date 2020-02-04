@@ -21,7 +21,6 @@
 @var checkbox msg_padding "Chat: Decrease padding for cozy messages" 0
 @var checkbox compact_cozy "Compact mode for cozy messages" 0
 @var checkbox compact_lines "Compact mode visual lines" 0
-@var checkbox msg_dividers "Chat: Enable message dividers" 1
 @var checkbox disable_acm "Disable avatar context menu" 0
 @var checkbox unified_header "WIP: Make the header transparent" 0
 @var checkbox disable_images "WIP: Disable images and show their links" 0
@@ -1515,12 +1514,6 @@
 
       /// Message dividers.
       [class *= 'hasContent-'] {
-        /// Feat -> Enable message dividers.
-        if ( msg_dividers != 1 ) {
-          &[class *= 'dividerEnabled-'] { c: 0 $t }
-        } else {
-          &[class *= 'dividerEnabled-'] { c: 0 $darker }
-        }
         /// Base styles.
         > [class *= 'content-'] {
           padding: 3px 6px;
