@@ -1514,7 +1514,7 @@
       }
 
       /// Message dividers.
-      [class*="divider-"] {
+      [class *= 'hasContent-'] {
         /// Feat -> Enable message dividers.
         if ( msg_dividers != 1 ) {
           &[class *= 'dividerEnabled-'] { c: 0 $t }
@@ -1522,14 +1522,18 @@
           &[class *= 'dividerEnabled-'] { c: 0 $darker }
         }
         /// Base styles.
-        > [class *= 'dividerContent-'] {
-          c: $lighter $darken;
+        > [class *= 'content-'] {
+          padding: 3px 6px;
+          c: $lighter $darken $darker;
           &::before, &::after { c: 0 0 $darker }
         }
-        /// New messages.
-        &[class *= 'dividerRed-'] > [class *= 'dividerContent-'] {
-          c: $red;
-          &::before, &::after { c: 0 0 $red }
+      }
+      /// New messages.
+      [class *= 'isUnread-'] {
+        c: 0 $blue;
+        > [class *= 'unreadPill-'] {
+          c: $white 0 $blue;
+          svg path { v: $blue $blue }
         }
       }
 
