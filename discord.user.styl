@@ -2665,32 +2665,6 @@
     }
   }
 
-  // Feat -> Unified header.
-  if ( unified_header == 1 ) {
-    // * Transparetinze title bar.
-    [class*="base"] [class*="chat-"] > [class*="title-"] {
-      c: 0 0 $t;
-      box-shadow: 0 1px 0 0 $darker !important;
-    }
-    // ? Pseudo background for members section.
-    [class*="searchResultsWrap-"]::before {
-      content: "";
-      position: absolute;
-      top: -48px; right: 0; left: 0;
-      height: 48px;
-      c: 0 0 $darker;
-    }
-    // Fix upstream hidding the overflow.
-    [class*="searchResultsWrap-"] { overflow: visible; }
-    // ? Background should take over the header.
-    // TODO: Move to a separate background option perhaps?
-    [class*="content-"] > [class*="spacer-"][class*="vertical-"] {
-      // overflow: visible;
-      // Account for the height of the title bar.
-      &::before { top: -50px; }
-    }
-  }
-
   // Feat -> Compact mode lines.
   if ( compact_lines == 1 ) {
     [class *= 'chatContent-'] [class *= 'containerCozyBounded-'] {
