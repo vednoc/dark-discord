@@ -14,7 +14,6 @@
 
 @var checkbox chat_shorter "Shorter chat messages" 0
 @var checkbox ic_invert "Icon inversion" 0
-@var checkbox remove_notifications "Notification-free mode" 0
 @var checkbox min_guilds "Minimize width of guilds area" 0
 @var checkbox mid_guilds "Small guild icons" 0
 @var text guild_size "Small guild icons size" 32px
@@ -2616,24 +2615,6 @@
         height: $size !important;
         div { c: 0 0 $darken }
       }
-    }
-  }
-
-  // Feat -> Notification-free mode.
-  if ( remove_notifications == 1 ) {
-    [class*="wrapper-"] {
-      // ? DMs/Mentions/Badges.
-      [class*="friendsOnline-"] ~ [class*="container-"][style*="opacity"],
-      [class*="unreadMentions"],
-      [class*="container-"] [class*="badge-"] {
-        display: none;
-      }
-      /// Global Discord alerts.
-      + [class *= 'base-'] > [class *= 'notice']:first-child { display: none }
-    }
-    [class*="unread-"] [class*="bar-"],
-    [class*="contentUnread"] [class*="iconSpacing-"] {
-      display: none;
     }
   }
 
