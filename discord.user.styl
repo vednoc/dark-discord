@@ -18,7 +18,6 @@
 @var checkbox min_guilds "Minimize width of guilds area" 0
 @var checkbox mid_guilds "Small guild icons" 0
 @var text guild_size "Small guild icons size" 32px
-@var checkbox compact_lines "Compact mode visual lines" 0
 @var checkbox disable_acm "Disable avatar context menu" 0
 @var checkbox scrollbars_enabled "Always show scrollbar tracks" 0
 @var checkbox scrollbars_chromium "Disable scrollbars in Chromium" 0
@@ -2616,63 +2615,6 @@
         width: $size !important;
         height: $size !important;
         div { c: 0 0 $darken }
-      }
-    }
-  }
-
-  // Feat -> Compact mode lines.
-  if ( compact_lines == 1 ) {
-    [class *= 'chatContent-'] [class *= 'containerCozyBounded-'] {
-      /// Replace margins with padding.
-      [class *= 'containerCozy-B4noqO']:not(:empty) {
-        margin-bottom: 0;
-        padding-bottom: 8px;
-      }
-      /// Visual lines.
-      [class *= 'container-'] {
-        position: relative;
-        padding-left: 16px;
-        // box-shadow: inset 1px 0 black;
-        /// Vertical lines.
-        &::before {
-          pos: 0 f 0 2px;
-          line: true false;
-          // c: 0 $red;
-        }
-        /// Horizontal lines.
-        &::after {
-          size: 9px 10px;
-          pos: -2px f f 2px;
-          radius: 0 0 0 6px;
-          line: true true;
-          // c: 0 $cyan;
-        }
-        /// Fix missing space in code blocks.
-        &[class *= '-B4noqO'] {
-          &::before { bottom: -4px }
-          &::after { content: unset }
-        }
-      }
-      /// Reset visual lines.
-      > *:nth-last-child(2) {
-        /// Vertical line.
-        [class *= 'containerCozy-336-Cz'] {
-          &::before { content: unset }
-        }
-        /// Spotify invite.
-        ../ [class *= 'invite-'],
-        /// Last, empty message.
-        [class *= 'containerCozy-B4noqO'] {
-          &::before, &::after { content: unset }
-        }
-        /// System messages.
-        &[class *= 'content-3dzVd8'] {
-          *::before, *::after { content: unset }
-        }
-        /// Mentioned bar.
-        ../ [class *= 'isMentioned-'] {
-          &::after { background: none }
-        }
       }
     }
   }
