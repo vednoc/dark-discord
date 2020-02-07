@@ -231,9 +231,7 @@
     }
     // Image invert.
     [style*="/assets/"] {
-      filter: hue-rotate(
-        calc(var(--icinvert) * 180deg)
-      ) invert(var(--icinvert)) !important;
+      filter: hue-rotate(calc(var(--icinvert) * 180deg)) invert(var(--icinvert)) i;
       &:hover { c: 0 0 $t }
     }
   }
@@ -261,8 +259,8 @@
   [class *= 'tooltip-'] {
     border: 1px solid $lighter;
     c: $light 0 $dark;
-    box-shadow: 0 2px 8px $shadow !important;
-    [class *= 'Pointer-'] { border-top-color: $lighter !important }
+    box-shadow: 0 2px 8px $shadow i;
+    [class *= 'Pointer-'] { border-top-color: $lighter i }
   }
 
   // Global -> Bot tags.
@@ -287,15 +285,15 @@
   // * Global -> Switches.
   [class*="switch-"] {
     c: 0 0 $darker;
-    box-shadow: 0 0 0 2px inset $darker !important;
+    box-shadow: 0 0 0 2px inset $darker i;
     &::before { c: 0 0 $accent }
     &::after {
       c: 0 0 $light;
-      box-shadow: 0 2px 4px $shadow !important;
+      box-shadow: 0 2px 4px $shadow i;
     }
     &[class*="valueChecked"] {
       c: 0 0 $accent;
-      box-shadow: 0 0 0 2px inset $accent !important;
+      box-shadow: 0 0 0 2px inset $accent i;
     }
   }
 
@@ -342,7 +340,7 @@
 
   // * Modal backdrop.
   [class^="backdrop"] {
-    opacity: 0.80 !important;
+    opacity: 0.80 i;
     c: 0 0 $dark;
   }
 
@@ -402,10 +400,10 @@
     [class*="scrollbar-"] {
       // ? Custom setting -> Always show scrollbar tracks.
       if ( scrollbars_enabled == 1 ) {
-        > [class*="track-"] { opacity: 1 !important; }
+        > [class*="track-"] { opacity: 1 i }
       }
       // ? Hide 0px height thumb scrollbar thumb.
-      > div[style*="height: 0px;"] { border-width: 0px !important; }
+      > div[style*="height: 0px;"] { border-width: 0px i }
     }
   }
 
@@ -488,7 +486,7 @@
           c: 0 0 $t;
           transition: 0.3s ease;
           box-shadow: 0 2px 4px 0 $shadow;
-          ../:hover [class*="Flag-"] { transform: translateY(-4px) !important }
+          ../:hover [class*="Flag-"] { transform: translateY(-4px) i }
         }
         [class*="Name-"] { c: $lighter }
       }
@@ -511,7 +509,7 @@
       [class*="file-"] [class*="icon-"] {
         &[class*="image-"] {
           c: 0 $darker $dark;
-          box-shadow: 0 2px 8px 0 $shadow !important;
+          box-shadow: 0 2px 8px 0 $shadow i;
         }
         &[class*="unknown-"], &[class*="code-"],
         &[class*="document-"], &[class*="video-"] {
@@ -887,7 +885,7 @@
     // ? Default no-role color in right sidebar.
     &:not([style^="color"]) { c: $lighter }
     // ? Inherit custom color in right sidebar.
-    > [class*="username"] { color: inherit !important; }
+    > [class*="username"] { color: inherit i }
   }
 
   // Guilds.
@@ -934,13 +932,13 @@
         max-width: (guild_size + 20px);
         transition-delay: 0.6s;
         + [class *= 'base-'] {
-          left: (guild_size + 20px) !important;
+          left: (guild_size + 20px) i;
           transition-delay: 0.6s;
         }
       }
       + [class *= 'base-'] {
         transition: 0.3s cubic-bezier(0, 0, 0.2, 1);
-        left: 10px !important;
+        left: 10px i;
       }
     }
   }
@@ -1134,7 +1132,7 @@
       }
       // ? Remove unnecessary shadow on notification bar.
       [class*="positionedContainer-"] > [class*="unread"] > div {
-        box-shadow: none !important;
+        box-shadow: none i;
       }
 
       // Notices.
@@ -1213,7 +1211,7 @@
 
       // ? Reset scroller padding so it takes less space.
       [class*="scrollerWrapPolyfill"] > [class^="scroller-"] {
-        padding: 0 10px 0 0 !important;
+        padding: 0 10px 0 0 i;
       }
       /// Scrollbar reset.
       [class *= 'scrollbar-'] {
@@ -1285,7 +1283,7 @@
       /// Channel title-bar.
       > [class *= 'title-'] {
         c: 0 0 $darken;
-        box-shadow: 0 1px $darker !important;
+        box-shadow: 0 1px $darker i;
         [class *= 'title-'] { c: $light }
         [class *= 'topic-'], [class *= 'nicknames-'] { c: $lighter }
         // Remove wrapper gradient.
@@ -1335,9 +1333,7 @@
         p { c: $lighter }
         a { c: $accent }
         [class *= 'base-'] {
-          filter: invert(
-            calc((1 + var(--icinvert)) * var(--icinvert))
-          ) !important;
+          filter: invert(calc((1 + var(--icinvert)) * var(--icinvert))) i;
           c: 0 $t;
         }
         &::after {
@@ -1653,7 +1649,7 @@
         [class*="Text-"] { c: $lighter }
       }
       [class*="autocompleteInner-"] {
-        border: none !important;
+        border: none i;
         // Command mode icons.
         [class*="iconForeground"] { v: $light }
         // Title/description selectors.
@@ -1733,7 +1729,7 @@
     [class *= 'thumb-'] { min-height: 14px }
     // ? Fix 'no matching emoji' image.
     [class*="sadImage-"] {
-      filter: invert(calc((var(--icinvert)) + 0.8)) !important;
+      filter: invert(calc((var(--icinvert)) + 0.8)) i;
     }
     [class *= 'infoBar-'] {
       c: 0 0 $darken;
@@ -1749,7 +1745,7 @@
     /// Headers.
     [class *= 'header'] {
       c: $lighter;
-      box-shadow: none !important;
+      box-shadow: none i;
     }
     /// Channels.
     [class^="channel-"] {
@@ -1778,7 +1774,7 @@
     c: 0 0 $dark;
     [class *= 'searchHeader-'] {
       c: 0 0 $darken;
-      box-shadow: inset 0 -1px $darker !important;
+      box-shadow: inset 0 -1px $darker i;
       /// Text.
       [class *= 'totalResults-'] {
         opacity: 1;
@@ -1788,7 +1784,7 @@
       [class *= 'tab-'] {
         opacity: 1;
         c: $lighter;
-        border-width: 1px !important;
+        border-width: 1px i;
         &:hover { c: $light $t }
         &[class *= 'selected-'] { c: $light $accent }
       }
@@ -1801,23 +1797,23 @@
       }
       /// Single result.
       [class *= 'searchResult-'] {
-        overflow: unset !important;
+        overflow: unset i;
         &[class *= 'expanded-'] {
           radius: $radius;
           border-width: 1px;
           c: 0 $darker $darken;
           > div:last-of-type {
             border-top-width: 1px;
-            radius: 0 0 $radius $radius !important;
+            radius: 0 0 $radius $radius i;
           }
           [class *= 'hit-'] { c: 0 0 $darker; box-shadow: none }
           [class *= 'before-'], [class *= 'after-'] { c: 0 0 $darken }
         }
         /// Remove msg gradients.
-        &::before, &::after { content: none !important; }
+        &::before, &::after { content: none i }
         /// Matching message.
         [class *= 'hit'] {
-          border-width: 1px !important;
+          border-width: 1px i;
           c: 0 $darker $darken;
           box-shadow: $bshadow;
           ../:not([class *= 'expanded-']) [class *= 'hit'] { radius: $radius }
@@ -1862,7 +1858,7 @@
   [class *= 'markup-'] {
     /// Code.
     code {
-      font-family: var(--codearea) !important;
+      font-family: var(--codearea) i;
       &.inline {
         padding: 2px 4px;
         c: 0 0 $darken;
@@ -1872,7 +1868,7 @@
     pre {
       radius: $radius;
       c: 0 $darker $darken;
-      border-width: 1px !important;
+      border-width: 1px i;
       box-shadow: 0 2px 4px 0 $shadow;
       code {
         radius: $radius;
@@ -1993,7 +1989,7 @@
   [class*="contextMenu-"] {
     radius: $radius;
     c: 0 0 $dark;
-    box-shadow: 0 2px 4px -1px $shadow, 0 0 0 1px $darker !important;
+    box-shadow: 0 2px 4px -1px $shadow, 0 0 0 1px $darker i;
     [class*="itemGroup-"] {
       c: 0 $darker;
       [class*="item-"] {
@@ -2057,7 +2053,7 @@
   [class *= 'messagesPopoutWrap-'] {
     radius: $radius;
     c: $light $darker $dark;
-    box-shadow: 0 4px 8px $shadow !important;
+    box-shadow: 0 4px 8px $shadow i;
     [class *= 'messagesPopout-'] { c: 0 0 $t }
     /// Header.
     > [class *= 'header-'] {
@@ -2098,9 +2094,9 @@
     }
     [class^="jumpButton"] { c: $light $t $darker }
     [class^="actionButtons"] {
-      transition: none !important;
+      transition: none i;
       c: $light $t $t;
-      box-shadow: none !important;
+      box-shadow: none i;
     }
     [class*="emptyPlaceholder-"] [class*="body-"] { c: $lighter }
     [class*="footer-"][class*="footer-"] {
@@ -2166,7 +2162,7 @@
         small { c: $lighter }
         [class*="viewBody-"] {
           c: $light;
-          span[style*="opacity"] { opacity: 1 !important }
+          span[style*="opacity"] { opacity: 1 i }
         }
         [class*="faded-"] { c: $lighter }
         [class*="avatarUploaderInner-"] {
@@ -2307,7 +2303,7 @@
     [class*="emojiRowText-"] { c: $light }
     // Input fields.
     input {
-      transition: 0.2s ease !important;
+      transition: 0.2s ease i;
       c: $lighter $darker $dark;
       &:hover, &:focus { c: $light 0 $darker }
     }
@@ -2367,22 +2363,22 @@
       &[class *= 'White-'] { c: $lighter }
       &[class *= 'Primary-'] { c: $light }
       &:hover > div {
-        background-image: none !important;
-        opacity: 0.8 !important;
+        background-image: none i;
+        opacity: 0.8 i;
       }
     }
     &[class *= 'Inverted-'] {
       &[class *= 'Brand-'] { c: $white 0 $accent }
       &[class *= 'Green-'] { c: $white 0 $green }
       &[class *= 'Purple-'] { c: $white 0 $violet }
-      &:hover { opacity: 0.8 !important }
+      &:hover { opacity: 0.8 i }
     }
     &[class *= 'Outlined-'] {
       &[class *= 'Red-'] { c: $red $red }
       &[class *= 'Brand-'] { c: $accent $accent }
       &[class *= 'White-'] { c: $lighter $lighter }
       &[class *= 'Primary-'] { c: $light $lighter $darken }
-      &:hover { opacity: 0.8 !important }
+      &:hover { opacity: 0.8 i }
     }
     &[class *= 'Filled-'] {
       transition: all 0.15s ease;
@@ -2392,7 +2388,7 @@
       &[class *= 'Green-'] { c: $white 0 $green }
       &[class *= 'White-'] { c: $white $white }
       &[class *= 'Grey-'] { c: $light 0 $darker }
-      &:not([disabled]):hover { opacity: 0.8 !important }
+      &:not([disabled]):hover { opacity: 0.8 i }
     }
   }
 
@@ -2403,7 +2399,7 @@
       h1 { c: $light }
       input[type=text] {
         c: $lighter $darker $darker;
-        box-shadow: 0 2px 1px 0 $shadow !important;
+        box-shadow: 0 2px 1px 0 $shadow i;
       }
     }
     .form-inner { c: 0 0 $darker }
@@ -2416,7 +2412,7 @@
       c: 0 0 $darker;
       box-shadow: 0 2px 8px -1px $shadow i;
       [class*="action-"] {
-        background: none !important;
+        background: none i;
         c: 0 $shadow $dark;
         box-shadow: 0 2px 8px 0 $shadow;
       }
@@ -2482,9 +2478,9 @@
       [class*="separator-" i] { width: $size; }
       // Mentions bar.
       [class*="unreadMentionsIndicator"] {
-        padding: 4px !important;
+        padding: 4px i;
         [class*="bar-"] {
-          width: ($size + 12px) !important;
+          width: ($size + 12px) i;
         }
       }
       // Folders!
@@ -2516,8 +2512,8 @@
             // Folder/badge resets.
             [class*="folder-"] { c: 0 0 $darken }
             [class*="badgeWrapper-"] [class*="lowerBadge-"] {
-              right: 0 !important;
-              top: ($size - 16px) !important;
+              right: 0 i;
+              top: ($size - 16px) i;
             }
             // Avatar-less servers in folders.
             [class*="noIcon-"] { c: $light 0 $darken }
@@ -2525,8 +2521,8 @@
         }
         // Reset servers within folders.
         [class*="expandedGuilds-"] {
-          height: unset !important;
-          [class*="pill-"] { top: 0 !important }
+          height: unset i;
+          [class*="pill-"] { top: 0 i }
           [class*="blobContainer-"] [class*="wrapper-"] {
             width: unset;
             height: unset;
@@ -2549,10 +2545,8 @@
         top: ($size / 6);
         [class*="item-"] {
           margin-left: -4px;
-          // Hack for centering pill vertically.
-          ../, &:not([style*="height: 8px"]) {
-            height: ($size / 1.5) !important
-          }
+          // HACK: Center the pill vertically.
+          ../, &:not([style *= 'height: 8px']) { height: ($size / 1.5) i }
         }
       }
       // Home icon.
@@ -2566,7 +2560,7 @@
       }
       // Guild icons.
       [class*="blobContainer-"] {
-        // margin-left: ($size / 18) !important;
+        // margin-left: ($size / 18) i;
         [class*="wrapper-"] {
           height: unset;
           width: unset;
@@ -2589,10 +2583,10 @@
       }
       /// Badges.
       [class *= 'upperBadge-'] { c: 0 0 $dark }
-      [class *= 'lowerBadge-'] { top: ($size - 16px) !important }
+      [class *= 'lowerBadge-'] { top: ($size - 16px) i }
       /// Unread messages.
       [class *= 'numberBadge-'],  {
-        height: 14px !important;
+        height: 14px i;
         box-shadow: 0 0 0 3px $darker;
       }
       /// Voice chat.
@@ -2604,17 +2598,17 @@
       /// DM icons.
       ~ div[style] {
         margin-bottom: 8px;
-        height: $size !important;
+        height: $size i;
         [class*="pill-"] { top: 0 }
         [class*="svg-"] , div[class*="wrapper-"] {
-          height: $size !important;
-          width: $size !important;
+          height: $size i;
+          width: $size i;
         }
       }
       /// Fix for dragging guilds.
       > [class *= 'pill-'] + [draggable = 'false'] svg {
-        width: $size !important;
-        height: $size !important;
+        width: $size i;
+        height: $size i;
         div { c: 0 0 $darken }
       }
     }
@@ -2646,26 +2640,26 @@
   if ( fix_fonts == 1 ) {
     [class *= 'messages'] {
       [class *= 'username-'] {
-        font-weight: 500 !important;
+        font-weight: 500 i;
       }
       [class *= 'markup-'] {
-        font-size: 0.9375rem !important;
-        font-weight: 400 !important;
-        line-height: 1.3 !important;
+        font-size: 0.9375rem i;
+        font-weight: 400 i;
+        line-height: 1.3 i;
         code.inline { font-size: 85% }
       }
     }
     input[class *= 'input-'],
     textarea[class *= 'textArea-'] {
-      font-size: 0.9375rem !important;
+      font-size: 0.9375rem i;
     }
-    ::placeholder { font-weight: 400 !important }
+    ::placeholder { font-weight: 400 i }
   }
   // Feat -> Sub-pixel rendering.
   if ( fix_pixels == 1 ) {
     * {
-      text-rendering: optimizeLegibility !important;
-      -webkit-font-smoothing: auto !important;
+      text-rendering: optimizeLegibility i;
+      -webkit-font-smoothing: auto i;
     }
   }
 
