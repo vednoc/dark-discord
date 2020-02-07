@@ -1517,13 +1517,9 @@
       }
 
       /// Message dividers.
-      [class *= 'hasContent-'] {
-        /// Base styles.
-        > [class *= 'content-'] {
-          padding: 3px 6px;
-          c: cm hl bd;
-          &::before, &::after { c: 0 0 bd }
-        }
+      [class *= 'hasContent-'] > [class *= 'content-'] {
+        c: cm hl bg;
+        &::before, &::after { c: 0 0 bd }
       }
       /// New messages.
       [class *= 'isUnread-'] {
