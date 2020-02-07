@@ -1805,11 +1805,13 @@
         &[class *= 'expanded-'] {
           radius: $radius;
           border-width: 1px;
-          c: 0 $darker;
+          c: 0 $darker $darken;
           > div:last-of-type {
             border-top-width: 1px;
             radius: 0 0 $radius $radius !important;
           }
+          [class *= 'hit-'] { c: 0 0 $darker; box-shadow: none }
+          [class *= 'before-'], [class *= 'after-'] { c: 0 0 $darken }
         }
         /// Remove msg gradients.
         &::before, &::after { content: none !important; }
