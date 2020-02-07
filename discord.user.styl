@@ -73,27 +73,27 @@
     --icinvert: ic_invert;
   }
 
-  // * Use stylus-lang variables with CSS variables.
-  $dark    = var(--dark);
-  $darken  = var(--darken);
-  $darker  = var(--darker);
-  $light   = var(--light);
-  $lighter = var(--lighter);
-  $accent  = var(--accent);
-  $shadow  = var(--shadow);
-  $bshadow = var(--bshadow);
-  $yellow  = var(--yellow);
-  $orange  = var(--orange);
-  $red     = var(--red);
-  $magenta = var(--magenta);
-  $violet  = var(--violet);
-  $blue    = var(--blue);
-  $cyan    = var(--cyan);
-  $green   = var(--green);
-  $white   = var(--white);
-  $t       = var(--t);
-  $radius  = var(--radius);
-  i        = !important;
+  // Use stylus-lang variables with CSS variables.
+  bg      = var(--dark);
+  hl      = var(--darken);
+  bd      = var(--darker);
+  fg      = var(--light);
+  cm      = var(--lighter);
+  ac      = var(--accent);
+  shadow  = var(--shadow);
+  bsh     = var(--bshadow);
+  yellow  = var(--yellow);
+  orange  = var(--orange);
+  red     = var(--red);
+  magenta = var(--magenta);
+  violet  = var(--violet);
+  blue    = var(--blue);
+  cyan    = var(--cyan);
+  green   = var(--green);
+  white   = var(--white);
+  $radius = var(--radius);
+  t       = var(--t);
+  i       = !important;
 
   // Color mixin.
   /// All colors: `c: fg bd bg;`
@@ -118,8 +118,8 @@
   line(x, y) {
     content: "";
     position: absolute;
-    if x != false { border-left: 2px solid $darker; }
-    if y != false { border-bottom: 2px solid $darker; }
+    if x != false { border-left: 2px solid bd }
+    if y != false { border-bottom: 2px solid bd }
   }
   size(w, h) {
     if w != 'boolean' { width: w; }
@@ -143,7 +143,7 @@
   }
 
   body {
-    c: 0 0 $dark;
+    c: 0 0 bg;
     /// Feat -> Custom UI font.
     &, button, input, select, textarea, ::placeholder {
       font-family: ui_font, Whitney, Helvetica Neue,
@@ -151,12 +151,12 @@
     }
     /// App -> Core.
     [class *= 'appMount-'] {
-      c: 0 0 $t;
+      c: 0 0 t;
       /// Skeleton/crashed page.
       > [class *= 'themeDark-'] {
-        c: 0 0 $dark;
-        [class *= 'text-'] > h4 { c: $light }
-        [class *= 'note-'] { c: $lighter }
+        c: 0 0 bg;
+        [class *= 'text-'] > h4 { c: fg }
+        [class *= 'note-'] { c: cm }
       }
     }
   }
@@ -165,30 +165,30 @@
   [class *= 'authBox-'] {
     border: 1px solid;
     radius: $radius;
-    c: $lighter $darker $dark;
-    box-shadow: 0 2px 10px 2px $shadow;
+    c: cm bd bg;
+    box-shadow: 0 2px 10px 2px shadow;
     [class *= 'title-'] {
-      c: $light;
-      &[class *= 'h5-'] { c: $lighter }
+      c: fg;
+      &[class *= 'h5-'] { c: cm }
     }
-    [class*="subTitle-"] { c: $lighter }
+    [class*="subTitle-"] { c: cm }
   }
   // Voice chat controls.
-  [class*="buttonIcon-"] path { v: $lighter }
+  [class*="buttonIcon-"] path { v: cm }
   // * Icons -> Misc.
   [class*="mobileIndicator-"],
   [class*="addButtonIcon-"] polygon,
   [class *= 'OpenIcon-'] path[fill],
   [class *= 'ActionsIcon-'] path[fill],
   svg path[class*="attachButtonPlus-"] {
-    v: $lighter;
+    v: cm;
   }
   // * Icons -> User controls.
   [class*="Icon-"] {
-    &[name="Gear"] path[fill] { v: $lighter }
+    &[name="Gear"] path[fill] { v: cm }
     &[name*="Headset"], &[name*="Microphone"] {
-      path[fill]:not([class*="red-"]) { v: $lighter }
-      path[fill][class*="red-"] { v: $red }
+      path[fill]:not([class*="red-"]) { v: cm }
+      path[fill][class*="red-"] { v: red }
     }
   }
   // * Icons -> Global.
@@ -197,49 +197,49 @@
     path[fill="currentColor"],
     g[fill="currentColor"] > path,
     path[fill^="#FFF"] {
-      v: $lighter;
+      v: cm;
     }
     // Selected/active icons.
-    &[class*="selected-"] path[fill] { v: $accent }
+    &[class*="selected-"] path[fill] { v: ac }
     // Muted channel.
-    path[fill][class*="strikethrough-"] { v: $red }
+    path[fill][class*="strikethrough-"] { v: red }
     // Guild/DM owner.
-    &[class*="ownerIcon-"] path { v: $orange }
+    &[class*="ownerIcon-"] path { v: orange }
     // Partnered guilds.
     svg[class*="flowerStar-"] {
-      v: 0 $dark;
-      path[fill] { v: $accent }
-      + [class*="childContainer-"] path[fill] { v: $white }
+      v: 0 bg;
+      path[fill] { v: ac }
+      + [class*="childContainer-"] path[fill] { v: white }
     }
     // Nitro-Booster!
-    &[class*="premiumIcon-"] path { v: $violet }
+    &[class*="premiumIcon-"] path { v: violet }
     /// Server options.
-    [name *= 'Subscriber'] path { v: $violet }
-    [name *= '_UserAdd'] path { v: $accent }
+    [name *= 'Subscriber'] path { v: violet }
+    [name *= '_UserAdd'] path { v: ac }
   }
-  svg[class*="button"] path[stroke="#FFF"] { v: 0 $lighter }
+  svg[class*="button"] path[stroke="#FFF"] { v: 0 cm }
   // Server owner icon.
-  [class*="ownerHelpIcon-"] path { v: $orange }
+  [class*="ownerHelpIcon-"] path { v: orange }
   // Overflow icon in server members.
-  [class*="overflowIconFg-"] { v: $lighter }
+  [class*="overflowIconFg-"] { v: cm }
   // * Icons -> Non-svg mic/headphone/cogwheel reset.
   [class*="accountDetails-"] + div {
     > div, > button {
       radius: $radius;
       transition: 0.15s ease;
-      &:hover { c: 0 0 $darker }
+      &:hover { c: 0 0 bd }
     }
     // Image invert.
     [style*="/assets/"] {
       filter: hue-rotate(calc(var(--icinvert) * 180deg)) invert(var(--icinvert)) i;
-      &:hover { c: 0 0 $t }
+      &:hover { c: 0 0 t }
     }
   }
 
   /// Settings -> Primary buttons.
-  [style *= 'color: rgb\(255\, 255\, 255']:not(#z) { c: $white }
+  [style *= 'color: rgb\(255\, 255\, 255']:not(#z) { c: white }
   /// Settings -> Default values
-  [class *= 'defaultValue-'] [class *= 'markValue-'] { c: $accent }
+  [class *= 'defaultValue-'] [class *= 'markValue-'] { c: ac }
 
   // Settings -> Userstyle version.
   [class *= 'userSettingsAccount'] > h2::before {
@@ -251,49 +251,49 @@
   }
 
   // * Global -> Browser defaults.
-  ::placeholder, [class*="emptyPlaceholder"] { c: $lighter }
-  ::selection { c: $dark 0 $lighter }
-  ::-moz-selection { c: $dark 0 $lighter }
+  ::placeholder, [class*="emptyPlaceholder"] { c: cm }
+  ::selection { c: bg 0 cm }
+  ::-moz-selection { c: bg 0 cm }
 
   /// Global -> Tooltips.
   [class *= 'tooltip-'] {
-    border: 1px solid $lighter;
-    c: $light 0 $dark;
-    box-shadow: 0 2px 8px $shadow i;
-    [class *= 'Pointer-'] { border-top-color: $lighter i }
+    border: 1px solid cm;
+    c: fg 0 bg;
+    box-shadow: 0 2px 8px shadow i;
+    [class *= 'Pointer-'] { border-top-color: cm i }
   }
 
   // Global -> Bot tags.
-  [class*="botTag-"]:not(#z) { c: $white 0 $accent }
+  [class*="botTag-"]:not(#z) { c: white 0 ac }
 
   // * Global -> Checkboxes.
   [class*="checkbox-"]:not([class*="wrapper" i]) {
-    c: 0 $darker $dark;
+    c: 0 bd bg;
     &[class*="checked-"] {
-      c: 0 0 $darker;
-      svg polyline { v: 0 $accent }
+      c: 0 0 bd;
+      svg polyline { v: 0 ac }
     }
     &[class*="round-"] {
-      c: 0 $darker $dark;
+      c: 0 bd bg;
       &[class*="checked-"] {
-        c: 0 $green;
-        svg polyline { v: 0 $green }
+        c: 0 green;
+        svg polyline { v: 0 green }
       }
     }
   }
 
   // * Global -> Switches.
   [class*="switch-"] {
-    c: 0 0 $darker;
-    box-shadow: 0 0 0 2px inset $darker i;
-    &::before { c: 0 0 $accent }
+    c: 0 0 bd;
+    box-shadow: inset 0 0 0 2px bd i;
+    &::before { c: 0 0 ac }
     &::after {
-      c: 0 0 $light;
-      box-shadow: 0 2px 4px $shadow i;
+      c: 0 0 fg;
+      box-shadow: 0 2px 4px shadow i;
     }
     &[class*="valueChecked"] {
-      c: 0 0 $accent;
-      box-shadow: 0 0 0 2px inset $accent i;
+      c: 0 0 ac;
+      box-shadow: inset 0 0 0 2px ac i;
     }
   }
 
@@ -301,27 +301,27 @@
   [class*="inputWrapper-"] {
     input, [class*="multiInput-"] {
       radius: $radius;
-      c: $light $darker $dark
-      &:focus, &[class*="focused-"] { c: 0 $accent }
+      c: fg bd bg;
+      &:focus, &[class*="focused-"] { c: 0 ac }
     }
     // Separator.
     [class*="multiInput"]::before {
       opacity: 1;
-      c: 0 $darker;
+      c: 0 bd;
     }
   }
 
   // Global -> Color picker.
-  [class*="colorPickerCustom-"] { c: 0 $t $dark }
+  [class*="colorPickerCustom-"] { c: 0 t bg }
 
   // * Global -> Notices.
   [class*="notice-"] {
     &[class*="noticeDefault-"] {
-      c: $white 0 $orange;
+      c: white 0 orange;
       [class*="button"] {
         radius: $radius;
-        c: $white $white 0;
-        &:hover { c: $orange 0 $white }
+        c: white white 0;
+        &:hover { c: orange 0 white }
       }
     }
   }
@@ -329,35 +329,35 @@
   // Global -> GDPR complience.
   [class *= 'gdprWrapper-'] {
     radius: $radius;
-    c: $lighter $darker $darken;
-    [class *= 'header-'] { c: $light }
-    [class *= 'lookInverted-'] { c: $white 0 $accent }
-    [class *= 'anchor-'], [class *= 'lookLink-'] { c: $lighter }
+    c: cm bd hl;
+    [class *= 'header-'] { c: fg }
+    [class *= 'lookInverted-'] { c: white 0 ac }
+    [class *= 'anchor-'], [class *= 'lookLink-'] { c: cm }
   }
 
   // * No channel. (=
-  [class*="noChannel-"] { c: 0 0 $dark }
+  [class*="noChannel-"] { c: 0 0 bg }
 
   // * Modal backdrop.
   [class^="backdrop"] {
     opacity: 0.80 i;
-    c: 0 0 $dark;
+    c: 0 0 bg;
   }
 
   // Feat -> Chromium scrollbars.
   if ( scrollbars_chromium != 1 ) {
     [class^="chat"], [class*="friends"] {
       ::-webkit-scrollbar {
-        &-track { c: 0 0 $dark }
-        &-track-piece { c: 0 $dark $shadow }
-        &-thumb { c: 0 $dark $darker }
+        &-track { c: 0 0 bg }
+        &-track-piece { c: 0 bg shadow }
+        &-thumb { c: 0 bg bd }
       }
     }
     [class*="emojiPicker-"] {
       ::-webkit-scrollbar {
-        &-track { c: 0 0 $dark }
+        &-track { c: 0 0 bg }
         &-track-piece { c: 0 0 0 }
-        &-thumb { c: 0 $darker $accent }
+        &-thumb { c: 0 bd ac }
       }
     }
   }
@@ -381,19 +381,19 @@
     [class*="measurement-"],
     [class*="messages-"] + {
       [class^="scrollbar-"] {
-        c: 0 $t $dark;
-        [class^="track"] { c: 0 $dark $darker }
-        [class^="thumb"] { c: 0 $dark $accent }
-        [class^="pad"] { c: 0 0 $dark }
+        c: 0 t bg;
+        [class^="track"] { c: 0 bg bd }
+        [class^="thumb"] { c: 0 bg ac }
+        [class^="pad"] { c: 0 0 bg }
       }
     }
     // ? Pinned/Notifications.
     [class*="sizeMedium-"] {
       [class*="scrollbar-"] {
-        c: 0 $t $darker;
-        [class^="track"] { c: 0 $darker $dark }
-        [class^="thumb"] { c: 0 $darker $accent }
-        [class^="pad"] { c: 0 0 $darker }
+        c: 0 t bd;
+        [class^="track"] { c: 0 bd bg }
+        [class^="thumb"] { c: 0 bd ac }
+        [class^="pad"] { c: 0 0 bd }
       }
     }
     // ? Various hacks.
@@ -423,170 +423,168 @@
   [class*="modal-"] {
     &[class*="size"] {
       radius: $radius;
-      c: 0 0 $dark;
-      box-shadow: 0 0 0 1px $darker, 0 4px 8px 0 $shadow;
+      c: 0 0 bg;
+      box-shadow: 0 0 0 1px bd, 0 4px 8px shadow;
       [class*="item-"] {
         radius: $radius;
-        &[style*="114\, 137\, 218"] { c: 0 $accent $accent }
+        &[style*="114\, 137\, 218"] { c: 0 ac ac }
       }
-      [class*="reactors-"], [class*="sidebar-"] { c: 0 0 $t }
+      [class*="reactors-"], [class*="sidebar-"] { c: 0 0 t }
       // Confirm message deletion.
       [class*="content-"] > [class*="message-"] {
         radius: $radius;
         border: 1px solid;
-        c: 0 $darker $dark;
-        box-shadow: 0 2px 4px 0 $shadow;
-        [class*="markup-"] { c: $light }
-        [class*="timestamp"] { c: $lighter }
+        c: 0 bd bg;
+        box-shadow: 0 2px 4px shadow;
+        [class*="markup-"] { c: fg }
+        [class*="timestamp"] { c: cm }
       }
     }
     // Default-ish colors.
-    [class*="primary-"] { c: $light }
-    [class*="titleDefault-"], [class*="h5-"] { c: $light }
-    [class*="description-"], [class*="guildName-"] { c: $lighter }
+    [class*="primary-"] { c: fg }
+    [class*="titleDefault-"], [class*="h5-"] { c: fg }
+    [class*="description-"], [class*="guildName-"] { c: cm }
     /// Spotify invitation.
     [class *= 'invite-'][class *= 'preview-'] {
-      c: 0 $darker $darken;
+      c: 0 bd hl;
       [class *= 'partyStatus-'] {
-        c: $lighter;
-        [class *= 'textLink-'] { c: $light }
+        c: cm;
+        [class *= 'textLink-'] { c: fg }
       }
     }
     /// Footer.
     [class *= 'footer-'] {
-      c: 0 0 $t;
+      c: 0 0 t;
       radius: 0 0 $radius $radius;
-      box-shadow: inset 0 1px $darker;
+      box-shadow: inset 0 1px bd;
     }
     // Highlighted friends.
-    [class*="friend-"] { c: $light }
-    [class*="friendSelected-"] { c: 0 0 $dark }
+    [class*="friend-"] { c: fg }
+    [class*="friendSelected-"] { c: 0 0 bg }
     .search-bar {
-      c: 0 0 $t;
-      &-inner { c: 0 $shadow $dark }
-      &-tag { c: $lighter 0 $darker }
-      input { c: $light }
+      c: 0 0 t;
+      &-inner { c: 0 shadow bg }
+      &-tag { c: cm 0 bd }
+      input { c: fg }
     }
     // Text color.
-    [class*="defaultColor"] { c: $light }
-    [class*="Header"], [class*="header-"] { c: $lighter }
+    [class*="defaultColor"] { c: fg }
+    [class*="Header"], [class*="header-"] { c: cm }
     // ? Region select.
     [class*="regionSelectModal-"] {
       radius: $radius;
-      c: 0 0 $dark;
-      box-shadow: 0 0 0 1px inset $darker, 0 2px 4px 0 $shadow;
+      c: 0 0 bg;
+      box-shadow: 0 0 0 1px inset bd, 0 2px 4px shadow;
       [class*="Option-"] {
         radius: $radius;
-        c: 0 $darker $dark;
+        c: 0 bd bg;
         &:hover {
-          c: 0 $accent;
-          box-shadow: 0 2px 4px 0 $shadow;
+          c: 0 ac;
+          box-shadow: 0 2px 4px shadow;
         }
         [class*="Flag-"] {
-          c: 0 0 $t;
+          c: 0 0 t;
           transition: 0.3s ease;
-          box-shadow: 0 2px 4px 0 $shadow;
+          box-shadow: 0 2px 4px shadow;
           ../:hover [class*="Flag-"] { transform: translateY(-4px) i }
         }
-        [class*="Name-"] { c: $lighter }
+        [class*="Name-"] { c: cm }
       }
-      [class*="Footer-"] { c: $lighter }
+      [class*="Footer-"] { c: cm }
     }
     // Image preview.
     [class*="imageWrapper"] + [class*="anchor-"] {
       opacity: 1;
-      c: $accent;
+      c: ac;
     }
   }
 
   // * Upload modal.
   [class*="uploadModal-"] {
-    border: 1px solid $darker;
-    c: 0 0 $dark;
+    border: 1px solid bd;
+    c: 0 0 bg;
     [class*="inner-"] {
-      c: $lighter $darker;
+      c: cm bd;
       // Different file-types.
       [class*="file-"] [class*="icon-"] {
         &[class*="image-"] {
-          c: 0 $darker $dark;
-          box-shadow: 0 2px 8px 0 $shadow i;
+          c: 0 bd bg;
+          box-shadow: 0 2px 8px shadow i;
         }
         &[class*="unknown-"], &[class*="code-"],
         &[class*="document-"], &[class*="video-"] {
           filter: invert(0.8) hue-rotate(180deg);
         }
         // File title.
-        + [class*="description"] { c: $light }
+        + [class*="description"] { c: fg }
       }
     }
     // ? Controls.
     [class*="footer-"] {
       radius: 0 0 10px 10px;
-      c: 0 0 $darken;
-      box-shadow: inset 0 1px 0 0 $darker;
-      [class*="label"] * { c: $lighter }
+      c: 0 0 hl;
+      box-shadow: inset 0 1px bd;
+      [class*="label"] * { c: cm }
     }
   }
 
   // * Channel info modal.
   [class*="inner-"] > [class*="modal-"][class*="size-"] {
-    c: $light 0 $dark;
-    box-shadow: 0 2px 4px -1px $shadow, 0 0 0 1px $darker;
-    // Close icon.
-    [class*="close-"] { color: $lighter, 0, 0; }
-    // Text color.
-    [class*="content-"] > [class*="primary-"] { color: $lighter, 0, 0; }
+    c: fg 0 bg;
+    box-shadow: 0 2px 4px -1px shadow, 0 0 0 1px bd;
+    // Close icon / text color.
+    [class*="close-"], [class*="content-"] > [class*="primary-"] { c: cm }
   }
 
   // Modals -> Folder settings.
   [class*="small-"][role="dialog"] {
-    c: 0 0 $dark;
-    box-shadow: inset 0 0 0 1px $darker, 0 2px 8px $shadow;
-    h5 { c: $lighter }
-    [class*="close-"] { c: $lighter }
-    [class*="defaultColor-"] { c: $light }
-    [class*="colorPickerSwatch-"] { c: 0 $shadow }
+    c: 0 0 bg;
+    box-shadow: inset 0 0 0 1px bd, 0 2px 8px shadow;
+    h5 { c: cm }
+    [class*="close-"] { c: cm }
+    [class*="defaultColor-"] { c: fg }
+    [class*="colorPickerSwatch-"] { c: 0 shadow }
     [class*="footer-"] {
-      c: 0 0 $t;
-      box-shadow: inset 0 1px $darker;
+      c: 0 0 t;
+      box-shadow: inset 0 1px bd;
     }
   }
 
   // Modals -> User profile.
   [class^='modal-'] > div > [class *= 'root'] {
-    border: 1px solid $darker;
+    border: 1px solid bd;
     radius: $radius;
-    c: 0 0 $dark;
-    box-shadow: $bshadow;
+    c: 0 0 bg;
+    box-shadow: bsh;
     /// Header.
     [class *= 'header-'] > [class *= 'headerInfo-'] {
-      [class *= 'username-'] { c: $light }
-      [class *= 'discriminator-'] { c: $lighter }
+      [class *= 'username-'] { c: fg }
+      [class *= 'discriminator-'] { c: cm }
     }
     /// Activity.
     [class *= 'topSection'] {
-      border-bottom: 1px solid $darker;
-      c: 0 0 $t;
+      border-bottom: 1px solid bd;
+      c: 0 0 t;
       [class ^= 'header'] {
-        c: 0 0 $darken;
+        c: 0 0 hl;
         /// Custom status.
-        + div[class = ''] { c: 0 0 $darken }
+        + div[class = ''] { c: 0 0 hl }
       }
       [class *= 'activityProfile-'] {
-        border-top: 1px solid $darker;
-        c: 0 0 $t;
+        border-top: 1px solid bd;
+        c: 0 0 t;
         /// Text.
-        [class *= 'Text-'], [class *= 'content'] { c: $lighter }
-        [class *= 'details-'], [class *= 'weight-'] { c: $lighter }
-        [class *= 'text-'], [class *= 'activityName-'] { c: $light }
+        [class *= 'Text-'], [class *= 'content'] { c: cm }
+        [class *= 'details-'], [class *= 'weight-'] { c: cm }
+        [class *= 'text-'], [class *= 'activityName-'] { c: fg }
         /// Progress bar.
         [class *= 'bar-'] {
-          c: 0 0 $darker;
-          [class *= 'barInner-'] { c: 0 0 $accent }
+          c: 0 0 bd;
+          [class *= 'barInner-'] { c: 0 0 ac }
         }
         /// Buttons.
         [class *= 'lookOutlined-'] {
-          c: $lighter $darker $darker;
+          c: cm bd bd;
           &:hover { opacity: 0.8 }
         }
       }
@@ -596,42 +594,42 @@
         position: absolute;
         top: 0; right: 0; left: 0;
         radius: $radius $radius 0 0;
-        border-top: $radius solid $t;
+        border-top: $radius solid t;
       }
     }
     /// Various activities.
-    [class *= 'Xbox-']::before { c: 0 $violet }
-    [class *= 'Playing-']::before { c: 0 $blue }
-    [class *= 'Spotify-']::before { c: 0 $green }
-    [class *= 'Streaming-']::before { c: 0 $violet }
+    [class *= 'Xbox-']::before { c: 0 violet }
+    [class *= 'Playing-']::before { c: 0 blue }
+    [class *= 'Spotify-']::before { c: 0 green }
+    [class *= 'Streaming-']::before { c: 0 violet }
     /// Tabs.
     [class *= 'tabBarContainer-'] {
-      c: 0 $darker $darken;
+      c: 0 bd hl;
       [class *= 'item-'] {
         margin-bottom: -1px;
         border-bottom-width: 1px;
         transition: 0.15s ease;
-        c: $lighter $t 0;
-        &:hover { c: $light }
+        c: cm t 0;
+        &:hover { c: fg }
         &[class *= 'selected-'], &[style ^= 'border-color: rgb'] {
-         c: $light $accent;
+         c: fg ac;
         }
       }
     }
     /// Body.
     > [class *= 'body-'] {
-      c: 0 0 $t;
+      c: 0 0 t;
       /// Text.
-      [class *= 'Info-'] { c: $lighter }
+      [class *= 'Info-'] { c: cm }
       [class *= 'note-'] > textarea {
-        c: $light;
-        &:focus { c: 0 0 $darken }
+        c: fg;
+        &:focus { c: 0 0 hl }
       }
       /// Mutual servers/friends.
       [class *= 'listRow-'] {
-        c: $lighter;
-        &:hover { c: $light 0 $darken }
-        [class *= 'guildNick-'] { c: $lighter }
+        c: cm;
+        &:hover { c: fg 0 hl }
+        [class *= 'guildNick-'] { c: cm }
       }
       /// Scrollbar polyfil tweaks.
       [class *= 'firefoxFixScrollFlex-'] {
@@ -641,11 +639,11 @@
     }
     /// Connected accounts.
     [class *= 'userInfoSection'] {
-      c: 0 $darker;
+      c: 0 bd;
       [class *= 'Accounts'] > [class *= 'Account'] {
         radius: $radius;
-        c: 0 $darker $darken;
-        [class *= 'AccountName-'] { c: $light }
+        c: 0 bd hl;
+        [class *= 'AccountName-'] { c: fg }
       }
     }
   }
@@ -653,19 +651,19 @@
   // Global -> User status menu popout.
   [id ^= 'popout_'] {
     [class *= 'menu-'] {
-      border: 1px solid $darker;
+      border: 1px solid bd;
       radius: $radius;
-      c: 0 0 $dark;
-      box-shadow: 0 2px 4px $shadow;
-      [class *= 'separator-'] { c: 0 $darker }
+      c: 0 0 bg;
+      box-shadow: 0 2px 4px shadow;
+      [class *= 'separator-'] { c: 0 bd }
       [class *= 'itemBase-'] {
-        c: $lighter;
+        c: cm;
         transition: 0.15s ease;
-        &:hover { c: 0 0 $darken }
-        &[class *= 'Active'] { c: 0 0 $darken }
-        &[class *= 'invite-'] { c: $accent }
-        [class*='helper-'] { c: $lighter }
-        div:not([class]) { c: $light }
+        &:hover { c: 0 0 hl }
+        &[class *= 'Active'] { c: 0 0 hl }
+        &[class *= 'invite-'] { c: ac }
+        [class*='helper-'] { c: cm }
+        div:not([class]) { c: fg }
       }
     }
   }
@@ -674,71 +672,71 @@
   [id *= 'popout_'] {
     /// Chat -> Message context menu.
     > div > [class *= 'container-'][role = 'menu'] {
-      border: 1px solid $darker;
-      c: 0 0 $darken;
-      box-shadow: $bshadow;
+      border: 1px solid bd;
+      c: 0 0 hl;
+      box-shadow: bsh;
       [class *= 'itemGroup-'] {
-        [class *= 'itemBase-']:hover { c: 0 0 $darker }
-        [class *= 'label-'] { c: $light }
+        [class *= 'itemBase-']:hover { c: 0 0 bd }
+        [class *= 'label-'] { c: fg }
       }
     }
     /// Spotify invitation/Upload a File/etc.
     [class *= 'attachPopout-'] {
       radius: $radius;
-      c: $light 0 $dark;
+      c: fg 0 bg;
       // Text color.
-      [class *= 'RowText'] { c: $lighter }
+      [class *= 'RowText'] { c: cm }
       > [class *= 'attachPopoutRow']:hover {
-        c: 0 0 $darker;
-        [class *= 'RowText'] { c: $light }
+        c: 0 0 bd;
+        [class *= 'RowText'] { c: fg }
       }
     }
   }
 
   // * Add role popout.
   [class*="popoutInvert-"], [class*="popoutBottom-"] {
-    [class*="headerText-"] { c: $light }
+    [class*="headerText-"] { c: fg }
     [class*="sectionTag-"] {
-      c: $lighter 0 $t;
+      c: cm 0 t;
       [class*="selected-"] {
-        background: linear-gradient(90deg, $t, $darker);
+        background: linear-gradient(90deg, t, bd);
       }
     }
   }
 
   // Popouts -> User popout.
   [class *= 'userPopout-'] {
-    border: 1px solid $darker;
-    c: 0 0 $dark;
-    box-shadow: $bshadow;
+    border: 1px solid bd;
+    c: 0 0 bg;
+    box-shadow: bsh;
     [class *= 'headerText-'] {
-      [class *= 'username-']:not(#z) { c: $light }
-      [class *= 'Tag'] { c: $lighter }
+      [class *= 'username-']:not(#z) { c: fg }
+      [class *= 'Tag'] { c: cm }
     }
     /// Various modes.
     > [class *= 'header-'] {
       position: relative;
-      border-bottom: 1px solid $darker;
+      border-bottom: 1px solid bd;
       radius: $radius $radius 0 0;
-      c: 0 0 $darken;
+      c: 0 0 hl;
       /// Buttons.
       [class *= 'lookOutlined-'] {
-        c: $lighter $darker $darker;
-        box-shadow: $bshadow;
-        &:hover { c: $light }
+        c: cm bd bd;
+        box-shadow: bsh;
+        &:hover { c: fg }
       }
       /// Activity section.
       [class*="activityUserPopout"] {
-        border-top: 1px solid $darker;
-        c: 0 0 $t;
+        border-top: 1px solid bd;
+        c: 0 0 t;
         /// Text reset.
-        [class *= 'activityName-'], [class *= 'Bold-'] { c: $light }
-        [class *= 'content-'] [class *= 'details-'] { c: $lighter }
-        [class *= 'content-'], [class *= 'text-'] { c: $lighter }
+        [class *= 'activityName-'], [class *= 'Bold-'] { c: fg }
+        [class *= 'content-'] [class *= 'details-'] { c: cm }
+        [class *= 'content-'], [class *= 'text-'] { c: cm }
         /// Progress bar.
         [class *= 'bar-'] {
-          c: 0 0 $darker;
-          [class *= 'barInner-'] { c: 0 0 $accent }
+          c: 0 0 bd;
+          [class *= 'barInner-'] { c: 0 0 ac }
         }
       }
       /// Activity indicator.
@@ -748,142 +746,142 @@
         position: absolute;
         top: 0; right: 0; left: 0;
         radius: $radius $radius 0 0;
-        border-top: $radius solid $t;
+        border-top: $radius solid t;
       }
-      &[class *= 'Xbox-']::before { c: 0 $magenta }
-      &[class *= 'Playing-']::before { c: 0 $blue }
-      &[class *= 'Spotify-']::before { c: 0 $green }
-      &[class *= 'Streaming-']::before { c: 0 $violet }
+      &[class *= 'Xbox-']::before { c: 0 magenta }
+      &[class *= 'Playing-']::before { c: 0 blue }
+      &[class *= 'Spotify-']::before { c: 0 green }
+      &[class *= 'Streaming-']::before { c: 0 violet }
     }
     /// Body.
     [class *= 'bodyInner-'] {
-      c: $lighter 0 $t;
+      c: cm 0 t;
       /// Headers.
-      [class *= 'bodyTitle-'] { c: $lighter }
+      [class *= 'bodyTitle-'] { c: cm }
       /// Add role button.
       [class *= 'actionButton'] {
         transition: 0.15s ease;
-        c: $lighter $darker $darken;
+        c: cm bd hl;
       }
       /// Add note.
       [class *= 'note-'] > textarea {
-        c: $light;
-        &:focus { c: 0 0 $darken }
+        c: fg;
+        &:focus { c: 0 0 hl }
       }
     }
     /// Footer.
     > [class *= 'footer-'] {
-      c: $light $darker $t;
+      c: fg bd t;
       /// Wumpus!
       [class *= 'wumpusShown-'] [class *= 'wumpusTooltip-'] {
-        c: $light 0 $darker;
-        &::after { border-color: $t $darker $t $t; }
+        c: fg 0 bd;
+        &::after { border-color: t bd t t }
       }
       /// Tips.
-      [class *= 'statusGreen-'] { c: $green }
-      [class *= 'tip-'] { c: $light }
+      [class *= 'statusGreen-'] { c: green }
+      [class *= 'tip-'] { c: fg }
       /// Message user.
-      [class *= 'quickMessage-'] { c: $light $darker $darken }
+      [class *= 'quickMessage-'] { c: fg bd hl }
     }
   }
 
   // Popouts -> Custom status.
   [class *= 'customStatus-'] {
-    &, span { c: $light }
+    &, span { c: fg }
   }
 
   // Sidebar -> User controls.
   [class *= 'sidebar-'] > [class *= 'panels-'] {
     z-index: 1;
-    c: 0 0 $darken;
-    [class *= 'title-'] { c: $light }
-    [class *= 'subtext-'] { c: $lighter }
+    c: 0 0 hl;
+    [class *= 'title-'] { c: fg }
+    [class *= 'subtext-'] { c: cm }
     /// VC status.
     > div:first-child:not(:last-child) {
-      border-top: 1px solid $darker;
+      border-top: 1px solid bd;
       border-bottom: none;
-      c: 0 0 $darken;
-      [class*="Error"] { c: $red }
-      [class*="Connected"] { c: $green }
-      [class*="Connecting"] { c: $orange }
+      c: 0 0 hl;
+      [class*="Error"] { c: red }
+      [class*="Connected"] { c: green }
+      [class*="Connecting"] { c: orange }
       [class*="description-"] > [class*="channel-"] {
         opacity: 1;
-        c: $lighter;
+        c: cm;
       }
     }
     // Controls.
     > div:last-child {
-      c: $lighter 0 $t;
-      box-shadow: 0 1px 0 0 inset $darker;
+      c: cm 0 t;
+      box-shadow: inset 0 1px bd;
     }
     button {
       radius: $radius;
-      c: $lighter;
+      c: cm;
       transition: 0.15s ease;
-      &:hover:not([class*="disabled"]) { c: 0 0 $darker }
+      &:hover:not([class*="disabled"]) { c: 0 0 bd }
     }
   }
 
   // * Global -> Status indicators.
   [class*="status-"] {
-    &[class*="Red"] { c: $red }
-    &[class*="Green"] { c: $green }
-    &[class*="Orange"] { c: $orange }
-    &[class*="Yellow"] { c: $yellow }
-    &[class*="Online-" i] { c: 0 0 $green }
+    &[class*="Red"] { c: red }
+    &[class*="Green"] { c: green }
+    &[class*="Orange"] { c: orange }
+    &[class*="Yellow"] { c: yellow }
+    &[class*="Online-" i] { c: 0 0 green }
     &[class*="Offline-" i] { c: 0 0 gray }
 
-    &[style*="240\, 71\, 71"] { c: 0 0 $red }
-    &[style*="67\, 181\, 129"] { c: 0 0 $green }
-    &[style*="250\, 166\, 26"] { c: 0 0 $orange }
+    &[style*="240\, 71\, 71"] { c: 0 0 red }
+    &[style*="67\, 181\, 129"] { c: 0 0 green }
+    &[style*="250\, 166\, 26"] { c: 0 0 orange }
     &[style*="116\, 127\, 141"] { c: 0 0 gray }
 
-    [fill*="240\, 71\, 71"] { v: $red }
-    [fill*="67\, 181\, 129"] { v: $green }
-    [fill*="250\, 166\, 26"] { v: $orange }
+    [fill*="240\, 71\, 71"] { v: red }
+    [fill*="67\, 181\, 129"] { v: green }
+    [fill*="250\, 166\, 26"] { v: orange }
     [fill*="116\, 127\, 141"] { v: gray }
   }
   // Primary status indicator.
   [class*="cursorDefault-"] {
-    [fill*="240\, 71\, 71"] { v: $red }
-    [fill*="67\, 181\, 129"] { v: $green }
-    [fill*="250\, 166\, 26"] { v: $orange }
-    rect[mask *= '09bd61cd'] { v: $lighter }
+    [fill*="240\, 71\, 71"] { v: red }
+    [fill*="67\, 181\, 129"] { v: green }
+    [fill*="250\, 166\, 26"] { v: orange }
+    rect[mask *= '09bd61cd'] { v: cm }
   }
   // Secondary status indicator.
   [class*="pointerEvents-"] {
-    &[fill="#ffffff" i] { v: $dark }
+    &[fill="#ffffff" i] { v: bg }
     &[mask*="status-off"] { v: gray }
-    &[mask*="status-dnd"] { v: $red }
-    &[mask*="status-onl"] { v: $green }
-    &[mask*="status-idl"] { v: $orange }
-    &[mask*="status-str"] { v: $violet }
+    &[mask*="status-dnd"] { v: red }
+    &[mask*="status-onl"] { v: green }
+    &[mask*="status-idl"] { v: orange }
+    &[mask*="status-str"] { v: violet }
   }
 
   // * Text status.
-  [class*="titleChecked"], [class*="descChecked"] { c: $light }
+  [class*="titleChecked"], [class*="descChecked"] { c: fg }
 
   // * Loading page.
   [class^="app"] > [style^="opacity"] {
     // Background.
-    &[class*="fixClipping"] { c: 0 0 $dark }
+    &[class*="fixClipping"] { c: 0 0 bg }
     // Text colors.
-    [class^="quote-"] { c: $light }
-    [class^="status-"] { c: $lighter }
+    [class^="quote-"] { c: fg }
+    [class^="status-"] { c: cm }
     [class*="problems-"] {
-      [class*="Text"] { c: $lighter }
-      [class*="anchor"] { c: $accent }
+      [class*="Text"] { c: cm }
+      [class*="anchor"] { c: ac }
     }
   }
 
   // ? All usernames except the ones that have custom colors.
-  [class^="username"]:not([style^="color"]) { c: $light }
+  [class^="username"]:not([style^="color"]) { c: fg }
   // ? Discriminators.
-  [class*="discriminator"] { c: $lighter }
+  [class*="discriminator"] { c: cm }
   // ? Roles.
   [class^="nameTag"] {
     // ? Default no-role color in right sidebar.
-    &:not([style^="color"]) { c: $lighter }
+    &:not([style^="color"]) { c: cm }
     // ? Inherit custom color in right sidebar.
     > [class*="username"] { color: inherit i }
   }
@@ -891,37 +889,37 @@
   // Guilds.
   [class *= 'guilds-'] {
     radius: 0px;
-    c: 0 0 $darker;
-    box-shadow: inset -1px 0 $darker;
-    [class *= 'scroller-'] { c: 0 0 $t }
-    [class *= 'Separator-'] { c: 0 0 $darken }
+    c: 0 0 bd;
+    box-shadow: inset -1px 0 bd;
+    [class *= 'scroller-'] { c: 0 0 t }
+    [class *= 'Separator-'] { c: 0 0 hl }
     // * Guild wrapper.
     [class*="listItem-"] {
       // ? Indicator -> New messages.
-      [class*="pill-"] > [class*="item"] { c: 0 0 $lighter }
+      [class*="pill-"] > [class*="item"] { c: 0 0 cm }
       // ? Indicator -> Unread badges.
-      [class*="numberBadge-"] { c: $white 0 $accent }
+      [class*="numberBadge-"] { c: white 0 ac }
       // Icons.
       a[href] > [class*="acronym-"], [class*="circleIconButton-"] {
-        c: $lighter 0 $darken;
-        box-shadow: 0 0 0 1px inset $darken;
+        c: cm 0 hl;
+        box-shadow: inset 0 0 0 1px hl;
       }
       /// Home icon.
       a[aria-label = 'Home'] {
-        c: 0 0 $darken;
-        [class *= 'homeIcon-'] { c: $light }
-        [class *= 'childWrapper-'] { c: 0 0 $t }
+        c: 0 0 hl;
+        [class *= 'homeIcon-'] { c: fg }
+        [class *= 'childWrapper-'] { c: 0 0 t }
         &[class *= 'selected-'] {
-          c: 0 0 $accent;
-          [class *= 'homeIcon-'] { c: $white }
+          c: 0 0 ac;
+          [class *= 'homeIcon-'] { c: white }
         }
       }
     }
     [class*="unreadMentionsBar-"] {
-      c: $white 0 $accent;
-      box-shadow: $bshadow;
+      c: white 0 ac;
+      box-shadow: bsh;
       transition: 0.15s ease;
-      svg { c: $white }
+      svg { c: white }
       &:hover { opacity: 0.8; }
     }
     /// Feat -> Minimize guild width.
@@ -946,85 +944,85 @@
   // * Search results.
   [class*="popout-"] > [class*="container-"] {
     radius: $radius;
-    c: 0 0 $dark;
-    box-shadow: 0 0 0 1px $darker;
+    c: 0 0 bg;
+    box-shadow: 0 0 0 1px bd;
     // Message context menu.
     > [class*="item-"][class*="button-"] {
-      c: $lighter;
-      &:hover { c: $light 0 $darker }
+      c: cm;
+      &:hover { c: fg 0 bd }
     }
     // * "Search for" selector.
     > [class*="queryContainer-"] {
-      c: $light $dark $darker;
+      c: fg bg bd;
       // Text colors.
-      [class*="queryText-"] { c: $lighter }
-      [class*="queryText-"] strong { c: $light }
+      [class*="queryText-"] { c: cm }
+      [class*="queryText-"] strong { c: fg }
       // Shortcut button.
       [class*="queryShortcut-"] [class*="keybindShortcut-"] span {
-        c: $light $dark $darker;
-        box-shadow: inset 0 -4px 0 $accent;
+        c: fg bg bd;
+        box-shadow: inset 0 -4px ac;
       }
     }
     // Text color.
-    [class*="header-"] { c: $lighter }
+    [class*="header-"] { c: cm }
     [class*="searchLearnMore-"] [class*="anchor-"],
-    [class*="plusIcon-"] { c: $lighter }
+    [class*="plusIcon-"] { c: cm }
     // * Items.
     [class*="option"] {
       // Remove gradient.
       &::after { display: none; }
       // On event.
-      &:hover, &[class*="selected-"] { c: 0 0 $darker }
+      &:hover, &[class*="selected-"] { c: 0 0 bd }
       // Text color.
-      > strong { c: $accent }
-      [class*="filter-"] { c: $light }
-      [class*="nonText-"] { c: $lighter }
-      [class*="displayedNick-"] { c: $light }
+      > strong { c: ac }
+      [class*="filter-"] { c: fg }
+      [class*="nonText-"] { c: cm }
+      [class*="displayedNick-"] { c: fg }
       [class*="answer-"], [class*="displayUsername-"] {
         opacity: 0.6;
-        c: $lighter;
+        c: cm;
       }
       [class*="resultChannel-"] {
-        strong { c: $accent }
-        span, svg { c: $lighter }
+        strong { c: ac }
+        span, svg { c: cm }
       }
     }
   }
 
   // * Calendar.
   [class*="datePicker-"] > div > div {
-    c: $lighter 0 $dark;
-    [class*="__navigation"] { c: 0 $darker }
+    c: cm 0 bg;
+    [class*="__navigation"] { c: 0 bd }
     // * Month/year header.
     [class*="__header"] {
-      c: $lighter 0 $t;
-      [class*="__current-month"] { c: $light $darker }
-      [class*="__day-name"] { c: $lighter }
+      c: cm 0 t;
+      [class*="__current-month"] { c: fg bd }
+      [class*="__day-name"] { c: cm }
     }
     // * Days.
     [aria-label^="day-"] {
-      c: $light $darker $dark;
+      c: fg bd bg;
       // ? Select *only* days that are in the past.
-      &:hover:not([class*="disabled"]) { c: $light 0 $accent }
+      &:hover:not([class*="disabled"]) { c: fg 0 ac }
     }
     [class*="__day--outside-month"], [class*="__day--disabled"] {
       opacity: 0.6;
-      c: $lighter $darker $darker;
+      c: cm bd bd;
     }
     [class*="__day--today"] {
-      c: $light;
-      &::after { c: 0 0 $accent }
+      c: fg;
+      &::after { c: 0 0 ac }
     }
   }
   // * Hints.
   [class*="datePicker-"] [class*="datePickerHint-"] {
     margin: 0;
     padding: 20px;
-    c: 0 $dark $darker;
-    span { c: $lighter }
+    c: 0 bg bd;
+    span { c: cm }
     [class*="hintValue-"] {
       padding: 0 4px;
-      c: $light 0 $accent;
+      c: fg 0 ac;
     }
   }
 
@@ -1034,11 +1032,11 @@
     /// Global announcements (sort of).
     > [class *= 'noticePremium'] {
       radius: 0;
-      c: $white;
-      background-image: linear-gradient(270deg, $blue, $violet);
+      c: white;
+      background-image: linear-gradient(270deg, blue, violet);
       a[href]:hover {
         text-decoration: none;
-        c: $accent;
+        c: ac;
       }
     }
   }
@@ -1048,24 +1046,24 @@
 
     // Friends -> Title-bar.
     [class *= 'sidebar-'] + [class *= 'container-'] > [class *= 'container-'] {
-      c: 0 0 $darken;
-      box-shadow: 0 1px $darker;
+      c: 0 0 hl;
+      box-shadow: 0 1px bd;
       [class *= 'children-'] {
         &::after { display: none }
-        [class *= 'numberBadge-'] { c: $white 0 $accent }
-        [class *= 'title-'] { c: $light }
-        [class *= 'divider-'] { c: 0 0 $darker }
+        [class *= 'numberBadge-'] { c: white 0 ac }
+        [class *= 'title-'] { c: fg }
+        [class *= 'divider-'] { c: 0 0 bd }
         [class *= 'tabBar-'] {
-          c: 0 0 $t;
+          c: 0 0 t;
           [class *= 'item-'] {
             padding: 0.375rem 0.5rem;
             transition: 0.15s ease;
             &:not([class *= 'primary-']):not([class *= 'selected-']) {
-              c: $lighter 0 $t;
-              &:hover { c: 0 0 $darker }
+              c: cm 0 t;
+              &:hover { c: 0 0 bd }
             }
-            &[class *= 'selected-'] { c: $light 0 $darker }
-            &[class *= 'primary-'] { c: 0 0 $accent }
+            &[class *= 'selected-'] { c: fg 0 bd }
+            &[class *= 'primary-'] { c: 0 0 ac }
           }
         }
       }
@@ -1075,21 +1073,21 @@
     [class *= 'tabBody-'] {
       &::before { box-shadow: none i }
       [class *= 'peopleList-'] {
-        c: 0 0 $dark;
-        header, [class *= 'subtext-'] { c: $lighter }
-        [class *= 'actionButton-'] { c: 0 0 $darken }
+        c: 0 0 bg;
+        header, [class *= 'subtext-'] { c: cm }
+        [class *= 'actionButton-'] { c: 0 0 hl }
         [class *= 'ListItem-'] {
-          c: 0 $darken;
+          c: 0 hl;
           &:hover {
-            c: 0 0 $darken;
-            [class *= 'actionButton-'] { c: 0 0 $darker }
-            + [class *= 'ListItem-'] { c: 0 $t }
+            c: 0 0 hl;
+            [class *= 'actionButton-'] { c: 0 0 bd }
+            + [class *= 'ListItem-'] { c: 0 t }
           }
         }
         /// Scrollbars.
         + [class *= 'scrollbar-'] {
-          &, [class *= 'pad-'] { c: 0 0 $dark }
-          [class *= 'track-'] { c: 0 $dark $darker }
+          &, [class *= 'pad-'] { c: 0 0 bg }
+          [class *= 'track-'] { c: 0 bg bd }
         }
         /// Offline section.
         > div:not([class]) + div:not([class]) {
@@ -1098,21 +1096,21 @@
         }
       }
       [class *= 'nowPlayingColumn-'] {
-        border-left: 1px solid $darker;
-        c: 0 0 $darken;
-        h3 { c: $lighter }
+        border-left: 1px solid bd;
+        c: 0 0 hl;
+        h3 { c: cm }
         [class *= 'emptyCard-'] {
-          c: 0 0 $darker;
-          h5 { c: $light }
-          div { c: $lighter }
+          c: 0 0 bd;
+          h5 { c: fg }
+          div { c: cm }
         }
         [class *= 'itemCard-'] {
-          c: 0 0 $darker;
-          [class *= 'Secondary-'] { c: $lighter }
+          c: 0 0 bd;
+          [class *= 'Secondary-'] { c: cm }
           [class *= 'inset-'] {
-            c: 0 0 $darken;
-            h4 { c: $light }
-            div { c: $light }
+            c: 0 0 hl;
+            h4 { c: fg }
+            div { c: fg }
           }
         }
       }
@@ -1121,14 +1119,14 @@
     // Sidebar -> Channels.
     [class*="sidebar-"] {
       border-right: 1px solid;
-      c: 0 $darker $darken;
+      c: 0 bd hl;
       /// Remove background.
-      [class *= 'scroller-'], > [class *= 'container-'] { c: 0 0 $t }
+      [class *= 'scroller-'], > [class *= 'container-'] { c: 0 0 t }
       // ? Guild name/menu.
       [class *= 'header-'] {
-        c: $light;
-        box-shadow: 0 1px $darker;
-        &:hover { c: 0 0 $darken }
+        c: fg;
+        box-shadow: 0 1px bd;
+        &:hover { c: 0 0 hl }
       }
       // ? Remove unnecessary shadow on notification bar.
       [class*="positionedContainer-"] > [class*="unread"] > div {
@@ -1137,13 +1135,13 @@
 
       // Notices.
       [class*="channelNotice-"] {
-        c: 0 0 $darken;
-        box-shadow: inset 0 -1px $darker;
+        c: 0 0 hl;
+        box-shadow: inset 0 -1px bd;
         [class*="message-"] {
-          c: $lighter;
+          c: cm;
           [class*="btn-"] {
             transition: 0.15s ease;
-            c: $white $darker $accent;
+            c: white bd ac;
             &:hover { opacity: 0.8 }
           }
         }
@@ -1156,7 +1154,7 @@
 
       // ? Guild mentions.
       [class *= 'numberBadge-'], [class *= 'bar-'][class *= 'mention-'] {
-        c: $white 0 $accent;
+        c: white 0 ac;
       }
 
       // ? Channels.
@@ -1166,45 +1164,45 @@
         :not([class *= 'mode']) [class *= 'content-'] {
           > svg path, > [class*="name-"] {
             opacity: 0.6;
-            c: $lighter;
+            c: cm;
           }
         }
         /// Unread messages.
         [class *= 'modeUnread-'] {
-          [class *= 'unread-'] { c: 0 0 $lighter }
-          [class *= 'name-'] { c: $light }
+          [class *= 'unread-'] { c: 0 0 cm }
+          [class *= 'name-'] { c: fg }
         }
         /// Muted channels.
         [class *= 'modeMuted-'] {
           [class *= 'name-'], [class *= "icon-"] {
             opacity: 0.3;
-            c: $lighter;
+            c: cm;
           }
         }
         /// Muted/locked channels.
         [class *= 'muted-'],
         [class *= 'modeLocked-'] {
           opacity: 0.6;
-          [class *= 'name-'] { c: $lighter }
-          [class *= 'name-']:hover { c: $light }
+          [class *= 'name-'] { c: cm }
+          [class *= 'name-']:hover { c: fg }
         }
         /// Collapsed.
         [class *= 'clickable-'], [class *= 'collapsed-'] {
-          [class *= 'name-'] { c: $lighter }
+          [class *= 'name-'] { c: cm }
         }
         // On event.
         &:hover, &[class*="selected-"] {
           [class *= 'content-'] {
-            c: 0 0 $darker;
-            [class *= 'name-'] { c: $light }
+            c: 0 0 bd;
+            [class *= 'name-'] { c: fg }
             [class *= 'icon-'] path { opacity: 0.6 }
           }
         }
         // Voice channels.
         [class*="listDefault-"] {
           [class*="clickable-"]:hover, [class*="selected-"] {
-            > [class*="content-"] { c: 0 0 $darker }
-            [class*="username"] { c: $light }
+            > [class*="content-"] { c: 0 0 bd }
+            [class*="username"] { c: fg }
           }
         }
       }
@@ -1215,41 +1213,41 @@
       }
       /// Scrollbar reset.
       [class *= 'scrollbar-'] {
-        &, [class *= 'pad-'] { c: 0 0 $darken }
-        [class *= 'thumb-'] { c: 0 $darken }
-        [class *= 'track-'] { c: 0 $darken }
+        &, [class *= 'pad-'] { c: 0 0 hl }
+        [class *= 'thumb-'] { c: 0 hl }
+        [class *= 'track-'] { c: 0 hl }
       }
     }
 
     // Sidebar -> Members list.
     [class *= 'membersWrap-'] [class *= 'members-'] {
-      border-left: 1px solid $darker;
-      c: 0 0 $darken;
-      [class *= 'Group-'], [class *= 'activity-'] { c: $lighter }
+      border-left: 1px solid bd;
+      c: 0 0 hl;
+      [class *= 'Group-'], [class *= 'activity-'] { c: cm }
       [class *= 'member-'] {
         radius: $radius;
-        c: $lighter;
+        c: cm;
         &:hover, &:active, &[class *= 'selected-'] {
-          > div { c: $light 0 $darker }
+          > div { c: fg 0 bd }
         }
       }
       /// Scrollbar reset.
       &, /[class*="ingScroller-"] + {
         [class *= 'scrollbar-'] {
-          &, [class *= 'pad-'] { c: 0 0 $darken }
-          [class *= 'thumb-'] { c: 0 $darken }
-          [class *= 'track-'] { c: 0 $darken }
+          &, [class *= 'pad-'] { c: 0 0 hl }
+          [class *= 'thumb-'] { c: 0 hl }
+          [class *= 'track-'] { c: 0 hl }
         }
       }
     }
 
     // * Search bar.
     [class*="privateChannels-"] > [class*="searchBar-"] {
-      box-shadow: 0 1px 0 0 $darker;
+      box-shadow: 0 1px bd;
       // The actual search bar.
       [class*="searchBarComponent-"] {
-        c: 0 $darker $t;
-        input { c: $light }
+        c: 0 bd t;
+        input { c: fg }
       }
     }
 
@@ -1265,35 +1263,35 @@
       &[class*="focused"] {
         > [class*="searchBar-"][class*="searchBar-"] {
           min-width: 240px;
-          c: 0 0 $darker;
-          box-shadow: 0 2px 4px -2px $shadow, 0 0 0 1px inset $darker;
+          c: 0 0 bd;
+          box-shadow: 0 2px 4px -2px shadow, inset 0 0 0 1px bd;
         }
       }
       // ? Some magic for placeholder text.
-      [class*="Placeholder"]:not([class*="hasFocus"]) { c: $lighter }
+      [class*="Placeholder"]:not([class*="hasFocus"]) { c: cm }
       & + [class*="divider-"] {
         opacity: 0.2;
-        c: 0 0 $lighter;
+        c: 0 0 cm;
       }
     }
 
     // Chat.
     [class *= 'chat-'] {
-      c: 0 0 $dark;
+      c: 0 0 bg;
       /// Channel title-bar.
       > [class *= 'title-'] {
-        c: 0 0 $darken;
-        box-shadow: 0 1px $darker i;
-        [class *= 'title-'] { c: $light }
-        [class *= 'topic-'], [class *= 'nicknames-'] { c: $lighter }
+        c: 0 0 hl;
+        box-shadow: 0 1px bd i;
+        [class *= 'title-'] { c: fg }
+        [class *= 'topic-'], [class *= 'nicknames-'] { c: cm }
         // Remove wrapper gradient.
         [class *= 'children-']::after { display: none }
         /// Nicknames.
         [class *= 'akaBadge-'] {
-          c: $light 0 $darker;
-          box-shadow: $bshadow;
+          c: fg 0 bd;
+          box-shadow: bsh;
         }
-        [class *= 'divider-'], [class *= 'topic']::before { c: 0 0 $darker }
+        [class *= 'divider-'], [class *= 'topic']::before { c: 0 0 bd }
         /// Chat -> Remove top shadow.
         + [class ^= 'content-']::before { content: none }
       }
@@ -1302,13 +1300,13 @@
       [class*="search-"] [class*="searchBar-"] {
         height: unset;
         padding: 0.125rem 0.25rem;
-        c: $lighter 0 $darker;
-        box-shadow: inset 0 0 0 1px $darker;
+        c: cm 0 bd;
+        box-shadow: inset 0 0 0 1px bd;
         // Input text color.
-        [class*="DraftEditor-"] { c: $lighter }
+        [class*="DraftEditor-"] { c: cm }
         // Blocks.
         [class*="searchFilter-"], [class*="searchAnswer"] {
-          c: $light 0 $darker;
+          c: fg 0 bd;
         }
         [class*="searchFilter-"] { radius: $radius 0 0 $radius }
         [class*="searchAnswer-"] { radius: 0 $radius $radius 0 }
@@ -1316,186 +1314,186 @@
 
       // ? Group DM header.
       [class*="groupDM-"] [class*="input-"] {
-        c: $light;
-        input[class*="input-"]:focus { c: 0 0 $dark }
+        c: fg;
+        input[class*="input-"]:focus { c: 0 0 bg }
       }
 
       /// Channel -> NSFW warning.
       > [class *= 'content-'] > div > div > [class *= 'wrapper-'] {
-        [class *= 'title-'] { c: $light }
-        [class *= 'description-'] { c: $lighter }
-        [class *= 'separator-'] { c: 0 0 $darker }
+        [class *= 'title-'] { c: fg }
+        [class *= 'description-'] { c: cm }
+        [class *= 'separator-'] { c: 0 0 bd }
       }
       /// Channel -> Welcome section.
       [class *= 'welcomeMessage-'] {
         position: relative;
-        h1, strong { c: $light }
-        p { c: $lighter }
-        a { c: $accent }
+        h1, strong { c: fg }
+        p { c: cm }
+        a { c: ac }
         [class *= 'base-'] {
           filter: invert(calc((1 + var(--icinvert)) * var(--icinvert))) i;
-          c: 0 $t;
+          c: 0 t;
         }
         &::after {
           content: '';
           position: absolute;
           right: 20px; bottom: 20px; left: 20px;
-          border-bottom: 1px solid $darker;
+          border-bottom: 1px solid bd;
         }
       }
       /// Load more messages bar.
       [class *= 'hasMore-'] {
-        border: 1px solid $darker;
-        c: $lighter 0 $darken;
-        box-shadow: $bshadow;
+        border: 1px solid bd;
+        c: cm 0 hl;
+        box-shadow: bsh;
         transition: 0.15s ease;
-        &:hover { c: $light }
+        &:hover { c: fg }
       }
       /// New messages.
       [class *= 'newMessagesBar-'] {
         radius: 0 0 $radius $radius;
-        c: 0 0 $darker;
-        box-shadow: $bshadow;
+        c: 0 0 bd;
+        box-shadow: bsh;
         button {
-          c: $lighter;
-          ../:hover button { c: $light }
+          c: cm;
+          ../:hover button { c: fg }
         }
       }
       /// Jump to present.
       [class *= 'jumpToPresentBar-'] {
         radius: $radius $radius 0 0;
-        c: 0 0 $darken;
-        box-shadow: $bshadow;
+        c: 0 0 hl;
+        box-shadow: bsh;
         button {
-          c: $lighter;
-          ../:hover button { c: $light }
+          c: cm;
+          ../:hover button { c: fg }
         }
       }
 
       // * Spinners.
       [class*="spinner-"] {
         // Loading messages.
-        [class*="wanderingCubesItem-"] { c: 0 0 $accent }
+        [class*="wanderingCubesItem-"] { c: 0 0 ac }
         // Someone is typing.
-        [class*="pulsingEllipsisItem-"] { c: 0 0 $light }
+        [class*="pulsingEllipsisItem-"] { c: 0 0 fg }
       }
 
       // ? Transparentize extra elements.
       // ! Careful with this; might need to be removed.
       > div {
-        c: 0 0 $t;
+        c: 0 0 t;
         // ? Messages/input form container.
         [class^="messagesWrapper"] {
-          c: 0 0 $t;
+          c: 0 0 t;
           /// Inputbar pseudo-element background.
           & + form::before { background: none i }
           // ? LocalBot messages.
           [class*="isLocalBot-"] {
-            c: $lighter $green $dark;
-            background-image: linear-gradient(60deg, $t 50%, $darker);
-            box-shadow: 0 0 0 1px $darker;
-            [class*="localBotMessage-"] a { c: $accent }
+            c: cm green bg;
+            background-image: linear-gradient(60deg, t 50%, bd);
+            box-shadow: 0 0 0 1px bd;
+            [class*="localBotMessage-"] a { c: ac }
           }
         }
         // ? Group welcome message.
         [class*="messages-"] [class*="default-"] h1 {
-          c: $lighter;
-          strong { c: $light }
+          c: cm;
+          strong { c: fg }
         }
         // ? Guild/group user greeters.
         [class*="container-"] > [class*="content-"] {
-          c: $lighter;
+          c: cm;
           a {
             font-weight: bold;
-            c: $light;
+            c: fg;
           }
           time {
             opacity: 0.6;
-            c: $lighter;
+            c: cm;
           }
         }
       }
 
       /// Messages.
       [class*="messages-"] {
-        c: 0 0 $t;
+        c: 0 0 t;
         /// Compact -> Message timestamps.
         [class *= 'messageCompact-'] {
           [class *= 'timestamp']:not([class *= 'VisibleOnHover-']),
           &:hover [class *= 'VisibleOnHover-'] {
-            c: $lighter;
+            c: cm;
           }
         }
         /// Message elements.
         [class*="edited-"],
         [class*="timestampCozy-"] {
           opacity: 0.5;
-          c: $lighter;
+          c: cm;
         }
         [class^="markup-"] {
-          c: $light;
-          a { c: $accent }
+          c: fg;
+          a { c: ac }
 
           // Quotes.
           [class*="blockquoteContainer-"] {
-            [class*="Divider-"] { c: 0 0 $lighter }
-            blockquote { c: $lighter }
+            [class*="Divider-"] { c: 0 0 cm }
+            blockquote { c: cm }
           }
 
           // Spoilers.
           [class*="spoilerText-"] {
             position: relative;
             radius: $radius;
-            c: 0 0 $t;
+            c: 0 0 t;
             &::before {
               z-index: -1;
               content: "";
               pos: 0 0 0 0;
               radius: $radius;
               position: absolute;
-              c: 0 0 $darken;
+              c: 0 0 hl;
               opacity: 0.5;
             }
             &[class*="hidden-"] {
               radius: $radius;
               transition: 0.15s ease;
-              c: 0 0 $darker;
+              c: 0 0 bd;
               &:hover { opacity: 0.8 }
             }
           }
         }
         [class*="operations"] {
-          c: $lighter;
-          a { c: $light }
+          c: cm;
+          a { c: fg }
         }
 
         // Attachments.
         [class*="attachment-"] {
           radius: $radius;
-          c: 0 $darker $darken;
-          box-shadow: $bshadow;
-          [class*="fileNameLink-"] { c: $accent }
-          [class*="metadata-"] { c: $light }
-          [class*="filenameWrapper-"] * { c: $lighter }
-          [class*="progress-"] { c: 0 0 $darker }
-          [class*="progressBar-"] { c: 0 0 $accent }
+          c: 0 bd hl;
+          box-shadow: bsh;
+          [class*="fileNameLink-"] { c: ac }
+          [class*="metadata-"] { c: fg }
+          [class*="filenameWrapper-"] * { c: cm }
+          [class*="progress-"] { c: 0 0 bd }
+          [class*="progressBar-"] { c: 0 0 ac }
         }
 
         /// Reactions.
         [class *= 'reaction-'] {
-          c: $lighter 0 $darker;
+          c: cm 0 bd;
           [class *= 'Count-'] { color: inherit }
-          &:hover { c: $light }
+          &:hover { c: fg }
           &[class *= 'Me-'] {
-            c: $accent;
-            background: linear-gradient(90deg, $accent -800%, $t 400%);
+            c: ac;
+            background: linear-gradient(90deg, ac -800%, t 400%);
           }
         }
       }
 
       /// Mention bar.
       [class *= 'mentioned-'] {
-        c: 0 0 $t;
+        c: 0 0 t;
         /// Bar.
         &::before {
           z-index: -1;
@@ -1504,7 +1502,7 @@
           position: absolute;
           radius: 3px 0 0 3px;
           overflow: hidden;
-          c: 0 $t $accent;
+          c: 0 t ac;
         }
         /// Background.
         &::after {
@@ -1514,7 +1512,7 @@
           opacity: 0.1;
           radius: 3px;
           position: absolute;
-          c: 0 $accent $accent;
+          c: 0 ac ac;
         }
       }
 
@@ -1523,29 +1521,29 @@
         /// Base styles.
         > [class *= 'content-'] {
           padding: 3px 6px;
-          c: $lighter $darken $darker;
-          &::before, &::after { c: 0 0 $darker }
+          c: cm hl bd;
+          &::before, &::after { c: 0 0 bd }
         }
       }
       /// New messages.
       [class *= 'isUnread-'] {
-        c: 0 $blue;
+        c: 0 blue;
         > [class *= 'unreadPill-'] {
-          c: $white 0 $blue;
-          svg path { v: $blue $blue }
+          c: white 0 blue;
+          svg path { v: blue blue }
         }
       }
 
       // * Invite embed.
       [class*="wrapper-"][class*="userSelectNone"] {
         radius: $radius;
-        c: 0 $darker $darken;
-        box-shadow: $bshadow;
-        [class*="title-"], [class*="guildDetail-"] { c: $lighter }
-        [class*="guildName-"] { c: $light }
-        [class*="guildNameExpired-"] { c: $red }
+        c: 0 bd hl;
+        box-shadow: bsh;
+        [class*="title-"], [class*="guildDetail-"] { c: cm }
+        [class*="guildName-"] { c: fg }
+        [class*="guildNameExpired-"] { c: red }
         [class*="Outlined-"] {
-          c: 0 $darker $darker;
+          c: 0 bd bd;
           &:hover { opacity: 0.8 }
         }
       }
@@ -1553,32 +1551,32 @@
       // * Spotify party invite.
       [class*="invite-"][class*="container-"] {
         radius: $radius;
-        c: 0 $darker $darken;
+        c: 0 bd hl;
         [class*="coverImaageWrapper-"] { radius: 0 $radius $radius 0; }
-        [class*="helpIcon-"] { c: 0 0 $darker }
-        [class*="header-"] { c: $lighter }
-        [class*="partyStatus-"], [class*="textLink-"] { c: $light }
+        [class*="helpIcon-"] { c: 0 0 bd }
+        [class*="header-"] { c: cm }
+        [class*="partyStatus-"], [class*="textLink-"] { c: fg }
       }
 
       // * Typing section.
       [class^="typing"] {
-        c: $light 0 $t;
-        [class^="text"], [class^="cooldownWrapper"] { c: $lighter }
-        [class^="text"] strong { c: $light }
+        c: fg 0 t;
+        [class^="text"], [class^="cooldownWrapper"] { c: cm }
+        [class^="text"] strong { c: fg }
       }
 
       // * Voice/video calls.
       [class^="video"] {
-        c: 0 0 $dark;
-        box-shadow: 0 8px 16px 0 $shadow;
+        c: 0 0 bg;
+        box-shadow: 0 8px 16px 0 shadow;
       }
       /// Announcements 'follow' bar or 'you must be a member'.
       [class *= 'form-'] {
         > [class *= 'wrapper-'] {
-          c: 0 0 $darker;
-          box-shadow: $bshadow;
-          [class *= 'content-'], h3 { c: $$light }
-          span { c: $lighter }
+          c: 0 0 bd;
+          box-shadow: bsh;
+          [class *= 'content-'], h3 { c: $fg }
+          span { c: cm }
         }
       }
     }
@@ -1586,23 +1584,23 @@
 
   /// Inputbar.
   [class *= 'channelTextArea-'] {
-    c: 0 $darker;
+    c: 0 bd;
     /// Fix rounded corners.
     > div { radius: $radius i }
     // Input container.
     [class *= 'inner-'] {
-      border: 1px solid $darker;
-      c: 0 0 $darken;
+      border: 1px solid bd;
+      c: 0 0 hl;
       [class *= 'buttons-'] { align-self: center }
       /// Line height of inputbar.
       [class *= 'textArea-'] > div { line-height: 1.375 i }
     }
-    [class *= 'attachWrapper-'] { c: 0 $darker }
+    [class *= 'attachWrapper-'] { c: 0 bd }
     // Input text color.
-    [class *= 'placeholder-'], textarea { c: $lighter }
-    [class *= 'slateTextArea-'] { c: $light }
+    [class *= 'placeholder-'], textarea { c: cm }
+    [class *= 'slateTextArea-'] { c: fg }
     // Dividers.
-    [class*="divider"], [class*="Divider"] { c: 0 0 $darker }
+    [class*="divider"], [class*="Divider"] { c: 0 0 bd }
     /// Rounded corner tweaks.
     &[class *= 'hasAutocomplete-'] {
       > div { radius: 0 0 $radius $radius i }
@@ -1610,120 +1608,120 @@
     }
     // ? Emojis, mentions, commands popout.
     [class*="autocomplete-"][class*="autocomplete-"] {
-      c: 0 0 $darken;
+      c: 0 0 hl;
       radius: $radius $radius 0 0;
-      // box-shadow: inset 0 0 0 1px $darker;
-      border: 1px solid $darker;
+      // box-shadow: inset 0 0 0 1px bd;
+      border: 1px solid bd;
       border-bottom: none;
       [class*="header-"] {
-        box-shadow: 0 1px $darker;
-        [class*="backButton-"], [class*="title-"] { c: $light }
+        box-shadow: 0 1px bd;
+        [class*="backButton-"], [class*="title-"] { c: fg }
         [class*="searchBar-"] {
-          c: 0 0 $dark;
-          box-shadow: inset 0 0 0 1px $darker;
-          input[class] { c: $light $darker $dark }
+          c: 0 0 bg;
+          box-shadow: inset 0 0 0 1px bd;
+          input[class] { c: fg bd bg }
         }
       }
       [class*="content-"] {
         [class*="result-"] {
           &::after { radius: $radius; }
           &:hover::after {
-            box-shadow: inset 0 0 0 2px $accent, inset 0 0 0 3px $dark;
+            box-shadow: inset 0 0 0 2px ac, inset 0 0 0 3px bg;
           }
           [class*="gif-"] { radius: $radius }
         }
         [class*="Fade-"] {
           opacity: 0.8;
           radius: $radius;
-          c: 0 0 $darker;
+          c: 0 0 bd;
         }
         [class*="FadeBlurple-"] {
           opacity: 0.8;
           radius: $radius;
-          c: 0 0 $accent;
+          c: 0 0 ac;
         }
         [class*="emptyHintCard-"] {
           radius: $radius;
-          c: $light 0 $darker;
+          c: fg 0 bd;
         }
-        [class*="Text-"] { c: $lighter }
+        [class*="Text-"] { c: cm }
       }
       [class*="autocompleteInner-"] {
         border: none i;
         // Command mode icons.
-        [class*="iconForeground"] { v: $light }
+        [class*="iconForeground"] { v: fg }
         // Title/description selectors.
-        [class*="Title"], [class*="description"] { c: $lighter }
-        [class*="contentTitle"] strong { c: $light }
+        [class*="Title"], [class*="description"] { c: cm }
+        [class*="contentTitle"] strong { c: fg }
         // Main content.
-        [class*="content-"] { c: $light }
-        [class*="selectorSelected-"] { c: 0 0 $darker }
+        [class*="content-"] { c: fg }
+        [class*="selectorSelected-"] { c: 0 0 bd }
       }
     }
     /// Rich markdown.
-    [class *= 'fakeLink-'] { c: $accent }
-    [class *= 'codeBlockLang-'] { c: $green }
-    [class *= 'Syntax-'], [class *= 'After-'], [class *= 'Before-'] { c: $lighter }
+    [class *= 'fakeLink-'] { c: ac }
+    [class *= 'codeBlockLang-'] { c: green }
+    [class *= 'Syntax-'], [class *= 'After-'], [class *= 'Before-'] { c: cm }
     [class *= 'inlineCode-'] {
       font-family: var(--codearea);
-      c: 0 0 $darker;
+      c: 0 0 bd;
     }
   }
 
   /// Embeds.
   [class *= 'embedWrapper-'] {
-    c: $light 0 $darken;
+    c: fg 0 hl;
     /// Base text.
     [class *= 'Provider-'], [class *= 'Description-'] {
-      c: $lighter;
-      a { c: $accent }
+      c: cm;
+      a { c: ac }
     }
     /// Fields.
-    [class *= 'FieldName-'] { c: $light }
-    [class *= 'FieldValue-'] { c: $lighter }
+    [class *= 'FieldName-'] { c: fg }
+    [class *= 'FieldValue-'] { c: cm }
     /// Titles.
-    [class *= 'Title-'], [class *= 'AuthorName-'] { c: $light }
+    [class *= 'Title-'], [class *= 'AuthorName-'] { c: fg }
     /// Links.
-    [class *= 'TitleLink-'] { c: $accent }
+    [class *= 'TitleLink-'] { c: ac }
     /// Don't override color bars if a color is already applied.
-    &:not([style *= 'border-color']) { c: 0 $darker }
+    &:not([style *= 'border-color']) { c: 0 bd }
   }
 
   // * Emote menu.
   [class*="emojiPicker-"] {
     radius: $radius;
-    c: $lighter $darker $dark;
-    box-shadow: 0 0 0 1px $darker, $bshadow;
+    c: cm bd bg;
+    box-shadow: 0 0 0 1px bd, bsh;
     // Header.
     [class*="header-"] {
-      box-shadow: 0 1px $darker;
-      input { c: $light }
-      [class*="searchBar-"] { c: 0 0 $darken }
+      box-shadow: 0 1px bd;
+      input { c: fg }
+      [class*="searchBar-"] { c: 0 0 hl }
     }
     // Frequently used.
-    [class*="stickyHeader-"] { c: 0 0 $dark }
-    [class*="category-"], [class*="sadImage-"] + div { c: $lighter }
+    [class*="stickyHeader-"] { c: 0 0 bg }
+    [class*="category-"], [class*="sadImage-"] + div { c: cm }
     // Selected emote.
-    [class*="row-"] [class*="selected-"] { c: 0 0 $accent }
+    [class*="row-"] [class*="selected-"] { c: 0 0 ac }
     // Selected category.
     [class*="categories-"] {
-      c: 0 0 $darker;
+      c: 0 0 bd;
       [class*="item-"] {
-        &[class*="selected-"] { c: 0 $accent }
-        &:hover { c: 0 $darker }
+        &[class*="selected-"] { c: 0 ac }
+        &:hover { c: 0 bd }
       }
     }
     // Dimmed overlay.
     [class*="visible-"]:not([class*="icon-"] ) {
       opacity: 0.8;
-      c: 0 0 $dark;
+      c: 0 0 bg;
     }
     // Diversity selector.
     [class*="popout-"] {
       padding: 2px;
-      c: 0 $darker $dark;
-      box-shadow: 0 2px 4px -1px $shadow;
-      [class*="item-"]:hover { c: 0 0 $darker }
+      c: 0 bd bg;
+      box-shadow: 0 2px 4px -1px shadow;
+      [class*="item-"]:hover { c: 0 0 bd }
     }
     /// Scrollbars -> Fix thumb height.
     [class *= 'thumb-'] { min-height: 14px }
@@ -1732,33 +1730,33 @@
       filter: invert(calc((var(--icinvert)) + 0.8)) i;
     }
     [class *= 'infoBar-'] {
-      c: 0 0 $darken;
-      box-shadow: inset 0 1px $darker;
-      [class *= 'EmojiName-'] { c: $light }
-      [class *= 'GuildName-'] { c: $lighter }
+      c: 0 0 hl;
+      box-shadow: inset 0 1px bd;
+      [class *= 'EmojiName-'] { c: fg }
+      [class *= 'GuildName-'] { c: cm }
     }
   }
 
   // Sidebar -> Private channels.
   [class^="privateChannels-"] {
-    c: 0 0 $t;
+    c: 0 0 t;
     /// Headers.
     [class *= 'header'] {
-      c: $lighter;
+      c: cm;
       box-shadow: none i;
     }
     /// Channels.
     [class^="channel-"] {
-      c: $light;
+      c: fg;
       /// Text.
-      [class^="name-"] { c: $light }
-      [class^="activity-"] { c: $lighter }
+      [class^="name-"] { c: fg }
+      [class^="activity-"] { c: cm }
       /// Different states.
       &:hover, &:active, &[class*="selected-"] {
         > * {
-          c: 0 0 $darker;
-          [class*="name-"] { c: $light }
-          [class*="status-"] { c: 0 $darker }
+          c: 0 0 bd;
+          [class*="name-"] { c: fg }
+          [class*="status-"] { c: 0 bd }
         }
       }
       /// Fade similarly to guild channels.
@@ -1770,30 +1768,30 @@
 
   // Chat -> Search results.
   [class *= 'searchResultsWrap-'] {
-    border-left: 1px solid $darker;
-    c: 0 0 $dark;
+    border-left: 1px solid bd;
+    c: 0 0 bg;
     [class *= 'searchHeader-'] {
-      c: 0 0 $darken;
-      box-shadow: inset 0 -1px $darker i;
+      c: 0 0 hl;
+      box-shadow: inset 0 -1px bd i;
       /// Text.
       [class *= 'totalResults-'] {
         opacity: 1;
-        c: $lighter;
+        c: cm;
       }
       /// Tabs.
       [class *= 'tab-'] {
         opacity: 1;
-        c: $lighter;
+        c: cm;
         border-width: 1px i;
-        &:hover { c: $light $t }
-        &[class *= 'selected-'] { c: $light $accent }
+        &:hover { c: fg t }
+        &[class *= 'selected-'] { c: fg ac }
       }
     }
     [class *= 'scrollerWrap-'] {
       /// Name and separator.
       [class *= 'channelSeparator-'] {
-        &::before { c: 0 $darker }
-        [class *= 'channelName-'] { c: $light 0 $dark }
+        &::before { c: 0 bd }
+        [class *= 'channelName-'] { c: fg 0 bg }
       }
       /// Single result.
       [class *= 'searchResult-'] {
@@ -1801,37 +1799,37 @@
         &[class *= 'expanded-'] {
           radius: $radius;
           border-width: 1px;
-          c: 0 $darker $darken;
+          c: 0 bd hl;
           > div:last-of-type {
             border-top-width: 1px;
             radius: 0 0 $radius $radius i;
           }
-          [class *= 'hit-'] { c: 0 0 $darker; box-shadow: none }
-          [class *= 'before-'], [class *= 'after-'] { c: 0 0 $darken }
+          [class *= 'hit-'] { c: 0 0 bd; box-shadow: none }
+          [class *= 'before-'], [class *= 'after-'] { c: 0 0 hl }
         }
         /// Remove msg gradients.
         &::before, &::after { content: none i }
         /// Matching message.
         [class *= 'hit'] {
           border-width: 1px i;
-          c: 0 $darker $darken;
-          box-shadow: $bshadow;
+          c: 0 bd hl;
+          box-shadow: bsh;
           ../:not([class *= 'expanded-']) [class *= 'hit'] { radius: $radius }
         }
-        [class *= 'jumpButton-'] { c: $light 0 $darker }
-        [class *= 'timestamp'] { c: $lighter }
+        [class *= 'jumpButton-'] { c: fg 0 bd }
+        [class *= 'timestamp'] { c: cm }
         [class *= 'markup-'] {
-          c: $light;
-          [class *= 'anchor-'] { c: $accent }
-          &[class *= 'embed-'] { c: 0 0 $dark }
+          c: fg;
+          [class *= 'anchor-'] { c: ac }
+          &[class *= 'embed-'] { c: 0 0 bg }
         }
       }
       /// Pages.
       [class *= 'pagination-'] {
         padding-bottom: 10px;
-        c: $lighter;
+        c: cm;
         > div[class] {
-          c: $light;
+          c: fg;
           background: none;
           transform: unset;
           &::before { padding: 4px 8px }
@@ -1845,12 +1843,12 @@
 
   // * Gifted Nitro wrapper.
   [class*="applicationTile-"] {
-    c: 0 0 $darker;
-    box-shadow: 0 0 0 $shadow;
+    c: 0 0 bd;
+    box-shadow: 0 0 0 1px shadow;
     [class*="description-"] {
-      c: $lighter;
-      [class*="gameTitle-"] { c: $light }
-      [class*="tagline-"], [class*="metadata-"] { c: $lighter }
+      c: cm;
+      [class*="gameTitle-"] { c: fg }
+      [class*="tagline-"], [class*="metadata-"] { c: cm }
     }
   }
 
@@ -1861,18 +1859,18 @@
       font-family: var(--codearea) i;
       &.inline {
         padding: 2px 4px;
-        c: 0 0 $darken;
-        box-shadow: inset 0 0 0 1px $darker;
+        c: 0 0 hl;
+        box-shadow: inset 0 0 0 1px bd;
       }
     }
     pre {
       radius: $radius;
-      c: 0 $darker $darken;
+      c: 0 bd hl;
       border-width: 1px i;
-      box-shadow: 0 2px 4px 0 $shadow;
+      box-shadow: 0 2px 4px shadow;
       code {
         radius: $radius;
-        c: $light $darker $t;
+        c: fg bd t;
         // Feat -> Code line numbers.
         if ( code_ln == 1 ) {
           position: relative;
@@ -1886,7 +1884,7 @@
             padding: 0 0.25em 0 1em;
             white-space: pre-line;
             text-align: right;
-            c: $light;
+            c: fg;
             content: '1 2 3 4 5 6 7 8 9 10'  \
              '11 12 13 14 15 16 17 18 19 20' \
              '21 22 23 24 25 26 27 28 29 30' \
@@ -1903,15 +1901,15 @@
     }
     /// Syntax highlighting.
     .hljs {
-      &-name, &-title, &-section { c: $blue }
-      &-selector-class, &-selector-id { c: $blue }
-      &-attr, &-attribute, &-type { c: $orange }
-      &-class, &-template-variable, &-variable { c: $orange }
-      &-built_in, &-deletion { c: $red }
-      &-doctag, &-literal, &-meta &-meta-string { c: $cyan }
-      &-number, &-regexp, &-string { c: $cyan }
-      &-addition, &-keyword, &-selector-tag { c: $green }
-      &-comment, &-quote { c: $lighter }
+      &-name, &-title, &-section { c: blue }
+      &-selector-class, &-selector-id { c: blue }
+      &-attr, &-attribute, &-type { c: orange }
+      &-class, &-template-variable, &-variable { c: orange }
+      &-built_in, &-deletion { c: red }
+      &-doctag, &-literal, &-meta &-meta-string { c: cyan }
+      &-number, &-regexp, &-string { c: cyan }
+      &-addition, &-keyword, &-selector-tag { c: green }
+      &-comment, &-quote { c: cm }
     }
     /// Mentions.
     .mention {
@@ -1919,14 +1917,14 @@
       position: relative;
       text-decoration: none;
       radius: 3px;
-      c: $accent 0 $t;
+      c: ac 0 t;
       &::before {
         content: '';
         pos: 0 0 0 0;
         opacity: 0.2;
         position: absolute;
         radius: 3px;
-        c: 0 0 $accent;
+        c: 0 0 ac;
         transition: 0.2s ease;
       }
       &:hover, &[class *= '-open'] {
@@ -1937,50 +1935,50 @@
 
   // Global -> QuickSwitcher.
   [class *= 'quickswitcher-'] {
-    [class *= 'scroller-'] { c: 0 0 $t }
+    [class *= 'scroller-'] { c: 0 0 t }
     &:not([class *= 'channelNotice-']) {
-      border: 1px solid $darker;
-      c: $light 0 $dark;
-      box-shadow: 0 4px 8px $shadow;
+      border: 1px solid bd;
+      c: fg 0 bg;
+      box-shadow: 0 4px 8px shadow;
     }
     /// Inputbox.
     [class *= 'input'] {
       padding: 12px 8px;
       height: unset;
       line-height: unset;
-      border: 1px solid $darker;
-      c: $light 0 $darken;
-      box-shadow: $bshadow;
-      &:focus { c: 0 $accent }
+      border: 1px solid bd;
+      c: fg 0 hl;
+      box-shadow: bsh;
+      &:focus { c: 0 ac }
     }
     /// Results.
     [class *= 'result-'] {
       &[class *= 'Focused-'] {
         radius: $radius;
-        c: 0 0 $darken;
+        c: 0 0 hl;
       }
       /// Unread messages badge.
       [class *= 'badge-'] {
-        c: $white 0 $accent;
-        box-shadow: 2px 2px $darker;
+        c: white 0 ac;
+        box-shadow: 2px 2px bd;
       }
       /// Text.
-      [class *= 'misc-'], [class *= 'note-'] { c: $lighter }
-      [class *= 'Unread-'] [class *= 'match-'] { c: $light }
-      [class *= 'Default-'] [class *= 'match-'] { c: $lighter }
+      [class *= 'misc-'], [class *= 'note-'] { c: cm }
+      [class *= 'Unread-'] [class *= 'match-'] { c: fg }
+      [class *= 'Default-'] [class *= 'match-'] { c: cm }
     }
     /// Footer.
     [class *= 'tipsWithResults-'] {
-      c: 0 $darker;
-      [class *= 'tips'] { c: $lighter }
+      c: 0 bd;
+      [class *= 'tips'] { c: cm }
     }
     /// Keybinds.
     [class *= 'keybindShortcut-'] {
-      &::before { c: 0 0 $darker }
+      &::before { c: 0 0 bd }
       span {
-        c: $lighter $darker $darken;
-        box-shadow: inset 0 -4px 0 $darker;
-        [class *= 'bindArrow-'] > g { v: $lighter }
+        c: cm bd hl;
+        box-shadow: inset 0 -4px bd;
+        [class *= 'bindArrow-'] > g { v: cm }
       }
     }
   }
@@ -1988,16 +1986,16 @@
   // Global -> Context menu.
   [class*="contextMenu-"] {
     radius: $radius;
-    c: 0 0 $dark;
-    box-shadow: 0 2px 4px -1px $shadow, 0 0 0 1px $darker i;
+    c: 0 0 bg;
+    box-shadow: 0 2px 4px -1px shadow, 0 0 0 1px bd i;
     [class*="itemGroup-"] {
-      c: 0 $darker;
+      c: 0 bd;
       [class*="item-"] {
         radius: 0;
-        c: $lighter;
-        &:hover { c: $light 0 $darken }
+        c: cm;
+        &:hover { c: fg 0 hl }
       }
-      [class *= 'label-'] { c: $lighter }
+      [class *= 'label-'] { c: cm }
     }
     // Fix scrolllbars.
     [class*="firefoxFixScrollFlex-"] {
@@ -2013,38 +2011,38 @@
 
   // * ReactSelect dropdown.
   .Select {
-    &-control { c: $lighter $darker $dark }
-    &-value-label { c: $lighter }
+    &-control { c: cm bd bg }
+    &-value-label { c: cm }
   }
   // Modals -> Notifications overrides.
   div[class*="select-"] > [class*="-container"] {
     > [class*="-control"] {
-      c: 0 $darker $darken;
+      c: 0 bd hl;
       transition: 0.15s ease;
       [class*="-placeholder"] {
         opacity: 1;
-        c: $lighter;
+        c: cm;
       }
-      &:hover { box-shadow: 0 2px 4px 0 $shadow }
+      &:hover { box-shadow: 0 2px 4px 0 shadow }
     }
     > [class*="-menu"] {
-      c: 0 $darker $dark;
-      box-shadow: 0 2px 4px 0 $shadow;
-      > * { c: 0 0 $darken }
+      c: 0 bd bg;
+      box-shadow: 0 2px 4px 0 shadow;
+      > * { c: 0 0 hl }
       // Selected item.
-      [class*="-1gnr91b-"], [class*="-option"]:hover { c: 0 0 $darker }
+      [class*="-1gnr91b-"], [class*="-option"]:hover { c: 0 0 bd }
     }
   }
 
   // Global -> Select dropdown component.
   [class *= 'select-'][role] {
-    c: $fg $darker $dark;
+    c: $fg bd bg;
     /// Custom status popout.
     /[class *= 'popouts-'] .popout-2sKjHu {
-      c: 0 $darker $dark;
+      c: 0 bd bg;
       [class *= 'option-'] {
-        c: $light;
-        &:hover, &[class *= 'optionActive-'] { c: 0 0 $darken }
+        c: fg;
+        &:hover, &[class *= 'optionActive-'] { c: 0 0 hl }
       }
     }
   }
@@ -2052,305 +2050,305 @@
   // Popouts -> Recent mentions.
   [class *= 'messagesPopoutWrap-'] {
     radius: $radius;
-    c: $light $darker $dark;
-    box-shadow: 0 4px 8px $shadow i;
-    [class *= 'messagesPopout-'] { c: 0 0 $t }
+    c: fg bd bg;
+    box-shadow: 0 4px 8px shadow i;
+    [class *= 'messagesPopout-'] { c: 0 0 t }
     /// Header.
     > [class *= 'header-'] {
-      c: 0 0 $darken;
-      box-shadow: inset 0 -1px $darker;
-      [class *= 'title-'] { c: $light }
+      c: 0 0 hl;
+      box-shadow: inset 0 -1px bd;
+      [class *= 'title-'] { c: fg }
       /// Tabs.
       [class *= 'tabBarItem-'] {
         border-bottom-width: 1px;
-        &[style *= 'tr'] { c: $lighter }
-        &:not([style *= 'tr']) { c: $light $accent }
+        &[style *= 'tr'] { c: cm }
+        &:not([style *= 'tr']) { c: fg ac }
       }
       /// Filters.
       [class *= 'mentionFilter-'] {
-        [class *= 'label-'] { c: $lighter }
-        [class *= 'value-'] { c: $light }
+        [class *= 'label-'] { c: cm }
+        [class *= 'value-'] { c: fg }
       }
     }
     [class*="channelSeparator-"] {
-      [class*="channel"] { c: $light }
-      [class*="guild"] { c: $lighter }
+      [class*="channel"] { c: fg }
+      [class*="guild"] { c: cm }
     }
     [class^="messageGroupWrapper-"] {
       radius: $radius;
-      c: $light $darker $darken;
-      box-shadow: 0 2px 8px 0 $shadow;
-      [class*="Meta-"] *:not([class*="username-"]) { c: $lighter }
-      [class *= 'markup-'] > a[class *= 'anchor-'] { c: $accent }
-      [class *= 'embedWrapper-'] { c: 0 0 $darker }
+      c: fg bd hl;
+      box-shadow: 0 2px 8px shadow;
+      [class*="Meta-"] *:not([class*="username-"]) { c: cm }
+      [class *= 'markup-'] > a[class *= 'anchor-'] { c: ac }
+      [class *= 'embedWrapper-'] { c: 0 0 bd }
       [class*="markup-"], [class*="embed"] {
-        c: $light;
+        c: fg;
         &::before, &::after { display: none }
         .mention {
           radius: 3px;
-          c: $white 0 $accent;
+          c: white 0 ac;
         }
       }
     }
-    [class^="jumpButton"] { c: $light $t $darker }
+    [class^="jumpButton"] { c: fg t bd }
     [class^="actionButtons"] {
       transition: none i;
-      c: $light $t $t;
+      c: fg t t;
       box-shadow: none i;
     }
-    [class*="emptyPlaceholder-"] [class*="body-"] { c: $lighter }
+    [class*="emptyPlaceholder-"] [class*="body-"] { c: cm }
     [class*="footer-"][class*="footer-"] {
-      c: 0 0 $darken;
-      box-shadow: inset 0 1px $darker;
-      [class *= 'statusGreen-'] { c: $green }
-      [class*="tip-"] { c: $light }
+      c: 0 0 hl;
+      box-shadow: inset 0 1px bd;
+      [class *= 'statusGreen-'] { c: green }
+      [class*="tip-"] { c: fg }
     }
   }
 
   // * Settings.
   [class*="standardSidebarView-"] {
-    c: 0 0 $dark;
+    c: 0 0 bg;
     // * Sidebar.
     [class*="sidebarRegionScroller-"] {
-      c: $lighter 0 $t;
-      [class*="separator-"] { c: 0 0 $darker }
-      [class*="header-"] { c: $lighter }
+      c: cm 0 t;
+      [class*="separator-"] { c: 0 0 bd }
+      [class*="header-"] { c: cm }
       // Menu items!
       [class*="item-"] {
         radius: $radius;
         transition: 0.15s ease;
-        c: $lighter;
-        &[class*="selected-"] { c: $white 0 $accent }
-        &:hover:not([class*="selected-"]) { c: $light 0 $darker }
+        c: cm;
+        &[class*="selected-"] { c: white 0 ac }
+        &:hover:not([class*="selected-"]) { c: fg 0 bd }
         // Nitro.
         &[style*="rgb(114"] {
-          c: $blue 0 $t;
-          &:hover { c: $white 0 $blue }
+          c: blue 0 t;
+          &:hover { c: white 0 blue }
         }
         // Logout.
         &[style*="rgb(240"] {
-          c: $red;
-          &:hover { c: $white 0 $red }
+          c: red;
+          &:hover { c: white 0 red }
         }
       }
     }
     // * Main content.
     [class*="contentRegion-"] {
-      c: 0 0 $dark;
-      box-shadow: inset 1px 0 $darker;
+      c: 0 0 bg;
+      box-shadow: inset 1px 0 bd;
     }
     [class*="contentRegionScroller-"] {
-      c: $light 0 $dark;
-      box-shadow: inset 1px 0 $darker;
+      c: fg 0 bg;
+      box-shadow: inset 1px 0 bd;
       // Text colors.
-      [class*="titleDefault-"], [class*="title-"] { c: $lighter }
+      [class*="titleDefault-"], [class*="title-"] { c: cm }
       [class*="description-"] {
-        c: $light;
-        [class*="anchor-"] { c: $accent }
+        c: fg;
+        [class*="anchor-"] { c: ac }
       }
-      [class*="divider-"] { c: 0 $darker $t }
-      [class*="value-label-"] { c: $light }
+      [class*="divider-"] { c: 0 bd t }
+      [class*="value-label-"] { c: fg }
       // Buttons.
       [class*="removeButton-"] {
-        c: $lighter;
-        &:hover { c: $red }
+        c: cm;
+        &:hover { c: red }
       }
       // ? User info.
       [class*="userInfo"][class*="cardPrimary-"] {
         radius: $radius;
-        c: 0 $darker $darken;
-        small { c: $lighter }
+        c: 0 bd hl;
+        small { c: cm }
         [class*="viewBody-"] {
-          c: $light;
+          c: fg;
           span[style*="opacity"] { opacity: 1 i }
         }
-        [class*="faded-"] { c: $lighter }
+        [class*="faded-"] { c: cm }
         [class*="avatarUploaderInner-"] {
-          c: 0 0 $darker;
+          c: 0 0 bd;
           &:hover { box-shadow: none }
           // Avatar container.
           > div:first-child {
             opacity: 0;
             radius: 50%;
             visibility: visible;
-            c: $white 0 $darker;
+            c: white 0 bd;
             transition: 0.15s ease-in;
             ../:hover > div:first-child { opacity: 0.9 }
           }
         }
       }
       [class*="avatarUploaderIndicator-"] {
-        c: 0 0 $darker;
-        box-shadow: 0 2px 4px 0 $shadow;
+        c: 0 0 bd;
+        box-shadow: 0 2px 4px shadow;
       }
       // ? Consent element.
       [class*="consent-"] {
         radius: $radius;
-        c: 0 $darker $dark;
-        box-shadow: 0 0 0 1px inset $darker;
-        [class*="title-" i] { c: $light }
-        [class*="body-" i] { c: $lighter }
+        c: 0 bd bg;
+        box-shadow: inset 0 0 0 1px bd;
+        [class*="title-" i] { c: fg }
+        [class*="body-" i] { c: cm }
       }
       // ? Select component.
       [class*="-control"] {
-        c: $lighter $darker $dark;
+        c: cm bd bg;
         div { color: inherit }
         + [class*="-menu"] {
-          c: 0 $darker $dark;
-          box-shadow: 0 2px 4px 0 $shadow;
-          span { c: $lighter }
+          c: 0 bd bg;
+          box-shadow: 0 2px 4px shadow;
+          span { c: cm }
           [class*="-option"]:hover, [class*="12o7ek3"] {
-            c: 0 0 $darker;
-            span { c: $light }
+            c: 0 0 bd;
+            span { c: fg }
           }
         }
       }
       // Add role button.
       [class*="actionButton-"] {
         transition: 0.15s ease;
-        c: $lighter $darker $dark;
-        &:hover { c: 0 0 $darker }
-        svg path { v: $lighter }
+        c: cm bd bg;
+        &:hover { c: 0 0 bd }
+        svg path { v: cm }
       }
     }
-    [class *= 'sidebarScrollable-'] [class *= 'scroller-'] { c: 0 0 $t }
+    [class *= 'sidebarScrollable-'] [class *= 'scroller-'] { c: 0 0 t }
     // * Close button.
     [class*="closeButton-"] {
-      c: 0 $darker;
+      c: 0 bd;
       transition: 0.2s ease;
-      &:hover { c: 0 0 $darker }
-      path[fill*="#dcddde"] { v: $lighter }
-      + [class*="keybind"] { c: $lighter }
+      &:hover { c: 0 0 bd }
+      path[fill*="#dcddde"] { v: cm }
+      + [class*="keybind"] { c: cm }
     }
     // * Audit log.
     [class*="auditLog-"] {
-      c: $lighter $darker 0;
+      c: cm bd 0;
       // Different headers.
-      [class*="headerClickable"] { c: $lighter 0 $dark }
-      [class*="headerExpanded"] { c: $lighter 0 $darker }
+      [class*="headerClickable"] { c: cm 0 bg }
+      [class*="headerExpanded"] { c: cm 0 bd }
       // Text colors.
       [class*="userHook-"] {
-        strong, > span:first-child, { c: $light }
+        strong, > span:first-child, { c: fg }
       }
       // Metadata.
       [class*="changeStr-"], [class*="timeWrap-"] {
-        &, strong { c: $light }
+        &, strong { c: fg }
       }
       // Discriminators and secondary text.
       [class*="discrim-"], [class*="timestamp-"] {
         opacity: 1;
-        c: $lighter
+        c: cm
       }
       // Colors.
-      [class*="typeUpdate-"] { c: $yellow }
-      [class*="typeCreate-"] { c: $green }
-      [class*="typeDelete-"] { c: $red }
+      [class*="typeUpdate-"] { c: yellow }
+      [class*="typeCreate-"] { c: green }
+      [class*="typeDelete-"] { c: red }
     }
     // Change server region.
     [class*="container-"][role="button"] {
-      c: 0 $darker $dark;
-      [class*="name-"] { c: $light }
+      c: 0 bd bg;
+      [class*="name-"] { c: fg }
       [class*="button-"] {
         radius: $radius;
-        &[class*="colorGrey-"] { c: $lighter 0 $darker }
-        ../ [class*="button-"] { c: $light 0 $darker }
+        &[class*="colorGrey-"] { c: cm 0 bd }
+        ../ [class*="button-"] { c: fg 0 bd }
       }
     }
     // Connected accounts.
     [class*="connectedAccounts-"] button[class] {
       radius: $radius;
-      c: 0 $darker $darker;
+      c: 0 bd bd;
       &:hover { transform: translateY(4px) }
     }
     // Confirm/reset the settings.
     [class*="elevationHigh-"] {
       &[style*="rgba(32"] {
-        c: 0 0 $darker;
-        box-shadow: 0 2px 8px 0 $shadow;
-        [style*="rgb(255"] { c: $light }
+        c: 0 0 bd;
+        box-shadow: 0 2px 8px shadow;
+        [style*="rgb(255"] { c: fg }
       }
       &[style*="rgba(24"], &[style*="rgb(29"] {
-        c: 0 0 $red;
-        box-shadow: 0 2px 8px 0 $shadow;
-        [style*="rgb(255"] { c: $white }
+        c: 0 0 red;
+        box-shadow: 0 2px 8px shadow;
+        [style*="rgb(255"] { c: white }
       }
     }
     // Connected accounts.
     [class*="elevationLow-"] {
-      box-shadow: 0 2px 8px 0 $shadow;
-      &[style*="background-color: rgb(0\, 154"] { c: 0 0 $cyan }
-      &[style*="background-color: rgb(203\, 33"] { c: 0 0 $red }
-      &[style*="background-color: rgb(29\, 161"] { c: 0 0 $blue }
-      &[style*="background-color: rgb(29\, 185"] { c: 0 0 $green }
-      &[style*="background-color: rgb(89\, 54"] { c: 0 0 $violet }
-      &[style*="background-color: rgb(24\, 35"] { c: 0 0 $magenta }
+      box-shadow: 0 2px 8px shadow;
+      &[style*="background-color: rgb(0\, 154"] { c: 0 0 cyan }
+      &[style*="background-color: rgb(203\, 33"] { c: 0 0 red }
+      &[style*="background-color: rgb(29\, 161"] { c: 0 0 blue }
+      &[style*="background-color: rgb(29\, 185"] { c: 0 0 green }
+      &[style*="background-color: rgb(89\, 54"] { c: 0 0 violet }
+      &[style*="background-color: rgb(24\, 35"] { c: 0 0 magenta }
       > [class*="Header-"] {
         radius: $radius $radius 0 0;
-        c: 0 $shadow #00000010;
+        c: 0 shadow #00000010;
       }
-      [class*="titleDefault-"], [class*="description-"] { c: $white 0 0 }
+      [class*="titleDefault-"], [class*="description-"] { c: white }
     }
   }
 
   // * Emoji section.
   [class*="emojiRow-"] {
-    &::before { c: 0 $shadow $dark }
+    &::before { c: 0 shadow bg }
     // Text color.
     [class*="emojiAliasPlaceholder-"] {
-      c: $lighter;
-      &::before, &::after { c: $light }
+      c: cm;
+      &::before, &::after { c: fg }
     }
-    [class*="emojiRowText-"] { c: $light }
+    [class*="emojiRowText-"] { c: fg }
     // Input fields.
     input {
       transition: 0.2s ease i;
-      c: $lighter $darker $dark;
-      &:hover, &:focus { c: $light 0 $darker }
+      c: cm bd bg;
+      &:hover, &:focus { c: fg 0 bd }
     }
   }
 
   // * Cards.
   [class *= 'card-'] {
-    c: 0 $darker $darker;
-    [class*="title-"], [class*="primary-"] { c: $light }
-    [class*="desc-"] { c: $lighter }
-    [class*="anchor-"] { c: $accent }
+    c: 0 bd bd;
+    [class*="title-"], [class*="primary-"] { c: fg }
+    [class*="desc-"] { c: cm }
+    [class*="anchor-"] { c: ac }
     [class*="checkbox-"] {
-      c: 0 $darker $dark;
-      &[class*="checked-"] { c: 0 0 $dark }
+      c: 0 bd bg;
+      &[class*="checked-"] { c: 0 0 bg }
     }
-    &[class *= 'codeRedemptionRedirect-'] { c: $light 0 $darken }
+    &[class *= 'codeRedemptionRedirect-'] { c: fg 0 hl }
     // Main cards.
     &[class*="cardPrimary"] {
       radius: $radius;
-      c: 0 $darker $darken;
-      &[style*="114\, 137\, 218"] { c: 0 $accent }
+      c: 0 bd hl;
+      &[style*="114\, 137\, 218"] { c: 0 ac }
     }
     // Colorized cards.
-    &[style*="rgb(67"] { c: 0 $green $green }
-    &[style*="rgb(114"] { c: 0 $accent $accent }
-    &[style*="rgb(250"] { c: 0 $yellow $yellow }
-    &[style*="rgb(245"] { c: 0 $orange $orange }
-    &[style*="rgb(240"] { c: 0 $red $red }
+    &[style*="rgb(67"] { c: 0 green green }
+    &[style*="rgb(114"] { c: 0 ac ac }
+    &[style*="rgb(250"] { c: 0 yellow yellow }
+    &[style*="rgb(245"] { c: 0 orange orange }
+    &[style*="rgb(240"] { c: 0 red red }
     // Colorized cards text.
-    [class*="title-"][style*="rgb(67"] { c: $green }
-    [class*="title-"][style*="rgb(250"] { c: $yellow }
-    [class*="title-"][style*="rgb(245"] { c: $orange }
-    [class*="title-"][style*="rgb(240"] { c: $red }
-    &[style*="rgb("] > [class*="info-"] > * { c: $white }
+    [class*="title-"][style*="rgb(67"] { c: green }
+    [class*="title-"][style*="rgb(250"] { c: yellow }
+    [class*="title-"][style*="rgb(245"] { c: orange }
+    [class*="title-"][style*="rgb(240"] { c: red }
+    &[style*="rgb("] > [class*="info-"] > * { c: white }
     // Various table elements.
     &[class*="member-"],
     &[class*="emojiRow-"],
     &[class*="sInviteRow-"],
     &[class*="bannedUser-"] {
-      c: 0 0 $t;
-      box-shadow: 0 1px 0 0 $darker;
-      [class*="code-" i], [class*="name-" i] { c: $light }
-      [class*="tag-"], [class*="roleName-"] { c: $lighter }
+      c: 0 0 t;
+      box-shadow: 0 1px bd;
+      [class*="code-" i], [class*="name-" i] { c: fg }
+      [class*="tag-"], [class*="roleName-"] { c: cm }
       &::before {
         radius: $radius;
-        c: 0 $darker $darken;
-        box-shadow: 0 2px 4px 0 $shadow;
+        c: 0 bd hl;
+        box-shadow: 0 2px 4px shadow;
       }
     }
   }
@@ -2358,36 +2356,36 @@
   // Global -> Buttons.
   [class *= 'button-'] {
     &[class *= 'Link-'] {
-      &[class *= 'Grey-'] { c: $lighter }
-      &[class *= 'Brand-'] { c: $accent }
-      &[class *= 'White-'] { c: $lighter }
-      &[class *= 'Primary-'] { c: $light }
+      &[class *= 'Grey-'] { c: cm }
+      &[class *= 'Brand-'] { c: ac }
+      &[class *= 'White-'] { c: cm }
+      &[class *= 'Primary-'] { c: fg }
       &:hover > div {
         background-image: none i;
         opacity: 0.8 i;
       }
     }
     &[class *= 'Inverted-'] {
-      &[class *= 'Brand-'] { c: $white 0 $accent }
-      &[class *= 'Green-'] { c: $white 0 $green }
-      &[class *= 'Purple-'] { c: $white 0 $violet }
+      &[class *= 'Brand-'] { c: white 0 ac }
+      &[class *= 'Green-'] { c: white 0 green }
+      &[class *= 'Purple-'] { c: white 0 violet }
       &:hover { opacity: 0.8 i }
     }
     &[class *= 'Outlined-'] {
-      &[class *= 'Red-'] { c: $red $red }
-      &[class *= 'Brand-'] { c: $accent $accent }
-      &[class *= 'White-'] { c: $lighter $lighter }
-      &[class *= 'Primary-'] { c: $light $lighter $darken }
+      &[class *= 'Red-'] { c: red red }
+      &[class *= 'Brand-'] { c: ac ac }
+      &[class *= 'White-'] { c: cm cm }
+      &[class *= 'Primary-'] { c: fg cm hl }
       &:hover { opacity: 0.8 i }
     }
     &[class *= 'Filled-'] {
       transition: all 0.15s ease;
-      &[disabled] { c: $light $darken $darken }
-      &[class *= 'Primary-'] { c: $light 0 $darken }
-      &[class *= 'Brand-'] { c: $white 0 $accent }
-      &[class *= 'Green-'] { c: $white 0 $green }
-      &[class *= 'White-'] { c: $white $white }
-      &[class *= 'Grey-'] { c: $light 0 $darker }
+      &[disabled] { c: fg hl hl }
+      &[class *= 'Primary-'] { c: fg 0 hl }
+      &[class *= 'Brand-'] { c: white 0 ac }
+      &[class *= 'Green-'] { c: white 0 green }
+      &[class *= 'White-'] { c: white white }
+      &[class *= 'Grey-'] { c: fg 0 bd }
       &:not([disabled]):hover { opacity: 0.8 i }
     }
   }
@@ -2395,66 +2393,66 @@
   // * Deprecated elements.
   .form.deprecated {
     .header {
-      c: 0 0 $dark;
-      h1 { c: $light }
+      c: 0 0 bg;
+      h1 { c: fg }
       input[type=text] {
-        c: $lighter $darker $darker;
-        box-shadow: 0 2px 1px 0 $shadow i;
+        c: cm bd bd;
+        box-shadow: 0 2px 1px shadow i;
       }
     }
-    .form-inner { c: 0 0 $darker }
-    .footer { c: $lighter $shadow $darker }
-    a { c: $accent }
+    .form-inner { c: 0 0 bd }
+    .footer { c: cm shadow bd }
+    a { c: ac }
   }
   // * Create/join another server.
   [class *= 'measurement-'] {
     [class*="slide-"][class*="size-"] {
-      c: 0 0 $darker;
-      box-shadow: 0 2px 8px -1px $shadow i;
+      c: 0 0 bd;
+      box-shadow: 0 2px 8px -1px shadow i;
       [class*="action-"] {
         background: none i;
-        c: 0 $shadow $dark;
-        box-shadow: 0 2px 8px 0 $shadow;
+        c: 0 shadow bg;
+        box-shadow: 0 2px 8px shadow;
       }
-      [class*="actionBody-"] { c: $lighter }
+      [class*="actionBody-"] { c: cm }
       [class*="or-"] { background-image: none i }
     }
   }
 
   // Settings -> Billing.
   [class *= 'paymentPane-'] {
-    border: 1px solid $darker;
-    c: $light 0 $darken;
-    [class *= 'bottomDivider-'] { c: 0 $darker }
+    border: 1px solid bd;
+    c: fg 0 hl;
+    [class *= 'bottomDivider-'] { c: 0 bd }
     [class *= 'paginator-'] {
-      c: $lighter 0 $t;
-      [class *= 'anchor-'] { c: $accent }
-      [class *= 'date-'], [class *= 'amount-'] { c: $lighter }
-      [class *= 'expand-'] path { stroke: $lighter }
-      [class *= 'payment-'] { c: $light 0 $t }
+      c: cm 0 t;
+      [class *= 'anchor-'] { c: ac }
+      [class *= 'date-'], [class *= 'amount-'] { c: cm }
+      [class *= 'expand-'] path { stroke: cm }
+      [class *= 'payment-'] { c: fg 0 t }
       [class *= 'expandedInfo-'] {
-        c: $light 0 $darker;
-        [class *= 'Header-'], [class *= 'Text-'] { c: $light $darken }
+        c: fg 0 bd;
+        [class *= 'Header-'], [class *= 'Text-'] { c: fg hl }
       }
     }
     [class *= 'scrollbar-'] {
-      &, [class *= 'pad-'] { c: 0 0 $darken }
+      &, [class *= 'pad-'] { c: 0 0 hl }
     }
   }
 
   // Global -> Pagination.
   [class *= 'pageActions-'] {
     [class *= 'pageButton'] {
-      c: 0 $darker;
-      &:hover { c: 0 0 $darker }
+      c: 0 bd;
+      &:hover { c: 0 0 bd }
     }
-    [class *= 'pageIndicator-'] { c: $light $darker }
+    [class *= 'pageIndicator-'] { c: fg bd }
   }
 
   // Global -> Indicators.
   [class *= 'indicator-'] {
-    &[class *= 'defaultIndicator-'] { c: $light 0 $darker }
-    &[class *= 'premiumIndicator-'] { c: $white 0 $accent }
+    &[class *= 'defaultIndicator-'] { c: fg 0 bd }
+    &[class *= 'premiumIndicator-'] { c: white 0 ac }
   }
 
   // Global -> Placeholders.
@@ -2462,7 +2460,7 @@
     [class *= 'Placeholder-'],
     [class *= 'placeholderAvatar-'],
     [class *= 'placeholderUsername-'] {
-      c: 0 0 $darker;
+      c: 0 0 bd;
     }
   }
 
@@ -2485,20 +2483,20 @@
       }
       // Folders!
       > div[class] > div[class] > [class*="wrapper-"] {
-        c: 0 0 $t;
+        c: 0 0 t;
         [class*="FolderBackground-"] {
           left: 10px;
           width: $size;
           radius: 16px;
           // Folder wrapper reset.
-          &[class*="collapsed-"] { c: 0 0 $dark }
+          &[class*="collapsed-"] { c: 0 0 bg }
           &:not([class*="collapsed"]) {
-            c: 0 0 $dark;
-            box-shadow: 0 0 0 2px $dark, 0 0 0 4px $darken;
+            c: 0 0 bg;
+            box-shadow: 0 0 0 2px bg, 0 0 0 4px hl;
             // Remove folder background when expanded.
             + [class*="listItem-"] foreignObject {
               radius: 16px;
-              [class*="folder-"]:not(#zz) { c: 0 0 $t }
+              [class*="folder-"]:not(#zz) { c: 0 0 t }
             }
           }
         }
@@ -2510,13 +2508,13 @@
               height: $size;
             }
             // Folder/badge resets.
-            [class*="folder-"] { c: 0 0 $darken }
+            [class*="folder-"] { c: 0 0 hl }
             [class*="badgeWrapper-"] [class*="lowerBadge-"] {
               right: 0 i;
               top: ($size - 16px) i;
             }
             // Avatar-less servers in folders.
-            [class*="noIcon-"] { c: $light 0 $darken }
+            [class*="noIcon-"] { c: fg 0 hl }
           }
         }
         // Reset servers within folders.
@@ -2578,22 +2576,22 @@
         }
       }
       [class*="guildsError-"] {
-        c: $light $red $dark;
-        &:hover { c: $white 0 $red }
+        c: fg red bg;
+        &:hover { c: white 0 red }
       }
       /// Badges.
-      [class *= 'upperBadge-'] { c: 0 0 $dark }
+      [class *= 'upperBadge-'] { c: 0 0 bg }
       [class *= 'lowerBadge-'] { top: ($size - 16px) i }
       /// Unread messages.
       [class *= 'numberBadge-'],  {
         height: 14px i;
-        box-shadow: 0 0 0 3px $darker;
+        box-shadow: 0 0 0 3px bd;
       }
       /// Voice chat.
       [class *= 'iconBadge-'] {
-        c: 0 0 $green;
-        box-shadow: 0 0 0 3px $darker;
-        [class *= 'icon-'] path[fill] { v: $white }
+        c: 0 0 green;
+        box-shadow: 0 0 0 3px bd;
+        [class *= 'icon-'] path[fill] { v: white }
       }
       /// DM icons.
       ~ div[style] {
@@ -2609,7 +2607,7 @@
       > [class *= 'pill-'] + [draggable = 'false'] svg {
         width: $size i;
         height: $size i;
-        div { c: 0 0 $darken }
+        div { c: 0 0 hl }
       }
     }
   }
