@@ -91,8 +91,8 @@
   cyan    = var(--cyan);
   green   = var(--green);
   white   = var(--white);
-  $radius = var(--radius);
   t       = var(--t);
+  r       = var(--radius);
   i       = !important;
 
   // Color mixin.
@@ -111,8 +111,8 @@
     if y is a 'call' or y is a 'rgba' { stroke: yi is 0? y : y i }
   }
 
-  // * Border radius mixin.
-  radius() { border-radius: arguments; }
+  // Border radius mixin.
+  rad() { border-radius: arguments }
 
   // * Compact_lines helper mixins.
   line(x, y) {
@@ -164,7 +164,7 @@
   // App -> Login.
   [class *= 'authBox-'] {
     border: 1px solid;
-    radius: $radius;
+    rad: r;
     c: cm bd bg;
     box-shadow: 0 2px 10px 2px shadow;
     [class *= 'title-'] {
@@ -225,7 +225,7 @@
   // * Icons -> Non-svg mic/headphone/cogwheel reset.
   [class*="accountDetails-"] + div {
     > div, > button {
-      radius: $radius;
+      rad: r;
       transition: 0.15s ease;
       &:hover { c: 0 0 bd }
     }
@@ -300,7 +300,7 @@
   // * Global -> Inputs.
   [class*="inputWrapper-"] {
     input, [class*="multiInput-"] {
-      radius: $radius;
+      rad: r;
       c: fg bd bg;
       &:focus, &[class*="focused-"] { c: 0 ac }
     }
@@ -319,7 +319,7 @@
     &[class*="noticeDefault-"] {
       c: white 0 orange;
       [class*="button"] {
-        radius: $radius;
+        rad: r;
         c: white white 0;
         &:hover { c: orange 0 white }
       }
@@ -328,7 +328,7 @@
 
   // Global -> GDPR complience.
   [class *= 'gdprWrapper-'] {
-    radius: $radius;
+    rad: r;
     c: cm bd hl;
     [class *= 'header-'] { c: fg }
     [class *= 'lookInverted-'] { c: white 0 ac }
@@ -422,17 +422,17 @@
   // * Modals.
   [class*="modal-"] {
     &[class*="size"] {
-      radius: $radius;
+      rad: r;
       c: 0 0 bg;
       box-shadow: 0 0 0 1px bd, 0 4px 8px shadow;
       [class*="item-"] {
-        radius: $radius;
+        rad: r;
         &[style*="114\, 137\, 218"] { c: 0 ac ac }
       }
       [class*="reactors-"], [class*="sidebar-"] { c: 0 0 t }
       // Confirm message deletion.
       [class*="content-"] > [class*="message-"] {
-        radius: $radius;
+        rad: r;
         border: 1px solid;
         c: 0 bd bg;
         box-shadow: 0 2px 4px shadow;
@@ -455,7 +455,7 @@
     /// Footer.
     [class *= 'footer-'] {
       c: 0 0 t;
-      radius: 0 0 $radius $radius;
+      rad: 0 0 r r;
       box-shadow: inset 0 1px bd;
     }
     // Highlighted friends.
@@ -472,11 +472,11 @@
     [class*="Header"], [class*="header-"] { c: cm }
     // ? Region select.
     [class*="regionSelectModal-"] {
-      radius: $radius;
+      rad: r;
       c: 0 0 bg;
       box-shadow: 0 0 0 1px inset bd, 0 2px 4px shadow;
       [class*="Option-"] {
-        radius: $radius;
+        rad: r;
         c: 0 bd bg;
         &:hover {
           c: 0 ac;
@@ -521,7 +521,7 @@
     }
     // ? Controls.
     [class*="footer-"] {
-      radius: 0 0 10px 10px;
+      rad: 0 0 10px 10px;
       c: 0 0 hl;
       box-shadow: inset 0 1px bd;
       [class*="label"] * { c: cm }
@@ -553,7 +553,7 @@
   // Modals -> User profile.
   [class^='modal-'] > div > [class *= 'root'] {
     border: 1px solid bd;
-    radius: $radius;
+    rad: r;
     c: 0 0 bg;
     box-shadow: bsh;
     /// Header.
@@ -593,8 +593,8 @@
         content: '';
         position: absolute;
         top: 0; right: 0; left: 0;
-        radius: $radius $radius 0 0;
-        border-top: $radius solid t;
+        rad: r r 0 0;
+        border-top: r solid t;
       }
     }
     /// Various activities.
@@ -641,7 +641,7 @@
     [class *= 'userInfoSection'] {
       c: 0 bd;
       [class *= 'Accounts'] > [class *= 'Account'] {
-        radius: $radius;
+        rad: r;
         c: 0 bd hl;
         [class *= 'AccountName-'] { c: fg }
       }
@@ -652,7 +652,7 @@
   [id ^= 'popout_'] {
     [class *= 'menu-'] {
       border: 1px solid bd;
-      radius: $radius;
+      rad: r;
       c: 0 0 bg;
       box-shadow: 0 2px 4px shadow;
       [class *= 'separator-'] { c: 0 bd }
@@ -682,7 +682,7 @@
     }
     /// Spotify invitation/Upload a File/etc.
     [class *= 'attachPopout-'] {
-      radius: $radius;
+      rad: r;
       c: fg 0 bg;
       // Text color.
       [class *= 'RowText'] { c: cm }
@@ -717,7 +717,7 @@
     > [class *= 'header-'] {
       position: relative;
       border-bottom: 1px solid bd;
-      radius: $radius $radius 0 0;
+      rad: r r 0 0;
       c: 0 0 hl;
       /// Buttons.
       [class *= 'lookOutlined-'] {
@@ -745,8 +745,8 @@
         content: '';
         position: absolute;
         top: 0; right: 0; left: 0;
-        radius: $radius $radius 0 0;
-        border-top: $radius solid t;
+        rad: r r 0 0;
+        border-top: r solid t;
       }
       &[class *= 'Xbox-']::before { c: 0 magenta }
       &[class *= 'Playing-']::before { c: 0 blue }
@@ -815,7 +815,7 @@
       box-shadow: inset 0 1px bd;
     }
     button {
-      radius: $radius;
+      rad: r;
       c: cm;
       transition: 0.15s ease;
       &:hover:not([class*="disabled"]) { c: 0 0 bd }
@@ -888,7 +888,7 @@
 
   // Guilds.
   [class *= 'guilds-'] {
-    radius: 0px;
+    rad: 0px;
     c: 0 0 bd;
     box-shadow: inset -1px 0 bd;
     [class *= 'scroller-'] { c: 0 0 t }
@@ -943,7 +943,7 @@
 
   // * Search results.
   [class*="popout-"] > [class*="container-"] {
-    radius: $radius;
+    rad: r;
     c: 0 0 bg;
     box-shadow: 0 0 0 1px bd;
     // Message context menu.
@@ -1031,7 +1031,7 @@
   [class *= 'base-'] {
     /// Global announcements (sort of).
     > [class *= 'noticePremium'] {
-      radius: 0;
+      rad: 0;
       c: white;
       background-image: linear-gradient(270deg, blue, violet);
       a[href]:hover {
@@ -1225,7 +1225,7 @@
       c: 0 0 hl;
       [class *= 'Group-'], [class *= 'activity-'] { c: cm }
       [class *= 'member-'] {
-        radius: $radius;
+        rad: r;
         c: cm;
         &:hover, &:active, &[class *= 'selected-'] {
           > div { c: fg 0 bd }
@@ -1256,7 +1256,7 @@
       > [class*="searchBar-"] {
         width: auto;
         min-width: 144px;
-        radius: $radius;
+        rad: r;
         transition: min-width 0.2s ease-in-out 0.1s;
       }
       // ? On event.
@@ -1308,8 +1308,8 @@
         [class*="searchFilter-"], [class*="searchAnswer"] {
           c: fg 0 bd;
         }
-        [class*="searchFilter-"] { radius: $radius 0 0 $radius }
-        [class*="searchAnswer-"] { radius: 0 $radius $radius 0 }
+        [class*="searchFilter-"] { rad: r 0 0 r }
+        [class*="searchAnswer-"] { rad: 0 r r 0 }
       }
 
       // ? Group DM header.
@@ -1351,7 +1351,7 @@
       }
       /// New messages.
       [class *= 'newMessagesBar-'] {
-        radius: 0 0 $radius $radius;
+        rad: 0 0 r r;
         c: 0 0 bd;
         box-shadow: bsh;
         button {
@@ -1361,7 +1361,7 @@
       }
       /// Jump to present.
       [class *= 'jumpToPresentBar-'] {
-        radius: $radius $radius 0 0;
+        rad: r r 0 0;
         c: 0 0 hl;
         box-shadow: bsh;
         button {
@@ -1443,19 +1443,19 @@
           // Spoilers.
           [class*="spoilerText-"] {
             position: relative;
-            radius: $radius;
+            rad: r;
             c: 0 0 t;
             &::before {
               z-index: -1;
               content: "";
               pos: 0 0 0 0;
-              radius: $radius;
+              rad: r;
               position: absolute;
               c: 0 0 hl;
               opacity: 0.5;
             }
             &[class*="hidden-"] {
-              radius: $radius;
+              rad: r;
               transition: 0.15s ease;
               c: 0 0 bd;
               &:hover { opacity: 0.8 }
@@ -1469,7 +1469,7 @@
 
         // Attachments.
         [class*="attachment-"] {
-          radius: $radius;
+          rad: r;
           c: 0 bd hl;
           box-shadow: bsh;
           [class*="fileNameLink-"] { c: ac }
@@ -1500,7 +1500,7 @@
           content: '';
           pos: 0 0 0 0;
           position: absolute;
-          radius: 3px 0 0 3px;
+          rad: 3px 0 0 3px;
           overflow: hidden;
           c: 0 t ac;
         }
@@ -1510,7 +1510,7 @@
           content: '';
           pos: 0 0 0 0;
           opacity: 0.1;
-          radius: 3px;
+          rad: 3px;
           position: absolute;
           c: 0 ac ac;
         }
@@ -1536,7 +1536,7 @@
 
       // * Invite embed.
       [class*="wrapper-"][class*="userSelectNone"] {
-        radius: $radius;
+        rad: r;
         c: 0 bd hl;
         box-shadow: bsh;
         [class*="title-"], [class*="guildDetail-"] { c: cm }
@@ -1550,9 +1550,9 @@
 
       // * Spotify party invite.
       [class*="invite-"][class*="container-"] {
-        radius: $radius;
+        rad: r;
         c: 0 bd hl;
-        [class*="coverImaageWrapper-"] { radius: 0 $radius $radius 0; }
+        [class*="coverImaageWrapper-"] { rad: 0 r r 0 }
         [class*="helpIcon-"] { c: 0 0 bd }
         [class*="header-"] { c: cm }
         [class*="partyStatus-"], [class*="textLink-"] { c: fg }
@@ -1586,7 +1586,7 @@
   [class *= 'channelTextArea-'] {
     c: 0 bd;
     /// Fix rounded corners.
-    > div { radius: $radius i }
+    > div { rad: r i }
     // Input container.
     [class *= 'inner-'] {
       border: 1px solid bd;
@@ -1603,13 +1603,13 @@
     [class*="divider"], [class*="Divider"] { c: 0 0 bd }
     /// Rounded corner tweaks.
     &[class *= 'hasAutocomplete-'] {
-      > div { radius: 0 0 $radius $radius i }
-      > [class *= 'autocomplete-'] { radius: $radius $radius 0 0 i }
+      > div { rad: 0 0 r r i }
+      > [class *= 'autocomplete-'] { rad: r r 0 0 i }
     }
     // ? Emojis, mentions, commands popout.
     [class*="autocomplete-"][class*="autocomplete-"] {
       c: 0 0 hl;
-      radius: $radius $radius 0 0;
+      rad: r r 0 0;
       // box-shadow: inset 0 0 0 1px bd;
       border: 1px solid bd;
       border-bottom: none;
@@ -1624,24 +1624,24 @@
       }
       [class*="content-"] {
         [class*="result-"] {
-          &::after { radius: $radius; }
+          &::after { rad: r }
           &:hover::after {
             box-shadow: inset 0 0 0 2px ac, inset 0 0 0 3px bg;
           }
-          [class*="gif-"] { radius: $radius }
+          [class*="gif-"] { rad: r }
         }
         [class*="Fade-"] {
           opacity: 0.8;
-          radius: $radius;
+          rad: r;
           c: 0 0 bd;
         }
         [class*="FadeBlurple-"] {
           opacity: 0.8;
-          radius: $radius;
+          rad: r;
           c: 0 0 ac;
         }
         [class*="emptyHintCard-"] {
-          radius: $radius;
+          rad: r;
           c: fg 0 bd;
         }
         [class*="Text-"] { c: cm }
@@ -1689,7 +1689,7 @@
 
   // * Emote menu.
   [class*="emojiPicker-"] {
-    radius: $radius;
+    rad: r;
     c: cm bd bg;
     box-shadow: 0 0 0 1px bd, bsh;
     // Header.
@@ -1797,12 +1797,12 @@
       [class *= 'searchResult-'] {
         overflow: unset i;
         &[class *= 'expanded-'] {
-          radius: $radius;
+          rad: r;
           border-width: 1px;
           c: 0 bd hl;
           > div:last-of-type {
             border-top-width: 1px;
-            radius: 0 0 $radius $radius i;
+            rad: 0 0 r r i;
           }
           [class *= 'hit-'] { c: 0 0 bd; box-shadow: none }
           [class *= 'before-'], [class *= 'after-'] { c: 0 0 hl }
@@ -1814,7 +1814,7 @@
           border-width: 1px i;
           c: 0 bd hl;
           box-shadow: bsh;
-          ../:not([class *= 'expanded-']) [class *= 'hit'] { radius: $radius }
+          ../:not([class *= 'expanded-']) [class *= 'hit'] { rad: r }
         }
         [class *= 'jumpButton-'] { c: fg 0 bd }
         [class *= 'timestamp'] { c: cm }
@@ -1864,12 +1864,12 @@
       }
     }
     pre {
-      radius: $radius;
+      rad: r;
       c: 0 bd hl;
       border-width: 1px i;
       box-shadow: 0 2px 4px shadow;
       code {
-        radius: $radius;
+        rad: r;
         c: fg bd t;
         // Feat -> Code line numbers.
         if ( code_ln == 1 ) {
@@ -1916,14 +1916,14 @@
       padding: 0 0.125rem;
       position: relative;
       text-decoration: none;
-      radius: 3px;
+      rad: 3px;
       c: ac 0 t;
       &::before {
         content: '';
         pos: 0 0 0 0;
         opacity: 0.2;
         position: absolute;
-        radius: 3px;
+        rad: 3px;
         c: 0 0 ac;
         transition: 0.2s ease;
       }
@@ -1954,7 +1954,7 @@
     /// Results.
     [class *= 'result-'] {
       &[class *= 'Focused-'] {
-        radius: $radius;
+        rad: r;
         c: 0 0 hl;
       }
       /// Unread messages badge.
@@ -1985,13 +1985,13 @@
 
   // Global -> Context menu.
   [class*="contextMenu-"] {
-    radius: $radius;
+    rad: r;
     c: 0 0 bg;
     box-shadow: 0 2px 4px -1px shadow, 0 0 0 1px bd i;
     [class*="itemGroup-"] {
       c: 0 bd;
       [class*="item-"] {
-        radius: 0;
+        rad: 0;
         c: cm;
         &:hover { c: fg 0 hl }
       }
@@ -2000,11 +2000,11 @@
     // Fix scrolllbars.
     [class*="firefoxFixScrollFlex-"] {
       overflow-x: hidden;
-      radius: $radius;
+      rad: r;
       // ! Ugh... Native scrollbars. )=
       [class*="scroller-"] + [class*="scrollbar-"] {
         // top: 1px; right: 1px; bottom: 1px;
-        radius: 0 $radius $radius 0;
+        rad: 0 r r 0;
       }
     }
   }
@@ -2049,7 +2049,7 @@
 
   // Popouts -> Recent mentions.
   [class *= 'messagesPopoutWrap-'] {
-    radius: $radius;
+    rad: r;
     c: fg bd bg;
     box-shadow: 0 4px 8px shadow i;
     [class *= 'messagesPopout-'] { c: 0 0 t }
@@ -2075,7 +2075,7 @@
       [class*="guild"] { c: cm }
     }
     [class^="messageGroupWrapper-"] {
-      radius: $radius;
+      rad: r;
       c: fg bd hl;
       box-shadow: 0 2px 8px shadow;
       [class*="Meta-"] *:not([class*="username-"]) { c: cm }
@@ -2085,7 +2085,7 @@
         c: fg;
         &::before, &::after { display: none }
         .mention {
-          radius: 3px;
+          rad: 3px;
           c: white 0 ac;
         }
       }
@@ -2115,7 +2115,7 @@
       [class*="header-"] { c: cm }
       // Menu items!
       [class*="item-"] {
-        radius: $radius;
+        rad: r;
         transition: 0.15s ease;
         c: cm;
         &[class*="selected-"] { c: white 0 ac }
@@ -2155,7 +2155,7 @@
       }
       // ? User info.
       [class*="userInfo"][class*="cardPrimary-"] {
-        radius: $radius;
+        rad: r;
         c: 0 bd hl;
         small { c: cm }
         [class*="viewBody-"] {
@@ -2169,7 +2169,7 @@
           // Avatar container.
           > div:first-child {
             opacity: 0;
-            radius: 50%;
+            rad: 50%;
             visibility: visible;
             c: white 0 bd;
             transition: 0.15s ease-in;
@@ -2183,7 +2183,7 @@
       }
       // ? Consent element.
       [class*="consent-"] {
-        radius: $radius;
+        rad: r;
         c: 0 bd bg;
         box-shadow: inset 0 0 0 1px bd;
         [class*="title-" i] { c: fg }
@@ -2249,14 +2249,14 @@
       c: 0 bd bg;
       [class*="name-"] { c: fg }
       [class*="button-"] {
-        radius: $radius;
+        rad: r;
         &[class*="colorGrey-"] { c: cm 0 bd }
         ../ [class*="button-"] { c: fg 0 bd }
       }
     }
     // Connected accounts.
     [class*="connectedAccounts-"] button[class] {
-      radius: $radius;
+      rad: r;
       c: 0 bd bd;
       &:hover { transform: translateY(4px) }
     }
@@ -2283,7 +2283,7 @@
       &[style*="background-color: rgb(89\, 54"] { c: 0 0 violet }
       &[style*="background-color: rgb(24\, 35"] { c: 0 0 magenta }
       > [class*="Header-"] {
-        radius: $radius $radius 0 0;
+        rad: r r 0 0;
         c: 0 shadow #00000010;
       }
       [class*="titleDefault-"], [class*="description-"] { c: white }
@@ -2320,7 +2320,7 @@
     &[class *= 'codeRedemptionRedirect-'] { c: fg 0 hl }
     // Main cards.
     &[class*="cardPrimary"] {
-      radius: $radius;
+      rad: r;
       c: 0 bd hl;
       &[style*="114\, 137\, 218"] { c: 0 ac }
     }
@@ -2346,7 +2346,7 @@
       [class*="code-" i], [class*="name-" i] { c: fg }
       [class*="tag-"], [class*="roleName-"] { c: cm }
       &::before {
-        radius: $radius;
+        rad: r;
         c: 0 bd hl;
         box-shadow: 0 2px 4px shadow;
       }
@@ -2487,7 +2487,7 @@
         [class*="FolderBackground-"] {
           left: 10px;
           width: $size;
-          radius: 16px;
+          rad: 16px;
           // Folder wrapper reset.
           &[class*="collapsed-"] { c: 0 0 bg }
           &:not([class*="collapsed"]) {
@@ -2495,7 +2495,7 @@
             box-shadow: 0 0 0 2px bg, 0 0 0 4px hl;
             // Remove folder background when expanded.
             + [class*="listItem-"] foreignObject {
-              radius: 16px;
+              rad: 16px;
               [class*="folder-"]:not(#zz) { c: 0 0 t }
             }
           }
