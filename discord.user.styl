@@ -18,11 +18,9 @@
 @var checkbox min_guilds "Minimize width of guilds area" 0
 @var checkbox mid_guilds "Small guild icons" 0
 @var text guild_size "Small guild icons size" 32px
-@var checkbox msg_padding "Chat: Decrease padding for cozy messages" 0
 @var checkbox compact_cozy "Compact mode for cozy messages" 0
 @var checkbox compact_lines "Compact mode visual lines" 0
 @var checkbox disable_acm "Disable avatar context menu" 0
-@var checkbox unified_header "WIP: Make the header transparent" 0
 @var checkbox scrollbars_enabled "Always show scrollbar tracks" 0
 @var checkbox scrollbars_chromium "Disable scrollbars in Chromium" 0
 @var checkbox scrollbars_firefox "Disable scrollbars in Firefox" 0
@@ -2470,17 +2468,6 @@
     [class *= 'placeholderAvatar-'],
     [class *= 'placeholderUsername-'] {
       c: 0 0 $darker;
-    }
-  }
-
-  // Feat -> Message padding.
-  if ( msg_padding == 1 ) {
-    [class *= 'messages-'] {
-      > [class *= 'containerCozy-'] {
-        padding: 10px 0;
-      }
-      [class *= 'dividerContent-'] { line-height: 10px }
-      hr { margin: 10px 20px -10px !important }
     }
   }
 
