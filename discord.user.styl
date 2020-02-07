@@ -18,7 +18,6 @@
 @var checkbox min_guilds "Minimize width of guilds area" 0
 @var checkbox mid_guilds "Small guild icons" 0
 @var text guild_size "Small guild icons size" 32px
-@var checkbox compact_cozy "Compact mode for cozy messages" 0
 @var checkbox compact_lines "Compact mode visual lines" 0
 @var checkbox disable_acm "Disable avatar context menu" 0
 @var checkbox scrollbars_enabled "Always show scrollbar tracks" 0
@@ -2468,37 +2467,6 @@
     [class *= 'placeholderAvatar-'],
     [class *= 'placeholderUsername-'] {
       c: 0 0 $darker;
-    }
-  }
-
-  // Feat -> Compact cozy messages.
-  if ( compact_cozy == 1 ) {
-    [class *= 'chatContent-'] [class *= 'containerCozyBounded-'] {
-      padding: 0px 10px 0px 10px;
-      /// Fix dividers.
-      [class *= 'divider'] { margin: auto 10px !important; }
-      /// Avatars.
-      div[class *= 'avatar-'] {
-        margin: 0 8px;
-        border-radius: 50%;
-        box-shadow: 0 0 0 2px $darker;
-        /// Override inline styles.
-        > div[style] {
-          width: 16px i;
-          height: @width;
-        }
-      }
-      /// Message content.
-      [class *= 'contentCozy-'] {
-        margin-left: 12px;
-        /// Default message arrows.
-        if ( compact_lines != 1 ) {
-          [class *= 'markup-']::before {
-            opacity: 0.25;
-            content: "⤷ ";
-          }
-        }
-      }
     }
   }
 
