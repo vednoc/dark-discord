@@ -1231,11 +1231,10 @@
         }
       }
       /// Scrollbar reset.
-      &, /[class*="ingScroller-"] + {
-        [class *= 'scrollbar-'] {
+      &, /[class*="ingScroller-"] {
+        + [class *= 'scrollbar-'] {
           &, [class *= 'pad-'] { c: 0 0 hl }
-          [class *= 'thumb-'] { c: 0 hl }
-          [class *= 'track-'] { c: 0 hl }
+          [class *= 'thumb-'], [class *= 'track-'] { c: 0 hl }
         }
       }
     }
