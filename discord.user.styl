@@ -560,6 +560,12 @@
       [class *= 'username-'] { c: fg }
       [class *= 'discriminator-'] { c: cm }
     }
+    /// HACK: Make badges gray for more uniform look.
+    > :not([class *= 'topSectionNormal-']) {
+      [class *= 'profileBadge'] {
+        filter: brightness(80%) i;
+      }
+    }
     /// Activity.
     [class *= 'topSection'] {
       border-bottom: 1px solid bd;
