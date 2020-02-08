@@ -2052,12 +2052,12 @@
     > [class *= 'header-'] {
       c: 0 0 hl;
       box-shadow: inset 0 -1px bd;
-      [class *= 'title-'] { c: fg }
+      h3, [class *= 'title-'] { c: fg }
       /// Tabs.
       [class *= 'tabBarItem-'] {
         border-bottom-width: 1px;
-        &[style *= 'tr'] { c: cm }
-        &:not([style *= 'tr']) { c: fg ac }
+        &[style *= 'tr']:not(#z) { c: cm }
+        &:not([style *= 'tr']):not(#z) { c: fg ac }
       }
       /// Filters.
       [class *= 'mentionFilter-'] {
@@ -2091,7 +2091,11 @@
       c: fg t t;
       box-shadow: none i;
     }
-    [class*="emptyPlaceholder-"] [class*="body-"] { c: cm }
+    /// No mentions.
+    [class*="emptyPlaceholder-"] {
+      [class*="body-"] { c: cm }
+      [class *= 'image-'] { filter: brightness(220%) }
+    }
     [class*="footer-"][class*="footer-"] {
       c: 0 0 hl;
       box-shadow: inset 0 1px bd;
