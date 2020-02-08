@@ -242,12 +242,15 @@
   [class *= 'defaultValue-'] [class *= 'markValue-'] { c: ac }
 
   // Settings -> Userstyle version.
-  [class *= 'userSettingsAccount'] > h2::before {
+  [class *= 'side-'] > div:first-child::before {
     display: block;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
     content: var(--note);
     text-transform: initial;
-    padding: 0.5rem 0 2rem;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: 0 1px bd;
   }
 
   // * Global -> Browser defaults.
