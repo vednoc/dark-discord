@@ -87,6 +87,7 @@
   cyan    = var(--cyan);
   green   = var(--green);
   white   = var(--white);
+  outer   = 0 0 0 1px bd;
   t       = var(--t);
   r       = var(--radius);
   i       = !important;
@@ -423,7 +424,7 @@
     &[class*="size"] {
       rad: r;
       c: 0 0 bg;
-      box-shadow: 0 0 0 1px bd, 0 4px 8px shadow;
+      box-shadow: outer, 0 4px 8px shadow;
       [class*="item-"] {
         rad: r;
         &[style*="114\, 137\, 218"] { c: 0 ac ac }
@@ -530,7 +531,7 @@
   // * Channel info modal.
   [class*="inner-"] > [class*="modal-"][class*="size-"] {
     c: fg 0 bg;
-    box-shadow: 0 2px 4px -1px shadow, 0 0 0 1px bd;
+    box-shadow: 0 2px 4px -1px shadow, outer;
     // Close icon / text color.
     [class*="close-"], [class*="content-"] > [class*="primary-"] { c: cm }
   }
@@ -538,7 +539,7 @@
   // Modals -> Folder settings.
   [class*="small-"][role="dialog"] {
     c: 0 0 bg;
-    box-shadow: inset 0 0 0 1px bd, 0 2px 8px shadow;
+    box-shadow: inset outer, 0 2px 8px shadow;
     h5 { c: cm }
     [class*="close-"] { c: cm }
     [class*="defaultColor-"] { c: fg }
@@ -950,7 +951,7 @@
   [class*="popout-"] > [class*="container-"] {
     rad: r;
     c: 0 0 bg;
-    box-shadow: 0 0 0 1px bd;
+    box-shadow: outer;
     // Message context menu.
     > [class*="item-"][class*="button-"] {
       c: cm;
@@ -1268,7 +1269,7 @@
         > [class*="searchBar-"][class*="searchBar-"] {
           min-width: 240px;
           c: 0 0 bd;
-          box-shadow: 0 2px 4px -2px shadow, inset 0 0 0 1px bd;
+          box-shadow: 0 2px 4px -2px shadow, inset outer;
         }
       }
       // ? Some magic for placeholder text.
@@ -1305,7 +1306,7 @@
         height: unset;
         padding: 0.125rem 0.25rem;
         c: cm 0 bd;
-        box-shadow: inset 0 0 0 1px bd;
+        box-shadow: inset outer;
         // Input text color.
         [class*="DraftEditor-"] { c: cm }
         // Blocks.
@@ -1395,7 +1396,7 @@
           [class*="isLocalBot-"] {
             c: cm green bg;
             background-image: linear-gradient(60deg, t 50%, bd);
-            box-shadow: 0 0 0 1px bd;
+            box-shadow: outer;
             [class*="localBotMessage-"] a { c: ac }
           }
         }
@@ -1610,7 +1611,7 @@
     [class*="autocomplete-"][class*="autocomplete-"] {
       c: 0 0 hl;
       rad: r r 0 0;
-      // box-shadow: inset 0 0 0 1px bd;
+      // box-shadow: inset outer;
       border: 1px solid bd;
       border-bottom: none;
       [class*="header-"] {
@@ -1618,7 +1619,7 @@
         [class*="backButton-"], [class*="title-"] { c: fg }
         [class*="searchBar-"] {
           c: 0 0 bg;
-          box-shadow: inset 0 0 0 1px bd;
+          box-shadow: inset outer;
           input[class] { c: fg bd bg }
         }
       }
@@ -1691,7 +1692,7 @@
   [class*="emojiPicker-"] {
     rad: r;
     c: cm bd bg;
-    box-shadow: 0 0 0 1px bd, bsh;
+    box-shadow: outer, bsh;
     // Header.
     [class*="header-"] {
       box-shadow: 0 1px bd;
@@ -1860,7 +1861,7 @@
       &.inline {
         padding: 2px 4px;
         c: 0 0 hl;
-        box-shadow: inset 0 0 0 1px bd;
+        box-shadow: inset outer;
       }
     }
     pre {
@@ -1987,7 +1988,7 @@
   [class*="contextMenu-"] {
     rad: r;
     c: 0 0 bg;
-    box-shadow: 0 2px 4px -1px shadow, 0 0 0 1px bd i;
+    box-shadow: 0 2px 4px -1px shadow, outer i;
     [class*="itemGroup-"] {
       c: 0 bd;
       [class*="item-"] {
@@ -2190,7 +2191,7 @@
       [class*="consent-"] {
         rad: r;
         c: 0 bd bg;
-        box-shadow: inset 0 0 0 1px bd;
+        box-shadow: inset outer;
         [class*="title-" i] { c: fg }
         [class*="body-" i] { c: cm }
       }
