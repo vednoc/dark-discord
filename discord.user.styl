@@ -617,9 +617,7 @@
         transition: 0.15s ease;
         c: cm t 0;
         &:hover { c: fg }
-        &[class *= 'selected-'], &[style ^= 'border-color: rgb'] {
-         c: fg ac;
-        }
+        &[style *= 'border-color: rgb']:not(#z) { c: fg ac }
       }
     }
     /// Body.
