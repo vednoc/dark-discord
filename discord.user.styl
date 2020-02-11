@@ -1381,21 +1381,18 @@
             [class*="localBotMessage-"] a { c: ac }
           }
         }
-        // ? Group welcome message.
-        [class*="messages-"] [class*="default-"] h1 {
-          c: cm;
-          strong { c: fg }
-        }
-        // ? Guild/group user greeters.
-        [class*="container-"] > [class*="content-"] {
-          c: cm;
-          a {
-            font-weight: bold;
+        /// Greeters.
+        [class *= 'container-' ] {
+          /// Group welcome message.
+          [class *= 'wrapper-' ] + h1 {
             c: fg;
+            + div { c: cm }
           }
-          time {
-            opacity: 0.6;
+          /// Guild/group group announcements.
+          > [class *= 'content-' ] {
             c: cm;
+            a { font-weight: bold; c: fg }
+            time { opacity: 0.6; c: cm }
           }
         }
       }
