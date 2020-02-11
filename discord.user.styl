@@ -510,7 +510,7 @@
       // Different file-types.
       [class*="file-"] [class*="icon-"] {
         &[class*="image-"] {
-          c: 0 bd bg;
+          c: 0 bd hl;
           box-shadow: 0 2px 8px shadow i;
         }
         &[class*="unknown-"], &[class*="code-"],
@@ -898,10 +898,7 @@
       // ? Indicator -> Unread badges.
       [class*="numberBadge-"] { c: white 0 ac }
       // Icons.
-      a[href] > [class*="acronym-"], [class*="circleIconButton-"] {
-        c: cm 0 hl;
-        box-shadow: inset 0 0 0 1px hl;
-      }
+      a[href] > [class*="acronym-"], [class*="circleIconButton-"] { c: fg 0 hl }
       /// Home icon.
       a[aria-label = 'Home'] {
         c: 0 0 hl;
@@ -1411,8 +1408,7 @@
           }
         }
         /// Message elements.
-        [class*="edited-"],
-        [class*="timestampCozy-"] {
+        [class*="edited-"], [class*="timestampCozy-"] {
           opacity: 0.5;
           c: cm;
         }
@@ -1474,6 +1470,7 @@
 
         /// Reactions.
         [class *= 'reaction-'] {
+          /[class *= 'reactions'] { padding: 0.25rem 0 }
           c: cm 0 bd;
           [class *= 'Count-'] { color: inherit }
           &:hover { c: fg }
@@ -1660,7 +1657,7 @@
     [class *= 'fakeLink-'] { c: ac }
     [class *= 'codeBlockLang-'] { c: green }
     [class *= 'Syntax-'], [class *= 'After-'], [class *= 'Before-'] { c: cm }
-    [class *= 'inlineCode-'] {
+    pre, [class *= 'inlineCode-'] {
       font-family: var(--codearea);
       c: 0 0 bd;
     }
