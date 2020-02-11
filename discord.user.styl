@@ -1543,9 +1543,10 @@
 
       // * Invite embed.
       [class*="wrapper-"][class*="userSelectNone"] {
+        margin-top: 0.5rem;
         rad: r;
         c: 0 bd hl;
-        box-shadow: bsh;
+        box-shadow: inset outer;
         [class*="title-"], [class*="guildDetail-"] { c: cm }
         [class*="guildName-"] { c: fg }
         [class*="guildNameExpired-"] { c: red }
@@ -1677,7 +1678,9 @@
 
   /// Embeds.
   [class *= 'embedWrapper-'] {
+    margin-top: 0.5rem;
     c: fg 0 hl;
+    box-shadow: inset outer;
     /// Base text.
     [class *= 'Provider-'], [class *= 'Description-'] {
       c: cm;
@@ -1874,7 +1877,6 @@
       rad: r;
       c: 0 bd hl;
       border-width: 1px i;
-      box-shadow: 0 2px 4px shadow;
       code {
         rad: r;
         c: fg bd t;
