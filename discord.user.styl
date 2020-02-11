@@ -89,6 +89,7 @@
   green   = var(--green);
   white   = var(--white);
   outer   = 0 0 0 1px bd;
+  inner   = inset outer;
   t       = var(--t);
   r       = var(--radius);
   i       = !important;
@@ -475,7 +476,7 @@
     [class*="regionSelectModal-"] {
       rad: r;
       c: 0 0 bg;
-      box-shadow: inset outer, bsh;
+      box-shadow: inner, bsh;
       [class*="Option-"] {
         rad: r;
         c: 0 bd bg;
@@ -540,7 +541,7 @@
   // Modals -> Folder settings.
   [class*="small-"][role="dialog"] {
     c: 0 0 bg;
-    box-shadow: inset outer, 0 2px 8px shadow;
+    box-shadow: inner, 0 2px 8px shadow;
     h5 { c: cm }
     [class*="close-"] { c: cm }
     [class*="defaultColor-"] { c: fg }
@@ -677,7 +678,7 @@
   [class *= 'attachPopout-'] {
     rad: r;
     c: fg 0 hl;
-    box-shadow: bsh, inset outer;
+    box-shadow: bsh, inner;
     /// Text color.
     [class *= 'RowText'] { c: fg }
     > [role = 'button']:hover { c: 0 0 bd }
@@ -1254,7 +1255,7 @@
         > [class*="searchBar-"][class*="searchBar-"] {
           min-width: 240px;
           c: 0 0 bd;
-          box-shadow: 0 2px 4px -2px shadow, inset outer;
+          box-shadow: 0 2px 4px -2px shadow, inner;
         }
       }
       // ? Some magic for placeholder text.
@@ -1291,7 +1292,7 @@
         height: unset;
         padding: 0.125rem 0.25rem;
         c: cm 0 bd;
-        box-shadow: inset outer;
+        box-shadow: inner;
         // Input text color.
         [class*="DraftEditor-"] { c: cm }
         // Blocks.
@@ -1456,9 +1457,9 @@
         /// Options.
         [class *= 'buttons-'] [class *= 'wrapper-'] {
           c: fg bd hl;
-          box-shadow: bsh, inset outer;
+          box-shadow: bsh, inner;
           &:hover, &:focus-within {
-            box-shadow: 0 4px 8px sh, inset outer i;
+            box-shadow: 0 4px 8px sh, inner i;
           }
           [class *= 'button-']:hover { c: 0 0 #88888810 }
           [class *= 'selected-'] { c: fg 0 bd }
@@ -1546,7 +1547,7 @@
         margin-top: 0.5rem;
         rad: r;
         c: 0 bd hl;
-        box-shadow: inset outer;
+        box-shadow: inner;
         [class*="title-"], [class*="guildDetail-"] { c: cm }
         [class*="guildName-"] { c: fg }
         [class*="guildNameExpired-"] { c: red }
@@ -1618,7 +1619,6 @@
     [class*="autocomplete-"][class*="autocomplete-"] {
       c: 0 0 hl;
       rad: r r 0 0;
-      // box-shadow: inset outer;
       border: 1px solid bd;
       border-bottom: none;
       [class*="header-"] {
@@ -1626,7 +1626,7 @@
         [class*="backButton-"], [class*="title-"] { c: fg }
         [class*="searchBar-"] {
           c: 0 0 bg;
-          box-shadow: inset outer;
+          box-shadow: inner;
           input[class] { c: fg bd bg }
         }
       }
@@ -1680,7 +1680,7 @@
   [class *= 'embedWrapper-'] {
     margin-top: 0.5rem;
     c: fg 0 hl;
-    box-shadow: inset outer;
+    box-shadow: inner;
     /// Base text.
     [class *= 'Provider-'], [class *= 'Description-'] {
       c: cm;
@@ -1870,7 +1870,7 @@
       &.inline {
         padding: 2px 4px;
         c: 0 0 hl;
-        box-shadow: inset outer;
+        box-shadow: inner;
       }
     }
     pre {
@@ -2199,7 +2199,7 @@
       [class*="consent-"] {
         rad: r;
         c: 0 bd bg;
-        box-shadow: inset outer;
+        box-shadow: inner;
         [class*="title-" i] { c: fg }
         [class*="body-" i] { c: cm }
       }
