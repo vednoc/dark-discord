@@ -672,29 +672,14 @@
     }
   }
 
-  // Global -> Context/invite popouts.
-  [id *= 'popout_'] {
-    /// Chat -> Message context menu.
-    > div > [class *= 'container-'][role = 'menu'] {
-      border: 1px solid bd;
-      c: 0 0 hl;
-      box-shadow: bsh;
-      [class *= 'itemGroup-'] {
-        [class *= 'itemBase-']:hover { c: 0 0 bd }
-        [class *= 'label-'] { c: fg }
-      }
-    }
-    /// Spotify invitation/Upload a File/etc.
-    [class *= 'attachPopout-'] {
-      rad: r;
-      c: fg 0 bg;
-      // Text color.
-      [class *= 'RowText'] { c: cm }
-      > [class *= 'attachPopoutRow']:hover {
-        c: 0 0 bd;
-        [class *= 'RowText'] { c: fg }
-      }
-    }
+  // Popouts -> Inputbar Spotify/upload menu.
+  [class *= 'attachPopout-'] {
+    rad: r;
+    c: fg 0 hl;
+    box-shadow: bsh, inset outer;
+    /// Text color.
+    [class *= 'RowText'] { c: fg }
+    > [role = 'button']:hover { c: 0 0 bd }
   }
 
   // * Add role popout.
