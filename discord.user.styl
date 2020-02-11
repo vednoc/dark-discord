@@ -1451,9 +1451,13 @@
             }
           }
         }
-        [class*="operations"] {
-          c: cm;
-          a { c: fg }
+
+        /// Options.
+        [class *= 'buttons-'] [class *= 'wrapper-'] {
+          c: red bd hl;
+          box-shadow: bsh, inset outer;
+          [class *= 'button-']:hover { c: 0 0 #88888810 }
+          [class *= 'selected-'] { c: fg 0 bd }
         }
 
         // Attachments.
