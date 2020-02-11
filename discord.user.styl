@@ -1364,13 +1364,9 @@
         [class*="pulsingEllipsisItem-"] { c: 0 0 fg }
       }
 
-      // ? Transparentize extra elements.
-      // ! Careful with this; might need to be removed.
       > div {
-        c: 0 0 t;
-        // ? Messages/input form container.
-        [class^="messagesWrapper"] {
-          c: 0 0 t;
+        /// Chat wrapper.
+        [class ^= 'messagesWrapper-'] {
           /// Inputbar pseudo-element background.
           & + form::before { background: none i }
           // ? LocalBot messages.
