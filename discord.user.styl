@@ -1480,7 +1480,7 @@
           }
         }
         /// Message.
-        [class*='message-'] {
+        [class *= 'message-']:not([class *= 'mentioned-']) {
           &[class *= 'selected-'], /.mouse-mode ^[-1..-3]:hover {
             c: 0 0 t;
             &::before {
@@ -1518,6 +1518,7 @@
           position: absolute;
           c: 0 ac ac;
         }
+        &:hover::after { opacity: 0.13 }
       }
 
       /// Message dividers.
