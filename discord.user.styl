@@ -77,6 +77,7 @@
   cm      = var(--lighter);
   ac      = var(--accent);
   shadow  = var(--shadow);
+  sh      = var(--shadow);
   bsh     = var(--bshadow);
   yellow  = var(--yellow);
   orange  = var(--orange);
@@ -1454,8 +1455,11 @@
 
         /// Options.
         [class *= 'buttons-'] [class *= 'wrapper-'] {
-          c: red bd hl;
+          c: fg bd hl;
           box-shadow: bsh, inset outer;
+          &:hover, &:focus-within {
+            box-shadow: 0 4px 8px sh, inset outer i;
+          }
           [class *= 'button-']:hover { c: 0 0 #88888810 }
           [class *= 'selected-'] { c: fg 0 bd }
         }
