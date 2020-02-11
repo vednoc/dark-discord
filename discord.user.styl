@@ -612,14 +612,21 @@
     [class *= 'Streaming-']::before { c: 0 violet }
     /// Tabs.
     [class *= 'tabBarContainer-'] {
+      padding: 0;
       c: 0 bd hl;
       [class *= 'item-'] {
+        margin: 0;
+        flex: 1 1 auto;
+        justify-content: center;
         margin-bottom: -1px;
         border-bottom-width: 1px;
         transition: 0.15s ease;
         c: cm t 0;
         &:hover { c: fg }
-        &[style *= 'border-color: rgb']:not(#z) { c: fg ac }
+        &[style $= '255);']:not(#z), &[class *= 'selected-'] {
+          c: ac 0 bg;
+          box-shadow: 1px 0 bd, -1px 0 bd;
+        }
       }
     }
     /// Body.
