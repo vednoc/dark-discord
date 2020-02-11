@@ -290,7 +290,7 @@
     &::before { c: 0 0 ac }
     &::after {
       c: 0 0 fg;
-      box-shadow: 0 2px 4px shadow i;
+      box-shadow: bsh i;
     }
     &[class*="valueChecked"] {
       c: 0 0 ac;
@@ -436,7 +436,7 @@
         rad: r;
         border: 1px solid;
         c: 0 bd bg;
-        box-shadow: 0 2px 4px shadow;
+        box-shadow: bsh;
         [class*="markup-"] { c: fg }
         [class*="timestamp"] { c: cm }
       }
@@ -475,18 +475,18 @@
     [class*="regionSelectModal-"] {
       rad: r;
       c: 0 0 bg;
-      box-shadow: 0 0 0 1px inset bd, 0 2px 4px shadow;
+      box-shadow: inset outer, bsh;
       [class*="Option-"] {
         rad: r;
         c: 0 bd bg;
         &:hover {
           c: 0 ac;
-          box-shadow: 0 2px 4px shadow;
+          box-shadow: bsh;
         }
         [class*="Flag-"] {
           c: 0 0 t;
           transition: 0.3s ease;
-          box-shadow: 0 2px 4px shadow;
+          box-shadow: bsh;
           ../:hover [class*="Flag-"] { transform: translateY(-4px) i }
         }
         [class*="Name-"] { c: cm }
@@ -659,7 +659,7 @@
       border: 1px solid bd;
       rad: r;
       c: 0 0 bg;
-      box-shadow: 0 2px 4px shadow;
+      box-shadow: bsh;
       [class *= 'separator-'] { c: 0 bd }
       [class *= 'itemBase-'] {
         c: cm;
@@ -1854,7 +1854,7 @@
   // * Gifted Nitro wrapper.
   [class*="applicationTile-"] {
     c: 0 0 bd;
-    box-shadow: 0 0 0 1px shadow;
+    box-shadow: outer;
     [class*="description-"] {
       c: cm;
       [class*="gameTitle-"] { c: fg }
@@ -2193,7 +2193,7 @@
       }
       [class*="avatarUploaderIndicator-"] {
         c: 0 0 bd;
-        box-shadow: 0 2px 4px shadow;
+        box-shadow: bsh;
       }
       // ? Consent element.
       [class*="consent-"] {
@@ -2209,7 +2209,7 @@
         div { color: inherit }
         + [class*="-menu"] {
           c: 0 bd bg;
-          box-shadow: 0 2px 4px shadow;
+          box-shadow: bsh;
           span { c: cm }
           [class*="-option"]:hover, [class*="12o7ek3"] {
             c: 0 0 bd;
@@ -2362,7 +2362,7 @@
       &::before {
         rad: r;
         c: 0 bd hl;
-        box-shadow: 0 2px 4px shadow;
+        box-shadow: bsh;
       }
     }
   }
