@@ -1504,9 +1504,9 @@
           content: '';
           pos: 0 0 0 0;
           position: absolute;
-          rad: 3px 0 0 3px;
           overflow: hidden;
           c: 0 t ac;
+          if ( chat_shorter == 1 ) { rad: 3px 0 0 3px }
         }
         /// Background.
         &::after {
@@ -1514,9 +1514,9 @@
           content: '';
           pos: 0 0 0 0;
           opacity: 0.1;
-          rad: 3px;
           position: absolute;
           c: 0 ac ac;
+          if ( chat_shorter == 1 ) { rad: 3px }
         }
         &:hover::after { opacity: 0.13 }
       }
