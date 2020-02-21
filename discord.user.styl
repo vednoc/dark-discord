@@ -1117,7 +1117,7 @@
       [class *= 'header-'] {
         c: fg;
         box-shadow: 0 1px bd;
-        &:hover { c: 0 0 hl }
+        &:hover, ../ [class *= 'selected-'] > header { c: 0 0 bd }
       }
       // ? Remove unnecessary shadow on notification bar.
       [class*="positionedContainer-"] > [class*="unread"] > div {
@@ -1173,13 +1173,16 @@
         /// Muted/locked channels.
         [class *= 'muted-'],
         [class *= 'modeLocked-'] {
-          opacity: 0.6;
-          [class *= 'name-'] { c: cm }
-          [class *= 'name-']:hover { c: fg }
+          [class *= 'name-'] {
+            opacity: 0.6;
+            c: cm;
+            &:hover { c: fg }
+          }
         }
         /// Collapsed.
         [class *= 'clickable-'], [class *= 'collapsed-'] {
           [class *= 'name-'] { c: cm }
+          &:hover > header { c: fg }
         }
         // On event.
         &:hover, &[class*="selected-"] {
