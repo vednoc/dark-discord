@@ -1327,7 +1327,7 @@
         &::after {
           content: '';
           position: absolute;
-          right: 20px; bottom: 20px; left: 20px;
+          right: 20px; bottom: 0; left: 20px;
           border-bottom: 1px solid bd;
         }
       }
@@ -1395,6 +1395,9 @@
             time { opacity: 0.6; c: cm }
           }
         }
+        /[class *= 'default-'][class *= 'base-'] {
+          h1 { c: fg }
+        }
       }
 
       /// Messages.
@@ -1402,13 +1405,15 @@
         c: 0 0 t;
         /// Compact -> Message timestamps.
         [class *= 'messageCompact-'] {
+          /[class *= 'timestampCompact-'],
           [class *= 'timestamp']:not([class *= 'VisibleOnHover-']),
           &:hover [class *= 'VisibleOnHover-'] {
             c: cm;
           }
         }
         /// Message elements.
-        [class*="edited-"], [class*="timestampCozy-"] {
+        [class*="edited-"],
+        [class *= 'timestampCozy-'] {
           opacity: 0.5;
           c: cm;
         }
@@ -1595,7 +1600,7 @@
     [class *= 'attachWrapper-'] { c: 0 bd }
     // Input text color.
     [class *= 'placeholder-'], textarea { c: cm }
-    [class *= 'slateTextArea-'] { c: fg }
+    [class *= 'slateTextArea-'] { caret-color: fg; c: fg }
     // Dividers.
     [class*="divider"], [class*="Divider"] { c: 0 0 bd }
     /// Rounded corner tweaks.
@@ -1661,6 +1666,11 @@
     pre, [class *= 'inlineCode-'] {
       font-family: var(--codearea);
       c: 0 0 bd;
+    }
+    /// Operations in editing mode.
+    + [class *= 'operations-'] {
+      c: cm;
+      a { c: fg }
     }
   }
 
