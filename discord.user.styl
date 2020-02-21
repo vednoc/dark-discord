@@ -1550,7 +1550,7 @@
         c: 0 bd hl;
         box-shadow: inner;
         [class*="title-"], [class*="guildDetail-"] { c: cm }
-        [class*="guildName-"] { c: fg }
+        [class*="guildName-"], [class*="count-"] { c: fg }
         [class*="guildNameExpired-"] { c: red }
         [class*="Outlined-"] {
           c: 0 bd bd;
@@ -1693,7 +1693,11 @@
     /// Titles.
     [class *= 'Title-'], [class *= 'AuthorName-'] { c: fg }
     /// Links.
-    [class *= 'TitleLink-'] { c: ac }
+    [class *= 'anchor-'], [class *= 'Link-'] { c: ac }
+    /// Footer.
+    [class *= 'FooterText-'] { c: cm }
+    /// GitHub repository.
+    &[style *= 'rgb(30\, 35\, 39)'] { c: 0 bd }
     /// Don't override color bars if a color is already applied.
     &:not([style *= 'border-color']) { c: 0 bd }
   }
