@@ -1234,12 +1234,11 @@
       }
     }
 
-    // * Search bar.
-    [class*="privateChannels-"] > [class*="searchBar-"] {
+    // Sidebar -> Search bar.
+    [class *= 'privateChannels-'] > [class *= 'searchBar-'] {
       box-shadow: 0 1px bd;
-      // The actual search bar.
-      [class*="searchBarComponent-"] {
-        c: 0 bd t;
+      [class *= 'searchBarComponent-'] {
+        c: cm bd bd;
         input { c: fg }
       }
     }
