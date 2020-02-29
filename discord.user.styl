@@ -1594,9 +1594,13 @@
     c: 0 bd;
     /// Fix rounded corners.
     > div { rad: r i }
+    /// Visible message content while editing/writing a message.
+    [class *= 'scrollableContainer-'] {
+        max-height: var(--textarea) i;
+        border: 1px solid bd i;
+    }
     // Input container.
     [class *= 'inner-'] {
-      border: 1px solid bd;
       c: 0 0 hl;
       [class *= 'buttons-'] { align-self: center }
       /// Line height of inputbar.
@@ -2680,11 +2684,6 @@
       text-rendering: optimizeLegibility i;
       -webkit-font-smoothing: auto i;
     }
-  }
-
-  /// Visible message content while editing/writing a message.
-  [class *= 'scrollableContainer-'] {
-    max-height: var(--textarea) i;
   }
 
   // Feat -> Shorter chat area.
