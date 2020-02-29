@@ -1415,7 +1415,7 @@
         }
         /// Message elements.
         [class*="edited-"],
-        [class *= 'timestampCozy-'] {
+        [class *= 'timestamp-'] > span {
           opacity: 0.5;
           c: cm;
         }
@@ -1488,13 +1488,16 @@
         }
         /// Message.
         [class *= 'message-']:not([class *= 'mentioned-']) {
-          &[class *= 'selected-'], /.mouse-mode ^[-1..-3]:hover {
+          &[class *= 'selected-'],
+          &:not([class *= 'zalgo-']),
+          /.mouse-mode ^[-1..-3]:hover {
             c: 0 0 t;
             &::before {
               content: '';
+              z-index: -1;
+              opacity: 0.5;
               position: absolute;
               pos: 0 0 0 0;
-              opacity: 0.5;
               c: 0 0 hl;
               if ( chat_shorter == 1 ) { rad: r }
             }
