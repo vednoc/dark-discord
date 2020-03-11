@@ -727,6 +727,7 @@
         box-shadow: bsh;
         &:hover { c: fg }
       }
+      [class *= 'disabledButtonWrapper-'] > button { c: 0 sh sh }
       /// Activity section.
       [class*="activityUserPopout"] {
         border-top: 1px solid bd;
@@ -2416,7 +2417,7 @@
     &[class *= 'Outlined-'] {
       &[class *= 'Red-'] { c: red red }
       &[class *= 'Brand-'] { c: ac ac }
-      &[class *= 'White-'] { c: cm cm }
+      &[class *= 'White-'] { c: cm bd bg }
       &[class *= 'Primary-'] { c: fg cm hl }
       &:hover { opacity: 0.8 i }
     }
@@ -2426,7 +2427,7 @@
       &[class *= 'Primary-'] { c: fg 0 hl }
       &[class *= 'Brand-'] { c: white 0 ac }
       &[class *= 'Green-'] { c: white 0 green }
-      &[class *= 'White-'] { c: white white }
+      &[class *= 'White-'] { c: cm bd hl }
       &[class *= 'Grey-'] { c: fg 0 bd }
       &:not([disabled]):hover { opacity: 0.8 i }
     }
