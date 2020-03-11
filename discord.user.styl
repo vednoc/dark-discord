@@ -2266,9 +2266,11 @@
     // * Audit log.
     [class*="auditLog-"] {
       c: cm bd 0;
+      [class *= 'divider-'] { c: 0 0 bd }
       // Different headers.
-      [class*="headerClickable"] { c: cm 0 bg }
+      [class*="headerClickable"] { c: cm 0 hl }
       [class*="headerExpanded"] { c: cm 0 bd }
+      [class *= 'changeDetails-'] { c: 0 0 hl }
       // Text colors.
       [class*="userHook-"] {
         strong, > span:first-child, { c: fg }
