@@ -712,7 +712,11 @@
     c: 0 0 bg;
     box-shadow: bsh;
     [class *= 'headerText-'] {
-      [class *= 'username-']:not(#z) { c: fg }
+      [class *= 'username-']:not(#z),
+      /[class *= 'headerName-'],
+      /[class *= 'NoNickname-'] {
+        c: fg;
+      }
       [class *= 'Tag'] { c: cm }
     }
     /// Various modes.
