@@ -1591,13 +1591,14 @@
 
   /// Inputbar.
   [class *= 'channelTextArea-'] {
-    c: 0 bd;
+    c: 0 bd hl;
     /// Fix rounded corners.
-    > div { rad: r i }
+    &, > div { rad: r i }
     /// Visible message content while editing/writing a message.
     [class *= 'scrollableContainer-'] {
         max-height: var(--textarea) i;
         border: 1px solid bd i;
+        c: 0 0 bd;
     }
     // Input container.
     [class *= 'inner-'] {
