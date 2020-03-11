@@ -366,6 +366,10 @@
 
   // Feat -> Firefox scrollbar polyfill.
   if ( sb_firefox != 1 ) {
+    * {
+      scrollbar-color: #88888830 #88888815 i;
+      scrollbar-width: thin i;
+    }
     // ? ChannelInfo/SearchResults/Activity/Store/Modals/Friends/Notifications
     // ? ActivityFeed/QuickSwitcher/Channels/Autocomplete/Context/Chat.
     [class*="modal-"][class*="modal-"][class*="size-"],
