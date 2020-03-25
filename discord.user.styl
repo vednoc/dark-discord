@@ -835,25 +835,21 @@
     &[class*="Green"] { c: green }
     &[class*="Orange"] { c: orange }
     &[class*="Yellow"] { c: yellow }
-    &[class*="Online-" i] { c: 0 0 green }
-    &[class*="Offline-" i] { c: 0 0 gray }
-
+    &[class*="Online-"] { c: 0 0 green }
+    &[class*="Offline-"] { c: 0 0 gray }
+    /// User status.
     &[style*="240\, 71\, 71"] { c: 0 0 red }
     &[style*="67\, 181\, 129"] { c: 0 0 green }
-    &[style*="250\, 166\, 26"] { c: 0 0 orange }
     &[style*="116\, 127\, 141"] { c: 0 0 gray }
-
-    [fill*="240\, 71\, 71"] { v: red }
-    [fill*="67\, 181\, 129"] { v: green }
-    [fill*="250\, 166\, 26"] { v: orange }
-    [fill*="116\, 127\, 141"] { v: gray }
-  }
-  // Primary status indicator.
-  [class*="cursorDefault-"] {
-    [fill*="240\, 71\, 71"] { v: red }
-    [fill*="67\, 181\, 129"] { v: green }
-    [fill*="250\, 166\, 26"] { v: orange }
-    rect[mask *= '09bd61cd'] { v: cm }
+    &[style*="250\, 166\, 26"] { c: 0 0 orange }
+    /// Current status.
+    /rect {
+        &[fill *= '240\, 71\, 71'] { v: red }
+        &[fill *= '67\, 181\, 129'] { v: green }
+        &[fill *= '250\, 166\, 26'] { v: orange }
+        &[fill *= "116\, 127\, 141"] { v: gray }
+        &[mask *= '09bd61cd'] { v: cm }
+    }
   }
   // Secondary status indicator.
   [class*="pointerEvents-"] {
