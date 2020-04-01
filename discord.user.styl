@@ -2527,7 +2527,7 @@
         }
       }
       // Folders!
-      > div[class] > div[class] > [class*="wrapper-"] {
+      [aria-label *= 'folder'] {
         c: 0 0 t;
         [class*="FolderBackground-"] {
           left: 10px;
@@ -2562,8 +2562,8 @@
             [class*="noIcon-"] { c: fg 0 hl }
           }
         }
-        // Reset servers within folders.
-        [class*="expandedGuilds-"] {
+        /// Reset servers within folders.
+        > [style *= 'height:'] {
           height: unset i;
           [class*="pill-"] { top: 0 i }
           [class*="blobContainer-"] [class*="wrapper-"] {
@@ -2638,21 +2638,21 @@
         box-shadow: 0 0 0 3px bd;
         [class *= 'icon-'] path[fill] { v: white }
       }
-      /// DM icons.
-      ~ div[style] {
-        margin-bottom: 8px;
-        height: $size i;
-        [class*="pill-"] { top: 0 }
-        [class*="svg-"] , div[class*="wrapper-"] {
-          height: $size i;
-          width: $size i;
-        }
-      }
       /// Fix for dragging guilds.
       > [class *= 'pill-'] + [draggable = 'false'] svg {
         width: $size i;
         height: $size i;
         div { c: 0 0 hl }
+      }
+    }
+    /// DM icons.
+    [class *= 'alContainer-'] ~ div[style *= 'height: 56px'] {
+      margin-bottom: 8px;
+      height: $size i;
+      [class*="pill-"] { top: 0 }
+      [class*="svg-"] , div[class*="wrapper-"] {
+        height: $size i;
+        width: $size i;
       }
     }
   }
