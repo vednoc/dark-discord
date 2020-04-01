@@ -941,11 +941,8 @@
     }
   }
 
-  // * Search results.
-  [class*="popout-"] > [class*="container-"] {
-    rad: r;
-    c: 0 0 bg;
-    box-shadow: outer;
+  // Chat -> Search menu.
+  [class *= 'resultsGroup-'] {
     // Message context menu.
     > [class*="item-"][class*="button-"] {
       c: cm;
@@ -986,6 +983,12 @@
         strong { c: ac }
         span, svg { c: cm }
       }
+    }
+    /// Wrapper.
+    /.container-3ayLPN {
+      rad: r;
+      c: 0 0 hl;
+      box-shadow: inner, bsh i;
     }
   }
 
