@@ -1690,6 +1690,11 @@
       c: cm;
       a { c: fg }
     }
+    /// Hide scrollbar.
+    ::-webkit-scrollbar {
+      background: hl i;
+      &-track { &, &-piece, &-thumb { visibility: hidden i }}
+    }
   }
 
   /// Embeds.
