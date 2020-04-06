@@ -1709,7 +1709,6 @@
 
   /// Embeds.
   [class *= 'embedWrapper-'] {
-    margin-top: 0.5rem;
     c: fg 0 hl;
     box-shadow: inner;
     /// Base text.
@@ -1961,7 +1960,8 @@
       position: relative;
       text-decoration: none;
       rad: 3px;
-      c: ac 0 t;
+      c: 0 0 t;
+      &:not([style ^= 'color']) { c: ac }
       &::before {
         content: '';
         pos: 0 0 0 0;
