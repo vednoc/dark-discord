@@ -318,11 +318,21 @@
 
   // * Global -> Notices.
   [class*="notice-"] {
+    rad: 0;
+    box-shadow: 0 1px bd i;
     &[class*="noticeDefault-"] {
       c: white 0 orange;
       [class*="button"] {
         rad: r;
-        c: white white 0;
+        c: white white;
+        &:hover { c: orange 0 white }
+      }
+    }
+    &[class*="noticeBrand-"] {
+      c: white 0 ac;
+      [class*="button"] {
+        rad: r;
+        c: white white;
         &:hover { c: orange 0 white }
       }
     }
