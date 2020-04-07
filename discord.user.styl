@@ -1081,6 +1081,23 @@
           }
         }
       }
+      /// Library.
+      > [class *= 'scroller-'] {
+        c: 0 0 bg;
+        [class *= 'header-'] { c: 0 0 t }
+      }
+      /// Store.
+      /[class *= 'applicationStore-'] {
+        c: 0 0 t;
+        [class *= 'container-'], [class *= 'scroller-'] { c: 0 0 bg }
+        [class *= 'headerBar-'] {
+          c: 0 0 hl;
+          + div::before {
+            border-bottom: 1px solid bd i;
+            box-shadow: none;
+          }
+        }
+      }
     }
 
     /// Friends -> User/Activity tables.
