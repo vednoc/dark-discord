@@ -158,6 +158,8 @@
         [class *= 'note-'] { c: cm }
       }
     }
+    /// Settings -> Description.
+    /[class *= 'descriptionBox-'] { c: red 0 hl }
   }
 
   // App -> Login.
@@ -301,7 +303,7 @@
 
   // * Global -> Inputs.
   [class*="inputWrapper-"] {
-    input, [class*="multiInput-"] {
+    input, textarea, [class*="multiInput-"], /[class *= 'copyInputDefault-'] {
       rad: r;
       c: fg bd hl;
       &:focus, &[class*="focused-"] { c: 0 ac }
@@ -2328,12 +2330,17 @@
     }
     // Change server region.
     [class*="container-"][role="button"] {
-      c: 0 bd bg;
+      c: 0 bd hl;
       [class*="name-"] { c: fg }
       [class*="button-"] {
         rad: r;
         &[class*="colorGrey-"] { c: cm 0 bd }
         ../ [class*="button-"] { c: fg 0 bd }
+        /[class *= 'regionSelectModalOption-'] {
+          c: 0 bd hl;
+          div { transition: transform 0.2s ease; c: fg }
+          &:hover div { transform: scale(1.2) }
+        }
       }
     }
     // Connected accounts.
@@ -2412,6 +2419,7 @@
     &[style*="rgb(250"] { c: 0 yellow yellow }
     &[style*="rgb(245"] { c: 0 orange orange }
     &[style*="rgb(240"] { c: 0 red red }
+    &[style*="rgb("] [class *= 'descChecked-'] { c: white }
     // Colorized cards text.
     [class*="title-"][style*="rgb(67"] { c: green }
     [class*="title-"][style*="rgb(250"] { c: yellow }
