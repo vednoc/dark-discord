@@ -2572,7 +2572,7 @@
         }
       }
       // Folders!
-      [class *= 'wrapper-'] {
+      > div > div > div > [class *= 'wrapper-'] {
         c: 0 0 t;
         [class*="FolderBackground-"] {
           left: 10px;
@@ -2581,6 +2581,7 @@
           // Folder wrapper reset.
           &[class*="collapsed-"] { c: 0 0 bg }
           &:not([class*="collapsed"]) {
+            bottom: 0px i;
             c: 0 0 bg;
             box-shadow: 0 0 0 2px bg, 0 0 0 4px hl;
             // Remove folder background when expanded.
@@ -2610,7 +2611,7 @@
         /// Reset servers within folders.
         > [style *= 'height:'] {
           height: unset i;
-          [class*="pill-"] { top: 0 i }
+          [class*="pill-"] { top: 6px i }
           [class*="blobContainer-"] [class*="wrapper-"] {
             width: unset;
             height: unset;
