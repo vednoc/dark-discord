@@ -1143,6 +1143,14 @@
       }
     }
 
+    // Friends -> Add friend.
+    [class *= 'addInputWrapper-'] {
+        h2 + div { c: cm }
+        h2, input { c: fg }
+        form { c: fg bd hl }
+        /[class *= 'sectionHeader-'] { c: 0 bd }
+    }
+
     // Sidebar -> Channels.
     [class*="sidebar-"] {
       border-right: 1px solid;
