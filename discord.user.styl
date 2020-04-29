@@ -1105,6 +1105,7 @@
       &::before { box-shadow: none i }
       [class *= 'peopleColumn-'] {
         c: 0 0 bg;
+        [class *= 'title-'] { c: fg }
         header, [class *= 'subtext-'] { c: cm }
         [class *= 'actionButton-'] { c: 0 0 hl }
         [class *= 'ListItem-'] {
@@ -1809,6 +1810,8 @@
       c: cm;
       box-shadow: none i;
     }
+    /// Invite button.
+    svg[class *= 'InviteButton'] { c: cm }
     /// Channels.
     [class^="channel-"] {
       c: fg;
