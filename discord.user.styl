@@ -569,7 +569,7 @@
   }
 
   // Modals -> User profile.
-  [class^='modal-'] > div > [class *= 'root'] {
+  [class^='modal-'] > div > div > [class *= 'root'] {
     border: 1px solid bd;
     rad: r;
     c: 0 0 bg;
@@ -725,14 +725,12 @@
     box-shadow: bsh;
     [class *= 'headerText-'] {
       [class *= 'username-']:not(#z),
-      /[class *= 'headerName-'],
-      /[class *= 'NoNickname-'] {
-        c: fg;
-      }
+      /[class *= 'headerName-'], /[class *= 'NoNickname-'] { c: fg }
       [class *= 'TagVerified'] { c: white }
+      [class *= 'headerTag-'] { c: cm }
     }
     /// Various modes.
-    > [class *= 'header-'] {
+    [class *= 'header-'][class *= 'size'] {
       position: relative;
       border-bottom: 1px solid bd;
       rad: r r 0 0;
@@ -789,7 +787,7 @@
       }
     }
     /// Footer.
-    > [class *= 'footer-'] {
+    [class *= 'footer-'] {
       c: fg bd t;
       /// Wumpus!
       [class *= 'wumpusShown-'] [class *= 'wumpusTooltip-'] {
