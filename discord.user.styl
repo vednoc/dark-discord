@@ -1667,10 +1667,11 @@
     }
     // ? Emojis, mentions, commands popout.
     [class*="autocomplete-"][class*="autocomplete-"] {
+      margin-bottom: -10px i;
+      rad: r r 0 0 i;
       c: 0 0 hl;
-      rad: r r 0 0;
       border: 1px solid bd;
-      border-bottom: none;
+      box-shadow: none i;
       [class*="header-"] {
         box-shadow: 0 1px bd;
         [class*="backButton-"], [class*="title-"] { c: fg }
@@ -1703,6 +1704,7 @@
           c: fg 0 bd;
         }
         [class*="Text-"] { c: cm }
+        [class *= 'colorStandard-'] { c: fg }
       }
       [class*="autocompleteInner-"] {
         border: none i;
