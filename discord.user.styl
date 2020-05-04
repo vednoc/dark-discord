@@ -192,6 +192,16 @@ if ( next == 1 ) {
         +w(0 'scroller-') { c: 0 0 t }
     }
 
+    /// Sidebar.
+    +w(0 sidebar-) {
+        border-right: 1px solid bd i;
+        +w(0 panels-) { border-top: 1px solid bd i }
+        // TODO: Get back to this background color.
+        +w(2 container-) { c: 0 0 bb }
+        // Sidebar :: Status menu.
+        +w(3 menu-) { border: 1px solid bd i }
+    }
+
     body {
         c: 0 0 bg;
         /// Feat -> Custom UI font.
