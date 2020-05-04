@@ -50,13 +50,12 @@
 w()
     a = arguments
     list = ''
-    a[0] != 1 ? x = '' : x = '&'
+    a[0] == 1 ? x = '&' : a[0] == 2 ? x = '+ ' : a[0] == 3 ? x = '/' : x = ''
     for item, index in a[1 .. length(a)]
         if index
             list += ', ' + x + '[class*="' + item + '"]'
         else
             list += x + '[class*="' + item + '"]'
-
     {list}
         {block}
 // Color mixin.
