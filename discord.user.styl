@@ -45,6 +45,20 @@
 @var color    shadow       'Color: Shadow               ' #00000025
 ==/UserStyle== */
 
+// Class mixin.
+/// Use it instead of: [class *= 'foo_bar']
+w()
+    a = arguments
+    list = ''
+    a[0] != 1 ? x = '' : x = '&'
+    for item, index in a[1 .. length(a)]
+        if index
+            list += ', ' + x + '[class*="' + item + '"]'
+        else
+            list += x + '[class*="' + item + '"]'
+
+    {list}
+        {block}
 @-moz-document regexp('https?://discord(app)?.com/(channels|library|store|gui.*|log.*)(/.*)?') {
 if ( next == 1 ) {
     :root {
