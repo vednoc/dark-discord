@@ -137,6 +137,18 @@ if ( next == 1 ) {
     t       = var(--t);
     r       = var(--radius);
     i       = !important;
+
+    // Settings -> Userstyle version.
+    [class *= 'side-'] > div:first-child::before {
+        display: block;
+        padding: 1rem 0;
+        margin-bottom: 1rem;
+        content: '🌚 ' var(--note);
+        text-transform: initial;
+        font-size: 1rem;
+        font-weight: 500;
+        box-shadow: 0 1px bd;
+    }
 } else {
   :root {
     --note    : 'Dark-Discord v0.33.9';
