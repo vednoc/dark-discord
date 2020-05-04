@@ -138,6 +138,24 @@ if ( next == 1 ) {
     r       = var(--radius);
     i       = !important;
 
+    body {
+        c: 0 0 bg;
+        /// Feat -> Custom UI font.
+        &, button, input, select, textarea, ::placeholder {
+            font-family: ui_font, Whitney, Helvetica Neue, Helvetica, Arial, sans-serif;
+        }
+        /// App -> Core.
+        [class *= 'appMount-'] {
+            c: 0 0 t;
+            /// Skeleton/crashed page.
+            > [class *= 'themeDark-'] {
+                c: 0 0 bg;
+                [class *= 'text-'] > h4 { c: fg }
+                [class *= 'note-'] { c: cm }
+            }
+        }
+    }
+
     // Settings -> Userstyle version.
     [class *= 'side-'] > div:first-child::before {
         display: block;
