@@ -8,6 +8,8 @@
 @supportURL   https://gitlab.com/vednoc/dark-discord/issues
 @updateURL    https://gitlab.com/vednoc/dark-discord/raw/master/discord.user.styl
 @preprocessor stylus
+
+@var checkbox next         '[Dev]: Next version' 0
 @var checkbox fix_fonts    'Fix chat font size' 1
 @var checkbox fix_pixels   '[Experimental] Fix text sub-pixel rendering' 1
 @var checkbox chat_shorter 'Shorter chat messages' 0
@@ -44,6 +46,61 @@
 ==/UserStyle== */
 
 @-moz-document regexp('https?://discord(app)?.com/(channels|library|store|gui.*|log.*)(/.*)?') {
+if ( next == 1 ) {
+    :root {
+        --note    : 'Dark-Discord NEXT';
+        --bb      : darken(bg, 5%);
+        --dark    : bg;
+        --darken  : hl;
+        --darker  : bd;
+        --light   : fg;
+        --lighter : cm;
+        --accent  : ac;
+        --shadow  : shadow;
+        --bshadow : 0 2px 4px var(--shadow);
+        --yellow  : yellow;
+        --orange  : orange;
+        --red     : red;
+        --magenta : magenta;
+        --violet  : violet;
+        --blue    : blue;
+        --cyan    : cyan;
+        --green   : green;
+        --white   : white;
+        --t       : transparent !important;
+        --radius  : b_radius;
+        --textarea: input_height;
+        --codearea: code_font, Consolas, Liberation Mono, Menlo, Courier, monospace;
+        --icinvert: ic_invert;
+    }
+
+    // Use stylus-lang variables with CSS variables.
+    bb      = var(--bb);
+    bg      = var(--dark);
+    bg      = var(--dark);
+    hl      = var(--darken);
+    bd      = var(--darker);
+    fg      = var(--light);
+    cm      = var(--lighter);
+    ac      = var(--accent);
+    shadow  = var(--shadow);
+    sh      = var(--shadow);
+    bsh     = var(--bshadow);
+    yellow  = var(--yellow);
+    orange  = var(--orange);
+    red     = var(--red);
+    magenta = var(--magenta);
+    violet  = var(--violet);
+    blue    = var(--blue);
+    cyan    = var(--cyan);
+    green   = var(--green);
+    white   = var(--white);
+    outer   = 0 0 0 1px bd;
+    inner   = inset outer;
+    t       = var(--t);
+    r       = var(--radius);
+    i       = !important;
+} else {
   :root {
     --note    : 'Dark-Discord v0.33.9';
     --dark    : bg;
