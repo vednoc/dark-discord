@@ -59,6 +59,29 @@ w()
 
     {list}
         {block}
+// Color mixin.
+/// All colors: `c: fg bd bg;`
+/// Only border-color: `c: 0 bd;`
+c(x, y = 0, z = 0, xi = 1, yi = 1, zi = 1) {
+    i = !important;
+    if x is a 'call' or x is a 'rgba' {            color: xi is 0? x : x i }
+    if y is a 'call' or y is a 'rgba' {     border-color: yi is 0? y : y i }
+    if z is a 'call' or z is a 'rgba' { background-color: zi is 0? z : z i }
+}
+
+// SVG colors.
+v(x, y = 0, xi = 1, yi = 1) {
+    i = !important;
+    if x is a 'call' or x is a 'rgba' {   fill: xi is 0? x : x i }
+    if y is a 'call' or y is a 'rgba' { stroke: yi is 0? y : y i }
+}
+
+// Border radius mixin.
+rad() { border-radius: arguments }
+
+// Box-shadow mixin.
+b() { box-shadow: arguments }
+
 @-moz-document regexp('https?://discord(app)?.com/(channels|library|store|gui.*|log.*)(/.*)?') {
 if ( next == 1 ) {
     :root {
@@ -165,25 +188,6 @@ if ( next == 1 ) {
   t       = var(--t);
   r       = var(--radius);
   i       = !important;
-
-  // Color mixin.
-  /// All colors: `c: fg bd bg;`
-  /// Only border-color: `c: 0 bd;`
-  c(x, y = 0, z = 0, xi = 1, yi = 1, zi = 1) {
-    i = !important;
-    if x is a 'call' or x is a 'rgba' {            color: xi is 0? x : x i }
-    if y is a 'call' or y is a 'rgba' {     border-color: yi is 0? y : y i }
-    if z is a 'call' or z is a 'rgba' { background-color: zi is 0? z : z i }
-  }
-  // SVG colors.
-  v(x, y = 0, xi = 1, yi = 1) {
-    i = !important;
-    if x is a 'call' or x is a 'rgba' {   fill: xi is 0? x : x i }
-    if y is a 'call' or y is a 'rgba' { stroke: yi is 0? y : y i }
-  }
-
-  // Border radius mixin.
-  rad() { border-radius: arguments }
 
   // * Compact_lines helper mixins.
   line(x, y) {
