@@ -204,7 +204,28 @@ if ( next == 1 ) {
         * { scrollbar-color: ac #88888810 i }
     }
 
-    /// Guilds.
+    // Base styles.
+    body {
+        c: 0 0 bg;
+
+        /// Feat -> Custom UI font.
+        &, button, input, select, textarea, ::placeholder {
+            font-family: ui_font, Whitney, Helvetica Neue, Helvetica, Arial, sans-serif;
+        }
+
+        /// App -> Core.
+        [class *= 'appMount-'] {
+            c: 0 0 t;
+            /// Skeleton/crashed page.
+            > [class *= 'themeDark-'] {
+                c: 0 0 bg;
+                [class *= 'text-'] > h4 { c: fg }
+                [class *= 'note-'] { c: cm }
+            }
+        }
+    }
+
+    // Guilds.
     +w(0 'guilds-') {
         b: inset -1px 0 bd i;
         c: 0 0 hl;
@@ -218,7 +239,7 @@ if ( next == 1 ) {
         }
     }
 
-    /// Sidebar.
+    // Sidebar.
     /// NOTE: Excludes user settings.
     :not([class *= 'Region']) > {
         +w(0 sidebar-) {
@@ -231,7 +252,7 @@ if ( next == 1 ) {
         }
     }
 
-    /// Global -> Context menus.
+    // Global -> Context menus.
     +w(0 contextMenu-) {
         border: 1px solid bd i;
     }
@@ -253,25 +274,6 @@ if ( next == 1 ) {
             }
         }
     }
-
-    body {
-        c: 0 0 bg;
-        /// Feat -> Custom UI font.
-        &, button, input, select, textarea, ::placeholder {
-            font-family: ui_font, Whitney, Helvetica Neue, Helvetica, Arial, sans-serif;
-        }
-        /// App -> Core.
-        [class *= 'appMount-'] {
-            c: 0 0 t;
-            /// Skeleton/crashed page.
-            > [class *= 'themeDark-'] {
-                c: 0 0 bg;
-                [class *= 'text-'] > h4 { c: fg }
-                [class *= 'note-'] { c: cm }
-            }
-        }
-    }
-
 } else {
   :root {
     --note    : 'Dark-Discord v0.34.0';
@@ -1969,7 +1971,7 @@ if ( next == 1 ) {
     [class *= 'FooterText-'] { c: cm }
     /// GitHub repository.
     &[style *= 'rgb(30\, 35\, 39)'] { c: 0 bd }
-    /// Don't override color bars if a color is already applied.
+    /// Do not override color bars if a color is already applied.
     &:not([style *= 'border-color']) { c: 0 bd }
   }
 
