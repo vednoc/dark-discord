@@ -198,6 +198,13 @@ if ( next == 1 ) {
         b: inset -1px 0 bd i;
         c: 0 0 hl;
         +w(0 'scroller-') { c: 0 0 t }
+        /// -> Logo.
+        +w(0 'listItem-' 'wrapper', 2) {
+            +w(0 'childWrapper-') { c: cm }
+            +w(1 'selected-') {
+                +w(0 'childWrapper-') { c: white 0 ac }
+            }
+        }
     }
 
     /// Sidebar.
