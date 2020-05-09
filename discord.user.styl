@@ -375,6 +375,40 @@ if ( next == 1 ) {
             }
         }
     }
+
+    // Feat -> Shorter messages.
+    if (chat_shorter) {
+        chat_width = 80ch;
+        +w(0 'messagesWrapper-') {
+            padding-left: 12px;
+            /// -> Messages.
+            +w(0 'messages-') {
+                > div {
+                    width: 100%;
+                    max-width: chat_width;
+                    margin-left: auto;
+                    margin-right: auto;
+                    box-sizing: border-box;
+                }
+            }
+            /// -> Bars.
+            +w( 4 'barBase-') {
+                margin-left: auto;
+                margin-right: auto;
+                max-width: chat_width;
+            }
+            /// -> Textarea.
+            + form {
+                box-sizing: border-box;
+                &::before { content: unset i }
+                > div {
+                    max-width: chat_width;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+        }
+    }
 } else {
   :root {
     --note    : 'Dark-Discord v0.34.0';
