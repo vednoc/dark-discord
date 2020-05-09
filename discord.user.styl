@@ -94,7 +94,7 @@ rad() { border-radius: arguments }
 // Box-shadow mixin.
 b() { box-shadow: arguments }
 
-@-moz-document regexp('https?://discord(app)?.com/(channels|library|store|gui.*|log.*)(/.*)?') {
+@-moz-document regexp('https?://discord(app)?.com/(app|channels|library|store|gui.*|log.*)(/.*)?') {
 if ( next == 1 ) {
 
     // Use stylus-lang variables with CSS variables.
