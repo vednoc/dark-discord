@@ -268,16 +268,20 @@ if ( next == 1 ) {
         +w(0 'sidebarRegion-') {
             /// -> Add userstyle version.
             nav > div:first-child::before {
-                padding: 1rem 0;
-                margin-bottom: 1rem;
+                padding: 16px 0;
+                margin-bottom: 16px;
                 content: '🌚 ' var(--note);
                 text-transform: initial;
                 font-weight: 500;
-                font-size: 1rem;
+                font-size: 16px;
                 display: block;
                 b: 0 1px bd;
                 c: fg;
             }
+        }
+        /// -> Add border to content area.
+        +w(0 'contentRegion-') {
+            border-left: 1px solid bd i;
         }
     }
 
