@@ -223,6 +223,12 @@ if ( next == 1 ) {
                 [class *= 'note-'] { c: cm }
             }
         }
+
+        /// User -> Status icon.
+        [mask *= 'offline'], [fill *= '116\, 127\, 141'] { v: gray }
+        [mask *= 'online'], [fill *= '67\, 181\, 129'] { v: green }
+        [mask *= 'idle'], [fill *= '250\, 166\, 26'] { v: orange }
+        [mask *= 'dnd'], [fill *= '240\, 71\, 71'] { v: red }
     }
 
     // Guilds.
