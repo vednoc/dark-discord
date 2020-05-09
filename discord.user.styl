@@ -225,6 +225,24 @@ if ( next == 1 ) {
         border: 1px solid bd i;
     }
 
+    // Settings.
+    +w(0 'SidebarView-') {
+        +w(0 'sidebarRegion-') {
+            /// -> Add userstyle version.
+            nav > div:first-child::before {
+                padding: 1rem 0;
+                margin-bottom: 1rem;
+                content: '🌚 ' var(--note);
+                text-transform: initial;
+                font-weight: 500;
+                font-size: 1rem;
+                display: block;
+                b: 0 1px bd;
+                c: fg;
+            }
+        }
+    }
+
     body {
         c: 0 0 bg;
         /// Feat -> Custom UI font.
@@ -243,17 +261,6 @@ if ( next == 1 ) {
         }
     }
 
-    // Settings -> Userstyle version.
-    [class *= 'side-'] > div:first-child::before {
-        display: block;
-        padding: 1rem 0;
-        margin-bottom: 1rem;
-        content: '🌚 ' var(--note);
-        text-transform: initial;
-        font-size: 1rem;
-        font-weight: 500;
-        box-shadow: 0 1px bd;
-    }
 } else {
   :root {
     --note    : 'Dark-Discord v0.34.0';
