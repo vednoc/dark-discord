@@ -344,6 +344,14 @@ if ( next == 1 ) {
         }
     }
 
+    // Startup.
+    +w(0 'ready-') {
+        /// -> Add theme version below loading status.
+        +w(2 'text-') {
+            div:last-child:before { content: var(--note) }
+        }
+    }
+
     // Friends -> Active now.
     +w(0 'nowPlaying' 'outer-', 2) {
         /// -> States.
