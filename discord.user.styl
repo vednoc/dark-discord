@@ -47,15 +47,17 @@
 
 // Class mixin.
 /// Use it instead of: [class *= 'foo_bar']
-w()
+w(arguments, inline = 0)
     a = arguments
+    u = unquote
     list = ''
-    a[0] == 1 ? x = '&' : a[0] == 2 ? x = '+ ' : a[0] == 3 ? x = '/' : x = ''
+    a[0] == 1 ? x = '&' : a[0] == 2 ? x = '+ ' : a[0] == 3 ? x = '/' : a[0] == 4 ? x = '> ' : x = ''
+    inline == 1 ? _i = '' : inline == 2 ? _i = ' ' : _i = ', '
     for item, index in a[1 .. length(a)]
         if index
-            list += ', ' + x + '[class*="' + item + '"]'
+            list += s('%s%s[class*="%s"]', u(_i), u(x), u(item))
         else
-            list += x + '[class*="' + item + '"]'
+            list += s('%s[class*="%s"]', u(x), u(item))
     {list}
         {block}
 // Color mixin.
