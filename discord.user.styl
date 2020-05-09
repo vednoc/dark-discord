@@ -10,6 +10,10 @@
 @preprocessor stylus
 
 @var checkbox next         '[Dev]: Next version' 0
+@var checkbox next_colors  '[Dev]: Enable color generator' 1
+@var color    next_bg      '[Dev]: Base background color ' #1f232a
+@var color    next_fg      '[Dev]: Base foreground color ' #eeeeee
+
 @var checkbox fix_fonts    'Fix chat font size' 1
 @var checkbox fix_pixels   '[Experimental] Fix text sub-pixel rendering' 1
 @var checkbox chat_shorter 'Shorter chat messages' 0
@@ -88,11 +92,46 @@ P(a, _z = 0, _c = '', _p = absolute) {
     if a[3] is a 'call' or a[3] is a 'unit' {   left: a[3] }
 }
 
+// Bare RGB mixin.
+/// Converts HEX to bare rrr-ggg-bbb format.
+to_rgb(input) {
+    unquote(slice(s('%s', rgba(input, 0)), 5, -3))
+}
+
 // Border radius mixin.
 rad() { border-radius: arguments }
 
 // Box-shadow mixin.
 b() { box-shadow: arguments }
+
+// Color generator.
+_d = darken;
+_l = lighten;
+BG = next_bg;
+FG = next_fg;
+
+if(dark(BG)) {
+    b1 = -10%; b2 = -15%; b3 = -05%;
+    f1 =  15%;
+    if(luminosity(BG) <= 0.015) {
+        b1 = -04%; b2 = -20%; b3 = -08%;
+        f1 =  30%;
+    } else if(luminosity(BG) <= 0.03) {
+        b1 =  25%; b2 = -08%; b3 =  08%;
+        f1 =  20%;
+    }
+/// NOTE: Added just so that Stylus doesn't error out for using a light color.
+} else {
+    b1 =  10%; b2 =  15%; b3 =  05%;
+    f1 = -15%;
+}
+
+bg = { '': BG, en: _d(BG, b1), er: _d(BG, b2), -soft: _d(BG, b3) }
+fg = { '': FG, en: _d(FG, f1) }
+
+define('dark'  + key, val) for key, val in bg
+define('light' + key, val) for key, val in fg
+
 
 @-moz-document regexp('https?://discord(app)?.com/(app|channels|library|store|gui.*|log.*)(/.*)?') {
 if ( next == 1 ) {
@@ -176,12 +215,21 @@ if ( next == 1 ) {
 
         /// Dark-Discord variables.
         --note    : 'Dark-Discord NEXT';
+        if(!next_colors) {
         --bb      : darken(_bg, 5%);
         --dark    : _bg;
         --darken  : _hl;
         --darker  : _bd;
         --light   : _fg;
         --lighter : _cm;
+        } else {
+        --bb      : dark-soft;
+        --dark    : dark;
+        --darken  : darken;
+        --darker  : darker;
+        --light   : light;
+        --lighter : lighten;
+        }
         --accent  : _ac;
         --shadow  : _sh;
         --bshadow : 0 2px 4px var(--shadow);
