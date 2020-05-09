@@ -208,13 +208,16 @@ if ( next == 1 ) {
     }
 
     /// Sidebar.
-    +w(0 sidebar-) {
-        border-right: 1px solid bd i;
-        +w(0 panels-) { border-top: 1px solid bd i }
-        // TODO: Get back to this background color.
-        +w(2 container-) { c: 0 0 bb }
-        // Sidebar :: Status menu.
-        +w(3 menu-) { border: 1px solid bd i }
+    /// NOTE: Excludes user settings.
+    :not([class *= 'Region']) > {
+        +w(0 sidebar-) {
+            border-right: 1px solid bd i;
+            +w(0 panels-) { border-top: 1px solid bd i }
+            // TODO: Get back to this background color.
+            +w(2 container-) { c: 0 0 bb }
+            // Sidebar -> Status menu.
+            +w(3 menu-) { border: 1px solid bd i }
+        }
     }
 
     /// Global -> Context menus.
