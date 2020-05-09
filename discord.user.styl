@@ -11,6 +11,7 @@
 
 @var checkbox next         '[Dev]: Next version' 0
 @var checkbox next_colors  '[Dev]: Enable color generator' 1
+@var checkbox next_debug   '[Dev]: Color generator debug ' 1
 @var color    next_bg      '[Dev]: Base background color ' #1f232a
 @var color    next_fg      '[Dev]: Base foreground color ' #eeeeee
 
@@ -135,6 +136,16 @@ define('light' + key, val) for key, val in fg
 
 @-moz-document regexp('https?://discord(app)?.com/(app|channels|library|store|gui.*|log.*)(/.*)?') {
 if ( next == 1 ) {
+
+    if(next_colors && next_debug) {
+        :root body::before {
+            content: \
+            '        BG: ' + luminosity(BG) + \
+            '________FG: ' + luminosity(FG) + \
+            '________bg: ' + bg;
+            c: var(--light);
+        }
+    }
 
     // Use stylus-lang variables with CSS variables.
     bb      = var(--bb);
