@@ -274,6 +274,17 @@ if ( next == 1 ) {
             }
         }
     }
+
+    // Friends -> Active now.
+    +w(0 'nowPlaying' 'outer-', 2) {
+        /// -> States.
+        +w(1 ' active-') {
+            &, ../:hover { c: 0 0 bd }
+            +w(0 ' active-' 'inset-') { c: 0 0 hl }
+        }
+        /// -> Rich presence.
+        +w(0 'inset-') { c: 0 0 bg }
+    }
 } else {
   :root {
     --note    : 'Dark-Discord v0.34.0';
