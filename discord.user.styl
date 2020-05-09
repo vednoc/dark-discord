@@ -123,11 +123,11 @@ if ( next == 1 ) {
         --interactive-hover:            fg; //#dcddde;
         --interactive-active:           fg; //#fff;
         --interactive-muted:            cm; //#4f545c;
-        --background-primary:           bb; //#36393f; // switch to bg
-        --background-secondary:         bg; //#2f3136; // switch to bb
+        --background-primary:           bg; //#36393f;
+        --background-secondary:         bb; //#2f3136;
         --background-secondary-alt:     bg; //#292b2f;
         --background-tertiary:          hl; //#202225;
-        --background-accent:            ac; //#4f545c;
+        --background-accent:            bd; //#4f545c;
         --background-mobile-primary:    #36393f;
         --background-mobile-secondary:  #2f3136;
         --background-floating:          bb; //#18191c
@@ -145,19 +145,21 @@ if ( next == 1 ) {
         --logo-primary:                 #fff;
         --focus-primary:                #00b0f4;
         --guild-header-text-shadow:     0 1px 1px rgba(0,0,0,0.4);
-        --channeltextarea-background:   #40444b;
+        --channeltextarea-background:   hl;
         --activity-card-background:     #202225;
         --textbox-markdown-syntax:      cm; //#8e9297;
-        --deprecated-card-bg:           rgba(32,34,37,0.6);
-        --deprecated-card-editable-bg:  rgba(32,34,37,0.3);
+        --deprecated-card-bg:           hl;
+        --deprecated-card-editable-bg:  bb;
         --deprecated-store-bg:          #36393f;
-        --deprecated-quickswitcher-input-background: #72767d;
-        --deprecated-quickswitcher-input-placeholder: hsla(0,0%,100%,0.3);
-        --deprecated-text-input-bg: rgba(0,0,0,0.1);
-        --deprecated-text-input-border: rgba(0,0,0,0.3);
-        --deprecated-text-input-border-hover: #040405;
-        --deprecated-text-input-border-disabled: #202225;
-        --deprecated-text-input-prefix: #dcddde;
+        /// Settings -> My account -> Edit settings.
+        --deprecated-text-input-bg:              bg;
+        --deprecated-text-input-border:          bd;
+        --deprecated-text-input-border-hover:    hl;
+        --deprecated-text-input-border-disabled: bg;
+        --deprecated-text-input-prefix:          blue;
+        /// Modals -> Quickswitcher -> Fix input colors.
+        --deprecated-quickswitcher-input-background:  hl;
+        --deprecated-quickswitcher-input-placeholder: cm;
 
         /// Dark-Discord variables.
         --note    : 'Dark-Discord NEXT';
@@ -184,6 +186,9 @@ if ( next == 1 ) {
         --textarea: input_height;
         --codearea: code_font, Consolas, Liberation Mono, Menlo, Courier, monospace;
         --icinvert: ic_invert;
+
+        /// TODO: Implement scrollbar options.
+        * { scrollbar-color: ac #88888810 i }
     }
 
     /// Guilds.
