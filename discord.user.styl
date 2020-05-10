@@ -486,6 +486,14 @@ if ( next == 1 ) {
 
     // Chat -> Base.
     +w(0 'chat-') {
+        /// -> Header.
+        +w(4 'title-') {
+            c: 0 0 bb;
+            /// -> Gradient.
+            +w(0 'children-') {
+                &::after { background: linear-gradient(90deg, t 0, bb) i }
+            }
+        }
         /// -> Embedded messages.
         +w(0 'embedWrapper-') {
             rad: r;
