@@ -484,6 +484,29 @@ if ( next == 1 ) {
         }
     }
 
+    // Chat -> Base.
+    +w(0 'chat-') {
+        /// -> 'Jump to present' bar.
+        +w(0 'jumpToPresentBar-') {
+            > button {
+                c: cm;
+                transition: 0.2s ease;
+                ../:hover button { c: fg }
+            }
+        }
+        /// -> 'Has more' bar.
+        +w(0 'hasMore-') {
+            c: ac bd hl;
+            transition: 0.2s ease;
+            &:hover { opacity: 0.6 }
+        }
+        +w(0 'newMessagesBar-') {
+            c: 0 0 bd;
+            b: bsh i;
+            > button { c: fg }
+        }
+    }
+
     // Chat -> Markup.
     +w(0 'markup-') {
         /// -> Reset code font and border color.
@@ -513,7 +536,7 @@ if ( next == 1 ) {
                 }
             }
             /// -> Bars.
-            +w( 4 'barBase-') {
+            +w(4 'barBase-') {
                 margin-left: auto;
                 margin-right: auto;
                 max-width: chat_width;
