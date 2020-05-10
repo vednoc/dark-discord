@@ -500,6 +500,16 @@ if ( next == 1 ) {
             transition: 0.2s ease;
             &:hover { opacity: 0.6 }
         }
+        /// -> Textarea.
+        +w(0 'channelTextArea-') {
+            rad: r i;
+            c: 0 0 hl;
+            > div {
+                rad: inherit;
+                c: 0 0 hl;
+                b: inner;
+            }
+        }
         +w(0 'newMessagesBar-') {
             c: 0 0 bd;
             b: bsh i;
