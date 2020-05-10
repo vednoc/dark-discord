@@ -425,6 +425,23 @@ if ( next == 1 ) {
                 }
             }
         }
+        /// Guilds -> Channel info.
+        +w(1 'root-1gCeng') {
+            c: 0 0 bg;
+            b: inner, var(--elevation-high) i;
+        }
+        /// Guilds -> Gift a Nitro.
+        +w(3 'shaker-') {
+            +w(0 'root-1gCeng') {
+                border: 1px solid bd i;
+                b: var(--elevation-high) i;
+                c: 0 0 bg;
+                +w(0 'footer-') {
+                    b: inset 0 1px 0 bd;
+                    c: 0 0 hl;
+                }
+            }
+        }
     }
 
     // Chat -> Markup.
