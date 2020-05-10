@@ -379,12 +379,43 @@ if ( next == 1 ) {
                 rad: r;
                 border: 1px solid bd i;
                 b: var(--elevation-high) i;
+                +w(4 'topSection') {
+                    z-index: 1 i;
+                    position: relative;
+                    border-bottom: 1px solid bd i;
+                    c: 0 0 hl;
+                    &::before {
+                        opacity: 0.08;
+                        P(0 0 0 0, -1)
+                    }
+                    /// TODO: Tweak text colors later.
+                    * { z-index: 8 i; c: fg }
+                    /// -> Status colors.
+                    +w(4 'headerFill-') { c: 0 0 sh }
+                }
                 /// -> Buttons.
                 +w(0 'button') {
                     c: white 0 ac;
                     transition: 0.2s ease-in;
                     &:hover { opacity: 0.6 i }
                     > div { c: white }
+                }
+                /// -> Activity state.
+                +w(4 'Xbox') {
+                    +w(0 'colorBrand-') { c: 0 0 magenta }
+                    &::before { c: 0 0 magenta }
+                }
+                +w(4 'Playing') {
+                    +w(0 'colorBrand-') { c: 0 0 blue }
+                    &::before { c: 0 0 blue }
+                }
+                +w(4 'Spotify') {
+                    +w(0 'colorGreen-') { c: 0 0 green }
+                    &::before { c: 0 0 green }
+                }
+                +w(4 'Streaming') {
+                    +w(0 'colorBrand-') { c: 0 0 violet }
+                    &::before { c: 0 0 violet }
                 }
                 /// -> Tab state.
                 +w(0 'tabBar-') {
