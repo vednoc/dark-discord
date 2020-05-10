@@ -112,22 +112,15 @@ BG = next_bg;
 FG = next_fg;
 
 if(dark(BG)) {
-    b1 = -10%; b2 = -15%; b3 = -05%;
-    f1 =  15%;
-    if(luminosity(BG) <= 0.015) {
-        b1 = -04%; b2 = -20%; b3 = -08%;
-        f1 =  30%;
-    } else if(luminosity(BG) <= 0.03) {
-        b1 =  25%; b2 = -08%; b3 =  08%;
-        f1 =  20%;
-    }
+    b1 = -05%; b2 = -20%; b3 = -10%; b4 = -15%;
+    f1 =  -15%;
 /// NOTE: Added just so that Stylus doesn't error out for using a light color.
 } else {
-    b1 =  10%; b2 =  15%; b3 =  05%;
+    b1 =  05%; b2 =  20%; b3 =  10%; b4 =  15%;
     f1 = -15%;
 }
 
-bg = { '': BG, en: _d(BG, b1), er: _d(BG, b2), -soft: _d(BG, b3) }
+bg = { '': BG, en: _d(BG, b1), er: _d(BG, b2), -soft: _d(BG, b3), -hl: _d(BG, b4) }
 fg = { '': FG, en: _d(FG, f1) }
 
 define('dark'  + key, val) for key, val in bg
@@ -152,6 +145,7 @@ if ( next == 1 ) {
     bg      = var(--dark);
     bg      = var(--dark);
     hl      = var(--darken);
+    hh      = var(--dark-hl);
     bd      = var(--darker);
     fg      = var(--light);
     cm      = var(--lighter);
@@ -188,9 +182,9 @@ if ( next == 1 ) {
         --interactive-muted:            cm; //#4f545c;
         --background-primary:           bg; //#36393f;
         --background-secondary:         bb; //#2f3136;
-        --background-secondary-alt:     bg; //#292b2f;
-        --background-tertiary:          hl; //#202225;
-        --background-accent:            bd; //#4f545c;
+        --background-secondary-alt:     hl; //#292b2f;
+        --background-tertiary:          bd; //#202225;
+        --background-accent:            hh; //#4f545c;
         --background-mobile-primary:    #36393f;
         --background-mobile-secondary:  #2f3136;
         --background-floating:          bb; //#18191c
@@ -238,6 +232,7 @@ if ( next == 1 ) {
         --dark    : dark;
         --darken  : darken;
         --darker  : darker;
+        --dark-hl : dark-hl;
         --light   : light;
         --lighter : lighten;
         }
@@ -265,7 +260,7 @@ if ( next == 1 ) {
 
     // Base styles.
     body {
-        c: 0 0 bg;
+        c: 0 0 hl;
 
         /// Feat -> Custom UI font.
         &, button, input, select, textarea, ::placeholder {
@@ -293,7 +288,7 @@ if ( next == 1 ) {
     // Guilds.
     +w(0 'guilds-') {
         b: inset -1px 0 bd i;
-        c: 0 0 hl;
+        c: 0 0 hh;
         +w(0 'scroller-') { c: 0 0 t }
         /// -> Logo.
         +w(0 'listItem-' 'wrapper', 2) {
@@ -357,7 +352,7 @@ if ( next == 1 ) {
         /// -> States.
         +w(1 ' active-') {
             &, ../:hover { c: 0 0 bd }
-            +w(0 ' active-' 'inset-') { c: 0 0 hl }
+            +w(0 ' active-' 'inset-') { c: 0 0 bb }
         }
         /// -> Rich presence.
         +w(0 'inset-') { c: 0 0 bg }
