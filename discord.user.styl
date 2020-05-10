@@ -486,6 +486,22 @@ if ( next == 1 ) {
 
     // Chat -> Base.
     +w(0 'chat-') {
+        /// -> Embedded messages.
+        +w(0 'embedWrapper-') {
+            rad: r;
+            b: inner;
+        }
+        /// -> Guild invites.
+        +w(0 'messages-') {
+            +w(0 'userSelectNone-') {
+                +w(1 'cursorDefault-') {
+                    margin-top: 1rem;
+                    rad: r;
+                    c: 0 0 hl;
+                    b: inner i;
+                }
+            }
+        }
         /// -> 'Jump to present' bar.
         +w(0 'jumpToPresentBar-') {
             > button {
