@@ -365,6 +365,37 @@ if ( next == 1 ) {
         +w(0 'inset-') { c: 0 0 bg }
     }
 
+    // Modals.
+    +w(0 'modal-') {
+        /// Backdrop.
+        +w(3 'backdrop') {
+            c: 0 0 bg;
+            opacity: 0.8 i;
+        }
+        /// Content.
+        +w(4 'inner-') {
+            /// User info modal.
+            +w(0 'root-') {
+                rad: r;
+                border: 1px solid bd i;
+                b: var(--elevation-high) i;
+                /// -> Buttons.
+                +w(0 'button') {
+                    c: white 0 ac;
+                    transition: 0.2s ease-in;
+                    &:hover { opacity: 0.6 i }
+                    > div { c: white }
+                }
+                /// -> Tab state.
+                +w(0 'tabBar-') {
+                    [style *= ': rgb(255'] { c: 0 ac }
+                    [style *= '255\, 0.1'] { c: 0 bd }
+                    [style *= '255\, 0.4'] { c: cm }
+                }
+            }
+        }
+    }
+
     // Chat -> Markup.
     +w(0 'markup-') {
         /// -> Reset code font and border color.
