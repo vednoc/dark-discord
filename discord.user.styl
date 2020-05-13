@@ -270,11 +270,18 @@ if ( next == 1 ) {
         /// App -> Core.
         [class *= 'appMount-'] {
             c: 0 0 t;
-            /// Skeleton/crashed page.
+            /// -> Skeleton/Crashed page.
             > [class *= 'themeDark-'] {
                 c: 0 0 bg;
                 [class *= 'text-'] > h4 { c: fg }
                 [class *= 'note-'] { c: cm }
+            }
+            /// -> Notice alert.
+            +w(0 'notice-') {
+                +w(1 'Brand-') {
+                    c: 0 0 ac;
+                    rad: 0;
+                }
             }
         }
 
