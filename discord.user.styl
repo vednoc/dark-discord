@@ -145,12 +145,15 @@ define('light' + key, val) for key, val in fg
 if ( next == 1 ) {
 
     if(next_colors && next_debug) {
-        :root body::before {
-            content: \
-            '        BG: ' + luminosity(BG) + \
-            '________FG: ' + luminosity(FG) + \
-            '________bg: ' + bg;
-            c: var(--light);
+        :root {
+            &::before {
+                content: \
+                '        BG: ' + luminosity(BG) + \
+                '________FG: ' + luminosity(FG) + \
+                '________bg: ' + bg;
+                c: var(--light);
+            }
+            body > div[id] { max-height: calc(100vh - 1em) }
         }
     }
 
