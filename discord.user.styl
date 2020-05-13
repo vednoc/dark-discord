@@ -311,11 +311,24 @@ if ( next == 1 ) {
     :not([class *= 'Region']) > {
         +w(0 sidebar-) {
             border-right: 1px solid bd i;
-            +w(0 panels-) { border-top: 1px solid bd i }
-            // TODO: Get back to this background color.
-            +w(2 container-) { c: 0 0 bb }
-            // Sidebar -> Status menu.
-            +w(3 menu-) { border: 1px solid bd i }
+            /// -> User status.
+            +w(0 panels-) {
+                border-top: 1px solid bd i;
+                c: 0 0 hl;
+                /// Popouts -> Status menu.
+                +w(3 'menu-') { border: 1px solid bd i }
+            }
+            /// -> Friends.
+            +w(2 'container-') {
+                c: 0 0 bg;
+                /// -> Header.
+                +w(4 'container-') { c: 0 0 bb }
+                /// -> Now playing.
+                +w(0 'nowPlaying') {
+                    b: inset 1px 0 bd i;
+                    c: 0 0 hl;
+                }
+            }
         }
     }
 
