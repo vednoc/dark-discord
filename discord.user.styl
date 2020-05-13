@@ -585,6 +585,13 @@ if ( next == 1 ) {
             b: bsh i;
             > button { c: fg }
         }
+        /// -> Message context menu.
+        +w(0 'buttonContainer-' 'buttons-' 'wrapper-', 2) {
+            c: 0 0 bb;
+            b: none i;
+            /// -> 'Delete Message' link.
+            +w(3 'danger-') { &, [class *= 'hint'] { c: red }}
+        }
     }
 
     // Chat -> Markup.
