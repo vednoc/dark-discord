@@ -285,20 +285,19 @@ if ( next == 1 ) {
         }
 
         /// App -> Core.
-        [class *= 'appMount-'] {
+        +w(0 'appMount-') {
             c: 0 0 t;
             /// -> Skeleton/Crashed page.
-            > [class *= 'themeDark-'] {
+            +w(4 'themeDark-') {
                 c: 0 0 bg;
-                [class *= 'text-'] > h4 { c: fg }
-                [class *= 'note-'] { c: cm }
+                +w(0 'text-') { > h4 { c: fg }}
+                +w(0 'note-') { c: cm }
             }
             /// -> Notice alert.
             +w(0 'notice-') {
-                +w(1 'Brand-') {
-                    c: 0 0 ac;
-                    rad: 0;
-                }
+                rad: 0;
+                +w(1 'Brand-') { c: 0 0 ac }
+                +w(1 'Default-') { c: 0 0 orange }
             }
         }
 
