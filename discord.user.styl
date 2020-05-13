@@ -352,6 +352,15 @@ if ( next == 1 ) {
                     c: 0 0 hl;
                 }
             }
+            /// -> Guild notifications.
+            +w(0 'bar-') {
+                c: fg 0 bg;
+                b: inner, bsh i;
+                +w(1 'mention-') {
+                    c: white 0 ac;
+                    b: bsh i;
+                }
+            }
         }
     }
 
@@ -526,7 +535,7 @@ if ( next == 1 ) {
         +w(4 'title-') {
             c: 0 0 bb;
             /// -> Gradient.
-            +w(0 'children-') {
+            +w(3 'children-') {
                 &::after { background: linear-gradient(90deg, t 0, bb) i }
             }
         }
