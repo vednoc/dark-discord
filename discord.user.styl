@@ -56,8 +56,17 @@ w(arguments, inline = 0)
     a = arguments
     u = unquote
     list = ''
-    a[0] == 1 ? x = '&' : a[0] == 2 ? x = '+ ' : a[0] == 3 ? x = '/' : a[0] == 4 ? x = '> ' : x = ''
-    inline == 1 ? _i = '' : inline == 2 ? _i = ' ' : _i = ', '
+
+    if      (a[0] == 1) { x = '&' }
+    else if (a[0] == 2) { x = '+' }
+    else if (a[0] == 3) { x = '/' }
+    else if (a[0] == 4) { x = '>' }
+    else                { x = ''  }
+
+    if      (inline == 1) { _i = ''   }
+    else if (inline == 2) { _i = ' '  }
+    else                  { _i = ', ' }
+
     for item, index in a[1 .. length(a)]
         if index
             list += s('%s%s[class*="%s"]', u(_i), u(x), u(item))
@@ -65,6 +74,7 @@ w(arguments, inline = 0)
             list += s('%s[class*="%s"]', u(x), u(item))
     {list}
         {block}
+
 // Color mixin.
 /// All colors: `c: fg bd bg;`
 /// Only border-color: `c: 0 bd;`
