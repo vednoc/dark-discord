@@ -112,12 +112,16 @@ BG = next_bg;
 FG = next_fg;
 
 if(dark(BG)) {
-    b1 = -05%; b2 = -20%; b3 = -10%; b4 = -15%;
-    f1 =  -15%;
+    b1 = -04%; b2 = -18%; b3 = -08%; b4 = -12%;
+    f1 =  15%;
+    if(luminosity(BG) <= 0.30) {
+        b1 = -04%; b2 = -18%; b3 = -08%; b4 = -12%;
+        f1 =  15%;
+    }
 /// NOTE: Added just so that Stylus doesn't error out for using a light color.
 } else {
-    b1 =  05%; b2 =  20%; b3 =  10%; b4 =  15%;
-    f1 = -15%;
+    b1 =  06%; b2 =  24%; b3 =  12%; b4 =  18%;
+    f1 = -25%;
 }
 
 bg = { '': BG, en: _d(BG, b1), er: _d(BG, b2), -soft: _d(BG, b3), -hl: _d(BG, b4) }
