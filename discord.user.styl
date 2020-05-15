@@ -241,8 +241,8 @@ if ( next == 1 ) {
         --deprecated-text-input-border-disabled: bg;
         --deprecated-text-input-prefix:          blue;
         /// Modals -> Quickswitcher -> Fix input colors.
-        --deprecated-quickswitcher-input-background:  hl;
-        --deprecated-quickswitcher-input-placeholder: fg-3;
+        --deprecated-quickswitcher-input-background:  hh;
+        --deprecated-quickswitcher-input-placeholder: fg-2;
 
         /// Dark-Discord variables.
         --note    : 'Dark-Discord NEXT';
@@ -421,12 +421,12 @@ if ( next == 1 ) {
 
     // Modals.
     +w(0 'modal-') {
-        /// Backdrop.
+        /// -> Backdrop.
         +w(3 'backdrop') {
             c: 0 0 bg;
             opacity: 0.8 i;
         }
-        /// Content.
+        /// -> Content.
         +w(4 'inner-') {
             /// User info modal.
             +w(0 'root-') {
@@ -477,6 +477,14 @@ if ( next == 1 ) {
                     [style *= '255\, 0.1'] { c: 0 bd }
                     [style *= '255\, 0.4'] { c: cm }
                 }
+            }
+        }
+        /// Global -> Quickswitcher.
+        +w(3 'quickswitcher-') {
+            &:not([class *= 'channel']) {
+                border: 1px solid bd i;
+                b: var(--elevation-high) i;
+                rad: r;
             }
         }
         /// Guilds -> Channel info.
