@@ -17,7 +17,8 @@
 
 @var checkbox fix_fonts    'Fix chat font size' 1
 @var checkbox fix_pixels   '[Experimental] Fix text sub-pixel rendering' 1
-@var checkbox chat_shorter 'Shorter chat messages' 0
+@var checkbox chat_short   'Shorter chat mode' 0
+@var text     chat_short_w 'Shorter chat width' 80ch
 @var checkbox ic_invert    'Icon inversion' 0
 @var checkbox min_guilds   'Minimize width of guilds area' 0
 @var checkbox mid_guilds   'Small guild icons' 0
@@ -616,8 +617,8 @@ if ( next == 1 ) {
     }
 
     // Feat -> Shorter messages.
-    if (chat_shorter) {
-        chat_width = 80ch;
+    if (chat_short) {
+        chat_width = chat_short_w;
         +w(0 'messagesWrapper-') {
             /// -> Messages.
             +w(0 'messages-') {
