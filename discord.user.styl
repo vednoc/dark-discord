@@ -619,7 +619,6 @@ if ( next == 1 ) {
     if (chat_shorter) {
         chat_width = 80ch;
         +w(0 'messagesWrapper-') {
-            padding-left: 12px;
             /// -> Messages.
             +w(0 'messages-') {
                 > div {
@@ -638,13 +637,10 @@ if ( next == 1 ) {
             }
             /// -> Textarea.
             + form {
-                box-sizing: border-box;
-                &::before { content: unset i }
-                > div {
-                    max-width: chat_width;
-                    margin-left: auto;
-                    margin-right: auto;
-                }
+                width: calc(100% - 32px);
+                max-width: chat_width;
+                margin-right: auto;
+                margin-left: auto;
             }
         }
     }
