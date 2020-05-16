@@ -684,6 +684,20 @@ if ( next == 1 ) {
                 width: @height;
             }
         }
+
+        /// Drawers -> Emoji picker.
+        +w(3 'drawerSizingWrapper-') {
+            /// -> Wrapper.
+            +w(4 'contentWrapper') {
+                border: 1px solid bd i;
+                b: var(--elevation-high) i;
+                rad: r;
+            }
+            /// -> Rounded corners.
+            +w(0 'categoryList-') {
+                rad: 0 0 0 r;
+            }
+        }
     }
 } else {
   :root {
