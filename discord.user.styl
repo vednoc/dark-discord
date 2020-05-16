@@ -576,6 +576,14 @@ if ( next == 1 ) {
                     b: inner i;
                 }
             }
+            /// -> Mentioned.
+            +w(0 'mentioned-') {
+                &::before {
+                    width: r;
+                    rad: r 0 0 r;
+                    c: 0 0 ac;
+                }
+            }
         }
         /// -> 'Jump to present' bar.
         +w(0 'jumpToPresentBar-') {
