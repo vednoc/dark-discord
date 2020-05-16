@@ -17,6 +17,7 @@
 @var color    next_ac      '[Dev]: Base accent color     ' #7289da
 
 @var checkbox e_jumbo      'Emotes: Smaller jumbo emotes' 1
+@var checkbox e_reaction   'Emotes: Larger reaction emotes' 1
 
 @var checkbox fix_fonts    'Fix chat font size' 1
 @var checkbox fix_pixels   '[Experimental] Fix text sub-pixel rendering' 1
@@ -673,6 +674,14 @@ if ( next == 1 ) {
                 width: 2.0rem;
                 height: 2.0rem;
                 min-height: 2.0rem;
+            }
+        }
+
+        /// Feat -> Larger reaction emotes.
+        if(e_reaction) {
+            /[class *= 'reaction-'] & {
+                height: 1.5rem;
+                width: @height;
             }
         }
     }
