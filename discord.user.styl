@@ -565,9 +565,9 @@ if ( next == 1 ) {
             rad: r;
             b: inner;
         }
-        /// -> Guild invites.
         +w(0 'messages-') {
             c: 0 0 t;
+            /// -> Guild invites.
             +w(0 'userSelectNone-') {
                 +w(1 'cursorDefault-') {
                     margin-top: 1rem;
@@ -609,6 +609,7 @@ if ( next == 1 ) {
                 b: inner;
             }
         }
+        +w(0 'cooldownWrapper-') { c: fg }
         +w(0 'newMessagesBar-') {
             c: 0 0 bd;
             b: bsh i;
@@ -617,7 +618,7 @@ if ( next == 1 ) {
         /// -> Message context menu.
         +w(0 'buttonContainer-' 'buttons-' 'wrapper-', 2) {
             c: 0 0 bb;
-            b: none i;
+            b: bsh i;
             /// -> 'Delete Message' link.
             +w(3 'danger-') { &, [class *= 'hint'] { c: red }}
         }
@@ -628,6 +629,10 @@ if ( next == 1 ) {
             +w(0 'clickable-') {
                 &:hover [class *= 'layout-'] { c: 0 0 bg }
             }
+        }
+        /// -> Hovered message.
+        +w(0 'message-') {
+            rad: r;
         }
     }
 
@@ -648,6 +653,7 @@ if ( next == 1 ) {
     if (chat_short) {
         chat_width = chat_short_w;
         +w(0 'messagesWrapper-') {
+            padding-left: 12px;
             /// -> Messages.
             +w(0 'messages-') {
                 > div {
