@@ -14,6 +14,9 @@
 @var checkbox next_debug   '[Dev]: Color generator debug ' 1
 @var color    next_bg      '[Dev]: Base background color ' #1f232a
 @var color    next_fg      '[Dev]: Base foreground color ' #eeeeee
+@var color    next_ac      '[Dev]: Base accent color     ' #7289da
+
+@var checkbox e_jumbo      'Emotes: Smaller jumbo emotes' 1
 
 @var checkbox fix_fonts    'Fix chat font size' 1
 @var checkbox fix_pixels   '[Experimental] Fix text sub-pixel rendering' 1
@@ -658,6 +661,18 @@ if ( next == 1 ) {
                 max-width: chat_width;
                 margin-right: auto;
                 margin-left: auto;
+            }
+        }
+    }
+
+    // Emojis.
+    .emoji {
+        /// Feat -> Smaller jumbo emotes!
+        if(e_jumbo) {
+            &.jumboable {
+                width: 2.0rem;
+                height: 2.0rem;
+                min-height: 2.0rem;
             }
         }
     }
