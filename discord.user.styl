@@ -560,13 +560,15 @@ if ( next == 1 ) {
                 &::after { background: linear-gradient(90deg, t 0, bb) i }
             }
         }
-        /// -> Embedded messages.
-        +w(0 'embedWrapper-') {
-            rad: r;
-            b: inner;
-        }
+        /// -> Chat area.
         +w(0 'messages-') {
             c: 0 0 t;
+            /// -> 'Has more' bar.
+            +w(0 'hasMore-') {
+                c: ac bd hl;
+                transition: 0.2s ease;
+                &:hover { opacity: 0.6 }
+            }
             /// -> Welcome -> Border color.
             +w(0 'base-19D3Qq') {
                 c: 0 bd;
@@ -578,6 +580,13 @@ if ( next == 1 ) {
                     rad: r;
                     c: 0 0 hl;
                     b: inner i;
+                }
+            }
+            /// -> Embedded links/media.
+            +w(0 'embedWrapper-') {
+                &:not([class *= 'imageZoom-']) {
+                    rad: r;
+                    b: inner;
                 }
             }
             /// -> Mentioned.
@@ -602,12 +611,6 @@ if ( next == 1 ) {
                 transition: 0.2s ease;
                 ../:hover button { c: fg }
             }
-        }
-        /// -> 'Has more' bar.
-        +w(0 'hasMore-') {
-            c: ac bd hl;
-            transition: 0.2s ease;
-            &:hover { opacity: 0.6 }
         }
         /// -> Textarea.
         +w(0 'channelTextArea-') {
