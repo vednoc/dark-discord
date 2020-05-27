@@ -493,6 +493,30 @@ if ( next == 1 ) {
                 }
             }
         }
+        /// Global -> Upload.
+        +w(3 'uploadModal-') {
+            border: 1px solid bd i;
+            b: var(--elevation-high) i;
+            c: 0 0 bg;
+            rad: r;
+            /// -> Preview.
+            +w(0 'icon-' 'image-', 0) {
+                c: 0 0 hl;
+                b: inner, bsh i;
+            }
+            /// -> Textarea.
+            +w(0 'textAreaUpload-' 'scrollableContainer-', 0) {
+                border: 1px solid bd i;
+                rad: r;
+            }
+            /// -> Footer.
+            +w(0 'footer-') {
+                border-top: 1px solid bd i;
+                c: 0 0 bb;
+                b: none i;
+                rad: 0 0 r r;
+            }
+        }
         /// Global -> Quickswitcher.
         +w(3 'quickswitcher-') {
             &:not([class *= 'channel']) {
