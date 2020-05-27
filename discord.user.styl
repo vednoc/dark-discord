@@ -11,7 +11,7 @@
 
 @var checkbox next         '[Dev]: Next version' 0
 @var checkbox next_colors  '[Dev]: Enable color generator' 1
-@var checkbox next_debug   '[Dev]: Color generator debug ' 1
+@var checkbox next_debug   '[Dev]: Color generator debug ' 0
 @var color    next_bg      '[Dev]: Base background color ' #1f232a
 @var color    next_fg      '[Dev]: Base foreground color ' #eeeeee
 @var color    next_ac      '[Dev]: Base accent color     ' #7289da
@@ -161,12 +161,22 @@ if ( next == 1 ) {
         :root {
             &::before {
                 content: \
-                '        BG: ' + luminosity(BG) + \
-                '________FG: ' + luminosity(FG) + \
-                '________bg: ' + bg;
+                '  ⭐ BG: ' + luminosity(BG) + \
+                '  ⭐ FG: ' + luminosity(FG) + \
+                '  🌟 bg: ' + bg + \
+                '  🌟 fg: ' + fg;
+                text-align: center;
+                position: absolute;
+                top: 0; left: 0; right: 0;
+                line-height: 2em;
+                height: 2em;
                 c: var(--light);
             }
-            body > div[id] { max-height: calc(100vh - 1em) }
+            body > div[id] {
+                margin-top: calc(2em + 0px);
+                max-height: calc(100vh - 2em);
+                box-shadow: 0 -1px var(--darker);
+            }
         }
     }
 
