@@ -22,7 +22,7 @@
 @var checkbox fix_fonts    'Fix chat font size' 1
 @var checkbox fix_pixels   '[Experimental] Fix text sub-pixel rendering' 1
 @var checkbox chat_short   'Shorter chat mode' 0
-@var text     chat_short_w 'Shorter chat width' 80ch
+@var text     chat_short_w 'Shorter chat width' 800px
 @var checkbox ic_invert    'Icon inversion' 0
 @var checkbox min_guilds   'Minimize width of guilds area' 0
 @var checkbox mid_guilds   'Small guild icons' 0
@@ -684,11 +684,20 @@ if ( next == 1 ) {
                 max-width: chat_width;
             }
             /// -> Textarea.
-            + form {
-                width: calc(100% - 32px);
-                max-width: chat_width;
-                margin-right: auto;
-                margin-left: auto;
+            + form > div {
+                +w(1 'channelTextArea-') {
+                    /// Textarea in DMs/Guilds/Annoncements.
+                    &, ../[aria-expanded], ../[class *= 'wrapper-'] {
+                        max-width: chat_width;
+                        margin-right: auto;
+                        margin-left: auto;
+                    }
+                }
+                +w(1 'typing-') {
+                    max-width: chat_width;
+                    margin-right: auto;
+                    margin-left: auto;
+                }
             }
         }
     }
