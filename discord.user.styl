@@ -127,10 +127,13 @@ BG = next_bg;
 FG = next_fg;
 
 if(dark(BG)) {
-    b1 = -04%; b2 = -18%; b3 = -08%; b4 = -12%;
-    f1 =  15%; f2 =  20%; f3 =  25%; f4 =  35%; f5 =  50%;
+    lum = luminosity(BG)
     /// TODO: Implement more rules.
-    if(luminosity(BG) <= 0.30) {
+    if(lum <= 0.5) {
+        b1 =  08%; b2 =  40%; b3 =  16%; b4 =  24%;
+        f1 =  15%; f2 =  20%; f3 =  25%; f4 =  35%; f5 =  50%;
+    }
+    if(lum <= 0.02) {
         b1 = -04%; b2 = -18%; b3 = -08%; b4 = -12%;
         f1 =  15%; f2 =  20%; f3 =  25%; f4 =  35%; f5 =  50%;
     }
@@ -453,7 +456,7 @@ if ( next == 1 ) {
                     border-bottom: 1px solid bd i;
                     c: 0 0 hl;
                     &::before {
-                        opacity: 0.08;
+                        opacity: 0.15;
                         P(0 0 0 0, -1)
                     }
                     /// TODO: Tweak text colors later.
@@ -573,12 +576,15 @@ if ( next == 1 ) {
             border-bottom: 1px solid bd i;
             c: 0 0 hl;
             &::before {
-                opacity: 0.08;
+                opacity: 0.15;
                 P(0 0 0 0, -1)
             }
             +w(4 'headerFill-') { c: 0 0 sh }
             /// TODO: Tweak text colors later.
-            * { z-index: 8 i; c: fg }
+            *:not([class *= 'bot']):not(path) {
+                z-index: 8 i;
+                c: fg;
+            }
             /// -> Status colors.
             +w(1 'Xbox') { &::before { c: 0 0 magenta }}
             +w(1 'Playing') { &::before { c: 0 0 blue }}
