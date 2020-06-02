@@ -143,7 +143,13 @@ if(dark(BG)) {
     f1 = -04%; f2 = -08%; f3 = -12%; f4 = -20%; f5 = -28%;
 }
 
-bg = { '': BG, en: _d(BG, b1), er: _d(BG, b2), -soft: _d(BG, b3), -hl: _d(BG, b4) }
+bg = {
+    '-0':    BG,
+    '-1': _d(BG, b1),
+    '-2': _d(BG, b2),
+    '-3': _d(BG, b3),
+    '-4': _d(BG, b4),
+}
 fg = {
     '-0':    FG,
     '-1': _d(FG, f1),
@@ -153,7 +159,7 @@ fg = {
     '-5': _d(FG, f5),
 }
 
-define('dark'  + key, val) for key, val in bg
+define('bg' + key, val) for key, val in bg
 define('fg' + key, val) for key, val in fg
 
 
@@ -185,7 +191,6 @@ if ( next == 1 ) {
 
     // Use stylus-lang variables with CSS variables.
     bb      = var(--bb);
-    bg      = var(--dark);
     bg      = var(--dark);
     hl      = var(--darken);
     hh      = var(--dark-hl);
@@ -271,11 +276,11 @@ if ( next == 1 ) {
         --light   : _fg;
         --lighter : _cm;
         } else {
-        --bb      : dark-soft;
-        --dark    : dark;
-        --darken  : darken;
-        --darker  : darker;
-        --dark-hl : dark-hl;
+        --bb      : bg-3;
+        --dark    : bg-0;
+        --darken  : bg-1;
+        --darker  : bg-2;
+        --dark-hl : bg-4;
         --light   : fg-0;
         --lighter : fg-1;
         }
