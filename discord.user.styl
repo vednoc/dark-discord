@@ -344,6 +344,35 @@ if ( next == 1 ) {
             &[style *= '250\, 166\, 26'] { c: 0 0 orange }
             &[style *= '240\, 71\, 71'] { c: 0 0 red }
         }
+
+        /// Feat -> Line numbers for code blocks.
+        if ( code_ln == 1 ) {
+            pre code {
+                position: relative;
+                padding-left: 3em i;
+                /// -> Generate a range of numbers.
+                n = '';
+                for num in 1..128 {
+                    n += s('%s ', num);
+                    if (num == 128) {
+                        n += s('%s', num)
+                    }
+                }
+                /// -> Psuedo-element as line numbers.
+                &::before {
+                    content: n;
+                    width: 2ch;
+                    opacity: 0.3;
+                    overflow-y: hidden;
+                    position: absolute;
+                    top: 0.5em; left: 0; bottom: 0.5em;
+                    padding: 0 0.5em 0 1.5em;
+                    white-space: pre-line;
+                    text-align: right;
+                    c: fg;
+                }
+            }
+        }
     }
 
     // Guilds.
