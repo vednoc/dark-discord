@@ -337,12 +337,18 @@ if ( next == 1 ) {
         [mask *= 'online'], [fill *= '67\, 181\, 129'] { v: green }
         [mask *= 'idle'], [fill *= '250\, 166\, 26'] { v: orange }
         [mask *= 'dnd'], [fill *= '240\, 71\, 71'] { v: red }
+
         /// Sidebar -> User status.
         +w(3 'status-') {
             &[style *= '116\, 127\, 141'] { c: 0 0 fg-4 }
             &[style *= '67\, 181\, 129'] { c: 0 0 green }
             &[style *= '250\, 166\, 26'] { c: 0 0 orange }
             &[style *= '240\, 71\, 71'] { c: 0 0 red }
+        }
+
+        /// Buttons.
+        [role = 'button'] {
+            &[style *= 'b(67\, 181\, 129'] { c: white 0 green }
         }
 
         /// Feat -> Line numbers for code blocks.
