@@ -346,6 +346,18 @@ if ( next == 1 ) {
             &[style *= '240\, 71\, 71'] { c: 0 0 red }
         }
 
+        /// Badges.
+        +w(0 'numberBadge-') {
+            /// Unread messages.
+            &[style *= 'nd-color: rgb(240\, 71\, 71)'],
+            /// Guilds -> New messages.
+            /[class *= 'mention-'][class *= 'bar'],
+            /// Chat -> Pinned messages.
+            /[class *= 'iconBadge-'] {
+                c: 0 0 ac;
+            }
+        }
+
         /// Buttons.
         [role = 'button'] {
             &[style *= 'b(67\, 181\, 129'] { c: white 0 green }
