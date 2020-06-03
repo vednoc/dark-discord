@@ -538,10 +538,17 @@ if ( next == 1 ) {
                     &::before { c: 0 0 violet }
                 }
                 /// -> Tab state.
-                +w(0 'tabBar-') {
+                +w(0 'tabBarContainer-') {
+                    c: 0 bd;
                     [style *= ': rgb(255'] { c: 0 ac }
                     [style *= '255\, 0.1'] { c: 0 bd }
                     [style *= '255\, 0.4'] { c: cm }
+                    /// Items.
+                    +w(0 'item-') {
+                        c: fg-3;
+                        &:hover { c: 0 bg-4 }
+                        +w(1 'selected-') { c: fg-0 ac }
+                    }
                 }
             }
         }
