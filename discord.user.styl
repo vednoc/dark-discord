@@ -366,16 +366,13 @@ if ( next == 1 ) {
                 }
                 /// -> Psuedo-element as line numbers.
                 &::before {
-                    content: n;
                     width: 2ch;
-                    opacity: 0.3;
                     overflow-y: hidden;
-                    position: absolute;
-                    top: 0.5em; left: 0; bottom: 0.5em;
+                    P(0.5em 0 0.5em 0px, 0, n);
                     padding: 0 0.5em 0 1.5em;
                     white-space: pre-line;
                     text-align: right;
-                    c: fg;
+                    c: fg-5;
                 }
             }
         }
