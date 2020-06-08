@@ -614,9 +614,13 @@ if ( next == 1 ) {
         +w(1 'lookFilled-') {
             transition: 0.2s ease;
             &:hover { opacity: 0.8 }
-            +w(1 'colorBrand-') {
-                c: white 0 ac;
-            }
+            +w(1 'colorBrand-') { c: white 0 ac }
+            +w(1 'colorGreen-') { c: white 0 green }
+        }
+        +w(1 'lookBlank-') {
+            /// Chat -> Emoji picker tab.
+            +w(1 'colorBrand-') { c: fg-5 }
+            +w(1 'colorBrand-' 'Active-', 1) { c: fg-2 0 bg-0 }
         }
     }
 
