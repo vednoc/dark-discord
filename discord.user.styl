@@ -315,6 +315,15 @@ if ( next == 1 ) {
             font-family: var(--f-ui) i;
         }
 
+        /// Shortcuts.
+        +w(0 'keybindShortcut') {
+            span {
+                c: fg-1 bg-2 bg-1
+                b: inset 0 -4px 0 bg-4 i
+                svg g { v: fg-3 }
+            }
+        }
+
         /// App -> Core.
         +w(0 'appMount-') {
             c: 0 0 t;
@@ -583,6 +592,15 @@ if ( next == 1 ) {
                 b: var(--elevation-high) i;
                 rad: r;
             }
+        }
+        /// Global -> Keyboard combos.
+        +w(3 'keyboardShortcutsModal') {
+            c: 0 0 bg-1
+            b: inner i
+            h1 { c: fg-1 }
+            h1 + div { c: fg-3 bg-2 }
+            +w(0 'Description') { c: fg-3 }
+            +w(0 'ddrArrows-') { filter: invert(0.8) hue-rotate(180deg) }
         }
         /// Guilds -> Channel info.
         +w(1 'root-1gCeng') {
