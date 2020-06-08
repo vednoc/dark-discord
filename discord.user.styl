@@ -667,6 +667,30 @@ if ( next == 1 ) {
         }
     }
 
+    // Popouts -> Search menu.
+    #search-results {
+        c: 0 0 bg-0
+        b: inner, bsh i
+
+        /// Header.
+        +w(4 'queryContainer-') {
+            c: fg-1 bg-2 t
+            strong { c: ac }
+        }
+
+        /// Items.
+        +w(0 'header-') { c: fg-4 }
+        +w(0 'anchor-') { c: fg-5 }
+        +w(0 'filter-' 'nonText-', 0) { c: fg-1 }
+        +w(0 'answer-' 'option-', 0) { c: fg-3 }
+        +w(0 'selected-') { c: 0 0 bg-3 }
+        +w(0 'option-') { &::after { background: none i }}
+
+        /// Search field.
+        +w(3 'searchFilter-') { c: fg-0 0 bg-1 }
+        +w(3 'searchAnswer-') { c: fg-0 0 bg-1 }
+    }
+
     // Chat -> Base.
     +w(0 'chat-') {
         /// -> Header.
