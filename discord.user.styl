@@ -487,11 +487,21 @@ if ( next == 1 ) {
     +w(0 'nowPlaying' 'outer-', 2) {
         /// -> States.
         +w(1 ' active-') {
-            &, ../:hover { c: 0 0 bd }
-            +w(0 ' active-' 'inset-') { c: 0 0 bb }
+            &, ../:hover { c: 0 0 hh }
+            +w(0 ' active-' 'inset-') { c: 0 0 bg }
         }
+
         /// -> Rich presence.
-        +w(0 'inset-') { c: 0 0 bg }
+        +w(0 'inset-') { c: 0 0 hl }
+
+        /// Popouts.
+        +w(3 'popout-38lTFE') {
+            c: 0 0 hl
+            b: inner, bsh i
+            +w(0 'enabled-' 'ListItem', 0) {
+                &:hover { c: 0 0 bg }
+            }
+        }
     }
 
     // Modals.
