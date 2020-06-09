@@ -697,8 +697,11 @@ if ( next == 1 ) {
 
     // Popouts -> Search menu.
     #search-results {
-        c: 0 0 bg-0
-        b: inner, bsh i
+        /// Exclude results.
+        &:not([role = 'list']) {
+            c: 0 0 bg-0
+            b: inner, bsh i
+        }
 
         /// Header.
         +w(4 'queryContainer-') {
@@ -717,6 +720,9 @@ if ( next == 1 ) {
         /// Search field.
         +w(3 'searchFilter-') { c: fg-0 0 bg-1 }
         +w(3 'searchAnswer-') { c: fg-0 0 bg-1 }
+
+        /// Results.
+        +w(0 'channelSeparator-') { c: 0 0 bg-3 }
     }
 
     // Chat -> Base.
