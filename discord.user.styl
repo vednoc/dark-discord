@@ -602,6 +602,14 @@ if ( next == 1 ) {
                 b: var(--elevation-high) i;
                 rad: r;
             }
+            /// -> Protip.
+            +w(0 'protip-') {
+                > h3 { c: green }
+                > div {
+                    transition: opacity 0.2s ease i
+                    ../:hover > div { opacity: 1 i }
+                }
+            }
         }
         /// Global -> Keyboard combos.
         +w(3 'keyboardShortcutsModal') {
