@@ -718,10 +718,10 @@ if ( next == 1 ) {
         }
 
         /// Items.
-        +w(0 'header-') { c: fg-4 }
-        +w(0 'anchor-') { c: fg-5 }
-        +w(0 'filter-' 'nonText-', 0) { c: fg-1 }
-        +w(0 'answer-' 'option-', 0) { c: fg-3 }
+        +w(0 'header-' 'answer-', 0) { c: fg-4 }
+        +w(0 'anchor-' 'displayUsername-', 0) { c: fg-5 }
+        +w(0 'filter-' 'nonText-' 'displayedNick-', 0) { c: fg-1 }
+        +w(0 'option-') { c: fg-3 }
         +w(0 'selected-') { c: 0 0 bg-3 }
         +w(0 'option-') { &::after { background: none i }}
 
@@ -731,6 +731,9 @@ if ( next == 1 ) {
 
         /// Results.
         +w(0 'channelSeparator-') { c: 0 0 bg-3 }
+        +w(0 'embedAuthorName-') { c: fg-1 }
+        +w(0 'embedTitle-') { c: ac }
+        code.inline { c: fg-1 }
     }
 
     // Chat -> Base.
