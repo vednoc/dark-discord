@@ -359,6 +359,8 @@ if ( next == 1 ) {
         +w(0 'numberBadge-') {
             /// Unread messages.
             &[style *= 'nd-color: rgb(240\, 71\, 71)'],
+            /// Quickswitcher -> Unread messages.
+            /[class *= 'quickswitcher-'] [class *= 'badge'],
             /// Guilds -> New messages.
             /[class *= 'mention-'][class *= 'bar'],
             /// Chat -> Pinned messages.
