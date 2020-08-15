@@ -890,9 +890,9 @@ if ( next == 1 ) {
     if (chat_short) {
         chat_width = chat_short_w;
         +w(0 'messagesWrapper-') {
-            padding-left: 12px;
             /// -> Messages.
-            +w(0 'messages-') {
+            +w(0 'scroller-') {
+                padding-left: 12px
                 > div {
                     width: 100%;
                     max-width: chat_width;
