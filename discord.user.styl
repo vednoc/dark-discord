@@ -9,7 +9,7 @@
 @updateURL    https://gitlab.com/vednoc/dark-discord/raw/master/discord.user.styl
 @preprocessor stylus
 
-@var checkbox next         '[Dev]: Next version' 0
+@var checkbox NEXT         '[Dev]: Next version' 1
 @var checkbox next_colors  '[Dev]: Enable color generator' 1
 @var checkbox next_debug   '[Dev]: Color generator debug ' 0
 @var select   theme        '[Dev]: Base color-scheme toggle' {
@@ -206,8 +206,9 @@ AA = 0%
 
 
 @-moz-document regexp('https?://discord(app)?.com/(app|channels|library|store|gui.*|log.*)(/.*)?') {
-if ( next == 1 ) {
+if (NEXT) {
 
+    /// Show debug.
     if(next_colors && next_debug) {
         :root {
             &::before {
@@ -2539,7 +2540,7 @@ if ( next == 1 ) {
         > [class *= 'wrapper-'] {
           c: 0 0 bd;
           box-shadow: bsh;
-          [class *= 'content-'], h3 { c: $fg }
+          [class *= 'content-'], h3 { c: fg }
           span { c: cm }
         }
       }
@@ -3036,7 +3037,7 @@ if ( next == 1 ) {
 
   // Global -> Select dropdown component.
   [class *= 'select-'][role] {
-    c: $fg bd bg;
+    c: fg bd bg;
     /// Custom status popout.
     /[class *= 'popouts-'] .popout-2sKjHu {
       c: 0 bd bg;
