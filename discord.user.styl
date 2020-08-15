@@ -97,8 +97,8 @@ c(x, y = 0, z = 0, xi = 1, yi = 1, zi = 1) {
 // SVG colors.
 v(x, y = 0, xi = 1, yi = 1) {
     i = !important;
-    if x is a 'call' or x is a 'rgba' {   fill: xi is 0? x : x i }
-    if y is a 'call' or y is a 'rgba' { stroke: yi is 0? y : y i }
+    if x != 0 && x != '_' {   fill: xi is 0? x : x i }
+    if y != 0 && y != '_' { stroke: yi is 0? y : y i }
 }
 
 // Pseudo-element builder.
@@ -221,12 +221,12 @@ if ( next == 1 ) {
                 top: 0; left: 0; right: 0;
                 line-height: 2em;
                 height: 2em;
-                c: var(--light);
+                c: fg1
             }
             body > div[id] {
                 margin-top: calc(2em + 0px);
                 max-height: calc(100vh - 2em);
-                box-shadow: 0 -1px var(--darker);
+                box-shadow: 0 -1px bg5
             }
         }
     }
@@ -264,7 +264,7 @@ if ( next == 1 ) {
         --background-secondary:         bg2 //#2f3136
         --background-secondary-alt:     bg3 //#292b2f
         --background-tertiary:          bg4 //#202225
-        --background-accent:            bg0 //#4f545c
+        --background-accent:            bg5 //#4f545c
         --background-mobile-primary:    bg1 //#36393f
         --background-mobile-secondary:  bg2 //#2f3136
         // --background-floating:          bb; //#18191c
@@ -275,10 +275,18 @@ if ( next == 1 ) {
         // --background-mentioned:         bb; //rgba(250,166,26,0.05)
         // --background-mentioned-hover:   hl; //rgba(250,166,26,0.08)
         // --background-message-hover:     hl; //rgba(4,4,5,0.07)
-        // --elevation-stroke:             inner; //0 0 0 1px rgba(4,4,5,0.15)
-        // --elevation-low:                0 1px bd; // ...0 2px 0 rgba(4,4,5,0.05)
+        /// Scrollbars.
+        --scrollbar-thin-thumb:                 bg5 //#202225
+        --scrollbar-thin-track:                 transparent
+        --scrollbar-auto-thumb:                 bg5 //#202225
+        --scrollbar-auto-track:                 bg1 //#2e3338
+        --scrollbar-auto-scrollbar-color-thumb: bg5 //#202225
+        --scrollbar-auto-scrollbar-color-track: bg1 //#2f3136
+        /// Shadows.
+        --elevation-stroke:             inner //0 0 0 1px rgba(4,4,5,0.15)
+        --elevation-low:                0 1px bg5 // ...0 2px 0 rgba(4,4,5,0.05)
         // --elevation-medium:             0 4px 4px rgba(0,0,0,0.16)
-        // --elevation-high:               0 8px 16px 2px sh; //0 8px 16px rgba(0,0,0,0.24)
+        --elevation-high:               0 8px 16px 2px sh //0 8px 16px rgba(0,0,0,0.24)
         // --logo-primary:                 #fff
         // --focus-primary:                #00b0f4
         // --guild-header-text-shadow:     0 1px 1px rgba(0,0,0,0.4)
@@ -338,7 +346,7 @@ if ( next == 1 ) {
 
     // Base styles.
     body {
-        c: 0 0 hl;
+        c: 0 0 bg0
 
         /// Feat -> Custom UI font.
         &, button, input, select, textarea, ::placeholder {
@@ -348,38 +356,36 @@ if ( next == 1 ) {
         /// Shortcuts.
         +w(0 'keybindShortcut') {
             span {
-                c: fg-1 bg-2 bg-1
-                b: inset 0 -4px 0 bg-4 i
-                svg g { v: fg-3 }
+                c: fg1 bg4 bg2
+                b: inset 0 -4px 0 bg5 i
+                svg g { v: fg4 }
             }
         }
 
         /// App -> Core.
         +w(0 'appMount-') {
-            c: 0 0 t;
+            c: 0 0 t
+
             /// -> Skeleton/Crashed page.
-            +w(4 'themeDark-') {
-                c: 0 0 bg;
-                +w(0 'text-') { > h4 { c: fg }}
-                +w(0 'note-') { c: cm }
-            }
+            +w(4 'errorPage-') { c: 0 0 bg1 }
+
             /// -> Notice alert.
             +w(0 'notice-') {
                 rad: 0;
-                +w(1 'Brand-') { c: 0 0 ac }
+                +w(1 'Brand-') { c: 0 0 ac3 }
                 +w(1 'Default-') { c: 0 0 orange }
             }
         }
 
         /// User -> Status icon.
-        [mask *= 'offline'], [fill *= '116\, 127\, 141'] { v: fg-4 }
+        [mask *= 'offline'], [fill *= '116\, 127\, 141'] { v: fg5 }
         [mask *= 'online'], [fill *= '67\, 181\, 129'] { v: green }
         [mask *= 'idle'], [fill *= '250\, 166\, 26'] { v: orange }
         [mask *= 'dnd'], [fill *= '240\, 71\, 71'] { v: red }
 
         /// Sidebar -> User status.
         +w(3 'status-') {
-            &[style *= '116\, 127\, 141'] { c: 0 0 fg-4 }
+            &[style *= '116\, 127\, 141'] { c: 0 0 fg5 }
             &[style *= '67\, 181\, 129'] { c: 0 0 green }
             &[style *= '250\, 166\, 26'] { c: 0 0 orange }
             &[style *= '240\, 71\, 71'] { c: 0 0 red }
@@ -395,7 +401,7 @@ if ( next == 1 ) {
             /[class *= 'mention-'][class *= 'bar'],
             /// Chat -> Pinned messages.
             /[class *= 'iconBadge-'] {
-                c: 0 0 ac;
+                c: 0 0 ac0
             }
         }
 
@@ -425,7 +431,7 @@ if ( next == 1 ) {
                     padding: 0 0.5em 0 1.5em;
                     white-space: pre-line;
                     text-align: right;
-                    c: fg-5;
+                    c: fg5
                 }
             }
         }
@@ -433,14 +439,14 @@ if ( next == 1 ) {
 
     // Guilds.
     +w(0 'guilds-') {
-        b: inset -1px 0 bd i;
-        c: 0 0 hh;
+        b: inset -1px 0 bg5 i
+        c: 0 0 bg3
         +w(0 'scroller-') { c: 0 0 t }
         /// -> Logo.
         +w(0 'listItem-' 'wrapper', 2) {
-            +w(0 'childWrapper-') { c: cm }
+            +w(0 'childWrapper-') { c: fg3 }
             +w(1 'selected-') {
-                +w(0 'childWrapper-') { c: white 0 ac }
+                +w(0 'childWrapper-') { c: white 0 ac3 }
             }
         }
     }
@@ -449,34 +455,30 @@ if ( next == 1 ) {
     /// NOTE: Excludes user settings.
     :not([class *= 'Region']) > {
         +w(0 sidebar-) {
-            border-right: 1px solid bd i;
+            border-right: 1px solid bg5 i
 
             /// -> User status.
             +w(0 panels-) {
-                border-top: 1px solid bd i;
-                c: 0 0 hl;
+                border-top: 1px solid bg5 i
                 /// Popouts -> Status menu.
-                +w(3 'menu-') { border: 1px solid bd i }
+                +w(3 'menu-') { border: 1px solid bg5 i }
             }
 
             /// -> Friends.
             +w(2 'container-') {
                 c: 0 0 bg1
                 /// -> Header.
-                +w(4 'container-') { c: 0 0 bb }
+                +w(4 'container-') { c: 0 0 bg2 }
                 /// -> Now playing.
-                +w(0 'nowPlaying') {
-                    b: inset 1px 0 bd i;
-                    c: 0 0 hl;
-                }
+                +w(0 'nowPlaying') { b: inset 1px 0 bg5 i }
             }
 
             /// -> Guild notifications.
             +w(0 'bar-') {
-                c: fg 0 bg;
+                c: fg1 0 bg3
                 b: inner, bsh i;
                 +w(1 'mention-') {
-                    c: white 0 ac;
+                    c: white 0 ac1
                     b: bsh i;
                 }
             }
@@ -485,7 +487,7 @@ if ( next == 1 ) {
 
     // Global -> Context menus.
     +w(0 contextMenu-) {
-        border: 1px solid bd i;
+        border: 1px solid bg5 i
     }
 
     // Settings.
@@ -500,13 +502,13 @@ if ( next == 1 ) {
                 font-weight: 500;
                 font-size: 16px;
                 display: block;
-                b: 0 1px bd;
-                c: fg;
+                b: 0 1px bg5
+                c: fg1
             }
         }
         /// -> Add border to content area.
         +w(0 'contentRegion-') {
-            border-left: 1px solid bd i;
+            border-left: 1px solid bg5 i
         }
     }
 
@@ -519,6 +521,7 @@ if ( next == 1 ) {
     }
 
     // Friends -> Active now.
+    /// TODO: Get back to this later.
     +w(0 'nowPlaying' 'outer-', 2) {
         /// -> States.
         +w(1 ' active-') {
@@ -543,7 +546,7 @@ if ( next == 1 ) {
     +w(0 'modal-') {
         /// -> Backdrop.
         +w(3 'backdrop') {
-            c: 0 0 bg;
+            c: 0 0 bg1
             opacity: 0.8 i;
         }
         /// -> Content.
@@ -551,13 +554,13 @@ if ( next == 1 ) {
             /// User info modal.
             +w(0 'root-') {
                 rad: r;
-                border: 1px solid bd i;
+                border: 1px solid bg5
                 b: var(--elevation-high) i;
                 +w(4 'topSection') {
                     z-index: 1 i;
                     position: relative;
-                    border-bottom: 1px solid bd i;
-                    c: 0 0 hl;
+                    border-bottom: 1px solid bg5 i
+                    c: 0 0 bg3
                     &::before {
                         opacity: 0.15;
                         P(0 0 0 0, -1)
@@ -569,7 +572,7 @@ if ( next == 1 ) {
                 }
                 /// -> Buttons.
                 +w(0 'button') {
-                    c: white 0 ac;
+                    c: white 0 ac1
                     transition: 0.2s ease-in;
                     &:hover { opacity: 0.6 i }
                     > div { c: white }
@@ -593,39 +596,39 @@ if ( next == 1 ) {
                 }
                 /// -> Tab state.
                 +w(0 'tabBarContainer-') {
-                    c: 0 bd;
-                    [style *= ': rgb(255'] { c: 0 ac }
-                    [style *= '255\, 0.1'] { c: 0 bd }
-                    [style *= '255\, 0.4'] { c: cm }
+                    c: 0 bg5
+                    [style *= ': rgb(255'] { c: 0 ac1 }
+                    [style *= '255\, 0.1'] { c: 0 bg5 }
+                    [style *= '255\, 0.4'] { c: fg4 }
                     /// Items.
                     +w(0 'item-') {
-                        c: fg-3;
-                        &:hover { c: 0 bg-4 }
-                        +w(1 'selected-') { c: fg-0 ac }
+                        c: fg4
+                        &:hover { c: 0 bg4 }
+                        +w(1 'selected-') { c: fg1 ac1 }
                     }
                 }
             }
         }
         /// Global -> Upload.
         +w(3 'uploadModal-') {
-            border: 1px solid bd i;
+            border: 1px solid bg5 i
             b: var(--elevation-high) i;
-            c: 0 0 bg;
+            c: 0 0 bg1
             rad: r;
             /// -> Preview.
             +w(0 'icon-' 'image-', 0) {
-                c: 0 0 hl;
+                c: 0 0 bg3
                 b: inner, bsh i;
             }
             /// -> Textarea.
             +w(0 'textAreaUpload-' 'scrollableContainer-', 0) {
-                border: 1px solid bd i;
+                border: 1px solid bg5 i
                 rad: r;
             }
             /// -> Footer.
             +w(0 'footer-') {
-                border-top: 1px solid bd i;
-                c: 0 0 bb;
+                border-top: 1px solid bg5 i
+                c: 0 0 bg2
                 b: none i;
                 rad: 0 0 r r;
             }
@@ -633,7 +636,7 @@ if ( next == 1 ) {
         /// Global -> Quickswitcher.
         +w(3 'quickswitcher-') {
             &:not([class *= 'channel']) {
-                border: 1px solid bd i;
+                border: 1px solid bg5
                 b: var(--elevation-high) i;
                 rad: r;
             }
@@ -648,27 +651,29 @@ if ( next == 1 ) {
         }
         /// Global -> Keyboard combos.
         +w(3 'keyboardShortcutsModal') {
-            c: 0 0 bg-1
+            c: 0 0 bg1
             b: inner i
-            h1 { c: fg-1 }
-            h1 + div { c: fg-3 bg-2 }
-            +w(0 'Description') { c: fg-3 }
+            h1 {
+                c: fg1
+                + div { c: fg3 bg5 }
+            }
+            +w(0 'Description') { c: fg3 }
             +w(0 'ddrArrows-') { filter: invert(0.8) hue-rotate(180deg) }
         }
         /// Guilds -> Channel info.
         +w(1 'root-1gCeng') {
-            c: 0 0 bg;
+            c: 0 0 bg1
             b: inner, var(--elevation-high) i;
         }
         /// Guilds -> Gift a Nitro.
         +w(3 'shaker-') {
             +w(0 'root-1gCeng') {
-                border: 1px solid bd i;
+                border: 1px solid bg5 i
                 b: var(--elevation-high) i;
-                c: 0 0 bg;
+                c: 0 0 bg1
                 +w(0 'footer-') {
-                    b: inset 0 1px 0 bd;
-                    c: 0 0 hl;
+                    b: inset 0 1px 0 bg5
+                    c: 0 0 bg2
                 }
             }
         }
@@ -677,35 +682,35 @@ if ( next == 1 ) {
     // Buttons.
     +w(0 'button-') {
         +w(1 'lookLink-') {
-            c: fg-3;
+            c: fg3;
             transition: 0.2s ease;
-            &:hover { c: fg-0 }
+            &:hover { c: fg0 }
             +w(0 'contents-') { background: none i }
         }
         +w(1 'lookFilled-') {
             transition: 0.2s ease;
             &:hover { opacity: 0.8 }
-            +w(1 'colorBrand-') { c: white 0 ac }
+            +w(1 'colorBrand-') { c: white 0 ac1 }
             +w(1 'colorGreen-') { c: white 0 green }
         }
         +w(1 'lookBlank-') {
             /// Chat -> Emoji picker tab.
-            +w(1 'colorBrand-') { c: fg-5 }
-            +w(1 'colorBrand-' 'Active-', 1) { c: fg-2 0 bg-0 }
+            +w(1 'colorBrand-') { c: fg5 }
+            +w(1 'colorBrand-' 'Active-', 1) { c: fg1 0 bg1 }
         }
     }
 
     // Popouts -> User popout.
     +w(0 'userPopout-') {
-        border: 1px solid bd i;
+        border: 1px solid bg5 i
         b: var(--elevation-high) i;
-        c: 0 0 bb;
+        c: 0 0 bg1
         /// -> Header.
         +w(4 'header') {
             z-index: 1 i;
             position: relative;
-            border-bottom: 1px solid bd i;
-            c: 0 0 hl;
+            border-bottom: 1px solid bg5 i
+            c: 0 0 bg2
             &::before {
                 opacity: 0.15;
                 P(0 0 0 0, -1)
@@ -714,7 +719,7 @@ if ( next == 1 ) {
             /// TODO: Tweak text colors later.
             *:not([class *= 'bot']):not(path) {
                 z-index: 8 i;
-                c: fg;
+                c: fg1
             }
             /// -> Status colors.
             +w(1 'Xbox') { &::before { c: 0 0 magenta }}
@@ -723,14 +728,14 @@ if ( next == 1 ) {
             +w(1 'Streaming') { &::before { c: 0 0 violet }}
         }
         /// -> Body.
-        +w(0 'bodyInner-') {
-            c: fg 0 t;
-            +w(0 'bodyTitle-') { c: cm }
+        +w(0 'body-') {
+            c: fg1 0 t
+            +w(0 'bodyTitle-') { c: fg3 }
         }
         /// -> Footer.
         +w(0 'footer-') {
-            c: 0 bd t;
-            input { c: fg bd hl }
+            c: 0 bg5 t
+            input { c: fg1 bg5 bg2 }
             +w(0 'protip-') {
                 c: fg;
                 [style] { c: green }
@@ -742,65 +747,63 @@ if ( next == 1 ) {
     #search-results {
         /// Exclude results.
         &:not([role = 'list']) {
-            c: 0 0 bg-0
+            c: 0 0 bg0
             b: inner, bsh i
         }
 
         /// Header.
         +w(4 'queryContainer-') {
-            c: fg-1 bg-2 t
+            c: fg1 bg2 t
             strong { c: ac }
         }
 
         /// Items.
-        +w(0 'header-' 'answer-', 0) { c: fg-4 }
-        +w(0 'anchor-' 'displayUsername-', 0) { c: fg-5 }
-        +w(0 'filter-' 'nonText-' 'displayedNick-', 0) { c: fg-1 }
-        +w(0 'option-') { c: fg-3 }
-        +w(0 'selected-') { c: 0 0 bg-3 }
+        +w(0 'header-' 'answer-', 0) { c: fg4 }
+        +w(0 'anchor-' 'displayUsername-', 0) { c: fg5 }
+        +w(0 'filter-' 'nonText-' 'displayedNick-', 0) { c: fg1 }
+        +w(0 'option-') { c: fg3 }
+        +w(0 'selected-') { c: 0 0 bg3 }
         +w(0 'option-') { &::after { background: none i }}
 
         /// Search field.
-        +w(3 'searchFilter-') { c: fg-0 0 bg-1 }
-        +w(3 'searchAnswer-') { c: fg-0 0 bg-1 }
+        +w(3 'searchFilter-') { c: fg0 0 bg1 }
+        +w(3 'searchAnswer-') { c: fg0 0 bg1 }
 
         /// Results.
-        +w(0 'channelSeparator-') { c: 0 0 bg-3 }
-        +w(0 'embedAuthorName-') { c: fg-1 }
-        +w(0 'embedTitle-') { c: ac }
-        code.inline { c: fg-1 }
+        +w(0 'channelSeparator-') { c: 0 0 bg2 }
+        +w(0 'embedAuthorName-') { c: fg1 }
+        +w(0 'embedTitle-') { c: ac1 }
+        code.inline { c: fg1 }
     }
 
     // Chat -> Base.
     +w(0 'chat-') {
         /// -> Header.
         +w(4 'title-') {
-            c: 0 0 bb;
+            c: 0 0 bg2
             /// -> Gradient.
             +w(3 'children-') {
-                &::after { background: linear-gradient(90deg, t 0, bb) i }
+                &::after { background: linear-gradient(90deg, t 0, bg2) i }
             }
         }
         /// -> Chat area.
-        +w(0 'messages-') {
+        +w(0 'content-') {
             c: 0 0 t;
             /// -> 'Has more' bar.
             +w(0 'hasMore-') {
-                c: ac bd hl;
+                c: ac1 bg5 bg2
                 transition: 0.2s ease;
                 &:hover { opacity: 0.6 }
             }
             /// -> Welcome -> Border color.
-            +w(0 'base-19D3Qq') {
-                c: 0 bd;
-            }
+            +w(0 'base-19D3Qq') { c: 0 bg5 }
             /// -> Guild invites.
             +w(0 'userSelectNone-') {
                 +w(1 'cursorDefault-') {
                     margin-top: 1rem;
                     rad: r;
-                    c: 0 0 hl;
-                    b: inner i;
+                    c: 0 0 bg2
+                    b: inner
                 }
             }
             /// -> Embedded links/media.
@@ -816,22 +819,22 @@ if ( next == 1 ) {
                 &::before {
                     width: 4px;
                     rad: 4px 0 0 4px;
-                    c: 0 0 ac;
+                    c: 0 0 ac1
                 }
             }
             /// -> Spoilers.
             +w(0 'spoilerText-') {
                 rad: 8px;
-                c: 0 0 dark-hl;
-                +w(1 'hidden-') { &:hover { c: 0 0 bb }}
+                c: 0 0 bg3
+                +w(1 'hidden-') { &:hover { c: 0 0 bg4 }}
             }
         }
         /// -> 'Jump to present' bar.
         +w(0 'jumpToPresentBar-') {
             > button {
-                c: cm;
+                c: fg3
                 transition: 0.2s ease;
-                ../:hover button { c: fg }
+                ../:hover button { c: fg1 }
             }
         }
         /// -> Textarea.
@@ -846,27 +849,29 @@ if ( next == 1 ) {
             /// Fix emoji button padding.
             +w(0 'emojiButton-') { padding-right: 10px i }
         }
-        +w(0 'cooldownWrapper-') { c: fg }
+        +w(0 'cooldownWrapper-') { c: fg3 }
         +w(0 'newMessagesBar-') {
-            c: 0 0 bd;
+            c: 0 0 bg5
             b: bsh i;
-            > button { c: fg }
+            > button { c: fg1 }
         }
         /// -> Message context menu.
         +w(0 'buttonContainer-' 'buttons-' 'wrapper-', 2) {
-            c: 0 0 bb;
+            c: 0 0 bg2
             b: outer, bsh i;
             /// -> 'Delete Message' link.
             +w(3 'danger-') { &, [class *= 'hint'] { c: red }}
         }
         /// -> Guild members.
         +w(3 'members-') {
-            b: inset 1px 0 bd i;
-            c: 0 0 hl;
+            b: inset 1px 0 bg5 i
             +w(0 'clickable-') {
-                &:hover [class *= 'layout-'] { c: 0 0 bg }
+                &:hover [class *= 'layout-'] { c: 0 0 bg3 }
             }
+            +w(0 'selected-') { c: 0 0 bg4 }
         }
+        /// -> Search results.
+        +w(0 'ResultsWrap-') { box-shadow: inset 1px 0 bg5 i }
         /// -> Hovered message.
         +w(0 'message-') {
             rad: r;
@@ -877,7 +882,7 @@ if ( next == 1 ) {
     +w(0 'markup-') {
         /// -> Reset code font and border color.
         code {
-            c: 0 bd;
+            c: 0 bg5
             font-family: var(--f-mono) i;
             &.inline {
                 padding: 0.125em 0.2em;
@@ -949,7 +954,7 @@ if ( next == 1 ) {
         +w(3 'drawerSizingWrapper-') {
             /// -> Wrapper.
             +w(4 'contentWrapper') {
-                border: 1px solid bd i;
+                border: 1px solid bg5
                 b: var(--elevation-high) i;
                 rad: r;
             }
@@ -960,9 +965,9 @@ if ( next == 1 ) {
         }
 
         /// -> Fix hardcoded preload images.
-        +w(3 'emojiItemImageLoading-') {
+        +w(3 'imageLoading-') {
             background-image: none i;
-            c: t 0 hh;
+            c: t 0 bg3
             rad: 38%;
         }
     }
