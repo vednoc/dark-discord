@@ -12,6 +12,11 @@
 @var checkbox next         '[Dev]: Next version' 0
 @var checkbox next_colors  '[Dev]: Enable color generator' 1
 @var checkbox next_debug   '[Dev]: Color generator debug ' 0
+@var select   theme        '[Dev]: Base color-scheme toggle' {
+    'Custom colors   *': 'custom',
+    'Dark blue (old)  ': 'old',
+    'Dark gray (new)  ': 'new',
+}
 @var color    next_bg      '[Dev]: Base background color ' #1f232a
 @var color    next_fg      '[Dev]: Base foreground color ' #eeeeee
 @var color    next_ac      '[Dev]: Base accent color     ' #7289da
@@ -81,13 +86,12 @@ w(arguments, inline = 0)
         {block}
 
 // Color mixin.
-/// All colors: `c: fg bd bg;`
-/// Only border-color: `c: 0 bd;`
+/// All colors: `c: fg bd bg`
+/// Only border-color: `c: 0 bd`
 c(x, y = 0, z = 0, xi = 1, yi = 1, zi = 1) {
-    i = !important;
-    if x is a 'call' or x is a 'rgba' {            color: xi is 0? x : x i }
-    if y is a 'call' or y is a 'rgba' {     border-color: yi is 0? y : y i }
-    if z is a 'call' or z is a 'rgba' { background-color: zi is 0? z : z i }
+    if x != 0 && x != '_' {            color: xi is 0 ? x : x i }
+    if y != 0 && y != '_' {     border-color: yi is 0 ? y : y i }
+    if z != 0 && z != '_' { background-color: zi is 0 ? z : z i }
 }
 
 // SVG colors.
@@ -120,47 +124,85 @@ rad() { border-radius: arguments }
 // Box-shadow mixin.
 b() { box-shadow: arguments }
 
+/// Remove old browser prefixes.
+vendors = official
+
+/// Feat -> Base color-scheme toggle. #32
+if (theme == 'custom') {
+    BG = next_bg
+    FG = next_fg
+    AC = next_ac
+} else if (theme == 'old') {
+    BG = #1f232a
+    FG = #eeeeee
+    AC = #7289da
+} else if (theme == 'new') {
+    BG = #292929
+    FG = #e6e6e6
+    AC = #d47d3f
+}
+
+/// Helpers.
+t  = transparent
+i  = !important
+BA = 0%
+FA = 0%
+AA = 0%
+
 // Color generator.
-_d = darken;
-_l = lighten;
-BG = next_bg;
-FG = next_fg;
+/// NOTE: Fix the scope to avoid conflicts.
+/{
+    g = global
 
-if(dark(BG)) {
-    lum = luminosity(BG)
-    /// TODO: Implement more rules.
-    if(lum <= 0.5) {
-        b1 =  08%; b2 =  40%; b3 =  16%; b4 =  24%;
-        f1 =  15%; f2 =  20%; f3 =  25%; f4 =  35%; f5 =  50%;
+    /// Generator rules.
+    if (dark(BG)) {
+        a1 = (AA + 10); a2 = (AA + 20); a3 = (AA + 30); a4 = (AA + 65); a5 = (AA + 75)
+        b1 = (BA + 10); b2 = (BA - 05); b3 = (BA - 10); b4 = (BA - 15); b5 = (BA - 20)
+        f1 = (FA - 10); f2 = (FA + 10); f3 = (FA + 20); f4 = (FA + 30); f5 = (FA + 40)
+    } else {
+        a1 = (AA + 10); a2 = (AA + 20); a3 = (AA + 30); a4 = (AA + 65); a5 = (AA + 75)
+        b1 = (BA - 10); b2 = (BA + 08); b3 = (BA + 16); b4 = (BA + 24); b5 = (BA + 32)
+        f1 = (FA - 05); f2 = (FA - 10); f3 = (FA - 15); f4 = (FA - 20); f5 = (FA - 30)
     }
-    if(lum <= 0.02) {
-        b1 = -04%; b2 = -18%; b3 = -08%; b4 = -12%;
-        f1 =  15%; f2 =  20%; f3 =  25%; f4 =  35%; f5 =  50%;
+
+    /// Generate tones for base colors.
+    C = {
+        bg: {
+            '0': darken(BG, b1),
+            '1': darken(BG, 0%),
+            '2': darken(BG, b2),
+            '3': darken(BG, b3),
+            '4': darken(BG, b4),
+            '5': darken(BG, b5),
+        },
+        fg: {
+            '0': darken(FG, f1),
+            '1': darken(FG, 0%),
+            '2': darken(FG, f2),
+            '3': darken(FG, f3),
+            '4': darken(FG, f4),
+            '5': darken(FG, f5),
+        },
+        ac: {
+            '0':                     AC,
+            '1': mix(darken(BG, 40%), AC, a1),
+            '2': mix(darken(BG, 40%), AC, a2),
+            '3': mix(darken(BG, 40%), AC, a3),
+            '4': mix(darken(BG, 40%), AC, a4),
+            '5': mix(darken(BG, 40%), AC, a5),
+        },
     }
-/// NOTE: Added just so that Stylus doesn't error out for using a light color.
-} else {
-    b1 =  06%; b2 =  24%; b3 =  12%; b4 =  18%;
-    f1 = -04%; f2 = -08%; f3 = -12%; f4 = -20%; f5 = -28%;
-}
 
-bg = {
-    '-0':    BG,
-    '-1': _d(BG, b1),
-    '-2': _d(BG, b2),
-    '-3': _d(BG, b3),
-    '-4': _d(BG, b4),
-}
-fg = {
-    '-0':    FG,
-    '-1': _d(FG, f1),
-    '-2': _d(FG, f2),
-    '-3': _d(FG, f3),
-    '-4': _d(FG, f4),
-    '-5': _d(FG, f5),
-}
+    /// Generate Stylus-lang variables.
+    define('bg-' + key, val, g) for key, val in C.bg
+    define('fg-' + key, val, g) for key, val in C.fg
+    define('ac-' + key, val, g) for key, val in C.ac
 
-define('bg' + key, val) for key, val in bg
-define('fg' + key, val) for key, val in fg
+    // Generate Stylus-lang helpers for CSS variables.
+    define('bg' + key, s('var(--bg-%s)', unquote(key)), g) for key, val in C.bg
+    define('fg' + key, s('var(--fg-%s)', unquote(key)), g) for key, val in C.fg
+    define('ac' + key, s('var(--ac-%s)', unquote(key)), g) for key, val in C.ac
+}
 
 
 @-moz-document regexp('https?://discord(app)?.com/(app|channels|library|store|gui.*|log.*)(/.*)?') {
@@ -172,8 +214,8 @@ if ( next == 1 ) {
                 content: \
                 '  ⭐ BG: ' + luminosity(BG) + \
                 '  ⭐ FG: ' + luminosity(FG) + \
-                '  🌟 bg: ' + bg + \
-                '  🌟 fg: ' + fg;
+                '  🌟 bg: ' + bg-1 + \
+                '  🌟 fg: ' + fg-1
                 text-align: center;
                 position: absolute;
                 top: 0; left: 0; right: 0;
@@ -190,14 +232,6 @@ if ( next == 1 ) {
     }
 
     // Use stylus-lang variables with CSS variables.
-    bb      = var(--bb);
-    bg      = var(--dark);
-    hl      = var(--darken);
-    hh      = var(--dark-hl);
-    bd      = var(--darker);
-    fg      = var(--light);
-    cm      = var(--lighter);
-    ac      = var(--accent);
     shadow  = var(--shadow);
     sh      = var(--shadow);
     bsh     = var(--bshadow);
@@ -210,81 +244,77 @@ if ( next == 1 ) {
     cyan    = var(--cyan);
     green   = var(--green);
     white   = var(--white);
-    outer   = 0 0 0 1px bd;
+    outer   = 0 0 0 1px bg5
     inner   = inset outer;
-    t       = var(--t);
     r       = var(--radius);
-    i       = !important;
 
     :root {
         /// Discord variables.
-        --header-primary:               fg-0; //#fff
-        --header-secondary:             fg-2; //#b9bbbe;
-        --text-normal:                  fg-1; //#dcddde;
-        --text-muted:                   fg-3; //#72767d;
-        --text-link:                    ac;   //#00b0f4;
-        --channels-default:             fg-4; //#8e9297;
-        --interactive-normal:           fg-2; //#b9bbbe;
-        --interactive-hover:            fg-1; //#dcddde;
-        --interactive-active:           fg-0; //#fff;
-        --interactive-muted:            fg-5; //#4f545c;
-        --background-primary:           bg; //#36393f;
-        --background-secondary:         bb; //#2f3136;
-        --background-secondary-alt:     hl; //#292b2f;
-        --background-tertiary:          bd; //#202225;
-        --background-accent:            hh; //#4f545c;
-        --background-mobile-primary:    #36393f;
-        --background-mobile-secondary:  #2f3136;
-        --background-floating:          bb; //#18191c
-        --background-modifier-hover:    hl; //rgba(79,84,92,0.16);
-        --background-modifier-active:   bg; //rgba(79,84,92,0.24);
-        --background-modifier-selected: bd; //rgba(79,84,92,0.32);
-        --background-modifier-accent:   bd; //hsla(0,0%,100%,0.06);
-        --background-mentioned:         bb; //rgba(250,166,26,0.05);
-        --background-mentioned-hover:   hl; //rgba(250,166,26,0.08);
-        --background-message-hover:     hl; //rgba(4,4,5,0.07);
-        --elevation-stroke:             inner; //0 0 0 1px rgba(4,4,5,0.15);
-        --elevation-low:                0 1px bd; // ...0 2px 0 rgba(4,4,5,0.05);
-        --elevation-medium:             0 4px 4px rgba(0,0,0,0.16);
-        --elevation-high:               0 8px 16px 2px sh; //0 8px 16px rgba(0,0,0,0.24);
-        --logo-primary:                 #fff;
-        --focus-primary:                #00b0f4;
-        --guild-header-text-shadow:     0 1px 1px rgba(0,0,0,0.4);
-        --channeltextarea-background:   hl;
-        --activity-card-background:     #202225;
-        --textbox-markdown-syntax:      fg-4; //#8e9297;
-        --deprecated-card-bg:           hl;
-        --deprecated-card-editable-bg:  bb;
-        --deprecated-store-bg:          #36393f;
+        --header-primary:               fg1 //#ffffff
+        --header-secondary:             fg4 //#b9bbbe
+        --text-normal:                  fg1 //#dcddde
+        --text-muted:                   fg3 //#72767d
+        --text-link:                    ac1 //#00b0f4
+        --channels-default:             fg4 //#8e9297
+        --interactive-normal:           fg2 //#b9bbbe
+        --interactive-hover:            fg1 //#dcddde
+        --interactive-active:           fg0 //#ffffff
+        --interactive-muted:            fg5 //#4f545c
+        --background-primary:           bg1 //#36393f
+        --background-secondary:         bg2 //#2f3136
+        --background-secondary-alt:     bg3 //#292b2f
+        --background-tertiary:          bg4 //#202225
+        --background-accent:            bg0 //#4f545c
+        --background-mobile-primary:    bg1 //#36393f
+        --background-mobile-secondary:  bg2 //#2f3136
+        // --background-floating:          bb; //#18191c
+        // --background-modifier-hover:    hl; //rgba(79,84,92,0.16)
+        // --background-modifier-active:   bg; //rgba(79,84,92,0.24)
+        // --background-modifier-selected: bd; //rgba(79,84,92,0.32)
+        // --background-modifier-accent:   bd; //hsla(0,0%,100%,0.06)
+        // --background-mentioned:         bb; //rgba(250,166,26,0.05)
+        // --background-mentioned-hover:   hl; //rgba(250,166,26,0.08)
+        // --background-message-hover:     hl; //rgba(4,4,5,0.07)
+        // --elevation-stroke:             inner; //0 0 0 1px rgba(4,4,5,0.15)
+        // --elevation-low:                0 1px bd; // ...0 2px 0 rgba(4,4,5,0.05)
+        // --elevation-medium:             0 4px 4px rgba(0,0,0,0.16)
+        // --elevation-high:               0 8px 16px 2px sh; //0 8px 16px rgba(0,0,0,0.24)
+        // --logo-primary:                 #fff
+        // --focus-primary:                #00b0f4
+        // --guild-header-text-shadow:     0 1px 1px rgba(0,0,0,0.4)
+        --channeltextarea-background:   bg3 //#40444b
+        // --activity-card-background:     #202225
+        // --textbox-markdown-syntax:      fg-4; //#8e9297
+        // --deprecated-card-bg:           hl
+        // --deprecated-card-editable-bg:  bb
+        --deprecated-store-bg:          bg1 //#36393f
         /// Settings -> My account -> Edit settings.
-        --deprecated-text-input-bg:              bg;
-        --deprecated-text-input-border:          bd;
-        --deprecated-text-input-border-hover:    hl;
-        --deprecated-text-input-border-disabled: bg;
-        --deprecated-text-input-prefix:          blue;
+        --deprecated-text-input-bg:              bg3 //#0000001a
+        --deprecated-text-input-border:          bg4 //#0000004d
+        --deprecated-text-input-border-hover:    bg5 //#040405
+        --deprecated-text-input-border-disabled: bg0 //#202225
+        --deprecated-text-input-prefix:          ac1 //#dcddde
         /// Modals -> Quickswitcher -> Fix input colors.
-        --deprecated-quickswitcher-input-background:  hh;
-        --deprecated-quickswitcher-input-placeholder: fg-2;
+        --deprecated-quickswitcher-input-background:  bg4 //#72767d
+        --deprecated-quickswitcher-input-placeholder: fg2 //#ffffff4d
 
         /// Dark-Discord variables.
-        --note    : 'Dark-Discord NEXT';
-        if(!next_colors) {
-        --bb      : darken(_bg, 5%);
-        --dark    : _bg;
-        --darken  : _hl;
-        --darker  : _bd;
-        --light   : _fg;
-        --lighter : _cm;
-        } else {
-        --bb      : bg-3;
-        --dark    : bg-0;
-        --darken  : bg-1;
-        --darker  : bg-2;
-        --dark-hl : bg-4;
-        --light   : fg-0;
-        --lighter : fg-1;
+        --note: 'Dark-Discord NEXT'
+
+        /// Generate colors variables.
+        for _v in (bg fg ac) {
+            for _i in 0..5 {
+                key = s('--%s-%s', _v, _i)
+                /// Escape `\` for `*-0` vars.
+                val = _v + \- + _i
+
+                /// Generate CSS variables.
+                { key }: val i
+                { key + '-rgb' }: to_rgb(val)
+            }
         }
-        --accent  : _ac;
+
+        /// TODO: Improve.
         --shadow  : _sh;
         --bshadow : 0 2px 4px var(--shadow);
         --yellow  : _yellow;
@@ -420,6 +450,7 @@ if ( next == 1 ) {
     :not([class *= 'Region']) > {
         +w(0 sidebar-) {
             border-right: 1px solid bd i;
+
             /// -> User status.
             +w(0 panels-) {
                 border-top: 1px solid bd i;
@@ -427,9 +458,10 @@ if ( next == 1 ) {
                 /// Popouts -> Status menu.
                 +w(3 'menu-') { border: 1px solid bd i }
             }
+
             /// -> Friends.
             +w(2 'container-') {
-                c: 0 0 bg;
+                c: 0 0 bg1
                 /// -> Header.
                 +w(4 'container-') { c: 0 0 bb }
                 /// -> Now playing.
@@ -438,6 +470,7 @@ if ( next == 1 ) {
                     c: 0 0 hl;
                 }
             }
+
             /// -> Guild notifications.
             +w(0 'bar-') {
                 c: fg 0 bg;
@@ -804,10 +837,10 @@ if ( next == 1 ) {
         /// -> Textarea.
         +w(0 'channelTextArea-') {
             rad: r i;
-            c: 0 0 hl;
+            // c: 0 0 hl
             > div {
                 rad: inherit;
-                c: 0 0 hl;
+                // c: 0 0 hl
                 b: inner;
             }
             /// Fix emoji button padding.
