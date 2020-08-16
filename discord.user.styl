@@ -308,7 +308,7 @@ if (NEXT) {
         --deprecated-quickswitcher-input-placeholder: fg2 //#ffffff4d
 
         /// Dark-Discord variables.
-        --note: 'Dark-Discord NEXT'
+        --note: 'Dark-Discord NEXT (v0.45.0)'
 
         /// Generate colors variables.
         for _v in (bg fg ac) {
@@ -523,9 +523,19 @@ if (NEXT) {
 
     // Startup.
     +w(0 'ready-') {
-        /// -> Add theme version below loading status.
+        /// -> Add theme version to loading screen.
         +w(2 'text-') {
-            div:last-child:before { content: var(--note) }
+            div:last-child {
+                padding-top: 2rem i
+                font-style: italic i
+                c: fg3
+
+                /// Theme version.
+                &:before {
+                    content: var(--note) i;
+                    text-transform: initial
+                }
+            }
         }
     }
 
