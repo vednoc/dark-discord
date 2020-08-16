@@ -443,6 +443,15 @@ if (NEXT) {
                 }
             }
         }
+
+        /// Global -> Tooltips.
+        +w(3 'tooltipBlack-') {
+            border: 1px solid bg5
+            c: fg1 0 bg3
+            b: 0 4px 8px shadow i
+
+            +w(0 'Pointer-') { border-top-color: bg5 i }
+        }
     }
 
     // App -> Login page.
