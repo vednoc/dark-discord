@@ -939,7 +939,7 @@ if (NEXT) {
     // Emojis.
     .emoji {
         /// Feat -> Smaller jumbo emotes!
-        if(e_jumbo) {
+        if (e_jumbo) {
             &.jumboable {
                 width: 2.0rem;
                 height: 2.0rem;
@@ -948,10 +948,13 @@ if (NEXT) {
         }
 
         /// Feat -> Larger reaction emotes.
-        if(e_reaction) {
-            /[class *= 'reaction-'] & {
-                height: 1.5rem;
-                width: @height;
+        if (e_reaction) {
+            /[class *= 'reactions-'] {
+                margin-top: 0.25rem
+                .emoji {
+                    height: 1.5rem;
+                    width: @height;
+                }
             }
         }
 
