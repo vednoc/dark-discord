@@ -32,7 +32,7 @@
 @var checkbox min_guilds   'Minimize width of guilds area' 0
 @var checkbox mid_guilds   'Small guild icons' 0
 @var text     guild_size   'Small guild icons size' 32px
-@var checkbox disable_acm  'Disable avatar context menu' 0
+@var checkbox acm          'Enable avatar context menu in profiles' 1
 @var checkbox sb_enabled   'Always show scrollbar tracks' 0
 @var checkbox sb_chromium  'Disable scrollbars in Chromium' 0
 @var checkbox sb_firefox   'Disable scrollbars in Firefox' 0
@@ -977,6 +977,14 @@ if (NEXT) {
             background-image: none i;
             c: t 0 bg3
             rad: 38%;
+        }
+    }
+
+    /// Feat -> Enable avatar context menu in profiles.
+    if (acm) {
+        +w(0 'avatar-') {
+            img { text-indent: unset }
+            * { pointer-events: unset }
         }
     }
 } else {
@@ -3635,7 +3643,7 @@ if (NEXT) {
   }
 
   // Feat -> Disable avatar context menu.
-  if ( disable_acm == 1 ) {
+  if (acm) {
     [class*="avatar-"] {
       img { text-indent: unset }
       * { pointer-events: unset }
