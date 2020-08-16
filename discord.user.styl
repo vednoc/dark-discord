@@ -249,7 +249,7 @@ if (NEXT) {
     inner   = inset outer;
     r       = var(--radius);
 
-    :root {
+    :root, .theme-dark {
         /// Discord variables.
         --header-primary:               fg1 //#ffffff
         --header-secondary:             fg4 //#b9bbbe
@@ -436,6 +436,14 @@ if (NEXT) {
                 }
             }
         }
+    }
+
+    // App -> Login page.
+    +w(0 'authBox-') {
+        border: 1px solid bg5 i
+        b: var(--elevation-high) i
+        rad: r i
+        c: fg5
     }
 
     // Guilds.
@@ -687,6 +695,7 @@ if (NEXT) {
             transition: 0.2s ease;
             &:hover { c: fg0 }
             +w(0 'contents-') { background: none i }
+            +w(1 'colorBrand-') { c: ac1 }
         }
         +w(1 'lookFilled-') {
             transition: 0.2s ease;
