@@ -72,7 +72,8 @@ w(arguments, inline = 0)
     else if (a[0] == 2) { x = '+' }
     else if (a[0] == 3) { x = '/' }
     else if (a[0] == 4) { x = '>' }
-    else                { x = ''  }
+    else if (a[0] == 5) { x = '../ ' }
+    else                { x = '' }
 
     if      (inline == 1) { _i = ''   }
     else if (inline == 2) { _i = ' '  }
@@ -510,6 +511,82 @@ if (NEXT) {
                     left: 10px i
                 }
             }
+        }
+
+        /// Feat -> Smaller guild icons.
+        if (mid_guilds) {
+            $size = guild_size
+            width: ($size + 20px)
+
+            /// Mentions bar.
+            +w(0 'nreadMentions' 'bar', 1) { width: $size }
+
+            /// Dividers.
+            +w(0 'Separator-') { width: $size }
+
+            /// DM icons.
+            div[style *= 'height: 56px'] {
+                margin-bottom: 8px
+                height: $size i
+            }
+
+            /// Icons.
+            +w(0 'listItem-') {
+                padding-left: 10px
+                justify-content: flex-start
+
+                /// Unread indicators.
+                +w(4 'pill-'){
+                    height: $size
+
+                    /// Guild placeholder icon.
+                    + [draggable = 'false'] svg {
+                        width: $size i
+                        height: $size i
+                        div { c: 0 0 bg5 }
+                    }
+                }
+
+                /// 1: Home icon.
+                /// 2: Guild icons.
+                +w(0 'listItemWrapper-' 'blobContainer-') {
+                    +w(4 'wrapper-') { width: $size; height: $size }
+                    +w(0 'svg-') { width: $size; height: $size }
+                    +w(0 'Badge-') {
+                        rad: 50% i
+                        b: 0 0 0 3px bg3
+                    }
+                }
+
+                /// Folder icons.
+                > [draggable] {
+                    +w(4 'wrapper-') { &, ../ { width: $size; height: $size}}
+                    +w(0 'svg-') { width: $size; height: $size }
+                    +w(0 'Badge-') {
+                        rad: 50% i
+                        b: 0 0 0 3px bg3
+                    }
+                }
+
+                /// Expanded folders.
+                +w(3 'expandedFolderBackground-') {
+                    width: $size
+                    left: 10px i
+                    rad: 16px i
+
+                    /// Add borders to expanded folders.
+                    &:not([class *= 'collapsed']) { b: 0 0 0 2px bg4 }
+
+                    /// Reset list height.
+                    ~ [style *= 'height'] {
+                        height: unset i
+                        padding-bottom: 1px
+                    }
+                }
+            }
+
+            /// Fix main area.
+            +w(2 'base-') { left: ($size + 20px) }
         }
     }
 
