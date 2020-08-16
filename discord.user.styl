@@ -864,6 +864,7 @@ if (NEXT) {
                 &::after { background: linear-gradient(90deg, t 0, bg2) i }
             }
         }
+
         /// -> Chat area.
         +w(0 'content-') {
             c: 0 0 t;
@@ -907,7 +908,17 @@ if (NEXT) {
                 &[data-slate-object] { c: 0 0 bg5 }
                 +w(1 'hidden-') { &:hover { c: 0 0 bg4 }}
             }
+
+            /// -> Reactions.
+            +w(0 'reactionMe-') {
+                c: 0 0 ac4
+                +w(0 'Count-') {
+                    font-weight: bold
+                    c: ac0
+                }
+            }
         }
+
         /// -> 'Jump to present' bar.
         +w(0 'jumpToPresentBar-') {
             > button {
