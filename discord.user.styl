@@ -254,7 +254,7 @@ if (NEXT) {
         --header-primary:               fg1 //#ffffff
         --header-secondary:             fg4 //#b9bbbe
         --text-normal:                  fg1 //#dcddde
-        --text-muted:                   fg3 //#72767d
+        --text-muted:                   fg5 //#72767d
         --text-link:                    ac1 //#00b0f4
         --channels-default:             fg4 //#8e9297
         --interactive-normal:           fg2 //#b9bbbe
@@ -867,6 +867,7 @@ if (NEXT) {
             +w(0 'spoilerText-') {
                 rad: 8px;
                 c: 0 0 bg3
+                &[data-slate-object] { c: 0 0 bg5 }
                 +w(1 'hidden-') { &:hover { c: 0 0 bg4 }}
             }
         }
