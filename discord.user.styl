@@ -30,6 +30,7 @@
 @var text     chat_short_w 'Shorter chat width' 800px
 @var checkbox ic_invert    'Icon inversion' 0
 @var checkbox guilds_min   'Minimize guild area width' 1
+@var text     guilds_min_w 'Minimize guild area breakpoint' 700px
 @var checkbox mid_guilds   'Small guild icons' 0
 @var text     guild_size   'Small guild icons size' 32px
 @var checkbox acm          'Enable avatar context menu in profiles' 1
@@ -477,7 +478,7 @@ if (NEXT) {
 
         /// Feat -> Minimize guild area width.
         if (guilds_min) {
-            @media screen and (max-width: 700px) {
+            @media screen and (max-width: guilds_min_w) {
                 transition: 0.3s cubic-bezier(0, 0, 0.2, 1)
                 max-width: 10px
 
