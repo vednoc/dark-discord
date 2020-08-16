@@ -29,7 +29,7 @@
 @var checkbox chat_short   'Shorter chat mode' 0
 @var text     chat_short_w 'Shorter chat width' 800px
 @var checkbox ic_invert    'Icon inversion' 0
-@var checkbox min_guilds   'Minimize width of guilds area' 0
+@var checkbox guilds_min   'Minimize guild area width' 1
 @var checkbox mid_guilds   'Small guild icons' 0
 @var text     guild_size   'Small guild icons size' 32px
 @var checkbox acm          'Enable avatar context menu in profiles' 1
@@ -472,6 +472,42 @@ if (NEXT) {
             +w(0 'childWrapper-') { c: fg3 }
             +w(1 'selected-') {
                 +w(0 'childWrapper-') { c: white 0 ac3 }
+            }
+        }
+
+        /// Feat -> Minimize guild area width.
+        if (guilds_min) {
+            @media screen and (max-width: 700px) {
+                transition: 0.3s cubic-bezier(0, 0, 0.2, 1)
+                max-width: 10px
+
+                /// Expand hover region.
+                overflow: unset i
+                > * { z-index: 9 i }
+                &::after {
+                    P(0 -20px 0 0, 8)
+                    // opacity: 0.5
+                    // c: 0 0 ac1
+                }
+
+                /// Expand guilds area on hover.
+                &:hover {
+                    max-width: 80px
+                    // max-width: (guild_size + 20px)
+                    transition-delay: 0.6s
+
+                    +w(2 'base-') {
+                        left: 72px i
+                        // left: (guild_size + 20px) i
+                        transition-delay: 0.6s
+                    }
+                }
+
+                /// Expand main area.
+                +w(2 'base-') {
+                    transition: 0.3s cubic-bezier(0, 0, 0.2, 1)
+                    left: 10px i
+                }
             }
         }
     }
@@ -1903,7 +1939,7 @@ if (NEXT) {
       &:hover { opacity: 0.8; }
     }
     /// Feat -> Minimize guild width.
-    if ( min_guilds == 1 ) {
+    if ( guilds_min == 1 ) {
       transition: 0.3s cubic-bezier(0, 0, 0.2, 1);
       max-width: 10px;
       &:hover {
