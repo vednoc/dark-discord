@@ -982,6 +982,16 @@ if (NEXT) {
             }
         }
 
+        /// -> Syntax highlighting.
+        /.hljs {
+            &-comment, &-quote { c: cm }
+            &-built_in, &-deletion { c: red }
+            &-addition, &-keyword, &-selector-tag { c: green }
+            &-name, &-section, &-title, &-selector-class, &-selector-id { c: blue }
+            &-attr, &-attribute, &-type, &-class, &-template-variable, &-variable { c: orange }
+            &-doctag, &-literal, &-meta &-meta-string, &-number, &-regexp, &-string { c: cyan }
+        }
+
         /// Feat -> Code font.
         +w(0 'Code-' 'codeBlockText-' 'codeLine-', 3) {
             ../ code, /& { font-family: var(--f-mono) i }
