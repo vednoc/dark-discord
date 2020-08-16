@@ -376,11 +376,19 @@ if (NEXT) {
             /// -> Skeleton/Crashed page.
             +w(4 'errorPage-') { c: 0 0 bg1 }
 
+            /// -> 'No channel' page.
+            +w(0 'noChannel-') {
+                c: 0 0 bg1
+                h4 { c: fg1 }
+                h4 + div { c: fg4 }
+            }
+
             /// -> Notice alert.
             +w(0 'notice-') {
                 rad: 0;
                 +w(1 'Brand-') { c: 0 0 ac3 }
                 +w(1 'Default-') { c: 0 0 orange }
+                +w(1 'height36-') { c: 0 0 bg3 }
             }
         }
 
@@ -617,6 +625,11 @@ if (NEXT) {
                     c: white 0 ac1
                     b: bsh i;
                 }
+            }
+
+            /// App -> Server discovery.
+            +w(2 'pageWrapper-') {
+                c: 0 0 bg1
             }
         }
     }
