@@ -29,10 +29,10 @@
 @var checkbox chat_short   'Shorter chat mode' 0
 @var text     chat_short_w 'Shorter chat width' 800px
 @var checkbox ic_invert    'Icon inversion' 0
-@var checkbox guilds_min   'Minimize guild area width' 1
-@var text     guilds_min_w 'Minimize guild area breakpoint' 700px
-@var checkbox mid_guilds   'Small guild icons' 0
-@var text     guild_size   'Small guild icons size' 32px
+@var checkbox g_minimize   'Minimize guild area width' 1
+@var text     g_minimize_w 'Minimize guild area breakpoint' 700px
+@var checkbox g_icons      'Small guild icons' 0
+@var text     g_icons_s    'Small guild icon size' 32px
 @var checkbox acm          'Enable avatar context menu in profiles' 1
 @var checkbox sb_enabled   'Always show scrollbar tracks' 0
 @var checkbox sb_chromium  'Disable scrollbars in Chromium' 0
@@ -478,8 +478,8 @@ if (NEXT) {
         }
 
         /// Feat -> Minimize guild area width.
-        if (guilds_min) {
-            @media screen and (max-width: guilds_min_w) {
+        if (g_minimize) {
+            @media screen and (max-width: g_minimize_w) {
                 transition: 0.3s cubic-bezier(0, 0, 0.2, 1)
                 max-width: 10px
 
@@ -494,13 +494,11 @@ if (NEXT) {
 
                 /// Expand guilds area on hover.
                 &:hover {
-                    max-width: 80px
-                    // max-width: (guild_size + 20px)
+                    max-width: (g_icons_s + 20px)
                     transition-delay: 0.6s
 
                     +w(2 'base-') {
-                        left: 72px i
-                        // left: (guild_size + 20px) i
+                        left: (g_icons_s + 20px) i
                         transition-delay: 0.6s
                     }
                 }
@@ -514,8 +512,8 @@ if (NEXT) {
         }
 
         /// Feat -> Smaller guild icons.
-        if (mid_guilds) {
-            $size = guild_size
+        if (g_icons) {
+            $size = g_icons_s
             width: ($size + 20px)
 
             /// Mentions bar.
@@ -2038,14 +2036,14 @@ if (NEXT) {
       &:hover { opacity: 0.8; }
     }
     /// Feat -> Minimize guild width.
-    if ( guilds_min == 1 ) {
+    if ( g_minimize == 1 ) {
       transition: 0.3s cubic-bezier(0, 0, 0.2, 1);
       max-width: 10px;
       &:hover {
-        max-width: (guild_size + 20px);
+        max-width: (g_icons_s + 20px);
         transition-delay: 0.6s;
         + [class *= 'base-'] {
-          left: (guild_size + 20px) i;
+          left: (g_icons_s + 20px) i;
           transition-delay: 0.6s;
         }
       }
@@ -3673,8 +3671,8 @@ if (NEXT) {
   }
 
   // Feat -> Smaller guild icons.
-  if ( mid_guilds == 1 ) {
-    $size = guild_size;
+  if ( g_icons == 1 ) {
+    $size = g_icons_s;
     // ? Set the width of guilds wrapper.
     [class *= 'guilds-'] {
       width: ($size + 20px);
