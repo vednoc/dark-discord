@@ -642,9 +642,14 @@ if (NEXT) {
             c: 0 0 bg1
             rad: r;
             /// -> Preview.
-            +w(0 'icon-' 'image-', 0) {
-                c: 0 0 bg3
-                b: inner, bsh i;
+            +w(0 'icon-') {
+                +w(1 'image-', 0) {
+                    c: 0 0 bg3
+                    b: inner, bsh i;
+                }
+                +w(1 'unknown-' 'code-' 'video-' 'document-', 0) {
+                    filter: invert(0.8) hue-rotate(180deg)
+                }
             }
             /// -> Textarea.
             +w(0 'textAreaUpload-' 'scrollableContainer-', 0) {
