@@ -884,11 +884,15 @@ if (NEXT) {
         /// -> Reset code font and border color.
         code {
             c: 0 bg5
-            font-family: var(--f-mono) i;
             &.inline {
                 padding: 0.125em 0.2em;
                 b: inner, bsh i;
             }
+        }
+
+        /// Feat -> Code font.
+        +w(0 'Code-' 'codeBlockText-' 'codeLine-', 3) {
+            ../ code, /& { font-family: var(--f-mono) i }
         }
     }
 
