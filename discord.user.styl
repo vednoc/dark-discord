@@ -270,7 +270,7 @@ if (NEXT) {
         --background-accent:            bg5 //#4f545c
         --background-mobile-primary:    bg1 //#36393f
         --background-mobile-secondary:  bg2 //#2f3136
-        // --background-floating:          bb; //#18191c
+        --background-floating:          bg0 //#18191c
         // --background-modifier-hover:    hl; //rgba(79,84,92,0.16)
         // --background-modifier-active:   bg; //rgba(79,84,92,0.24)
         // --background-modifier-selected: bd; //rgba(79,84,92,0.32)
@@ -327,7 +327,7 @@ if (NEXT) {
 
         /// TODO: Improve.
         --shadow  : _sh;
-        --bshadow : 0 2px 4px var(--shadow);
+        --bshadow : 0 8px 16px var(--shadow)
         --yellow  : _yellow;
         --orange  : _orange;
         --red     : _red;
@@ -342,9 +342,6 @@ if (NEXT) {
         --textarea: input_height;
         --f-mono  : code_font, Consolas, Liberation Mono, Menlo, Courier, monospace;
         --f-ui    : ui_font, Whitney, Helvetica Neue, Helvetica, Arial, sans-serif;
-
-        /// TODO: Implement scrollbar options.
-        * { scrollbar-color: ac #88888810 i }
     }
 
     // Base styles.
@@ -403,6 +400,8 @@ if (NEXT) {
 
         /// Badges.
         +w(0 'numberBadge-') {
+            /// Inbox -> Unreads.
+            /.wrapper-232cHJ,
             /// Unread messages.
             &[style *= 'nd-color: rgb(240\, 71\, 71)'],
             /// Quickswitcher -> Unread messages.
@@ -623,7 +622,7 @@ if (NEXT) {
     }
 
     // Global -> Context menus.
-    +w(0 contextMenu-) {
+    +w(0 'contextMenu-') {
         border: 1px solid bg5 i
     }
 
