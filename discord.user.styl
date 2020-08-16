@@ -942,6 +942,14 @@ if (NEXT) {
         /// -> Chat area.
         +w(0 'content-') {
             c: 0 0 t;
+
+            /// -> 'New messagges' bar.
+            +w(0 'isUnread-') {
+                c: 0 ac1
+                span { c: white 0 ac1 }
+                svg path { v: ac1 ac1 }
+            }
+
             /// -> 'Has more' bar.
             +w(0 'hasMore-') {
                 c: ac1 bg5 bg2
