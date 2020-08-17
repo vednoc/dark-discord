@@ -1005,10 +1005,11 @@ AA = 0%
             c: 0 0 t
 
             /// -> 'New messagges' bar.
-            +w(0 'isUnread-') {
+            +w(0 'isUnread-' 'divider-', 1) {
                 c: 0 ac1
-                span { c: white 0 ac1 }
                 svg path { v: ac1 ac1 }
+                +w(0 'content-') { c: ac1 }
+                +w(0 'unreadPill-') { c: white 0 ac1 }
             }
 
             /// -> Dividers.
