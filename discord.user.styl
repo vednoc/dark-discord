@@ -28,6 +28,11 @@
 @var checkbox fix_pixels   '[Experimental] Fix text sub-pixel rendering' 1
 @var checkbox chat_short   'Shorter chat mode' 0
 @var text     chat_short_w 'Shorter chat width' 800px
+
+@var checkbox sb_short     'Smaller sidebar mode' 1
+@var text     sb_short_w   'Smaller sidebar mode breakpoint' 940px
+@var text     sb_short_d   'Smaller sidebar mode hover delay' 1000ms
+
 @var checkbox ic_invert    'Icon inversion' 0
 @var checkbox g_minimize   'Minimize guild area width' 1
 @var text     g_minimize_w 'Minimize guild area breakpoint' 700px
@@ -502,7 +507,7 @@ if (NEXT) {
                 overflow: unset i
                 > * { z-index: 9 i }
                 &::after {
-                    P(0 -20px 0 0, 8)
+                    P(0 -15px 0 0, 8)
                     // opacity: 0.5
                     // c: 0 0 ac1
                 }
@@ -640,6 +645,41 @@ if (NEXT) {
                 +w(1 'mention-') {
                     c: white 0 ac1
                     b: bsh i;
+                }
+            }
+
+            /// Feat -> Short sidebar mode.
+            if (sb_short) {
+                @media screen and (max-width: sb_short_w) {
+                    transition: 0.3s cubic-bezier(0, 0, 0.2, 1)
+                    max-width: 64px
+
+                    /// Center user icon.
+                    +w(0 'panels-' 'container-', 2) {
+                        padding: 0 16px i
+                    }
+
+                    /// Expand on hover.
+                    &:hover {
+                        max-width: 240px
+                        transition-delay: sb_short_d i
+                    }
+
+                    /// Remove extra stuff for channels.
+                    +w(0 'wrapper-' 'content-', 2) {
+                        margin: 0
+                        rad: 0
+                        min-width: (sb_short_w + 4px)
+                        +w(0 'icon-' 'iconItem-', 0) { display: none i }
+                    }
+
+                    /// More compact bars.
+                    +w(0 'unread-' 'bar-', 1) {
+                        margin: -8px -9px 0
+                        padding: 8px
+                        rad: 0px
+                        span { font-size: 10px i }
+                    }
                 }
             }
 
