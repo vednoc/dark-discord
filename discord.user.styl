@@ -33,6 +33,14 @@
 @var text     g_minimize_w 'Minimize guild area breakpoint' 700px
 @var checkbox g_icons      'Small guild icons' 0
 @var text     g_icons_s    'Small guild icon size' 32px
+
+@var select   compact      'Compact mode' {
+    'Hide guilds   ': 'guilds',
+    'Hide sidebar  ': 'sidebar',
+    'Hide both    *': 'both',
+}
+@var text     compact_w    'Compact mode breakpoint' 500px
+
 @var checkbox acm          'Enable avatar context menu in profiles' 1
 @var checkbox sb_enabled   'Always show scrollbar tracks' 0
 @var checkbox sb_chromium  'Disable scrollbars in Chromium' 0
@@ -593,12 +601,20 @@ if (NEXT) {
             /// Fix main area.
             +w(2 'base-') { left: ($size + 20px) }
         }
+
+        /// Feat -> Compact mode.
+        if (compact == 'guilds' || compact == 'both') {
+            @media screen and (max-width: compact_w) {
+                display: none i
+                +w(2 'base-') { left: 0px i }
+            }
+        }
     }
 
     // Sidebar.
     /// NOTE: Excludes user settings.
     :not([class *= 'Region']) > {
-        +w(0 sidebar-) {
+        +w(0 'sidebar-') {
             border-right: 1px solid bg5 i
 
             /// -> User status.
@@ -624,6 +640,13 @@ if (NEXT) {
                 +w(1 'mention-') {
                     c: white 0 ac1
                     b: bsh i;
+                }
+            }
+
+            /// Feat -> Compact mode.
+            if (compact == 'sidebar' || compact == 'both') {
+                @media screen and (max-width: compact_w) {
+                    display: none i
                 }
             }
 
