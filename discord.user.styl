@@ -1017,13 +1017,18 @@ if (NEXT) {
 
         /// -> Chat area.
         +w(0 'content-') {
-            c: 0 0 t;
+            c: 0 0 t
 
             /// -> 'New messagges' bar.
             +w(0 'isUnread-') {
                 c: 0 ac1
                 span { c: white 0 ac1 }
                 svg path { v: ac1 ac1 }
+            }
+
+            /// -> Dividers.
+            +w(0 'divider-' 'content-', 2) {
+                c: 0 0 var(--background-primary)
             }
 
             /// -> 'Has more' bar.
