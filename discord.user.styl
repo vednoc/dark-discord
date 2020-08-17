@@ -9,23 +9,19 @@
 @updateURL    https://gitlab.com/vednoc/dark-discord/raw/master/discord.user.styl
 @preprocessor stylus
 
-@var checkbox NEXT         '[Dev]: Next version' 1
-@var checkbox next_colors  '[Dev]: Enable color generator' 1
-@var checkbox next_debug   '[Dev]: Color generator debug ' 0
-@var select   theme        '[Dev]: Base color-scheme toggle' {
+@var checkbox cg_debug     'Color generator debug' 0
+@var select   cg_theme     'Base color-scheme toggle' {
     'Custom colors   *': 'custom',
     'Dark blue (old)  ': 'old',
     'Dark gray (new)  ': 'new',
 }
-@var color    next_bg      '[Dev]: Base background color ' #1f232a
-@var color    next_fg      '[Dev]: Base foreground color ' #eeeeee
-@var color    next_ac      '[Dev]: Base accent color     ' #7289da
+@var color    cg_bg        'Base background color' #1f232a
+@var color    cg_fg        'Base foreground color' #eeeeee
+@var color    cg_ac        'Base accent color    ' #7289da
 
 @var checkbox e_jumbo      'Emotes: Smaller jumbo emotes' 1
 @var checkbox e_reaction   'Emotes: Larger reaction emotes' 1
 
-@var checkbox fix_fonts    'Fix chat font size' 1
-@var checkbox fix_pixels   '[Experimental] Fix text sub-pixel rendering' 1
 @var checkbox chat_short   'Shorter chat mode' 0
 @var text     chat_short_w 'Shorter chat width' 800px
 
@@ -33,9 +29,9 @@
 @var text     sb_short_w   'Smaller sidebar mode breakpoint' 940px
 @var text     sb_short_d   'Smaller sidebar mode hover delay' 1000ms
 
-@var checkbox ic_invert    'Icon inversion' 0
 @var checkbox g_minimize   'Minimize guild area width' 1
 @var text     g_minimize_w 'Minimize guild area breakpoint' 700px
+
 @var checkbox g_icons      'Small guild icons' 0
 @var text     g_icons_s    'Small guild icon size' 32px
 
@@ -44,24 +40,16 @@
     'Hide sidebar  ': 'sidebar',
     'Hide both    *': 'both',
 }
-@var text     compact_w    'Compact mode breakpoint' 500px
+@var text     compact_w    'Compact mode breakpoint' 540px
 
 @var checkbox acm          'Enable avatar context menu in profiles' 1
-@var checkbox sb_enabled   'Always show scrollbar tracks' 0
-@var checkbox sb_chromium  'Disable scrollbars in Chromium' 0
-@var checkbox sb_firefox   'Disable scrollbars in Firefox' 0
 @var checkbox code_ln      'Enable code line numbers' 1
-@var text     ui_font      'Custom UI font' ''font_name''
-@var text     code_font    'Custom mono font' ''font_name''
-@var text     input_height 'Input bar maximum height' 140px
+
+@var text     f_ui         'Custom UI font' ''font_name''
+@var text     f_code       'Custom mono font' ''font_name''
+
 @var text     b_radius     'Custom border radius' 4px
 
-@var color    _bg          'Color: Primary background   ' #1f232a
-@var color    _hl          'Color: Highlight background ' #252A33
-@var color    _bd          'Color: Secondary background ' #2c313a
-@var color    _fg          'Color: Primary foreground   ' #e9e9e9
-@var color    _cm          'Color: Secondary foreground ' #a1a1a1
-@var color    _ac          'Color: Accent               ' #7289da
 @var color    _yellow      'Color: Yellow               ' #e5c512
 @var color    _orange      'Color: Orange               ' #df4b16
 @var color    _red         'Color: Red                  ' #dc322f
@@ -143,15 +131,15 @@ b() { box-shadow: arguments }
 vendors = official
 
 /// Feat -> Base color-scheme toggle. #32
-if (theme == 'custom') {
-    BG = next_bg
-    FG = next_fg
-    AC = next_ac
-} else if (theme == 'old') {
+if (cg_theme == 'custom') {
+    BG = cg_bg
+    FG = cg_fg
+    AC = cg_ac
+} else if (cg_theme == 'old') {
     BG = #1f232a
     FG = #eeeeee
     AC = #7289da
-} else if (theme == 'new') {
+} else if (cg_theme == 'new') {
     BG = #292929
     FG = #e6e6e6
     AC = #d47d3f
@@ -199,7 +187,7 @@ AA = 0%
             '5': darken(FG, f5),
         },
         ac: {
-            '0':                     AC,
+            '0':                      AC,
             '1': mix(darken(BG, 40%), AC, a1),
             '2': mix(darken(BG, 40%), AC, a2),
             '3': mix(darken(BG, 40%), AC, a3),
@@ -224,14 +212,14 @@ AA = 0%
 if (NEXT) {
 
     /// Show debug.
-    if(next_colors && next_debug) {
+    if(cg_debug) {
         :root {
             &::before {
                 content: \
                 '  ⭐ BG: ' + luminosity(BG) + \
                 '  ⭐ FG: ' + luminosity(FG) + \
-                '  🌟 bg: ' + bg-1 + \
-                '  🌟 fg: ' + fg-1
+                '  🌟 bg1:  ' + bg-1 + \
+                '  🌟 fg1:  ' + fg-1
                 text-align: center;
                 position: absolute;
                 top: 0; left: 0; right: 0;
@@ -352,9 +340,8 @@ if (NEXT) {
         --white   : _white;
         --t       : transparent !important;
         --radius  : b_radius;
-        --textarea: input_height;
-        --f-mono  : code_font, Consolas, Liberation Mono, Menlo, Courier, monospace;
-        --f-ui    : ui_font, Whitney, Helvetica Neue, Helvetica, Arial, sans-serif;
+        --f-mono  : f_code, Consolas, Liberation Mono, Menlo, Courier, monospace
+        --f-ui    : f_ui, Whitney, Helvetica Neue, Helvetica, Arial, sans-serif
     }
 
     // Base styles.
@@ -1275,7 +1262,7 @@ if (NEXT) {
     --t       : transparent !important;
     --radius  : b_radius;
     --textarea: input_height;
-    --codearea: code_font, Consolas, Liberation Mono, Menlo, Courier, monospace;
+    --codearea: f_code, Consolas, Liberation Mono, Menlo, Courier, monospace;
     --icinvert: ic_invert;
   }
 
@@ -1336,7 +1323,7 @@ if (NEXT) {
     c: 0 0 bg;
     /// Feat -> Custom UI font.
     &, button, input, select, textarea, ::placeholder {
-      font-family: ui_font, Whitney, Helvetica Neue,
+      font-family: f_ui, Whitney, Helvetica Neue,
         Helvetica, Arial, sans-serif;
     }
     /// App -> Core.
