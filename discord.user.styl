@@ -892,6 +892,15 @@ AA = 0%
                 c: 0 0 bg2
             }
         }
+
+        /// Inbox -> Fix borders.
+        +w(3 'recentMentionsPopout-') {
+            border: 1px solid bg5 i
+            b: var(--elevation-high) i
+
+            /// Header.
+            +w(4 'header-') { b: inset 0 -1px bg5 i }
+        }
     }
 
     // Buttons.
