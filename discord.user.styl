@@ -733,23 +733,25 @@ AA = 0%
     }
 
     // Friends -> Active now.
-    /// TODO: Get back to this later.
     +w(0 'nowPlaying' 'outer-', 2) {
         /// -> States.
         +w(1 ' active-') {
-            &, ../:hover { c: 0 0 hh }
-            +w(0 ' active-' 'inset-') { c: 0 0 bg }
+            &, ../:hover { c: 0 0 bg5 }
+            +w(0 ' active-' 'inset-') { c: 0 0 bg1 }
         }
 
         /// -> Rich presence.
-        +w(0 'inset-') { c: 0 0 hl }
+        +w(0 'inset-') { c: 0 0 bg3 }
 
-        /// Popouts.
+        /// -> Popouts.
         +w(3 'popout-38lTFE') {
-            c: 0 0 hl
+            c: 0 0 bg0
             b: inner, bsh i
+
+            +w(0 'separator-') { c: 0 0 bg4 }
+
             +w(0 'enabled-' 'ListItem', 0) {
-                &:hover { c: 0 0 bg }
+                &:hover { c: 0 0 bg2 }
             }
         }
     }
