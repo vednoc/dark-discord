@@ -231,7 +231,7 @@ AA = 0%
             body > div[id] {
                 margin-top: calc(2em + 0px);
                 max-height: calc(100vh - 2em);
-                box-shadow: 0 -1px bg5
+                b: 0 -1px bg5
             }
         }
     }
@@ -276,7 +276,7 @@ AA = 0%
         --background-modifier-hover:    bg3 //rgba(79,84,92,0.16)
         --background-modifier-active:   bg4 //rgba(79,84,92,0.24)
         --background-modifier-selected: bg5 //rgba(79,84,92,0.32)
-        --background-modifier-accent:   bg2 //hsla(0,0%,100%,0.06)
+        --background-modifier-accent:   bg3 //hsla(0,0%,100%,0.06)
         --background-mentioned:         ac5 //rgba(250,166,26,0.05)
         --background-mentioned-hover:   ac4 //rgba(250,166,26,0.08)
         --background-message-hover:     bg0 //rgba(4,4,5,0.07)
@@ -409,6 +409,8 @@ AA = 0%
 
         /// Badges.
         +w(0 'numberBadge-') {
+            /// Global -> 'NEW' alerts.
+            /.badge-_BgAUQ,
             /// Inbox -> Unreads.
             /.wrapper-232cHJ,
             /// Unread messages.
@@ -611,7 +613,7 @@ AA = 0%
             border-right: 1px solid bg5 i
 
             /// -> User status.
-            +w(0 panels-) {
+            +w(0 'panels-') {
                 border-top: 1px solid bg5 i
                 /// Popouts -> Status menu.
                 +w(3 'menu-') { border: 1px solid bg5 i }
@@ -636,7 +638,7 @@ AA = 0%
                 }
             }
 
-            /// Feat -> Short sidebar mode.
+            /// Feat -> Small sidebar mode.
             if (sb_short) {
                 @media screen and (max-width: sb_short_w) {
                     transition: 0.3s cubic-bezier(0, 0, 0.2, 1)
@@ -1113,7 +1115,7 @@ AA = 0%
             +w(0 'selected-') { c: 0 0 bg4 }
         }
         /// -> Search results.
-        +w(0 'ResultsWrap-') { box-shadow: inset 1px 0 bg5 i }
+        +w(0 'ResultsWrap-') { b: inset 1px 0 bg5 i }
         /// -> Hovered message.
         +w(0 'message-') {
             rad: r;
