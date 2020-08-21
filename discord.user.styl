@@ -1167,6 +1167,19 @@ AA = 0%
         }
     }
 
+    // Chat -> Autocomplete. @obsolete
+    +w(0 'autocomplete-' 'autocomplete', 1) {
+        c: 0 0 bg2
+        +w(0 'Title-') {
+            c: fg5
+            > strong { c: ac1 }
+        }
+        +w(0 'content-') { c: fg1 }
+        +w(0 'description') { c: fg4 }
+        +w(0 'divider-') { c: 0 0 bg5 }
+        +w(0 'Selected-') { c: 0 0 bg4 }
+    }
+
     // Feat -> Shorter messages.
     if (chat_short) {
         chat_width = chat_short_w;
