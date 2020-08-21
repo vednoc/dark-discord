@@ -1052,7 +1052,12 @@ AA = 0%
             +w(0 'embedWrapper-') {
                 &:not([class *= 'imageZoom-']) {
                     rad: r;
-                    b: inner;
+
+                    /// Exclude embeds with custom border colors.
+                    &:not([style *= 'border-color']) { c: 0 bg5 }
+
+                    /// Remove double borders from some elements.
+                    &:not([class *= 'Audio']) { b: inner }
                 }
             }
             /// -> Mentioned.
@@ -1147,6 +1152,7 @@ AA = 0%
 
         /// -> Syntax highlighting.
         /.hljs {
+            rad: r i
             &-comment, &-quote { c: cm }
             &-built_in, &-deletion { c: red }
             &-addition, &-keyword, &-selector-tag { c: green }
