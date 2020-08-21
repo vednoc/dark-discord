@@ -20,7 +20,7 @@
 @var color    cg_fg        'Base foreground color' #eeeeee
 @var color    cg_ac        'Base accent color    ' #7289da
 
-@var checkbox e_jumbo      'Emotes: Smaller jumbo emotes' 1
+@var range    e_size       'Emotes: Reduce emote size' [32, 24, 64, 8, 'px']
 @var checkbox e_reaction   'Emotes: Larger reaction emotes' 1
 
 @var checkbox chat_short   'Shorter chat mode' 0
@@ -312,6 +312,9 @@ AA = 0%
 
         /// Dark-Discord variables.
         --note: 'Dark-Discord NEXT (v0.48.0)'
+
+        /// Reduce emoji size.
+        --e-size: e_size
 
         /// Generate colors variables.
         for _v in (bg fg ac) {
@@ -1200,13 +1203,11 @@ AA = 0%
 
     // Emojis.
     .emoji {
-        /// Feat -> Smaller jumbo emotes!
-        if (e_jumbo) {
-            &.jumboable {
-                width: 2.0rem;
-                height: 2.0rem;
-                min-height: 2.0rem;
-            }
+        /// Feat -> Reduce emote size.
+        &.jumboable {
+            width: var(--e-size)
+            min-height: @width
+            height: @width
         }
 
         /// Feat -> Larger reaction emotes.
