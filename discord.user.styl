@@ -1256,4 +1256,14 @@ AA = 0%
             * { pointer-events: unset }
         }
     }
+
+    /// @upstream
+    @supports(scrollbar-width: thin) {
+        /// Fix audio/video volume bar position.
+        +w(0 'audioVolumeWrapper-') { transform: translate(26px, -4px) i }
+        +w(0 'videoVolumeWrapper') { transform: translate(-2px, -12px) i }
+
+        /// Search -> Fix media width.
+        +w(0 'embedMedia-') { [data-fullscreen] { width: 100% i }}
+    }
 }
