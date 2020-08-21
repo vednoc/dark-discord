@@ -123,7 +123,7 @@ to_rgb(input) {
 }
 
 // Border radius mixin.
-rad() { border-radius: arguments }
+r() { border-radius: arguments }
 
 // Box-shadow mixin.
 b() { box-shadow: arguments }
@@ -250,7 +250,7 @@ AA = 0%
     white   = var(--white);
     outer   = 0 0 0 1px bg5
     inner   = inset outer;
-    r       = var(--radius);
+    rc    = var(--radius)
 
     :root, .theme-dark {
         /// Discord variables.
@@ -388,7 +388,7 @@ AA = 0%
 
             /// -> Notice alert.
             +w(0 'notice-') {
-                rad: 0;
+                r: 0px
                 +w(1 'Brand-') { c: 0 0 ac3 }
                 +w(1 'Default-') { c: 0 0 orange }
                 +w(1 'height36-') { c: 0 0 bg3 }
@@ -472,7 +472,7 @@ AA = 0%
     +w(0 'authBox-') {
         border: 1px solid bg5 i
         b: var(--elevation-high) i
-        rad: r i
+        r: rc i
         c: fg5
     }
 
@@ -563,7 +563,7 @@ AA = 0%
                     +w(4 'wrapper-') { width: $size; height: $size }
                     +w(0 'svg-') { width: $size; height: $size }
                     +w(0 'Badge-') {
-                        rad: 50% i
+                        r: 50% i
                         b: 0 0 0 3px bg3
                     }
                 }
@@ -573,7 +573,7 @@ AA = 0%
                     +w(4 'wrapper-') { &, ../ { width: $size; height: $size}}
                     +w(0 'svg-') { width: $size; height: $size }
                     +w(0 'Badge-') {
-                        rad: 50% i
+                        r: 50% i
                         b: 0 0 0 3px bg3
                     }
                 }
@@ -582,7 +582,7 @@ AA = 0%
                 +w(3 'expandedFolderBackground-') {
                     width: $size
                     left: 10px i
-                    rad: 16px i
+                    r: 16px i
 
                     /// Add borders to expanded folders.
                     &:not([class *= 'collapsed']) { b: 0 0 0 2px bg4 }
@@ -660,7 +660,7 @@ AA = 0%
                     /// Remove extra stuff for channels.
                     +w(0 'wrapper-' 'content-', 2) {
                         margin: 0
-                        rad: 0
+                        r: 0px
                         min-width: (sb_short_w + 4px)
                         +w(0 'icon-' 'iconItem-', 0) { display: none i }
                     }
@@ -669,7 +669,7 @@ AA = 0%
                     +w(0 'unread-' 'bar-', 1) {
                         margin: -8px -9px 0
                         padding: 8px
-                        rad: 0px
+                        r: 0px
                         span { font-size: 10px i }
                     }
                 }
@@ -769,7 +769,7 @@ AA = 0%
         +w(4 'inner-') {
             /// User info modal.
             +w(0 'root-') {
-                rad: r;
+                r: rc
                 border: 1px solid bg5
                 b: var(--elevation-high) i;
                 +w(4 'topSection') {
@@ -830,7 +830,7 @@ AA = 0%
             border: 1px solid bg5 i
             b: var(--elevation-high) i;
             c: 0 0 bg1
-            rad: r;
+            r: rc
             /// -> Preview.
             +w(0 'icon-') {
                 +w(1 'image-', 0) {
@@ -844,14 +844,14 @@ AA = 0%
             /// -> Textarea.
             +w(0 'textAreaUpload-' 'scrollableContainer-', 0) {
                 border: 1px solid bg5 i
-                rad: r;
+                r: rc
             }
             /// -> Footer.
             +w(0 'footer-') {
                 border-top: 1px solid bg5 i
                 c: 0 0 bg2
                 b: none i;
-                rad: 0 0 r r;
+                r: 0px 0px rc rc
             }
         }
         /// Global -> Quickswitcher.
@@ -859,7 +859,7 @@ AA = 0%
             &:not([class *= 'channel']) {
                 border: 1px solid bg5
                 b: var(--elevation-high) i;
-                rad: r;
+                r: rc
             }
             /// -> Protip.
             +w(0 'protip-') {
@@ -1043,7 +1043,7 @@ AA = 0%
             +w(0 'userSelectNone-') {
                 +w(1 'cursorDefault-') {
                     margin-top: 1rem;
-                    rad: r;
+                    r: rc
                     c: 0 0 bg2
                     b: inner
                 }
@@ -1051,7 +1051,7 @@ AA = 0%
             /// -> Embedded links/media.
             +w(0 'embedWrapper-') {
                 &:not([class *= 'imageZoom-']) {
-                    rad: r;
+                    r: rc
 
                     /// Exclude embeds with custom border colors.
                     &:not([style *= 'border-color']) { c: 0 bg5 }
@@ -1062,16 +1062,16 @@ AA = 0%
             }
             /// -> Mentioned.
             +w(0 'mentioned-') {
-                rad: 4px i;
+                r: 4px i
                 &::before {
                     width: 4px;
-                    rad: 4px 0 0 4px;
+                    r: 4px 0px 0px 4px
                     c: 0 0 ac1
                 }
             }
             /// -> Spoilers.
             +w(0 'spoilerText-') {
-                rad: 8px;
+                r: 8px
                 c: 0 0 bg3
                 &[data-slate-object] { c: 0 0 bg5 }
                 +w(1 'hidden-') { &:hover { c: 0 0 bg4 }}
@@ -1097,10 +1097,10 @@ AA = 0%
         }
         /// -> Textarea.
         +w(0 'channelTextArea-') {
-            rad: r i;
+            r: rc i
             // c: 0 0 hl
             > div {
-                rad: inherit;
+                r: inherit
                 // c: 0 0 hl
                 b: inner;
             }
@@ -1132,7 +1132,7 @@ AA = 0%
         +w(0 'ResultsWrap-') { b: inset 1px 0 bg5 i }
         /// -> Hovered message.
         +w(0 'message-') {
-            rad: r;
+            r: rc
         }
 
         /// Chat -> Bot tag colors.
@@ -1152,7 +1152,7 @@ AA = 0%
 
         /// -> Syntax highlighting.
         /.hljs {
-            rad: r i
+            r: rc i
             &-comment, &-quote { c: cm }
             &-built_in, &-deletion { c: red }
             &-addition, &-keyword, &-selector-tag { c: green }
@@ -1233,11 +1233,11 @@ AA = 0%
             +w(4 'contentWrapper') {
                 border: 1px solid bg5
                 b: var(--elevation-high) i;
-                rad: r;
+                r: rc
             }
             /// -> Rounded corners.
             +w(0 'categoryList-') {
-                rad: 0 0 0 r;
+                r: 0px 0px 0px rc
             }
         }
 
@@ -1245,7 +1245,7 @@ AA = 0%
         +w(3 'imageLoading-') {
             background-image: none i;
             c: t 0 bg3
-            rad: 38%;
+            r: 38%
         }
     }
 
