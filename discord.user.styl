@@ -1007,6 +1007,36 @@ AA = 0%
         code.inline { c: fg1 }
     }
 
+    // Popouts -> Attach menu.
+    +w(0 'attachPopout-') {
+        border: 1px solid bg5
+
+        /// Spotify invite.
+        +w(3 'modal-yWgWj-') {
+            border: 1px solid bg5 i
+            c: 0 0 bg1
+            b: var(--elevation-high) i
+
+            /// Footer.
+            +w(0 'footer-') {
+                border-top: 1px solid bg5
+                c: 0 0 bg2
+            }
+
+            /// Invite.
+            +w(0 'header-') { c: fg4 }
+            +w(0 'subHeader-') { c: fg5 }
+            +w(0 'name-' 'textLink-' 'Status-') { c: fg1 }
+            +w(0 'preview-') { c: 0 bg5 bg3 }
+
+            /// Show emote picker. @upstream
+            +w(4 'content-') {
+                padding-right: 16px i
+                overflow: visible i
+            }
+        }
+    }
+
     // Chat -> Base.
     +w(0 'chat-') {
         /// -> Header.
