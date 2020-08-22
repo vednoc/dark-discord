@@ -910,8 +910,11 @@ AA = 0%
         +w(1 'lookLink-') {
             c: fg3;
             transition: 0.2s ease;
-            &:hover { c: fg0 }
-            +w(0 'contents-') { background: none i }
+            &:hover {
+                c: fg0
+                --g: 0deg, t, t 1px, currentColor 0, currentColor 2px, t 0
+                +w(4 'contents-') { background: linear-gradient(var(--g)) i }
+            }
             +w(1 'colorBrand-') { c: ac1 }
         }
         +w(1 'lookFilled-') {
