@@ -258,7 +258,7 @@ AA = 0%
         --header-secondary:             fg4 //#b9bbbe
         --text-normal:                  fg1 //#dcddde
         --text-muted:                   fg5 //#72767d
-        --text-link:                    ac1 //#00b0f4
+        --text-link:                    ac0 //#00b0f4
         --channels-default:             fg4 //#8e9297
         --interactive-normal:           fg2 //#b9bbbe
         --interactive-hover:            fg1 //#dcddde
@@ -466,6 +466,9 @@ AA = 0%
 
             +w(0 'Pointer-') { border-top-color: bg5 i }
         }
+
+        /// Chat -> Mentions.
+        +w(0 'mention' 'wrapper-', 2) { c: ac0 }
     }
 
     // Global -> Checkboxes.
@@ -1010,7 +1013,7 @@ AA = 0%
         +w(0 'header-' 'answer-', 0) { c: fg4 }
         +w(0 'anchor-' 'displayUsername-', 0) { c: fg5 }
         +w(0 'filter-' 'nonText-' 'displayedNick-', 0) { c: fg1 }
-        +w(0 'anchorUnderline' 'mention') { c: ac1 }
+        +w(0 'anchorUnderline') { c: ac0 }
         +w(0 'option-') { c: fg3 }
         +w(0 'selected-') { c: 0 0 bg3 }
         +w(0 'option-') { &::after { background: none i }}
