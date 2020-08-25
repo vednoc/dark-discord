@@ -211,7 +211,7 @@ AA = 0%
 
 @-moz-document regexp('https?://discord(app)?.com/(app|channels|library|store|gui.*|log.*)(/.*)?') {
     /// Show debug.
-    if(cg_debug) {
+    if (cg_debug) {
         :root {
             &::before {
                 content: \
@@ -250,7 +250,7 @@ AA = 0%
     white   = var(--white);
     outer   = 0 0 0 1px bg5
     inner   = inset outer;
-    rc    = var(--radius)
+    rc      = var(--radius)
 
     :root, .theme-dark {
         /// Discord variables.
@@ -433,7 +433,7 @@ AA = 0%
         }
 
         /// Feat -> Line numbers for code blocks.
-        if ( code_ln == 1 ) {
+        if (code_ln) {
             pre code {
                 position: relative;
                 padding-left: 3em i;
@@ -445,7 +445,7 @@ AA = 0%
                         n += s('%s', num)
                     }
                 }
-                /// -> Psuedo-element as line numbers.
+                /// -> Use a psuedo-element as line numbers.
                 &::before {
                     width: 2ch;
                     overflow-y: hidden;
