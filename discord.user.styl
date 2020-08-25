@@ -468,7 +468,17 @@ AA = 0%
         }
 
         /// Chat -> Mentions.
-        +w(0 'mention' 'wrapper-', 2) { c: ac0 }
+        +w(0 'mention interactive', 1) {
+            c: ac0 0 bg3 1 0 0
+            transition: 0.2s ease-in-out
+
+            /// Hover/active states.
+            &:hover, &.popout-open { c: white 0 ac1 }
+            /{ +w(0 'mentioned-' 'mention', 2) { &:not(#z) { c: ac0 0 t }}}
+
+            /// Search -> Highlighted matches.
+            /.highlight { c: 0 0 ac4 }
+        }
     }
 
     // Global -> Checkboxes.
