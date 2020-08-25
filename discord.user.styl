@@ -932,6 +932,18 @@ AA = 0%
             b: var(--elevation-high) i
             c: 0 0 bg1
 
+            /// 'Delete message'.
+            +w(0 'colorStandard-') {
+                +w(2 'message-') {
+                    c: 0 0 bg2
+                    b: inner
+                    r: rc
+
+                    /// Fix mentions.
+                    .mention { c: ac0 0 bg3 }
+                }
+            }
+
             /// Footer.
             +w(0 'footer-') {
                 b: inset 0 1px 0 bg5
