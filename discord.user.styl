@@ -467,6 +467,18 @@ AA = 0%
             +w(0 'Pointer-') { border-top-color: bg5 i }
         }
 
+        /// Fix 'Server Boosting' and similar tooltips.
+        +w(3 'subscribeTooltipWrapper-') {
+            c: 0 0 ac3
+            &::after { border-bottom-color: ac3 i }
+        }
+
+        /// Guilds -> Voice -> Activity popout.
+        +w(0 'container-3JTnYm') {
+            border: 1px solid bg5 i
+            r: rc
+        }
+
         /// Chat -> Mentions.
         +w(0 'mention interactive', 1) {
             c: ac0 0 bg3 1 0 0
@@ -1303,6 +1315,9 @@ AA = 0%
                     height: 1.5rem;
                     width: @height;
                 }
+
+                /// Whitespace for emote menu.
+                +w(0 'reactionBtn-' 'focusable-', 1) { margin-left: 0.25rem }
             }
         }
 
