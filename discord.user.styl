@@ -468,6 +468,25 @@ AA = 0%
         }
     }
 
+    // Global -> Checkboxes.
+    +w(0 'switch-') {
+        :not([class *= 'themeClear-']) {
+            c: 0 0 bg4
+            &::after { c: 0 0 fg1 }
+
+            /// Enabled.
+            +w(1 'Checked-') {
+                c: 0 0 ac1
+                &::after { c: 0 0 \white }
+            }
+        }
+
+        /// Rounded.
+        +w(3 'checkbox-') {
+            &[style *= '67\, 181\, 129'] { c: 0 green green }
+        }
+    }
+
     // App -> Login page.
     +w(0 'authBox-') {
         border: 1px solid bg5 i
