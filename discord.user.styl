@@ -1161,6 +1161,18 @@ AA = 0%
                 +w(1 'hidden-') { &:hover { c: 0 0 bg4 }}
             }
 
+            /// -> Attachments.
+            +w(0 'attachment-') {
+                b: none i
+
+                /// Invert document/text/code icons.
+                /[src *= '/assets/985ea67d2edab4424'],
+                /[src *= '/assets/9f358f46647358641'],
+                /[src *= 'assets/a11e895b46cde503a0'] {
+                    filter: invert(0.8) hue-rotate(180deg)
+                }
+            }
+
             /// -> Reactions.
             +w(0 'reactionMe-') {
                 c: 0 0 ac3
