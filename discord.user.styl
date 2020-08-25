@@ -1140,11 +1140,17 @@ AA = 0%
             }
             /// -> Mentioned.
             +w(0 'mentioned-') {
-                r: 4px i
+                r: (chat_short) ? 4px i : 0px i
+
+                /// Bar color.
                 &::before {
-                    width: 4px;
-                    r: 4px 0px 0px 4px
                     c: 0 0 ac1
+
+                    /// Tweaks for short chat mode.
+                    if (chat_short) {
+                        width: 4px;
+                        r: 4px 0px 0px 4px
+                    }
                 }
             }
             /// -> Spoilers.
