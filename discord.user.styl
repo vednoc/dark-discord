@@ -79,6 +79,7 @@ w(arguments, inline = 0)
 
     if      (inline == 1) { _i = ''   }
     else if (inline == 2) { _i = ' '  }
+    else if (inline == 3) { _i = '+'  }
     else                  { _i = ', ' }
 
     for item, index in a[1 .. length(a)]
@@ -761,19 +762,20 @@ AA = 0%
     }
 
     // Startup.
-    +w(0 'ready-') {
-        /// -> Add theme version to loading screen.
-        +w(2 'text-') {
-            +w(4 'contentBase-') {
-                padding-top: 2rem i
-                font-style: italic i
-                c: fg3
+    +w(0 'ready-' 'text-', '+') {
+        /// Tip color.
+        +w(0 'tipTitle-') { c: ac1 }
 
-                /// Theme version.
-                &:before {
-                    content: var(--note) i;
-                    text-transform: initial
-                }
+        /// Add theme version to loading screen.
+        +w(4 'contentBase-') {
+            padding-top: 2rem i
+            font-style: italic i
+            c: fg3
+
+            /// Theme version.
+            &:before {
+                content: var(--note) i
+                text-transform: initial
             }
         }
     }
