@@ -355,8 +355,16 @@ AA = 0%
         /// Global -> Browser defaults.
         ::selection { c: bg5 0 fg1 }
         ::-moz-selection { c: bg5 0 fg1 }
+
+        /// Global -> Text placeholders.
         +w(0 'emptyPlaceholder') {
             &, ../ ::placeholder { c: fg3 }
+        }
+
+        /// Chat -> Placeholders in member list.
+        +w(0 'placeholder-') {
+            &:nth-child(odd) > div { c: 0 0 bg4 }
+            &:nth-child(even) > div { c: 0 0 bg5 }
         }
 
         /// Feat -> Custom UI font.
