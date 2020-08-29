@@ -1233,18 +1233,27 @@ AA = 0%
                 ../:hover button { c: fg1 }
             }
         }
-        /// -> Textarea.
+
+        /// Textarea.
         +w(0 'channelTextArea-') {
             r: rc i
-            // c: 0 0 hl
+
+            /// Input borders.
             > div {
                 r: inherit
-                // c: 0 0 hl
-                b: inner;
+                b: inner
             }
+
             /// Fix emoji button padding.
             +w(0 'emojiButton-') { padding-right: 10px i }
+
+            /// Edit message footer.
+            +w(2 'operations-') {
+                c: fg3
+                a { c: ac2 }
+            }
         }
+
         +w(0 'cooldownWrapper-') { c: fg3 }
         +w(0 'newMessagesBar-') {
             c: 0 0 bg5
