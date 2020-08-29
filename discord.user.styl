@@ -763,10 +763,23 @@ AA = 0%
                 c: fg1
             }
         }
+
         /// -> Add border to content area.
         +w(0 'contentRegion-') {
             border-left: 1px solid bg5 i
         }
+
+        /// 'Subscriptions' colors.
+        [style ^= 'color: rgb(114\, 137\, 218);'] {
+            c: ac1
+            &:hover { c: 0 0 ac5 }
+
+            ../ [style *= '-color: rgb(114\, 137\, 218)'] {
+                c: white 0 ac1
+            }
+        }
+
+        /// TODO: Implement 'log out' colors.
     }
 
     // Startup.
