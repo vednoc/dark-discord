@@ -432,7 +432,7 @@ AA = 0%
             /[class *= 'mention-'][class *= 'bar'],
             /// Chat -> Pinned messages.
             /[class *= 'iconBadge-'] {
-                c: 0 0 ac0
+                c: white 0 ac0
             }
         }
 
@@ -531,14 +531,17 @@ AA = 0%
 
     // Guilds.
     +w(0 'wrapper-' 'guilds-', 1) {
-        b: inset -1px 0 bg5 i
-        c: 0 0 bg3
-        +w(0 'scroller-') { c: 0 0 t }
-        /// -> Logo.
+        /// Use theme colors.
+        +w(0 'scroller-') {
+            c: 0 0 bg3
+            b: inset -1px 0 bg5 i
+        }
+
+        /// Home item.
         +w(0 'listItem-' 'wrapper', 2) {
             +w(0 'childWrapper-') { c: fg3 }
             +w(1 'selected-') {
-                +w(0 'childWrapper-') { c: white 0 ac3 }
+                +w(0 'childWrapper-') { c: white 0 ac2 }
             }
         }
 
