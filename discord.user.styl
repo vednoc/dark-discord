@@ -516,9 +516,6 @@ AA = 0%
         }
 
         +w(3 'checkbox-') {
-            /// Rounded.
-            &[style *= '67\, 181\, 129'] { c: 0 green green }
-
             /// Squared.
             +w(1 'box-') {
                 c: 0 bg5
@@ -526,6 +523,11 @@ AA = 0%
                 /// In bars or standalone.
                 +w(1 'checked-') { c: ac1 white white }
                 &[style *= 'd-color: rgb(114\, 137\, 218)'] { c: white ac1 ac1 }
+            }
+
+            /// Rounded.
+            +w(1 'round-') {
+                &[style *= '67\, 181\, 129'] { c: 0 green green }
             }
         }
     }
@@ -776,6 +778,14 @@ AA = 0%
             }
         }
 
+        /// 'ESC' button.
+        +w(0 'closeButton-') {
+            c: 0 bg5
+            &:hover { c: 0 0 bg3 }
+            svg path { v: fg2 }
+            +w(2 'keybind-') { c: fg2 }
+        }
+
         /// My account.
         +w(0 'viewBody-') { c: fg1 }
 
@@ -1006,6 +1016,9 @@ AA = 0%
             +w(0 'bar-') { c: 0 0 bg4 }
             +w(0 'Fill-') { c: 0 0 ac1 }
             +w(0 'grabber-') { c: 0 fg1 fg1 }
+            +w(0 'markDash-') { c: 0 0 bg4 }
+            +w(0 'markValue-') { c: fg3 }
+            +w(0 'defaultValue-' 'Value-', 2) { c: ac1 }
         }
     }
 
