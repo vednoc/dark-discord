@@ -828,16 +828,21 @@ AA = 0%
 
     // Friends -> Active now.
     +w(0 'nowPlaying' 'outer-', 2) {
-        /// -> States.
-        +w(1 ' active-') {
-            &, ../:hover { c: 0 0 bg5 }
-            +w(0 ' active-' 'inset-') { c: 0 0 bg1 }
+        /// Normal state.
+        +w(1 'wrapper-') {
+            c: 0 0 bg3
+
+            /// Rich presence.
+            +w(0 'inset-') { c: 0 0 bg4 }
         }
 
-        /// -> Rich presence.
-        +w(0 'inset-') { c: 0 0 bg3 }
+        /// Various states.
+        +w(1 ' active-') {
+            &, ../:hover { c: 0 0 bg5 }
+            +w(0 ' active-' 'inset-') { c: 0 0 bg4 }
+        }
 
-        /// -> Popouts.
+        /// Popouts.
         +w(3 'popout-38lTFE') {
             c: 0 0 bg0
             b: inner, bsh i
