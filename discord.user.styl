@@ -882,14 +882,18 @@ AA = 0%
         /// 'Subscriptions' colors.
         [style ^= 'color: rgb(114\, 137\, 218);'] {
             c: ac1
-            &:hover { c: 0 0 ac5 }
+            &:hover { c: 0 0 ac4 }
 
             ../ [style *= '-color: rgb(114\, 137\, 218)'] {
                 c: white ac1 ac1
             }
         }
 
-        /// TODO: Implement 'log out' colors.
+        /// 'Log Out' colors.
+        [style ^= 'color: rgb(240\, 71\, 71);'] {
+            c: b10
+            &:hover { c: 0 0 b15 }
+        }
     }
 
     // Startup.
