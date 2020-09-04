@@ -51,16 +51,17 @@
 
 @var text     b_radius     'Border radius for menus' 4px
 
-@var color    _yellow      'Color: Yellow               ' #e5c512
-@var color    _orange      'Color: Orange               ' #df4b16
-@var color    _red         'Color: Red                  ' #dc322f
-@var color    _magenta     'Color: Magenta              ' #f33682
-@var color    _violet      'Color: Violet               ' #6c71c4
-@var color    _blue        'Color: Blue                 ' #268bd2
-@var color    _cyan        'Color: Cyan                 ' #2aa198
-@var color    _green       'Color: Green                ' #859900
-@var color    _white       'Color: White                ' #ffffff
-@var color    _sh          'Color: Shadow               ' #00000025
+@var color    _red         'Base red color              ' #f07178
+@var color    _orange      'Base orange color           ' #f78c6c
+@var color    _yellow      'Base yellow color           ' #ffcb6b
+@var color    _green       'Base green color            ' #aede62
+@var color    _cyan        'Base cyan color             ' #89ddff
+@var color    _blue        'Base blue color             ' #82aaff
+@var color    _violet      'Base violet color           ' #c792ea
+@var color    _magenta     'Base magenta color          ' #9a91ea
+@var color    _gray        'Gray color                  ' #bbbbbb
+@var color    _white       'White color                 ' #ffffff
+@var color    _sh          'Shadow color                ' #00000025
 ==/UserStyle== */
 
 // Class mixin.
@@ -151,6 +152,7 @@ if (cg_theme == 'custom') {
 t  = transparent
 i  = !important
 BA = 0%
+SA = 0%
 FA = 0%
 AA = 0%
 
@@ -162,10 +164,12 @@ AA = 0%
     /// Generator rules.
     if (dark(BG)) {
         a1 = (AA + 15); a2 = (AA + 30); a3 = (AA + 45); a4 = (AA + 65); a5 = (AA + 75)
+        s1 = (SA + 15); s2 = (SA + 30); s3 = (SA + 45); s4 = (SA + 65); s5 = (SA + 75)
         b1 = (BA + 10); b2 = (BA - 05); b3 = (BA - 10); b4 = (BA - 15); b5 = (BA - 20)
         f1 = (FA - 10); f2 = (FA + 10); f3 = (FA + 20); f4 = (FA + 30); f5 = (FA + 40)
     } else {
         a1 = (AA + 15); a2 = (AA + 30); a3 = (AA + 45); a4 = (AA + 65); a5 = (AA + 75)
+        s1 = (SA + 15); s2 = (SA + 30); s3 = (SA + 45); s4 = (SA + 65); s5 = (SA + 75)
         b1 = (BA - 10); b2 = (BA + 08); b3 = (BA + 16); b4 = (BA + 24); b5 = (BA + 32)
         f1 = (FA - 05); f2 = (FA - 10); f3 = (FA - 15); f4 = (FA - 20); f5 = (FA - 30)
     }
@@ -196,17 +200,97 @@ AA = 0%
             '4': mix(darken(BG, 65%), AC, a4),
             '5': mix(darken(BG, 50%), AC, a5),
         },
+        b1: {
+            '0': spin(_red,  0deg - 0%)
+            '1': spin(_red, 15deg - s1)
+            '2': spin(_red, 30deg - s2)
+            '3': mix(darken(BG, 20%), _red, s3)
+            '4': mix(darken(BG, 40%), _red, s4)
+            '5': mix(darken(BG, 40%), _red, s5)
+        },
+        b2: {
+            '0': spin(_orange,  0deg - 0%)
+            '1': spin(_orange, 15deg - s1)
+            '2': spin(_orange, 30deg - s2)
+            '3': mix(darken(BG, 20%), _orange, s3)
+            '4': mix(darken(BG, 40%), _orange, s4)
+            '5': mix(darken(BG, 40%), _orange, s5)
+        },
+        b3: {
+            '0': spin(_yellow,  0deg - 0%)
+            '1': spin(_yellow, 15deg - s1)
+            '2': spin(_yellow, 30deg - s2)
+            '3': mix(darken(BG, 20%), _yellow, s3)
+            '4': mix(darken(BG, 40%), _yellow, s4)
+            '5': mix(darken(BG, 40%), _yellow, s5)
+        },
+        b4: {
+            '0': spin(_green,  0deg - 0%)
+            '1': spin(_green, 15deg - s1)
+            '2': spin(_green, 30deg - s2)
+            '3': mix(darken(BG, 20%), _green, s3)
+            '4': mix(darken(BG, 40%), _green, s4)
+            '5': mix(darken(BG, 40%), _green, s5)
+        },
+        b5: {
+            '0': spin(_cyan,  0deg - 0%)
+            '1': spin(_cyan, 15deg - s1)
+            '2': spin(_cyan, 30deg - s2)
+            '3': mix(darken(BG, 20%), _cyan, s3)
+            '4': mix(darken(BG, 40%), _cyan, s4)
+            '5': mix(darken(BG, 40%), _cyan, s5)
+        },
+        b6: {
+            '0': spin(_blue,  0deg - 0%)
+            '1': spin(_blue, 15deg - s1)
+            '2': spin(_blue, 30deg - s2)
+            '3': mix(darken(BG, 20%), _blue, s3)
+            '4': mix(darken(BG, 40%), _blue, s4)
+            '5': mix(darken(BG, 40%), _blue, s5)
+        },
+        b7: {
+            '0': spin(_magenta,  0deg - 0%)
+            '1': spin(_magenta, 15deg - s1)
+            '2': spin(_magenta, 30deg - s2)
+            '3': mix(darken(BG, 20%), _magenta, s3)
+            '4': mix(darken(BG, 40%), _magenta, s4)
+            '5': mix(darken(BG, 40%), _magenta, s5)
+        },
+        b8: {
+            '0': spin(_violet,  0deg - 0%)
+            '1': spin(_violet, 15deg - s1)
+            '2': spin(_violet, 30deg - s2)
+            '3': mix(darken(BG, 20%), _violet, s3)
+            '4': mix(darken(BG, 40%), _violet, s4)
+            '5': mix(darken(BG, 40%), _violet, s5)
+        }
     }
 
     /// Generate Stylus-lang variables.
     define('bg-' + key, val, g) for key, val in C.bg
     define('fg-' + key, val, g) for key, val in C.fg
     define('ac-' + key, val, g) for key, val in C.ac
+    define('b1-' + key, val, g) for key, val in C.b1
+    define('b2-' + key, val, g) for key, val in C.b2
+    define('b3-' + key, val, g) for key, val in C.b3
+    define('b4-' + key, val, g) for key, val in C.b4
+    define('b5-' + key, val, g) for key, val in C.b5
+    define('b6-' + key, val, g) for key, val in C.b6
+    define('b7-' + key, val, g) for key, val in C.b7
+    define('b8-' + key, val, g) for key, val in C.b8
 
-    // Generate Stylus-lang helpers for CSS variables.
+    /// Generate Stylus-lang helpers for CSS variables.
     define('bg' + key, s('var(--bg-%s)', unquote(key)), g) for key, val in C.bg
     define('fg' + key, s('var(--fg-%s)', unquote(key)), g) for key, val in C.fg
     define('ac' + key, s('var(--ac-%s)', unquote(key)), g) for key, val in C.ac
+    define('b1' + key, s('var(--b1-%s)', unquote(key)), g) for key, val in C.b1
+    define('b2' + key, s('var(--b2-%s)', unquote(key)), g) for key, val in C.b2
+    define('b3' + key, s('var(--b3-%s)', unquote(key)), g) for key, val in C.b3
+    define('b4' + key, s('var(--b4-%s)', unquote(key)), g) for key, val in C.b4
+    define('b5' + key, s('var(--b5-%s)', unquote(key)), g) for key, val in C.b5
+    define('b6' + key, s('var(--b6-%s)', unquote(key)), g) for key, val in C.b6
+    define('b7' + key, s('var(--b7-%s)', unquote(key)), g) for key, val in C.b7
+    define('b8' + key, s('var(--b8-%s)', unquote(key)), g) for key, val in C.b8
 }
 
 
@@ -318,7 +402,7 @@ AA = 0%
         --e-size: e_size
 
         /// Generate colors variables.
-        for _v in (bg fg ac) {
+        for _v in (bg fg ac b1 b2 b3 b4 b5 b6 b7 b8) {
             for _i in 0..5 {
                 key = s('--%s-%s', _v, _i)
                 /// Escape `\` for `*-0` vars.
