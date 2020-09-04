@@ -528,6 +528,7 @@ AA = 0%
         /// Feat -> Line numbers for code blocks.
         if (code_ln) {
             pre code {
+                c: fg1
                 position: relative;
                 padding-left: 3em i;
                 /// -> Generate a range of numbers.
@@ -1425,15 +1426,15 @@ AA = 0%
             }
         }
 
-        /// -> Syntax highlighting.
+        /// Syntax highlighting.
         /.hljs {
             r: rc i
-            &-comment, &-quote { c: cm }
-            &-built_in, &-deletion { c: red }
-            &-addition, &-keyword, &-selector-tag { c: green }
-            &-name, &-section, &-title, &-selector-class, &-selector-id { c: blue }
-            &-attr, &-attribute, &-type, &-class, &-template-variable, &-variable { c: orange }
-            &-doctag, &-literal, &-meta &-meta-string, &-number, &-regexp, &-string { c: cyan }
+            &-comment, &-quote { c: fg3 }
+            &-built_in, &-deletion { c: b10 }
+            &-addition, &-keyword, &-selector-tag { c: b40 }
+            &-name, &-section, &-title, &-selector-class, &-selector-id { c: b60 }
+            &-doctag, &-literal, &-meta &-meta-string, &-number, &-regexp, &-string { c: b50 }
+            &-attr, &-attribute, &-type, &-class &-title, &-template-variable, &-variable { c: b20 }
         }
 
         /// Feat -> Code font.
