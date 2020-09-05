@@ -1420,13 +1420,25 @@ AA = 0%
             b: bsh i;
             > button { c: fg1 }
         }
-        /// -> Message context menu.
+
+        /// Message context menu.
         +w(0 'buttonContainer-' 'buttons-' 'wrapper-', 2) {
             c: 0 0 bg2
-            b: outer, bsh i;
-            /// -> 'Delete Message' link.
-            +w(3 'danger-') { &, [class *= 'hint'] { c: red }}
+            b: outer, bsh i
+
+            /// Menu items.
+            +w(3 'item-') {
+                +w(1 'colorDefault-') {
+                    +w(1 'focused-') { c: ac0 0 ac5 }
+                }
+                /// 'Delete Message' link.
+                +w(1 'colorDanger-') {
+                    &, [class *= 'hint'] { c: b10 }
+                    +w(1 'focused-') { c: b10 0 b15 }
+                }
+            }
         }
+
         /// -> Guild members.
         +w(3 'members-') {
             b: inset 1px 0 bg5 i
