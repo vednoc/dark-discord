@@ -489,17 +489,18 @@ AA = 0%
         }
 
         /// User -> Status icon.
-        [mask *= 'offline'], [fill *= '116\, 127\, 141'] { v: fg5 }
-        [mask *= 'online'], [fill *= '67\, 181\, 129'] { v: green }
-        [mask *= 'idle'], [fill *= '250\, 166\, 26'] { v: orange }
-        [mask *= 'dnd'], [fill *= '240\, 71\, 71'] { v: red }
+        /// TODO: Remove (obsolete?) RGB version in next version.
+        [mask *= 'offline'], [fill *= '116\, 127\, 141'], /[fill *= '#747f8d'] { v: fg5 }
+        [mask *= 'online'], [fill *= '67\, 181\, 129'], /[fill *= '#43b581'] { v: b40 }
+        [mask *= 'idle'], [fill *= '250\, 166\, 26'], /[fill *= '#faa61a'] { v: b20 }
+        [mask *= 'dnd'], [fill *= '240\, 71\, 71'], /[fill *= '#f04747'] { v: b10 }
 
         /// Sidebar -> User status.
         +w(3 'status-') {
             &[style *= '116\, 127\, 141'] { c: 0 0 fg5 }
-            &[style *= '67\, 181\, 129'] { c: 0 0 green }
-            &[style *= '250\, 166\, 26'] { c: 0 0 orange }
-            &[style *= '240\, 71\, 71'] { c: 0 0 red }
+            &[style *= '67\, 181\, 129'] { c: 0 0 b40 }
+            &[style *= '250\, 166\, 26'] { c: 0 0 b20 }
+            &[style *= '240\, 71\, 71'] { c: 0 0 b10 }
         }
 
         /// Badges.
@@ -585,6 +586,9 @@ AA = 0%
             /// Search -> Highlighted matches.
             /.highlight { c: 0 0 ac4 }
         }
+
+        /// Global -> Bot tags.
+        +w(3 'botTagInvert-') { c: white 0 ac0 }
     }
 
     // Global -> Switches/Checkboxes.
