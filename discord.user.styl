@@ -946,71 +946,83 @@ AA = 0%
 
     // Modals.
     +w(0 'modal-') {
-        /// -> Backdrop.
+        /// Backdrop.
         +w(3 'backdrop') {
             c: 0 0 bg1
             opacity: 0.8 i;
         }
-        /// -> Content.
-        +w(4 'inner-') {
-            /// User info modal.
-            +w(0 'root-') {
-                r: rc
-                border: 1px solid bg5
-                b: var(--elevation-high) i;
-                +w(4 'topSection') {
-                    z-index: 1 i;
-                    position: relative;
-                    border-bottom: 1px solid bg5 i
-                    c: 0 0 bg3
-                    &::before {
-                        opacity: 0.15;
-                        P(0 0 0 0, -1)
-                    }
-                    /// TODO: Tweak text colors later.
-                    * { z-index: 8 i; c: fg }
-                    /// -> Status colors.
-                    +w(4 'headerFill-') { c: 0 0 sh }
-                }
-                /// -> Buttons.
-                +w(0 'button') {
-                    c: white 0 ac1
-                    transition: 0.2s ease-in;
-                    &:hover { opacity: 0.6 i }
-                    > div { c: white }
-                }
-                /// -> Activity state.
-                +w(4 'Xbox') {
-                    +w(0 'colorBrand-') { c: 0 0 magenta }
-                    &::before { c: 0 0 magenta }
-                }
-                +w(4 'Playing') {
-                    +w(0 'colorBrand-') { c: 0 0 blue }
-                    &::before { c: 0 0 blue }
-                }
-                +w(4 'Spotify') {
-                    +w(0 'colorGreen-') { c: 0 0 green }
-                    &::before { c: 0 0 green }
-                }
-                +w(4 'Streaming') {
-                    +w(0 'colorBrand-') { c: 0 0 violet }
-                    &::before { c: 0 0 violet }
-                }
-                /// -> Tab state.
-                +w(0 'tabBarContainer-') {
-                    c: 0 bg5
-                    [style *= ': rgb(255'] { c: 0 ac1 }
-                    [style *= '255\, 0.1'] { c: 0 bg5 }
-                    [style *= '255\, 0.4'] { c: fg4 }
-                    /// Items.
-                    +w(0 'item-') {
-                        c: fg4
-                        &:hover { c: 0 bg4 }
-                        +w(1 'selected-') { c: fg1 ac1 }
-                    }
+
+        /// Global -> User info.
+        +w(4 'inner-' 'root-', 1) {
+            border: 1px solid bg5
+            r: rc
+            b: var(--elevation-high) i
+
+            /// Header.
+            +w(4 'topSection') {
+                z-index: 1 i
+                position: relative
+                border-bottom: 1px solid bg5 i
+                c: 0 0 bg3
+
+                /// Account info.
+                +w(0 'username-') { c: fg1 }
+                +w(0 'discriminator-') { c: fg2 }
+
+                /// Status colors.
+                +w(4 'headerFill-') { c: 0 0 bg4 }
+            }
+
+            /// Buttons.
+            +w(0 'button') {
+                transition: 0.2s ease
+                &:not([class *= 'ActionsProfile-']) { c: white ac1 ac1 }
+                &:hover { opacity: 0.8 i }
+                > div { c: white }
+            }
+
+            /// Slider bar.
+            +w(0 'timeBarProfile-' 'bar-', 2) { c: 0 0 #fff2 }
+
+            /// States.
+            +w(4 'Xbox') {
+                c: 0 0 b75
+                +w(0 'headerFill-') { c: 0 0 b74 }
+                +w(0 'colorBrand-') { c: 0 0 b70 }
+            }
+            +w(4 'Playing') {
+                c: 0 0 b55
+                +w(0 'headerFill-') { c: 0 0 b54 }
+                +w(0 'colorBrand-') { c: 0 0 b50 }
+            }
+            +w(4 'Spotify') {
+                c: 0 0 b45
+                +w(0 'headerFill-') { c: 0 0 b44 }
+                +w(0 'colorGreen-') { c: 0 0 b41 }
+            }
+            +w(4 'Streaming') {
+                c: 0 0 b65
+                +w(0 'headerFill-') { c: 0 0 b64 }
+                +w(0 'colorBrand-') { c: 0 0 b60 }
+            }
+
+            /// Tabs.
+            +w(0 'tabBarContainer-') {
+                c: 0 bg5 bg2
+                [style *= ': rgb(255'] { c: 0 ac1 }
+                [style *= '255\, 0.1'] { c: 0 bg5 }
+                [style *= '255\, 0.4'] { c: fg4 }
+
+                /// Items.
+                +w(0 'item-') {
+                    c: fg4
+                    &:hover { c: 0 bg4 }
+                    +w(1 'selected-') { c: fg1 ac1 }
+                    &[style *= '-color: rgb(255'] { c: fg1 ac1 }
                 }
             }
         }
+
         /// Global -> Upload.
         +w(3 'uploadModal-') {
             border: 1px solid bg5 i
