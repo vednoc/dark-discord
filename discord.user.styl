@@ -330,7 +330,10 @@ AA = 0%
     rc      = var(--radius)
 
     :root, .theme-dark {
-        /// Discord variables.
+        /// Userstyle info.
+        --note: 'Dark-Discord v0.52.0'
+
+        /// Discord's native variables.
         --header-primary:               fg1 //#ffffff
         --header-secondary:             fg4 //#b9bbbe
         --text-normal:                  fg1 //#dcddde
@@ -356,6 +359,7 @@ AA = 0%
         --background-mentioned:         ac5 //rgba(250,166,26,0.05)
         --background-mentioned-hover:   ac4 //rgba(250,166,26,0.08)
         --background-message-hover:     bg0 //rgba(4,4,5,0.07)
+
         /// Scrollbars.
         --scrollbar-thin-thumb:                 bg5 //#202225
         --scrollbar-thin-track:                 transparent
@@ -363,37 +367,36 @@ AA = 0%
         --scrollbar-auto-track:                 bg1 //#2e3338
         --scrollbar-auto-scrollbar-color-thumb: bg5 //#202225
         --scrollbar-auto-scrollbar-color-track: bg1 //#2f3136
+
         /// Shadows.
         --elevation-stroke:             inner //0 0 0 1px rgba(4,4,5,0.15)
         --elevation-low:                0 1px bg5 // ...0 2px 0 rgba(4,4,5,0.05)
         // --elevation-medium:             0 4px 4px rgba(0,0,0,0.16)
         --elevation-high:               0 8px 16px 2px sh //0 8px 16px rgba(0,0,0,0.24)
-        // --logo-primary:                 #fff
-        // --focus-primary:                #00b0f4
-        // --guild-header-text-shadow:     0 1px 1px rgba(0,0,0,0.4)
+
+        /// Various backgrounds.
         --channeltextarea-background:   bg3 //#40444b
-        // --activity-card-background:     #202225
+        --activity-card-background:     bg0 //#202225
         --textbox-markdown-syntax:      fg4 //#8e9297
-        --deprecated-card-bg:           bg3
-        --deprecated-card-editable-bg:  bg2
+        --deprecated-card-bg:           bg3 //#20222599
+        --deprecated-card-editable-bg:  bg2 //#2022254d
         --deprecated-store-bg:          bg1 //#36393f
+
         /// Settings -> My account -> Edit settings.
         --deprecated-text-input-bg:              bg3 //#0000001a
         --deprecated-text-input-border:          bg4 //#0000004d
         --deprecated-text-input-border-hover:    bg5 //#040405
         --deprecated-text-input-border-disabled: bg0 //#202225
         --deprecated-text-input-prefix:          ac1 //#dcddde
+
         /// Modals -> Quickswitcher -> Fix input colors.
         --deprecated-quickswitcher-input-background:  bg4 //#72767d
         --deprecated-quickswitcher-input-placeholder: fg2 //#ffffff4d
 
-        /// Dark-Discord variables.
-        --note: 'Dark-Discord v0.52.0'
-
         /// Reduce emoji size.
         --e-size: e_size
 
-        /// Generate colors variables.
+        /// Generate color variables.
         for _v in (bg fg ac b1 b2 b3 b4 b5 b6 b7 b8) {
             for _i in 0..5 {
                 key = s('--%s-%s', _v, _i)
@@ -406,7 +409,7 @@ AA = 0%
             }
         }
 
-        /// Theme variables.
+        /// Various theme variables.
         --shadow  : _sh;
         --bshadow : 0 8px 16px var(--shadow)
         --white   : _white;
