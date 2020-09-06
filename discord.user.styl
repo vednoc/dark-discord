@@ -57,8 +57,8 @@
 @var color    _green       'Base green color            ' #aede62
 @var color    _cyan        'Base cyan color             ' #89ddff
 @var color    _blue        'Base blue color             ' #82aaff
-@var color    _violet      'Base violet color           ' #c792ea
 @var color    _magenta     'Base magenta color          ' #9a91ea
+@var color    _violet      'Base violet color           ' #c792ea
 @var color    _gray        'Gray color                  ' #bbbbbb
 @var color    _white       'White color                 ' #ffffff
 @var color    _sh          'Shadow color                ' #00000025
@@ -324,14 +324,6 @@ AA = 0%
     shadow  = var(--shadow);
     sh      = var(--shadow);
     bsh     = var(--bshadow);
-    yellow  = var(--yellow);
-    orange  = var(--orange);
-    red     = var(--red);
-    magenta = var(--magenta);
-    violet  = var(--violet);
-    blue    = var(--blue);
-    cyan    = var(--cyan);
-    green   = var(--green);
     white   = var(--white);
     outer   = 0 0 0 1px bg5
     inner   = inset outer;
@@ -414,17 +406,9 @@ AA = 0%
             }
         }
 
-        /// TODO: Improve.
+        /// Theme variables.
         --shadow  : _sh;
         --bshadow : 0 8px 16px var(--shadow)
-        --yellow  : _yellow;
-        --orange  : _orange;
-        --red     : _red;
-        --magenta : _magenta;
-        --violet  : _violet;
-        --blue    : _blue;
-        --cyan    : _cyan;
-        --green   : _green;
         --white   : _white;
         --t       : transparent !important;
         --radius  : b_radius;
@@ -483,7 +467,7 @@ AA = 0%
             +w(0 'notice-') {
                 r: 0px
                 +w(1 'Brand-') { c: 0 0 ac3 }
-                +w(1 'Default-') { c: 0 0 orange }
+                +w(1 'Default-') { c: 0 0 b23 }
                 +w(1 'height36-') { c: 0 0 bg3 }
             }
         }
@@ -523,7 +507,7 @@ AA = 0%
 
         /// Buttons.
         [role = 'button'] {
-            &[style *= 'b(67\, 181\, 129'] { c: white 0 green }
+            &[style *= 'b(67\, 181\, 129'] { c: white 0 b42 }
         }
 
         /// Feat -> Line numbers for code blocks.
@@ -616,7 +600,7 @@ AA = 0%
 
             /// Rounded.
             +w(1 'round-') {
-                &[style *= '67\, 181\, 129'] { c: 0 green green }
+                &[style *= '67\, 181\, 129'] { c: 0 b41 b41 }
             }
         }
     }
@@ -1065,7 +1049,7 @@ AA = 0%
             }
             /// -> Protip.
             +w(0 'protip-') {
-                > h3 { c: green }
+                > h3 { c: b40 }
                 > div {
                     transition: opacity 0.2s ease i
                     ../:hover > div { opacity: 1 i }
@@ -1218,7 +1202,7 @@ AA = 0%
 
             +w(0 'protip-') {
                 c: fg
-                [style] { c: green }
+                [style] { c: b40 }
             }
         }
     }
