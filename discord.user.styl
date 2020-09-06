@@ -1371,11 +1371,14 @@ AA = 0%
             +w(0 'attachment-') {
                 b: none i
 
-                /// Invert document/text/code icons.
-                /[src *= '/assets/985ea67d2edab4424'],
-                /[src *= '/assets/9f358f46647358641'],
-                /[src *= 'assets/a11e895b46cde503a0'] {
-                    filter: invert(0.8) hue-rotate(180deg)
+                /// Invert document/text/code/zip icons.
+                if (dark(BG)) {
+                    /[src *= '/assets/985ea67d2edab4424'],
+                    /[src *= '/assets/9f358f46647358641'],
+                    /[src *= '/assets/481aa700fab464f23'],
+                    /[src *= '/assets/73d212e3701483c36'] {
+                        filter: invert(0.8) hue-rotate(180deg)
+                    }
                 }
             }
 
