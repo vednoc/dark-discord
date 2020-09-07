@@ -129,6 +129,12 @@ to_rgb(input) {
     unquote(slice(s('%s', rgba(input, 0)), 5, -3))
 }
 
+// Raw RGBA mixin.
+/// Combine `*-rgb` vars and alpha value.
+to_rgba(input, alpha) {
+    unquote(s('rgba(var(--%s-rgb), %s)', unquote(input), alpha))
+}
+
 // Border radius mixin.
 r() { border-radius: arguments }
 
@@ -1297,6 +1303,8 @@ SA = _sc_a
         /// -> Chat area.
         +w(0 'content-') {
             c: 0 0 t
+
+            --background-message-hover: to_rgba('bg-3', 0.3)
 
             /// -> 'New messagges' bar.
             +w(0 'isUnread-' 'divider-', 1) {
