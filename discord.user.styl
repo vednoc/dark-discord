@@ -980,6 +980,13 @@ SA = _sc_a
 
                 /// Status colors.
                 +w(4 'headerFill-') { c: 0 0 bg4 }
+
+                /// Activities.
+                +w(0 'activity-') {
+                    > * { c: fg0 }
+                    +w(0 'Normal-' 'Name-' 'details-', 0) { c: fg0 }
+                    +w(0 'content-') { c: fg2 }
+                }
             }
 
             /// Buttons.
@@ -991,7 +998,9 @@ SA = _sc_a
             }
 
             /// Slider bar.
-            +w(0 'timeBarProfile-' 'bar-', 2) { c: 0 0 #fff2 }
+            +w(0 'timeBar' 'bar-', 2) { c: 0 0 #fff2 }
+            +w(0 'timeBar' 'barInner-', 2) { c: 0 0 white }
+            +w(0 'bar-') { + div > div[style] { c: fg0 }}
 
             /// States.
             +w(4 'Xbox') {
