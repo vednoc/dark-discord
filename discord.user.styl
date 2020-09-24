@@ -1171,6 +1171,7 @@ SA = _sc_a
         +w(1 'lookOutlined-') {
             +w(1 'colorRed-') { c: b10 b10 }
             +w(1 'colorBrand-') { c: ac1 ac1 }
+            +w(1 'colorWhite-') { c: fg1 fg1 }
         }
 
         +w(1 'lookBlank-') {
@@ -1197,11 +1198,20 @@ SA = _sc_a
                 +w(0 'username-') { c: fg0 }
             }
 
-            /// Activity.
-            +w(0 'activity-') { * { c: fg1 }}
+            /// Status.
+            +w(0 'customStatus-') { c: fg0 }
+
+            /// Activities.
+            +w(0 'activity-') {
+                > * { c: fg0 }
+                +w(0 'Normal-' 'Name-' 'details-', 0) { c: fg0 }
+                +w(0 'content-') { c: fg2 }
+            }
 
             /// Slider bar.
             +w(0 'timeBar' 'bar-', 2) { c: 0 0 #fff2 }
+            +w(0 'timeBar' 'barInner-', 2) { c: 0 0 white }
+            +w(0 'bar-') { + div > div[style] { c: fg0 }}
 
             /// Status colors.
             +w(1 'Xbox') {
