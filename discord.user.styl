@@ -1580,7 +1580,11 @@ SA = _sc_a
                 border: 1px solid bg5
                 b: var(--elevation-high) i;
                 r: rc
+
+                /// Fix background for emoji category text.
+                +w(0 'categorySection-' 'header-', 2) { c: 0 0 bg2 }
             }
+
             /// -> Rounded corners.
             +w(0 'categoryList-') {
                 r: 0px 0px 0px rc
