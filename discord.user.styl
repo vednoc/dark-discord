@@ -1547,6 +1547,12 @@ SA = _sc_a
                     margin-left: auto;
                 }
             }
+
+            /// Fix 'Messages failed to load' alert.
+            +w(3 'messagesErrorBar-') {
+                c: 0 0 b15
+                +w(4 'Button') { c: b10 }
+            }
         }
     }
 
