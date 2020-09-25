@@ -1282,6 +1282,34 @@ SA = _sc_a
         +w(0 'embedAuthorName-') { c: fg1 }
         +w(0 'embedTitle-') { c: ac1 }
         code.inline { c: fg1 }
+
+        /// Fix width for videos. @upstream
+        @supports(scrollbar-width: thin) {
+            +w(0 'cozy-') {
+                margin-left: 0px
+                padding-left: 16px
+
+                /// Reduce size of avatars.
+                +w(0 'avatar-') {
+                    top: 2px
+                    left: 0px
+                    width: 16px
+                    height: @width
+                    position: relative
+
+                    + h2 { margin: -20px 0 4px 24px }
+                }
+
+                /// Reset the embed.
+                +w(4 'container-') {
+                    +w(0 'embedFull-') {
+                        width: 100% i
+                        max-width: 100% i
+                        > div > div[style] { width: 100% i }
+                    }
+                }
+            }
+        }
     }
 
     // Popouts -> Attach menu.
