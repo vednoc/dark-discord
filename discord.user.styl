@@ -1470,6 +1470,12 @@ SA = _sc_a
                 c: fg3
                 a { c: ac2 }
             }
+
+            /// Markdown preview -> Mentions.
+            .mention { c: ac1 0 bg4 }
+
+            /// Markdown preview -> Inline code.
+            +w(3 'inlineCode-') { font-family: var(--f-mono) i }
         }
 
         +w(0 'cooldownWrapper-') { c: fg3 }
