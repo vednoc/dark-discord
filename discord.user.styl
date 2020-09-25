@@ -444,9 +444,8 @@ SA = _sc_a
         }
 
         /// Chat -> Placeholders in member list.
-        +w(0 'placeholder-') {
-            &:nth-child(odd) > div { c: 0 0 bg4 }
-            &:nth-child(even) > div { c: 0 0 bg5 }
+        +w(0 'placeholder-' 'Placeholder-', 0) {
+            --background-primary: bg3
         }
 
         /// Feat -> Custom UI font.
