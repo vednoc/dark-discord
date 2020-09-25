@@ -1610,6 +1610,14 @@ SA = _sc_a
                 +w(0 'categorySection-' 'header-', 2) { c: 0 0 bg2 }
             }
 
+            /// Chat -> Reacting to messages.
+            +w(3 'emojiPicker-') {
+                box-shadow: 0 0 0 1px bg5
+
+                /// Fix background for emoji category text.
+                +w(0 'categorySection-' 'header-', 2) { c: 0 0 bg2 }
+            }
+
             /// -> Rounded corners.
             +w(0 'categoryList-') {
                 r: 0px 0px 0px rc
