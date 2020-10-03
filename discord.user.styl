@@ -71,23 +71,23 @@
 
 // Class mixin.
 /// TODO: Replace `w` mixin with this one.
-w(prefix, arg, inline = ' ') {
+W(prefix, args, attr = class, sel = '*=', inline = ' ') {
     r = unquote
     list = ''
 
-    attr = (arg[0] == 0) ? class : (arg[0] != '_') ? arg[0] : null
-    selector = (arg[1] == 0) ? r('*=') : (arg[1] != '_') ? r(arg[1]) : null
-    // dbg_{ attr }: s('%s ::: %s ::: %s ::: %s', arg[0], arg[1], arg[2..length(arg)], inline)
+    attr = (attr == 0) ? class : (attr == '_') ? null : attr
+    sel = (sel == 0) ? '*=' : (sel == '_') ? '' : sel
+    //dbg_{ attr }: s('%s ::: %s ::: %s ::: %s', prefix, attr, inline, args)
 
-    for item, i in arg[2 .. length(arg)] {
-        if i {
+    for item, index in args {
+        if index {
             list += (inline != '' ) \
-                ? s('%s%s [%s%s%s],', r(inline), r(prefix), attr, selector, item) \
-                : s('[%s%s%s]', attr, selector, item)
+                ? s('%s%s [%s%s%s],', r(inline), r(prefix), attr, r(sel), item) \
+                : s('[%s%s%s]', attr, r(sel), item)
         } else {
             list += (inline != '') \
-                ? s('%s%s [%s%s%s],', r(inline), r(prefix), attr, selector, item) \
-                : s('%s[%s%s%s]', r(prefix), attr, selector, item)
+                ? s('%s%s [%s%s%s],', r(inline), r(prefix), attr, r(sel), item) \
+                : s('%s[%s%s%s]', r(prefix), attr, r(sel), item)
         }
     }
 
