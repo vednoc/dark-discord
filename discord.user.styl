@@ -801,33 +801,37 @@ SA = _sc_a
 
     // Sidebar.
     /// NOTE: Excludes user settings.
-    :not([class *= 'Region']) > {
-        +w(0 'sidebar-') {
+    :not([class *= 'Region']) {
+        +W('>', 'sidebar-') {
             border-right: 1px solid bg5 i
 
-            /// -> User status.
-            +w(0 'panels-') {
+            /// User status menu.
+            +W('', 'panels-') {
                 border-top: 1px solid bg5 i
+
                 /// Popouts -> Status menu.
-                +w(3 'menu-') { border: 1px solid bg5 i }
+                +W('/', 'menu-', inline: '') { border: 1px solid bg5 i }
             }
 
-            /// -> Friends.
-            +w(2 'container-') {
+            /// Main/friends area.
+            +W('+', 'container-') {
                 c: 0 0 bg1
-                /// -> Header.
-                +w(4 'container-') { c: 0 0 bg2 }
-                /// -> Now playing.
-                +w(0 'nowPlaying') { b: inset 1px 0 bg5 i }
+
+                /// Header.
+                +W('>', 'container-') { c: 0 0 bg2 }
+
+                /// 'Now playing' sidebar.
+                +W('', 'nowPlaying') { b: inset 1px 0 bg5 i }
             }
 
-            /// -> Guild notifications.
+            /// Guild notifications.
             +w(0 'bar-') {
                 c: fg1 0 bg3
-                b: inner, bsh i;
-                +w(1 'mention-') {
+                b: inner, bsh i
+
+                +W('&', 'mention-', inline: '') {
                     c: white 0 ac1
-                    b: bsh i;
+                    b: bsh i
                 }
             }
 
