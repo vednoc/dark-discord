@@ -550,6 +550,8 @@ SA = _sc_a
             /[class *= 'quickswitcher-'] [class *= 'badge'],
             /// Guilds -> New messages.
             /[class *= 'mention-'][class *= 'bar'],
+            /// Guilds -> Settings -> New settings.
+            /[class *= 'gearWithBadge-'] > div:last-child,
             /// Chat -> Pinned messages.
             /[class *= 'iconBadge-'] {
                 c: white 0 ac0
@@ -624,6 +626,19 @@ SA = _sc_a
 
         /// Global -> Bot tags.
         +w(3 'botTagInvert-') { c: white 0 ac0 }
+
+        /// Global -> Context menus.
+        +W('', 'contextMenu-') {
+            border: 1px solid bg5 i
+        }
+
+        /// Global -> Login page.
+        +W('', 'authBox-') {
+            border: 1px solid bg5 i
+            b: var(--elevation-high) i
+            r: rc i
+            c: fg5
+        }
     }
 
     // Global -> Switches/Checkboxes.
@@ -654,14 +669,6 @@ SA = _sc_a
                 &[style *= '67\, 181\, 129'] { c: 0 b41 b41 }
             }
         }
-    }
-
-    // App -> Login page.
-    +w(0 'authBox-') {
-        border: 1px solid bg5 i
-        b: var(--elevation-high) i
-        r: rc i
-        c: fg5
     }
 
     // Guilds.
@@ -882,11 +889,6 @@ SA = _sc_a
                 c: 0 0 bg1
             }
         }
-    }
-
-    // Global -> Context menus.
-    +w(0 'contextMenu-') {
-        border: 1px solid bg5 i
     }
 
     // Settings.
@@ -1533,6 +1535,11 @@ SA = _sc_a
                 +w(1 'colorDanger-') {
                     &, [class *= 'hint'] { c: b10 }
                     +w(1 'focused-') { c: b10 0 b15 }
+                }
+                /// 'Invite people' link.
+                +w(1 'colorBrand-') {
+                    &, [class *= 'hint'] { c: b60 }
+                    +w(1 'focused-') { c: b60 0 b65 }
                 }
             }
         }
