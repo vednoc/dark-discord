@@ -70,6 +70,36 @@
 ==/UserStyle== */
 
 // Class mixin.
+/// TODO: Replace `w` mixin with this one.
+w(prefix, arg, inline = ' ') {
+    r = unquote
+    list = ''
+
+    attr = (arg[0] == 0) ? class : (arg[0] != '_') ? arg[0] : null
+    selector = (arg[1] == 0) ? r('*=') : (arg[1] != '_') ? r(arg[1]) : null
+    // dbg_{ attr }: s('%s ::: %s ::: %s ::: %s', arg[0], arg[1], arg[2..length(arg)], inline)
+
+    for item, i in arg[2 .. length(arg)] {
+        if i {
+            list += (inline != '' ) \
+                ? s('%s%s [%s%s%s],', r(inline), r(prefix), attr, selector, item) \
+                : s('[%s%s%s]', attr, selector, item)
+        } else {
+            list += (inline != '') \
+                ? s('%s%s [%s%s%s],', r(inline), r(prefix), attr, selector, item) \
+                : s('%s[%s%s%s]', r(prefix), attr, selector, item)
+        }
+    }
+
+    list = replace(',$', '', list)
+    dbg_list: '' + list
+
+    { list } {
+        { block }
+    }
+}
+
+// Class mixin.
 /// Use it instead of: [class *= 'foo_bar']
 w(arguments, inline = 0)
     a = arguments
@@ -166,6 +196,7 @@ BA = _bg_a
 FA = _fg_a
 AA = _ac_a
 SA = _sc_a
+//w  = W // TODO: Developer only.
 
 // Color generator.
 /// NOTE: Fix the scope to avoid conflicts.
