@@ -730,7 +730,10 @@ SA = _sc_a
             +w(0 'nreadMentions' 'bar', 1) { width: $size }
 
             /// Dividers.
-            +w(0 'Separator-') { width: $size }
+            +w(0 'Separator-') {
+                width: $size
+                c: 0 0 bg5
+            }
 
             /// DM icons.
             div[style *= 'height: 56px'] {
