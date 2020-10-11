@@ -1448,6 +1448,11 @@ SA = _sc_a
                         r: 4px 0px 0px 4px
                     }
                 }
+
+                /// Reactions.
+                &:hover {
+                    +w(0 'reactionMe-') { c: 0 0 #fff2 }
+                }
             }
             /// -> Spoilers.
             +w(0 'spoilerText-') {
@@ -1474,7 +1479,7 @@ SA = _sc_a
 
             /// -> Reactions.
             +w(0 'reactionMe-') {
-                c: 0 0 ac3
+                c: 0 0 ac4
                 +w(0 'Count-') {
                     font-weight: bold
                     c: ac0
