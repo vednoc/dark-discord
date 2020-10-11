@@ -71,23 +71,30 @@
 
 // Class mixin.
 /// TODO: Replace `w` mixin with this one.
-W(prefix, args, attr = class, sel = '*=', inline = ' ') {
+W(prefix, args, attr = class, sel = '*=', i = ' ') {
     r = unquote
     list = ''
 
-    attr = (attr == 0) ? class : (attr == '_') ? null : attr
+    selectors = ((prefix == '>') || (prefix == '~') || (prefix == '+'))
+    prefix = (selectors) ? s('%s ', r(prefix)) : (prefix == '') ? '' : prefix
+
+    inline_cases = (prefix == '/' || prefix == '../' || prefix == '~/')
+    inline = ((selectors || inline_cases) && length(args) == 1) ? '' : i
+
+    attr = (attr == 0) ? 'class' : (attr == '_') ? '' : attr
     sel = (sel == 0) ? '*=' : (sel == '_') ? '' : sel
-    //dbg_{ attr }: s('%s ::: %s ::: %s ::: %s', prefix, attr, inline, args)
+    // dbg_{ attr }: s('%s ::: %s ::: %s ::: %s', prefix, attr, inline, args)
 
     for item, index in args {
+        // dbg: '' + item + ' :::::: ' + index
         if index {
             list += (inline != '' ) \
-                ? s('%s%s [%s%s%s],', r(inline), r(prefix), attr, r(sel), item) \
-                : s('[%s%s%s]', attr, r(sel), item)
+                ? s('%s%s[%s%s%s],', r(inline), r(prefix), r(attr), r(sel), item) \
+                : s('[%s%s%s]', r(attr), r(sel), item)
         } else {
             list += (inline != '') \
-                ? s('%s%s [%s%s%s],', r(inline), r(prefix), attr, r(sel), item) \
-                : s('%s[%s%s%s]', r(prefix), attr, r(sel), item)
+                ? s('%s%s[%s%s%s],', r(inline), r(prefix), r(attr), r(sel), item) \
+                : s('%s[%s%s%s]', r(prefix), r(attr), r(sel), item)
         }
     }
 
@@ -820,7 +827,7 @@ SA = _sc_a
                 border-top: 1px solid bg5 i
 
                 /// Popouts -> Status menu.
-                +W('/', 'menu-', inline: '') { border: 1px solid bg5 i }
+                +W('/', 'menu-') { border: 1px solid bg5 i }
             }
 
             /// Main/friends area.
@@ -839,7 +846,7 @@ SA = _sc_a
                 c: fg1 0 bg3
                 b: inner, bsh i
 
-                +W('&', 'mention-', inline: '') {
+                +W('&', 'mention-') {
                     c: white 0 ac1
                     b: bsh i
                 }
