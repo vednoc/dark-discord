@@ -49,8 +49,8 @@
 @var text     compact_w    'Compact mode breakpoint' 540px
 
 @var range    avatar_size  'Avatar size in info menus' [80, 80, 128, 16, 'px']
-@var checkbox acm          'Enable avatar context menu in profiles' 1
-@var checkbox code_ln      'Enable code line numbers' 1
+@var checkbox avatar_c_m   'Enable avatar context menu in profiles' 1
+@var checkbox code_lines   'Enable code line numbers' 1
 
 @var text     f_ui         'UI font' ''font_name''
 @var text     f_code       'Monospace font' ''font_name''
@@ -142,7 +142,7 @@ w(arguments, inline = 0)
     {list}
         {block}
 
-// Color mixin.
+// Colors mixin.
 /// All colors: `c: fg bd bg`
 /// Only border-color: `c: 0 bd`
 c(x, y = 0, z = 0, xi = 1, yi = 1, zi = 1) {
@@ -153,9 +153,8 @@ c(x, y = 0, z = 0, xi = 1, yi = 1, zi = 1) {
 
 // SVG colors.
 v(x, y = 0, xi = 1, yi = 1) {
-    i = !important;
-    if x != 0 && x != '_' {   fill: xi is 0? x : x i }
-    if y != 0 && y != '_' { stroke: yi is 0? y : y i }
+    if x != 0 && x != '_' {   fill: xi is 0 ? x : x i }
+    if y != 0 && y != '_' { stroke: yi is 0 ? y : y i }
 }
 
 // Pseudo-element builder.
@@ -395,7 +394,7 @@ SA = _sc_a
         /// Userstyle info.
         --note: 'Dark-Discord v0.57.1'
 
-        /// Discord's native variables.
+        /// Native variables.
         --header-primary:               fg1 //#ffffff
         --header-secondary:             fg4 //#b9bbbe
         --text-normal:                  fg1 //#dcddde
@@ -585,7 +584,7 @@ SA = _sc_a
         }
 
         /// Feat -> Line numbers for code blocks.
-        if (code_ln) {
+        if (code_lines) {
             pre code {
                 c: fg1
                 position: relative;
@@ -1761,7 +1760,7 @@ SA = _sc_a
     }
 
     /// Feat -> Enable avatar context menu in profiles.
-    if (acm) {
+    if (avatar_c_m) {
         +w(0 'avatar-') {
             img { text-indent: unset }
             * { pointer-events: unset }
