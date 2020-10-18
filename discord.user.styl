@@ -75,10 +75,10 @@ W(prefix, args, attr = class, sel = '*=', i = ' ') {
     r = unquote
     list = ''
 
-    selectors = ((prefix == '>') || (prefix == '~') || (prefix == '+'))
+    selectors = (prefix == '>' || prefix == '~' || prefix == '+')
     prefix = (selectors) ? s('%s ', r(prefix)) : (prefix == '') ? '' : prefix
 
-    inline_cases = (prefix == '/' || prefix == '../' || prefix == '~/')
+    inline_cases = (prefix == '/' || prefix == '../' || prefix == '~/' || prefix == '')
     inline = ((selectors || inline_cases) && length(args) == 1) ? '' : i
 
     attr = (attr == 0) ? 'class' : (attr == '_') ? '' : attr
@@ -88,18 +88,26 @@ W(prefix, args, attr = class, sel = '*=', i = ' ') {
     for item, index in args {
         // dbg: '' + item + ' :::::: ' + index
         if index {
-            list += (inline != '' ) \
-                ? s('%s%s[%s%s%s],', r(inline), r(prefix), r(attr), r(sel), item) \
-                : s('[%s%s%s]', r(attr), r(sel), item)
+            if (inline == '0') {
+                list += s(' [%s%s%s]', r(attr), r(sel), item)
+            } else if (inline == ' ') {
+                list += s('%s%s[%s%s%s],', r(inline), r(prefix), r(attr), r(sel), item)
+            } else {
+                list += s('[%s%s%s]', r(attr), r(sel), item)
+            }
         } else {
-            list += (inline != '') \
-                ? s('%s%s[%s%s%s],', r(inline), r(prefix), r(attr), r(sel), item) \
-                : s('%s[%s%s%s]', r(prefix), r(attr), r(sel), item)
+            if (inline == '0') {
+                list += s('%s[%s%s%s]', r(prefix), r(attr), r(sel), item)
+            } else if (inline != '') {
+                list += s('%s%s[%s%s%s],', r(inline), r(prefix), r(attr), r(sel), item)
+            } else {
+                list += s('%s[%s%s%s]', r(prefix), r(attr), r(sel), item)
+            }
         }
     }
 
     list = replace(',$', '', list)
-    dbg_list: '' + list
+    // dbg_list: '' + list
 
     { list } {
         { block }
