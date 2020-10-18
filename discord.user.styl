@@ -169,10 +169,14 @@ P(a, _z = 0, _c = '', _p = absolute) {
     if a[3] is a 'call' or a[3] is a 'unit' {   left: a[3] }
 }
 
-// Bare RGB mixin.
-/// Converts HEX to bare rrr-ggg-bbb format.
-to_rgb(input) {
-    unquote(slice(s('%s', rgba(input, 0)), 5, -3))
+// Raw RGB mixin.
+/// Convert RGBA (if t = 1) or HEX to raw rrr-ggg-bbb format.
+to_rgb(input, t = 0) {
+    if (t) {
+        unquote(substr(join(',', slice(split(',', s('%s', input)), 0, -1)), 5))
+    } else {
+        unquote(slice(s('%s', rgba(input, 0)), 5, -3))
+    }
 }
 
 // Raw RGBA mixin.
