@@ -48,6 +48,7 @@
 }
 @var text     compact_w    'Compact mode breakpoint' 540px
 
+@var range    avatar_size  'Avatar size in info menus' [80, 80, 128, 16, 'px']
 @var checkbox acm          'Enable avatar context menu in profiles' 1
 @var checkbox code_ln      'Enable code line numbers' 1
 
@@ -474,6 +475,7 @@ SA = _sc_a
         --radius  : b_radius;
         --f-mono  : f_code, Consolas, Liberation Mono, Menlo, Courier, monospace
         --f-ui    : f_ui, Whitney, Helvetica Neue, Helvetica, Arial, sans-serif
+        --avatar-s: avatar_size
     }
 
     // Base styles.
@@ -1727,6 +1729,30 @@ SA = _sc_a
             background-image: none i;
             c: t 0 bg3
             r: 38%
+        }
+    }
+
+    /// Feat -> Avatar size in info popout/modal.
+    if (avatar_size > 80) {
+        /// Popout.
+        +W('', 'userPopout-' 'avatarWrapper-', i: 0) {
+            > div[style*='width: 80px'],
+            > svg[width='80'] {
+                width: var(--avatar-s) i
+                height: var(--avatar-s) i
+            }
+        }
+
+        /// Modal.
+        +W('', 'modal-' 'header-', i: 0) {
+            div[style*='width: 80px'] {
+                width: var(--avatar-s) i
+                height: var(--avatar-s) i
+            }
+            /// Fix width.
+            svg[width='92'] {
+                width: calc(var(--avatar-s) + 12px) i
+            }
         }
     }
 
