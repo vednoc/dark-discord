@@ -32,6 +32,7 @@
 @var text     chat_short_w 'Shorter chat width' 800px
 
 @var checkbox sb_short     'Smaller sidebar mode' 1
+@var text     sb_short_s   'Smaller sidebar mode size' 64px
 @var text     sb_short_w   'Smaller sidebar mode breakpoint' 940px
 @var text     sb_short_d   'Smaller sidebar mode hover delay' 1000ms
 
@@ -869,7 +870,7 @@ SA = _sc_a
             if (sb_short) {
                 @media screen and (max-width: sb_short_w) {
                     transition: 0.3s cubic-bezier(0, 0, 0.2, 1)
-                    max-width: 64px
+                    max-width: sb_short_s
 
                     /// Center user icon.
                     +w(0 'panels-' 'container-', 2) {
