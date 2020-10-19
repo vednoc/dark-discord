@@ -72,8 +72,8 @@
 ==/UserStyle== */
 
 // Class mixin.
-/// TODO: Replace `w` mixin with this one.
-W(prefix, args, attr = class, sel = '*=', i = ' ') {
+/// Use it instead of: [class*='foo_bar']
+w(prefix, args, attr = class, sel = '*=', i = ' ') {
     r = unquote
     list = ''
 
@@ -115,33 +115,6 @@ W(prefix, args, attr = class, sel = '*=', i = ' ') {
         { block }
     }
 }
-
-// Class mixin.
-/// Use it instead of: [class *= 'foo_bar']
-w(arguments, inline = 0)
-    a = arguments
-    u = unquote
-    list = ''
-
-    if      (a[0] == 1) { x = '&' }
-    else if (a[0] == 2) { x = '+' }
-    else if (a[0] == 3) { x = '/' }
-    else if (a[0] == 4) { x = '>' }
-    else if (a[0] == 5) { x = '../ ' }
-    else                { x = '' }
-
-    if      (inline == 1) { _i = ''   }
-    else if (inline == 2) { _i = ' '  }
-    else if (inline == 3) { _i = '+'  }
-    else                  { _i = ', ' }
-
-    for item, index in a[1 .. length(a)]
-        if index
-            list += s('%s%s[class*="%s"]', u(_i), u(x), u(item))
-        else
-            list += s('%s[class*="%s"]', u(x), u(item))
-    {list}
-        {block}
 
 // Colors mixin.
 /// All colors: `c: fg bd bg`
@@ -491,22 +464,22 @@ SA = _sc_a
         ::-moz-selection { c: bg5 0 fg1 }
 
         /// Global -> Text placeholders.
-        +w(0 'emptyPlaceholder') {
-            &, ../ ::placeholder { c: fg3 }
+        +w('', 'emptyPlaceholder') {
+            &, ../ ::placeholder { c: fg2 }
         }
 
         /// Chat -> Placeholders in member list.
-        +w(0 'placeholder-' 'Placeholder-', 0) {
+        +w('', 'placeholderAvatar-' 'placeholderUsername-') {
             --background-primary: bg3
         }
 
         /// Feat -> Custom UI font.
         &, button, input, select, textarea, ::placeholder {
-            font-family: var(--f-ui) i;
+            font-family: var(--f-ui) i
         }
 
         /// Shortcuts.
-        +w(0 'keybindShortcut') {
+        +w('', 'keybindShortcut') {
             span {
                 c: fg1 bg4 bg2
                 b: inset 0 -4px 0 bg5 i
@@ -515,28 +488,28 @@ SA = _sc_a
         }
 
         /// App -> Core.
-        +w(0 'appMount-') {
+        +w('', 'appMount-') {
             c: 0 0 t
 
-            /// -> Skeleton/Crashed page.
-            +w(4 'errorPage-') { c: 0 0 bg1 }
+            /// Skeleton/Crashed page.
+            +w('>', 'errorPage-') { c: 0 0 bg1 }
 
-            /// -> 'No channel' page.
-            +w(0 'noChannel-') {
+            /// 'No channel' page.
+            +w('', 'noChannel-') {
                 c: 0 0 bg1
                 h4 { c: fg1 }
                 h4 + div { c: fg4 }
             }
 
-            /// -> Notice alert.
-            +w(0 'notice-') {
+            /// Notice alert.
+            +w('', 'notice-') {
                 r: 0px
-                +w(1 'Brand-') { c: 0 0 ac3 }
-                +w(1 'Default-') { c: 0 0 b23 }
-                +w(1 'height36-') { c: 0 0 bg3 }
-                +w(1 'Neutral-') {
+                +w('&', 'Brand-') { c: 0 0 ac3 }
+                +w('&', 'Default-') { c: 0 0 b33 }
+                +w('&', 'height36-') { c: 0 0 bg3 }
+                +w('&', 'Neutral-') {
                     c: fg1 0 bg4
-                    +w(0 'button-') {
+                    +w('', 'button-') {
                         c: fg1 bg5 bg4
                         &:hover { c: 0 0 bg5 }
                     }
@@ -552,7 +525,7 @@ SA = _sc_a
         [mask *= 'dnd'], [fill *= '240\, 71\, 71'], /[fill *= '#f04747'] { v: b10 }
 
         /// Sidebar -> User status.
-        +w(3 'status-') {
+        +w('/', 'status-') {
             &[style *= '116\, 127\, 141'] { c: 0 0 fg5 }
             &[style *= '67\, 181\, 129'] { c: 0 0 b40 }
             &[style *= '250\, 166\, 26'] { c: 0 0 b20 }
@@ -560,7 +533,7 @@ SA = _sc_a
         }
 
         /// Badges.
-        +w(0 'numberBadge-') {
+        +w('', 'numberBadge-') {
             /// Global -> 'NEW' alerts.
             /.badge-_BgAUQ,
             /// Inbox -> Unreads.
@@ -612,49 +585,48 @@ SA = _sc_a
         }
 
         /// Global -> Tooltips.
-        +w(3 'tooltipBlack-') {
+        +w('/', 'tooltipBlack-') {
             border: 1px solid bg5
             c: fg1 0 bg3
             b: 0 4px 8px shadow i
 
-            +w(0 'Pointer-') { border-top-color: bg5 i }
+            +w('', 'Pointer-') { border-top-color: bg5 i }
         }
 
         /// Fix 'Server Boosting' and similar tooltips.
-        +w(3 'subscribeTooltipWrapper-') {
+        +w('/', 'subscribeTooltipWrapper-') {
             c: 0 0 ac3
             &::after { border-bottom-color: ac3 i }
         }
 
         /// Guilds -> Voice -> Activity popout.
-        +w(0 'container-3JTnYm') {
+        +w('', 'container-3JTnYm') {
             border: 1px solid bg5 i
             r: rc
         }
 
-        /// Chat -> Mentions.
-        +w(0 'mention interactive', 1) {
-            c: ac0 0 bg3 1 0 0
+        /// Chat -> Inline mentions.
+        +w('', 'mention interactive', i: '') {
             transition: 0.2s ease-in-out
 
             /// Hover/active states.
             &:hover, &.popout-open { c: white 0 ac1 }
-            /{ +w(0 'mentioned-' 'mention', 2) { &:not(#z) { c: ac0 0 t }}}
+            +w('/', 'mentioned-' 'mention', i: 0) { &:not(#z) { c: ac0 0 t }}
 
             /// Search -> Highlighted matches.
             /.highlight { c: 0 0 ac4 }
         }
 
         /// Global -> Bot tags.
-        +w(3 'botTagInvert-') { c: white 0 ac0 }
+        +w('/', 'botTagInvert-') { c: white 0 ac0 }
 
         /// Global -> Context menus.
-        +W('', 'contextMenu-') {
+        +w('', 'contextMenu-') {
             border: 1px solid bg5 i
         }
 
         /// Global -> Login page.
-        +W('', 'authBox-') {
+        +w('', 'authBox-') {
             border: 1px solid bg5 i
             b: var(--elevation-high) i
             r: rc i
@@ -663,48 +635,48 @@ SA = _sc_a
     }
 
     // Global -> Switches/Checkboxes.
-    +w(0 'switch-') {
-        &:not([class *= 'themeClear-']) {
+    +w('', 'switch-') {
+        &:not([class*='themeClear-']) {
             c: 0 0 bg4
             &::after { c: 0 0 fg1 }
 
             /// Enabled.
-            +w(1 'Checked-') {
+            +w('&', 'Checked-') {
                 c: 0 0 ac1
                 &::after { c: 0 0 white }
             }
         }
 
-        +w(3 'checkbox-') {
+        +w('/', 'checkbox-') {
             /// Squared.
-            +w(1 'box-') {
+            +w('&', 'box-') {
                 c: 0 bg5
 
                 /// In bars or standalone.
-                +w(1 'checked-') { c: ac1 white white }
-                &[style *= 'd-color: rgb(114\, 137\, 218)'] { c: white ac1 ac1 }
+                +w('&', 'checked-') { c: ac1 white white }
+                &[style*='d-color: rgb(114\, 137\, 218)'] { c: white ac1 ac1 }
             }
 
             /// Rounded.
-            +w(1 'round-') {
+            +w('&', 'round-') {
                 &[style *= '67\, 181\, 129'] { c: 0 b41 b41 }
             }
         }
     }
 
     // Guilds.
-    +w(0 'wrapper-' 'guilds-', 1) {
+    +w('', 'wrapper-' 'guilds-', i: '') {
         /// Use theme colors.
-        +w(0 'scroller-') {
+        +w('', 'scroller-') {
             c: 0 0 bg3
             b: inset -1px 0 bg5 i
         }
 
         /// Home item.
-        +w(0 'listItem-' 'wrapper', 2) {
-            +w(0 'childWrapper-') { c: fg3 }
-            +w(1 'selected-') {
-                +w(0 'childWrapper-') { c: white 0 ac2 }
+        +w('', 'listItem-' 'wrapper') {
+            +w('', 'childWrapper-') { c: fg3 }
+            +w('&', 'selected-') {
+                +w('', 'childWrapper-') { c: white 0 ac2 }
             }
         }
 
@@ -728,14 +700,14 @@ SA = _sc_a
                     max-width: (g_icons_s + 20px)
                     transition-delay: 0.6s
 
-                    +w(2 'base-') {
+                    +w('+', 'base-') {
                         left: (g_icons_s + 20px) i
                         transition-delay: 0.6s
                     }
                 }
 
                 /// Expand main area.
-                +w(2 'base-') {
+                +w('+', 'base-') {
                     transition: 0.3s cubic-bezier(0, 0, 0.2, 1)
                     left: 10px i
                 }
@@ -748,27 +720,27 @@ SA = _sc_a
             width: ($size + 20px)
 
             /// Mentions bar.
-            +w(0 'nreadMentions' 'bar', 1) { width: $size }
+            +w('', 'nreadMentions' 'bar', i: '') { width: $size }
 
             /// Dividers.
-            +w(0 'Separator-') {
+            +w('', 'Separator-') {
                 width: $size
                 c: 0 0 bg5
             }
 
             /// DM icons.
-            div[style *= 'height: 56px'] {
+            div[style*='height: 56px'] {
                 margin-bottom: 8px
                 height: $size i
             }
 
             /// Icons.
-            +w(0 'listItem-') {
+            +w('', 'listItem-') {
                 padding-left: 10px
                 justify-content: flex-start
 
                 /// Unread indicators.
-                +w(4 'pill-'){
+                +w('>', 'pill-'){
                     height: $size
 
                     /// Guild placeholder icon.
@@ -781,10 +753,10 @@ SA = _sc_a
 
                 /// 1: Home icon.
                 /// 2: Guild icons.
-                +w(0 'listItemWrapper-' 'blobContainer-') {
-                    +w(4 'wrapper-') { width: $size; height: $size }
-                    +w(0 'svg-') { width: $size; height: $size }
-                    +w(0 'Badge-') {
+                +w('', 'listItemWrapper-' 'blobContainer-') {
+                    +w('>', 'wrapper-') { width: $size; height: $size }
+                    +w('', 'svg-') { width: $size; height: $size }
+                    +w('', 'Badge-') {
                         r: 50% i
                         b: 0 0 0 3px bg3
                     }
@@ -792,25 +764,25 @@ SA = _sc_a
 
                 /// Folder icons.
                 > [draggable] {
-                    +w(4 'wrapper-') { &, ../ { width: $size; height: $size}}
-                    +w(0 'svg-') { width: $size; height: $size }
-                    +w(0 'Badge-') {
+                    +w('>', 'wrapper-') { &, ../ { width: $size; height: $size}}
+                    +w('', 'svg-') { width: $size; height: $size }
+                    +w('', 'Badge-') {
                         r: 50% i
                         b: 0 0 0 3px bg3
                     }
                 }
 
                 /// Expanded folders.
-                +w(3 'expandedFolderBackground-') {
+                +w('/', 'expandedFolderBackground-') {
                     width: $size
                     left: 10px i
                     r: 16px i
 
                     /// Add borders to expanded folders.
-                    &:not([class *= 'collapsed']) { b: 0 0 0 2px bg4 }
+                    &:not([class*='collapsed']) { b: 0 0 0 2px bg4 }
 
                     /// Reset list height.
-                    ~ [style *= 'height'] {
+                    ~ [style*='height'] {
                         height: unset i
                         padding-bottom: 1px
                     }
@@ -818,49 +790,49 @@ SA = _sc_a
             }
 
             /// Fix main area.
-            +w(2 'base-') { left: ($size + 20px) }
+            +w('+', 'base-') { left: ($size + 20px) }
         }
 
         /// Feat -> Compact mode.
         if (compact == 'guilds' || compact == 'both') {
             @media screen and (max-width: compact_w) {
                 display: none i
-                +w(2 'base-') { left: 0px i }
+                +w('+', 'base-') { left: 0px i }
             }
         }
     }
 
     // Sidebar.
     /// NOTE: Excludes user settings.
-    :not([class *= 'Region']) {
-        +W('>', 'sidebar-') {
+    :not([class*='Region']) {
+        +w('>', 'sidebar-') {
             border-right: 1px solid bg5 i
 
             /// User status menu.
-            +W('', 'panels-') {
+            +w('', 'panels-') {
                 border-top: 1px solid bg5 i
 
                 /// Popouts -> Status menu.
-                +W('/', 'menu-') { border: 1px solid bg5 i }
+                +w('/', 'menu-') { border: 1px solid bg5 i }
             }
 
             /// Main/friends area.
-            +W('+', 'container-') {
+            +w('+', 'container-') {
                 c: 0 0 bg1
 
                 /// Header.
-                +W('>', 'container-') { c: 0 0 bg2 }
+                +w('>', 'container-') { c: 0 0 bg2 }
 
                 /// 'Now playing' sidebar.
-                +W('', 'nowPlaying') { b: inset 1px 0 bg5 i }
+                +w('', 'nowPlaying') { b: inset 1px 0 bg5 i }
             }
 
             /// Guild notifications.
-            +w(0 'bar-') {
+            +w('', 'bar-') {
                 c: fg1 0 bg3
                 b: inner, bsh i
 
-                +W('&', 'mention-') {
+                +w('&', 'mention-') {
                     c: white 0 ac1
                     b: bsh i
                 }
@@ -873,7 +845,7 @@ SA = _sc_a
                     max-width: sb_short_s
 
                     /// Center user icon.
-                    +w(0 'panels-' 'container-', 2) {
+                    +w('', 'panels-' 'container-', i: 0) {
                         padding: 0 16px i
                     }
 
@@ -884,15 +856,20 @@ SA = _sc_a
                     }
 
                     /// Remove extra stuff for channels.
-                    +w(0 'wrapper-' 'content-', 2) {
+                    +w('', 'wrapper-' 'content-') {
                         margin: 0
                         r: 0px
-                        min-width: (sb_short_w + 4px)
-                        +w(0 'icon-' 'iconItem-', 0) { display: none i }
+                        +w('', 'icon-' 'iconItem-') { display: none i }
+                    }
+
+                    /// Reset whitespace for category name.
+                    +w('', 'containerDefault-' 'clickable-', i: 0) {
+                        padding-left: 8px i
+                        h2 { c: fg2 }
                     }
 
                     /// More compact bars.
-                    +w(0 'unread-' 'bar-', 1) {
+                    +w('', 'unread-' 'bar-', i: '') {
                         margin: -8px -9px 0
                         padding: 8px
                         r: 0px
@@ -909,15 +886,15 @@ SA = _sc_a
             }
 
             /// App -> Server discovery.
-            +w(2 'pageWrapper-') {
+            +w('+', 'pageWrapper-') {
                 c: 0 0 bg1
             }
         }
     }
 
     // Settings.
-    +w(0 'SidebarView-') {
-        +w(0 'sidebarRegion-') {
+    +w('', 'SidebarView-') {
+        +w('', 'sidebarRegion-') {
             /// -> Add userstyle version.
             nav > div:first-child::before {
                 padding: 16px 0;
@@ -933,197 +910,201 @@ SA = _sc_a
         }
 
         /// 'ESC' button.
-        +w(0 'closeButton-') {
+        +w('', 'closeButton-') {
             c: 0 bg5
             &:hover { c: 0 0 bg3 }
             svg path { v: fg2 }
-            +w(2 'keybind-') { c: fg2 }
+            +w('+', 'keybind-') { c: fg2 }
         }
 
         /// My account.
-        +w(0 'viewBody-') { c: fg1 }
+        +w('', 'viewBody-') { c: fg1 }
 
         /// -> Add border to content area.
-        +w(0 'contentRegion-') {
+        +w('', 'contentRegion-') {
             border-left: 1px solid bg5 i
         }
 
         /// 'Subscriptions' colors.
-        [style ^= 'color: rgb(114\, 137\, 218);'] {
+        [style^='color: rgb(114\, 137\, 218);'] {
             c: ac1
             &:hover { c: 0 0 ac4 }
 
-            ../ [style *= '-color: rgb(114\, 137\, 218)'] {
+            ../ [style*='-color: rgb(114\, 137\, 218)'] {
                 c: white ac1 ac1
             }
         }
 
         /// 'Log Out' colors.
-        [style ^= 'color: rgb(240\, 71\, 71);'] {
+        [style^='color: rgb(240\, 71\, 71);'] {
             c: b10
             &:hover { c: 0 0 b15 }
         }
     }
 
     // Startup.
-    +w(0 'ready-' 'text-', '+') {
-        /// Tip color.
-        +w(0 'tipTitle-') { c: ac1 }
+    +w('', 'ready-') {
+        +w('+', 'text-') {
+            /// Tip color.
+            +w('', 'tipTitle-') { c: ac1 }
 
-        /// Add theme version to loading screen.
-        +w(4 'contentBase-') {
-            padding-top: 2rem i
-            font-style: italic i
-            c: fg3
+            /// Add theme version to loading screen.
+            +w('>', 'contentBase-') {
+                padding-top: 2rem i
+                font-style: italic i
+                c: fg3
 
-            /// Theme version.
-            &:before {
-                content: var(--note) i
-                text-transform: initial
+                /// Theme version.
+                &:before {
+                    content: var(--note) i
+                    text-transform: initial
+                }
             }
         }
     }
 
     // Friends -> Active now.
-    +w(0 'nowPlaying' 'outer-', 2) {
+    +w('', 'nowPlaying' 'outer-') {
         /// Normal state.
-        +w(1 'wrapper-') {
+        +w('&', 'wrapper-') {
             c: 0 0 bg3
 
             /// Rich presence.
-            +w(0 'inset-') { c: 0 0 bg4 }
+            +w('', 'inset-') { c: 0 0 bg4 }
         }
 
         /// Various states.
-        +w(1 ' active-') {
+        +w('&', 'active-') {
             &, ../:hover { c: 0 0 bg5 }
-            +w(0 ' active-' 'inset-') { c: 0 0 bg4 }
+            +w('', ' active-' 'inset-') { c: 0 0 bg4 }
         }
 
         /// Popouts.
-        +w(3 'popout-38lTFE') {
+        +w('/', 'popout-38lTFE') {
             c: 0 0 bg0
             b: inner, bsh i
 
-            +w(0 'separator-') { c: 0 0 bg4 }
+            +w('', 'separator-') { c: 0 0 bg4 }
 
-            +w(0 'enabled-' 'ListItem', 0) {
+            +w('', 'enabled-' 'ListItem', 0) {
                 &:hover { c: 0 0 bg2 }
             }
         }
     }
 
     // Modals.
-    +w(0 'modal-') {
+    +w('', 'modal-') {
         /// Backdrop.
-        +w(3 'backdrop') {
+        +w('/', 'backdrop') {
             c: 0 0 bg1
             opacity: 0.8 i;
         }
 
         /// Global -> User info.
-        +w(4 'inner-' 'root-', 1) {
+        +w('>', 'inner-' 'root-', i: 0) {
             border: 1px solid bg5
             r: rc
             b: var(--elevation-high) i
 
             /// Header.
-            +w(4 'topSection') {
+            +w('>', 'topSection') {
                 z-index: 1 i
                 position: relative
                 border-bottom: 1px solid bg5 i
                 c: 0 0 bg3
 
                 /// Account info.
-                +w(0 'username-') { c: fg1 }
-                +w(0 'discriminator-') { c: fg2 }
+                +w('', 'username-') { c: fg1 }
+                +w('', 'discriminator-') { c: fg2 }
 
                 /// Status colors.
-                +w(4 'headerFill-') { c: 0 0 bg4 }
+                +w('>', 'headerFill-') { c: 0 0 bg4 }
 
                 /// Activities.
-                +w(0 'activity-') {
+                +w('', 'activity-') {
                     > * { c: fg0 }
-                    +w(0 'Normal-' 'Name-' 'details-', 0) { c: fg0 }
-                    +w(0 'content-') { c: fg2 }
+                    +w('', 'Normal-' 'Name-' 'details-', 0) { c: fg0 } /// TODO: Fix this.
+                    +w('', 'content-') { c: fg2 }
                 }
             }
 
             /// Buttons.
-            +w(0 'button') {
+            +w('', 'button') {
                 transition: 0.2s ease
-                &:not([class *= 'ActionsProfile-']) { c: white ac1 ac1 }
+                &:not([class*='ActionsProfile-']) { c: white ac1 ac1 }
                 &:hover { opacity: 0.8 i }
                 > div { c: white }
             }
 
             /// Slider bar.
-            +w(0 'timeBar' 'bar-', 2) { c: 0 0 #fff2 }
-            +w(0 'timeBar' 'barInner-', 2) { c: 0 0 white }
-            +w(0 'bar-') { + div > div[style] { c: fg0 }}
+            +w('', 'timeBar') {
+                +w('', 'bar-') { c: 0 0 fg5 }
+                +w('', 'barInner-', i: 0) { c: 0 0 fg0 }
+            }
+            +w('', 'bar-') { + div > div[style] { c: fg0 }}
 
             /// States.
-            +w(4 'Xbox') {
+            +w('>', 'Xbox') {
                 c: 0 0 b75
-                +w(0 'headerFill-') { c: 0 0 b74 }
-                +w(0 'colorBrand-') { c: 0 0 b70 }
+                +w('', 'headerFill-') { c: 0 0 b74 }
+                +w('', 'colorBrand-') { c: 0 0 b70 }
             }
-            +w(4 'Playing') {
+            +w('>', 'Playing') {
                 c: 0 0 b55
-                +w(0 'headerFill-') { c: 0 0 b54 }
-                +w(0 'colorBrand-') { c: 0 0 b50 }
+                +w('', 'headerFill-') { c: 0 0 b54 }
+                +w('', 'colorBrand-') { c: 0 0 b50 }
             }
-            +w(4 'Spotify') {
+            +w('>', 'Spotify') {
                 c: 0 0 b45
-                +w(0 'headerFill-') { c: 0 0 b44 }
-                +w(0 'colorGreen-') { c: 0 0 b41 }
+                +w('', 'headerFill-') { c: 0 0 b44 }
+                +w('', 'colorGreen-') { c: 0 0 b41 }
             }
-            +w(4 'Streaming') {
+            +w('>', 'Streaming') {
                 c: 0 0 b65
-                +w(0 'headerFill-') { c: 0 0 b64 }
-                +w(0 'colorBrand-') { c: 0 0 b60 }
+                +w('', 'headerFill-') { c: 0 0 b64 }
+                +w('', 'colorBrand-') { c: 0 0 b60 }
             }
 
             /// Tabs.
-            +w(0 'tabBarContainer-') {
+            +w('', 'tabBarContainer-') {
                 c: 0 bg5 bg2
-                [style *= ': rgb(255'] { c: 0 ac1 }
-                [style *= '255\, 0.1'] { c: 0 bg5 }
-                [style *= '255\, 0.4'] { c: fg4 }
+                [style*=': rgb(255'] { c: 0 ac1 }
+                [style*='255\, 0.1'] { c: 0 bg5 }
+                [style*='255\, 0.4'] { c: fg4 }
 
                 /// Items.
-                +w(0 'item-') {
+                +w('', 'item-') {
                     c: fg4
                     &:hover { c: 0 bg4 }
-                    +w(1 'selected-') { c: fg1 ac1 }
-                    &[style *= '-color: rgb(255'] { c: fg1 ac1 }
+                    +w('&', 'selected-') { c: fg1 ac1 }
+                    &[style*='-color: rgb(255'] { c: fg1 ac1 }
                 }
             }
         }
 
         /// Global -> Upload.
-        +w(3 'uploadModal-') {
+        +w('/', 'uploadModal-') {
             border: 1px solid bg5 i
             b: var(--elevation-high) i;
             c: 0 0 bg1
             r: rc
             /// -> Preview.
-            +w(0 'icon-') {
-                +w(1 'image-', 0) {
+            +w('', 'icon-') {
+                +w('&', 'image-') {
                     c: 0 0 bg3
                     b: inner, bsh i;
                 }
-                +w(1 'unknown-' 'code-' 'video-' 'document-', 0) {
+                +w('&', 'unknown-' 'code-' 'video-' 'document-') {
                     filter: invert(0.8) hue-rotate(180deg)
                 }
             }
             /// -> Textarea.
-            +w(0 'textAreaUpload-' 'scrollableContainer-', 0) {
+            +w('', 'textAreaUpload-' 'scrollableContainer-', 0) {
                 border: 1px solid bg5 i
                 r: rc
             }
             /// -> Footer.
-            +w(0 'footer-') {
+            +w('', 'footer-') {
                 border-top: 1px solid bg5 i
                 c: 0 0 bg2
                 b: none i;
@@ -1131,14 +1112,14 @@ SA = _sc_a
             }
         }
         /// Global -> Quickswitcher.
-        +w(3 'quickswitcher-') {
-            &:not([class *= 'channel']) {
+        +w('/', 'quickswitcher-') {
+            &:not([class*='channel']) {
                 border: 1px solid bg5
                 b: var(--elevation-high) i;
                 r: rc
             }
             /// -> Protip.
-            +w(0 'protip-') {
+            +w('', 'protip-') {
                 > h3 { c: b40 }
                 > div {
                     transition: opacity 0.2s ease i
@@ -1147,26 +1128,28 @@ SA = _sc_a
             }
         }
         /// Global -> Keyboard combos.
-        +w(3 'keyboardShortcutsModal') {
+        +w('/', 'keyboardShortcutsModal') {
+            border: 1px solid bg5 i
             c: 0 0 bg1
-            b: inner i
+            r: rc
             h1 {
-                c: fg1
-                + div { c: fg3 bg5 }
+                c: fg1 0 bg3
+                margin-bottom: 0
+                + div { c: fg3 bg5 bg3 }
             }
-            +w(0 'Description') { c: fg3 }
-            +w(0 'ddrArrows-') { filter: invert(0.8) hue-rotate(180deg) }
+            +w('', 'Description') { c: fg3 }
+            +w('', 'ddrArrows-') { filter: invert(0.8) hue-rotate(180deg) }
         }
 
         /// Guilds -> Folder settings / Channel info / Gift a Nitro.
-        +w(3 'root-1gCeng') {
+        +w('/', 'root-1gCeng') {
             border: 1px solid bg5 i
             b: var(--elevation-high) i
             c: 0 0 bg1
 
             /// 'Delete message'.
-            +w(0 'colorStandard-') {
-                +w(2 'message-') {
+            +w('', 'colorStandard-') {
+                +w('+', 'message-') {
                     c: 0 0 bg2
                     b: inner
                     r: rc
@@ -1177,133 +1160,135 @@ SA = _sc_a
             }
 
             /// Footer.
-            +w(0 'footer-') {
+            +w('', 'footer-') {
                 b: inset 0 1px 0 bg5
                 c: 0 0 bg2
             }
         }
 
         /// Inbox -> Fix borders.
-        +w(3 'recentMentionsPopout-') {
+        +w('/', 'recentMentionsPopout-') {
             border: 1px solid bg5 i
             b: var(--elevation-high) i
 
             /// Header.
-            +w(4 'header-') {
+            +w('>', 'header-') {
                 c: 0 0 bg3
                 b: inset 0 -1px bg5 i
             }
         }
 
         /// Change avatar -> Zoom in/out slider.
-        +w(3 'slider-') {
-            +w(0 'bar-') { c: 0 0 bg4 }
-            +w(0 'Fill-') { c: 0 0 ac1 }
-            +w(0 'grabber-') { c: 0 fg1 fg1 }
-            +w(0 'markDash-') { c: 0 0 bg4 }
-            +w(0 'markValue-') { c: fg3 }
-            +w(0 'defaultValue-' 'Value-', 2) { c: ac1 }
+        +w('/', 'slider-') {
+            +w('', 'bar-') { c: 0 0 bg4 }
+            +w('', 'Fill-') { c: 0 0 ac1 }
+            +w('', 'grabber-') { c: 0 fg1 fg1 }
+            +w('', 'markDash-') { c: 0 0 bg4 }
+            +w('', 'markValue-') { c: fg3 }
+            +w('', 'defaultValue-' 'Value-') { c: ac1 }
         }
     }
 
     // Buttons.
-    +w(0 'button-') {
-        +w(1 'lookLink-') {
+    +w('', 'button-') {
+        +w('&', 'lookLink-') {
             c: fg3;
             transition: 0.2s ease;
             &:hover {
                 c: fg0
                 --g: 0deg, t, t 1px, currentColor 0, currentColor 2px, t 0
-                +w(4 'contents-') { background: linear-gradient(var(--g)) i }
+                +w('>', 'contents-') { background: linear-gradient(var(--g)) i }
             }
-            +w(1 'colorBrand-') { c: ac1 }
+            +w('&', 'colorBrand-') { c: ac1 }
         }
 
-        +w(1 'lookFilled-') {
+        +w('&', 'lookFilled-') {
             transition: 0.2s ease;
             &:hover { opacity: 0.8 }
-            +w(1 'colorBrand-') { c: white 0 ac1 }
-            +w(1 'colorGreen-') { c: white 0 b42 }
-            +w(1 'colorPrimary-') { c: fg1 0 bg4 }
-            +w(0 'contents-') { text-shadow: 1px 1px 0 #0005 }
+            +w('&', 'colorBrand-') { c: white 0 ac1 }
+            +w('&', 'colorGreen-') { c: white 0 b42 }
+            +w('&', 'colorPrimary-') { c: fg1 0 bg4 }
+            +w('', 'contents-') { text-shadow: 1px 1px 0 #0005 }
         }
 
-        +w(1 'lookOutlined-') {
-            +w(1 'colorRed-') { c: b10 b10 }
-            +w(1 'colorBrand-') { c: ac1 ac1 }
-            +w(1 'colorWhite-') { c: fg1 fg1 }
+        +w('&', 'lookOutlined-') {
+            +w('&', 'colorRed-') { c: b10 b10 }
+            +w('&', 'colorBrand-') { c: ac1 ac1 }
+            +w('&', 'colorWhite-') { c: fg1 fg1 }
         }
 
-        +w(1 'lookBlank-') {
+        +w('&', 'lookBlank-') {
             /// Chat -> Emoji picker tab.
-            +w(1 'colorBrand-') { c: fg5 }
-            +w(1 'colorBrand-' 'Active-', 1) { c: fg1 0 bg1 }
+            +w('&', 'colorBrand-') { c: fg5 }
+            +w('&', 'colorBrand-' 'Active-', i: '') { c: fg1 0 bg1 }
         }
     }
 
     // Popouts -> User popout.
-    +w(0 'userPopout-') {
+    +w('', 'userPopout-') {
         border: 1px solid bg5 i
         b: var(--elevation-high) i
         c: 0 0 bg1
 
         /// Header.
-        +w(4 'header') {
+        +w('>', 'header') {
             border-bottom: 1px solid bg5 i
             c: 0 0 bg2
 
             /// Username.
-            +w(0 'headerTag-') {
+            +w('', 'headerTag-') {
                 c: fg2
-                +w(0 'username-') { c: fg0 }
+                +w('', 'username-') { c: fg0 }
             }
 
             /// Status.
-            +w(0 'customStatus-') { c: fg0 }
+            +w('', 'customStatus-') { c: fg0 }
 
             /// Activities.
-            +w(0 'activity-') {
+            +w('', 'activity-') {
                 > * { c: fg0 }
-                +w(0 'Normal-' 'Name-' 'details-', 0) { c: fg0 }
-                +w(0 'content-') { c: fg2 }
+                +w('', 'Normal-' 'Name-' 'details-') { c: fg0 }
+                +w('', 'content-') { c: fg2 }
             }
 
             /// Slider bar.
-            +w(0 'timeBar' 'bar-', 2) { c: 0 0 #fff2 }
-            +w(0 'timeBar' 'barInner-', 2) { c: 0 0 white }
-            +w(0 'bar-') { + div > div[style] { c: fg0 }}
+            +w('', 'timeBar') {
+                +w('', 'bar-') { c: 0 0 fg5 }
+                +w('', 'barInner-', i: 0) { c: 0 0 fg0 }
+            }
+            +w('', 'bar-') { + div > div[style] { c: fg0 }}
 
             /// Status colors.
-            +w(1 'Xbox') {
+            +w('&', 'Xbox') {
                 c: 0 0 b75
-                +w(4 'activity-') { c: 0 0 b74 }
+                +w('>', 'activity-') { c: 0 0 b74 }
             }
-            +w(1 'Playing') {
+            +w('&', 'Playing') {
                 c: 0 0 b55
-                +w(4 'activity-') { c: 0 0 b54 }
+                +w('>', 'activity-') { c: 0 0 b54 }
             }
-            +w(1 'Spotify') {
+            +w('&', 'Spotify') {
                 c: 0 0 b45
-                +w(4 'activity-') { c: 0 0 b44 }
+                +w('>', 'activity-') { c: 0 0 b44 }
             }
-            +w(1 'Streaming') {
+            +w('&', 'Streaming') {
                 c: 0 0 b65
-                +w(4 'activity-') { c: 0 0 b64 }
+                +w('>', 'activity-') { c: 0 0 b64 }
             }
         }
 
         /// Body.
-        +w(0 'body-') {
+        +w('', 'body-') {
             c: fg1 0 t
-            +w(0 'bodyTitle-') { c: fg3 }
+            +w('', 'bodyTitle-') { c: fg3 }
         }
 
         /// Footer.
-        +w(0 'footer-') {
+        +w('', 'footer-') {
             c: 0 bg5 t
             input { c: fg1 bg5 bg2 }
 
-            +w(0 'protip-') {
+            +w('', 'protip-') {
                 c: fg
                 [style] { c: b40 }
             }
@@ -1313,44 +1298,44 @@ SA = _sc_a
     // Popouts -> Search menu.
     #search-results {
         /// Exclude results.
-        &:not([role = 'list']) {
+        &:not([role='list']) {
             c: 0 0 bg0
             b: inner, bsh i
         }
 
         /// Header.
-        +w(4 'queryContainer-') {
+        +w('>', 'queryContainer-') {
             c: fg1 bg2 t
             strong { c: ac }
         }
 
         /// Items.
-        +w(0 'header-' 'answer-', 0) { c: fg4 }
-        +w(0 'anchor-' 'displayUsername-', 0) { c: fg5 }
-        +w(0 'filter-' 'nonText-' 'displayedNick-', 0) { c: fg1 }
-        +w(0 'anchorUnderline') { c: ac0 }
-        +w(0 'option-') { c: fg3 }
-        +w(0 'selected-') { c: 0 0 bg3 }
-        +w(0 'option-') { &::after { background: none i }}
+        +w('', 'header-' 'answer-') { c: fg4 }
+        +w('', 'anchor-' 'displayUsername-') { c: fg5 }
+        +w('', 'filter-' 'nonText-' 'displayedNick-') { c: fg1 }
+        +w('', 'anchorUnderline') { c: ac0 }
+        +w('', 'option-') { c: fg3 }
+        +w('', 'selected-') { c: 0 0 bg3 }
+        +w('', 'option-') { &::after { background: none i }}
 
         /// Search field.
-        +w(3 'searchFilter-') { c: fg0 0 bg1 }
-        +w(3 'searchAnswer-') { c: fg0 0 bg1 }
+        +w('/', 'searchFilter-') { c: fg0 0 bg1 }
+        +w('/', 'searchAnswer-') { c: fg0 0 bg1 }
 
         /// Results.
-        +w(0 'channelSeparator-') { c: 0 0 bg2 }
-        +w(0 'embedAuthorName-') { c: fg1 }
-        +w(0 'embedTitle-') { c: ac1 }
+        +w('', 'channelSeparator-') { c: 0 0 bg2 }
+        +w('', 'embedAuthorName-') { c: fg1 }
+        +w('', 'embedTitle-') { c: ac1 }
         code.inline { c: fg1 }
 
         /// Fix width for videos. @upstream
         @supports(scrollbar-width: thin) {
-            +w(0 'cozy-') {
+            +w('', 'cozy-') {
                 margin-left: 0px
                 padding-left: 16px
 
                 /// Reduce size of avatars.
-                +w(0 'avatar-') {
+                +w('', 'avatar-') {
                     top: 2px
                     left: 0px
                     width: 16px
@@ -1361,8 +1346,8 @@ SA = _sc_a
                 }
 
                 /// Reset the embed.
-                +w(4 'container-') {
-                    +w(0 'embedFull-') {
+                +w('>', 'container-') {
+                    +w('', 'embedFull-') {
                         width: 100% i
                         max-width: 100% i
                         > div > div[style] { width: 100% i }
@@ -1373,70 +1358,70 @@ SA = _sc_a
     }
 
     // Popouts -> Attach menu.
-    +w(0 'attachPopout-') {
+    +w('', 'attachPopout-') {
         border: 1px solid bg5
 
         /// Spotify invite.
-        +w(3 'modal-yWgWj-') {
+        +w('/', 'modal-yWgWj-') {
             border: 1px solid bg5 i
             c: 0 0 bg1
             b: var(--elevation-high) i
 
             /// Footer.
-            +w(0 'footer-') {
+            +w('', 'footer-') {
                 border-top: 1px solid bg5
                 c: 0 0 bg2
             }
 
             /// Invite.
-            +w(0 'header-') { c: fg4 }
-            +w(0 'subHeader-') { c: fg5 }
-            +w(0 'name-' 'textLink-' 'Status-') { c: fg1 }
-            +w(0 'preview-') { c: 0 bg5 bg3 }
+            +w('', 'header-') { c: fg4 }
+            +w('', 'subHeader-') { c: fg5 }
+            +w('', 'name-' 'textLink-' 'Status-') { c: fg1 }
+            +w('', 'preview-') { c: 0 bg5 bg3 }
         }
     }
 
     // Chat -> Base.
-    +w(0 'chat-') {
+    +w('', 'chat-') {
         /// -> Header.
-        +w(4 'title-') {
+        +w('>', 'title-') {
             c: 0 0 bg2
             /// -> Gradient.
-            +w(3 'children-') {
+            +w('/', 'children-') {
                 &::after { background: linear-gradient(90deg, t 0, bg2) i }
             }
         }
 
         /// -> Chat area.
-        +w(0 'content-') {
+        +w('', 'content-') {
             c: 0 0 t
 
             --background-message-hover: to_rgba('bg-3', 0.3)
 
             /// -> 'New messagges' bar.
-            +w(0 'isUnread-' 'divider-', 1) {
+            +w('', 'isUnread-' 'divider-', i: '') {
                 c: 0 ac1
                 svg path { v: ac1 ac1 }
-                +w(0 'content-') { c: ac1 }
-                +w(0 'unreadPill-') { c: white 0 ac1 }
+                +w('', 'content-') { c: ac1 }
+                +w('', 'unreadPill-') { c: white 0 ac1 }
             }
 
             /// -> Dividers.
-            +w(0 'divider-' 'content-', 2) {
+            +w('', 'divider-' 'content-', i: 0) {
                 c: 0 0 var(--background-primary)
             }
 
             /// -> 'Has more' bar.
-            +w(0 'hasMore-') {
+            +w('', 'hasMore-') {
                 c: ac1 bg5 bg2
                 transition: 0.2s ease;
                 &:hover { opacity: 0.6 }
             }
             /// -> Welcome -> Border color.
-            +w(0 'base-19D3Qq') { c: 0 bg5 }
+            +w('', 'base-19D3Qq') { c: 0 bg5 }
             /// -> Guild invites.
-            +w(0 'userSelectNone-') {
-                +w(1 'cursorDefault-') {
+            +w('', 'userSelectNone-') {
+                +w('&', 'cursorDefault-') {
                     margin-top: 1rem;
                     r: rc
                     c: 0 0 bg2
@@ -1444,20 +1429,21 @@ SA = _sc_a
                 }
             }
             /// -> Embedded links/media.
-            +w(0 'embedWrapper-') {
-                &:not([class *= 'imageZoom-']) {
+            +w('', 'embedWrapper-') {
+                &:not([class*='imageZoom-']) {
                     r: rc
 
                     /// Exclude embeds with custom border colors.
-                    &:not([style *= 'border-color']) { c: 0 bg5 }
+                    &:not([style*='border-color']) { c: 0 bg5 }
 
                     /// Remove double borders from some elements.
-                    &:not([class *= 'Audio']) { b: inner }
+                    &:not([class*='Audio']) { b: inner }
                 }
             }
             /// -> Mentioned.
-            +w(0 'mentioned-') {
+            +w('', 'mentioned-') {
                 r: (chat_short) ? 4px i : 0px i
+                --text-muted: var(--fg-3)
 
                 /// Bar color.
                 &::before {
@@ -1472,19 +1458,19 @@ SA = _sc_a
 
                 /// Reactions.
                 &:hover {
-                    +w(0 'reactionMe-') { c: 0 0 #fff2 }
+                    +w('', 'reactionMe-') { c: 0 0 #fff2 }
                 }
             }
             /// -> Spoilers.
-            +w(0 'spoilerText-') {
+            +w('', 'spoilerText-') {
                 r: 8px
                 c: 0 0 bg3
                 &[data-slate-object] { c: 0 0 bg5 }
-                +w(1 'hidden-') { &:hover { c: 0 0 bg4 }}
+                +w('&', 'hidden-') { &:hover { c: 0 0 bg4 }}
             }
 
             /// -> Attachments.
-            +w(0 'attachment-') {
+            +w('', 'attachment-') {
                 b: none i
 
                 /// Invert document/text/code/zip icons.
@@ -1499,9 +1485,9 @@ SA = _sc_a
             }
 
             /// -> Reactions.
-            +w(0 'reactionMe-') {
+            +w('', 'reactionMe-') {
                 c: 0 0 ac4
-                +w(0 'Count-') {
+                +w('', 'Count-') {
                     font-weight: bold
                     c: ac0
                 }
@@ -1509,7 +1495,7 @@ SA = _sc_a
         }
 
         /// -> 'Jump to present' bar.
-        +w(0 'jumpToPresentBar-') {
+        +w('', 'jumpToPresentBar-') {
             > button {
                 c: fg3
                 transition: 0.2s ease;
@@ -1518,7 +1504,7 @@ SA = _sc_a
         }
 
         /// Textarea.
-        +w(0 'channelTextArea-') {
+        +w('', 'channelTextArea-') {
             r: rc i
 
             /// Input borders.
@@ -1528,10 +1514,10 @@ SA = _sc_a
             }
 
             /// Fix emoji button padding.
-            +w(0 'emojiButton-') { padding-right: 10px i }
+            +w('', 'emojiButton-') { padding-right: 10px i }
 
             /// Edit message footer.
-            +w(2 'operations-') {
+            +w('+', 'operations-') {
                 c: fg3
                 a { c: ac2 }
             }
@@ -1540,60 +1526,60 @@ SA = _sc_a
             /.mention { c: ac0 0 ac5 }
 
             /// Markdown preview -> Inline code.
-            +w(3 'inlineCode-') { font-family: var(--f-mono) i }
+            +w('/', 'inlineCode-') { font-family: var(--f-mono) i }
         }
 
-        +w(0 'cooldownWrapper-') { c: fg3 }
-        +w(0 'newMessagesBar-') {
+        +w('', 'cooldownWrapper-') { c: fg3 }
+        +w('', 'newMessagesBar-') {
             c: 0 0 bg5
             b: bsh i;
             > button { c: fg1 }
         }
 
         /// Message context menu.
-        +w(0 'buttonContainer-' 'buttons-' 'wrapper-', 2) {
+        +w(' ', 'buttonContainer-' 'buttons-' 'wrapper-', i: 0) {
             c: 0 0 bg2
             b: outer, bsh i
 
             /// Menu items.
-            +w(3 'item-') {
-                +w(1 'colorDefault-') {
-                    +w(1 'focused-') { c: ac0 0 ac5 }
+            +w('/', 'item-') {
+                +w('&', 'colorDefault-') {
+                    +w('&', 'focused-') { c: ac0 0 ac5 }
                 }
                 /// 'Delete Message' link.
-                +w(1 'colorDanger-') {
+                +w('&', 'colorDanger-') {
                     &, [class *= 'hint'] { c: b10 }
-                    +w(1 'focused-') { c: b10 0 b15 }
+                    +w('&', 'focused-') { c: b10 0 b15 }
                 }
                 /// 'Invite people' link.
-                +w(1 'colorBrand-') {
+                +w('&', 'colorBrand-') {
                     &, [class *= 'hint'] { c: b60 }
-                    +w(1 'focused-') { c: b60 0 b65 }
+                    +w('&', 'focused-') { c: b60 0 b65 }
                 }
             }
         }
 
         /// -> Guild members.
-        +w(3 'members-') {
+        +w('/', 'members-') {
             b: inset 1px 0 bg5 i
-            +w(0 'clickable-') {
+            +w('', 'clickable-') {
                 &:hover [class *= 'layout-'] { c: 0 0 bg3 }
             }
-            +w(0 'selected-') { c: 0 0 bg4 }
+            +w('', 'selected-') { c: 0 0 bg4 }
         }
         /// -> Search results.
-        +w(0 'ResultsWrap-') { b: inset 1px 0 bg5 i }
+        +w('', 'ResultsWrap-') { b: inset 1px 0 bg5 i }
         /// -> Hovered message.
-        +w(0 'message-') {
+        +w('', 'message-') {
             r: rc
         }
 
         /// Chat -> Bot tag colors.
-        +w(3 'botTagRegular-') { c: white 0 ac1 }
+        +w('/', 'botTagRegular-') { c: white 0 ac1 }
     }
 
     // Chat -> Markup.
-    +w(0 'markup-') {
+    +w('', 'markup-') {
         /// -> Reset code font and border color.
         code {
             c: 0 bg5
@@ -1615,30 +1601,30 @@ SA = _sc_a
         }
 
         /// Feat -> Code font.
-        +w(0 'Code-' 'codeBlockText-' 'codeLine-', 3) {
+        +w('', 'Code-' 'codeBlockText-' 'codeLine-', i: '+') {
             ../ code, /& { font-family: var(--f-mono) i }
         }
     }
 
     // Chat -> Autocomplete. @obsolete
-    +w(0 'autocomplete-' 'autocomplete', 1) {
+    +w('', 'autocomplete-' 'autocomplete', i: '') {
         c: 0 0 bg2
-        +w(0 'Title-') {
+        +w('', 'Title-') {
             c: fg5
             > strong { c: ac1 }
         }
-        +w(0 'content-') { c: fg1 }
-        +w(0 'description') { c: fg4 }
-        +w(0 'divider-') { c: 0 0 bg5 }
-        +w(0 'Selected-') { c: 0 0 bg4 }
+        +w('', 'content-') { c: fg1 }
+        +w('', 'description') { c: fg4 }
+        +w('', 'divider-') { c: 0 0 bg5 }
+        +w('', 'Selected-') { c: 0 0 bg4 }
     }
 
     // Feat -> Shorter messages.
     if (chat_short) {
         chat_width = chat_short_w;
-        +w(0 'messagesWrapper-') {
+        +w('', 'messagesWrapper-') {
             /// -> Messages.
-            +w(0 'scroller-') {
+            +w('', 'scroller-') {
                 padding-left: 12px
                 > div {
                     width: 100%;
@@ -1649,14 +1635,14 @@ SA = _sc_a
                 }
             }
             /// -> Bars.
-            +w(4 'barBase-') {
+            +w('>', 'barBase-') {
                 margin-left: auto;
                 margin-right: auto;
                 max-width: chat_width;
             }
             /// -> Textarea.
             + form > div {
-                +w(1 'channelTextArea-') {
+                +w('&', 'channelTextArea-') {
                     /// Textarea in DMs/Guilds/Annoncements.
                     &, ../[aria-expanded], ../[class *= 'wrapper-'] {
                         max-width: chat_width;
@@ -1664,7 +1650,7 @@ SA = _sc_a
                         margin-left: auto;
                     }
                 }
-                +w(1 'typing-') {
+                +w('&', 'typing-') {
                     max-width: chat_width;
                     margin-right: auto;
                     margin-left: auto;
@@ -1672,9 +1658,9 @@ SA = _sc_a
             }
 
             /// Fix 'Messages failed to load' alert.
-            +w(3 'messagesErrorBar-') {
+            +w('/', 'messagesErrorBar-') {
                 c: 0 0 b15
-                +w(4 'Button') { c: b10 }
+                +w('>', 'Button') { c: b10 }
             }
         }
     }
@@ -1690,7 +1676,7 @@ SA = _sc_a
 
         /// Feat -> Larger reaction emotes.
         if (e_reaction) {
-            /[class *= 'reactions-'] {
+            /[class*='reactions-'] {
                 margin-top: 0.25rem
                 .emoji {
                     height: 1.5rem;
@@ -1698,38 +1684,38 @@ SA = _sc_a
                 }
 
                 /// Whitespace for emote menu.
-                +w(0 'reactionBtn-' 'focusable-', 1) { margin-left: 0.25rem }
+                +w('', 'reactionBtn-' 'focusable-', i: '') { margin-left: 0.25rem }
             }
         }
 
         /// Drawers -> Emoji picker.
-        +w(3 'drawerSizingWrapper-') {
+        +w('/', 'drawerSizingWrapper-') {
             /// -> Wrapper.
-            +w(4 'contentWrapper') {
+            +w('>', 'contentWrapper') {
                 border: 1px solid bg5
                 b: var(--elevation-high) i;
                 r: rc
 
                 /// Fix background for emoji category text.
-                +w(0 'categorySection-' 'header-', 2) { c: 0 0 bg2 }
+                +w('', 'categorySection-' 'header-') { c: 0 0 bg2 }
             }
 
             /// Chat -> Reacting to messages.
-            +w(3 'emojiPicker-') {
+            +w('/', 'emojiPicker-') {
                 box-shadow: 0 0 0 1px bg5
 
                 /// Fix background for emoji category text.
-                +w(0 'categorySection-' 'header-', 2) { c: 0 0 bg2 }
+                +w('', 'categorySection-' 'header-') { c: 0 0 bg2 }
             }
 
             /// -> Rounded corners.
-            +w(0 'categoryList-') {
+            +w('', 'categoryList-') {
                 r: 0px 0px 0px rc
             }
         }
 
         /// -> Fix hardcoded preload images.
-        +w(3 'imageLoading-') {
+        +w('/', 'imageLoading-') {
             background-image: none i;
             c: t 0 bg3
             r: 38%
@@ -1739,7 +1725,7 @@ SA = _sc_a
     /// Feat -> Avatar size in info popout/modal.
     if (avatar_size > 80) {
         /// Popout.
-        +W('', 'userPopout-' 'avatarWrapper-', i: 0) {
+        +w('', 'userPopout-' 'avatarWrapper-', i: 0) {
             > div[style*='width: 80px'],
             > svg[width='80'] {
                 width: var(--avatar-s) i
@@ -1748,7 +1734,7 @@ SA = _sc_a
         }
 
         /// Modal.
-        +W('', 'modal-' 'header-', i: 0) {
+        +w('', 'modal-' 'header-', i: 0) {
             div[style*='width: 80px'] {
                 width: var(--avatar-s) i
                 height: var(--avatar-s) i
@@ -1762,7 +1748,7 @@ SA = _sc_a
 
     /// Feat -> Enable avatar context menu in profiles.
     if (avatar_c_m) {
-        +w(0 'avatar-') {
+        +w('', 'avatar-') {
             img { text-indent: unset }
             * { pointer-events: unset }
         }
@@ -1771,10 +1757,10 @@ SA = _sc_a
     /// @upstream
     @supports(scrollbar-width: thin) {
         /// Fix audio/video volume bar position.
-        +w(0 'audioVolumeWrapper-') { transform: translate(26px, -4px) i }
-        +w(0 'videoVolumeWrapper') { transform: translate(-2px, -12px) i }
+        +w('', 'audioVolumeWrapper-') { transform: translate(26px, -4px) i }
+        +w('', 'videoVolumeWrapper') { transform: translate(-2px, -12px) i }
 
         /// Search -> Fix media width.
-        +w(0 'embedMedia-') { [data-fullscreen] { width: 100% i }}
+        +w('', 'embedMedia-') { [data-fullscreen] { width: 100% i }}
     }
 }
