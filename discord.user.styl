@@ -133,9 +133,9 @@ v(x, y = 0, xi = 1, yi = 1) {
 
 // Pseudo-element builder.
 P(a, _z = 0, _c = '', _p = absolute) {
-    z-index:  _z;
-    content:  _c;
-    position: _p;
+    z-index:  _z
+    content:  _c
+    position: _p
     if a[0] is a 'call' or a[0] is a 'unit' {    top: a[0] }
     if a[1] is a 'call' or a[1] is a 'unit' {  right: a[1] }
     if a[2] is a 'call' or a[2] is a 'unit' { bottom: a[2] }
@@ -212,28 +212,28 @@ SA = _sc_a
     /// Generate tones for base colors.
     C = {
         bg: {
-            '0': darken(BG, b1),
-            '1': darken(BG, 0%),
-            '2': darken(BG, b2),
-            '3': darken(BG, b3),
-            '4': darken(BG, b4),
-            '5': darken(BG, b5),
+            '0': darken(BG, b1)
+            '1': darken(BG, 0%)
+            '2': darken(BG, b2)
+            '3': darken(BG, b3)
+            '4': darken(BG, b4)
+            '5': darken(BG, b5)
         },
         fg: {
-            '0': darken(FG, f1),
-            '1': darken(FG, 0%),
-            '2': darken(FG, f2),
-            '3': darken(FG, f3),
-            '4': darken(FG, f4),
-            '5': darken(FG, f5),
+            '0': darken(FG, f1)
+            '1': darken(FG, 0%)
+            '2': darken(FG, f2)
+            '3': darken(FG, f3)
+            '4': darken(FG, f4)
+            '5': darken(FG, f5)
         },
         ac: {
-            '0': mix(darken(BG,  0%), AC, 0%),
-            '1': mix(darken(BG, 40%), AC, a1),
-            '2': mix(darken(BG, 40%), AC, a2),
-            '3': mix(darken(BG, 40%), AC, a3),
-            '4': mix(darken(BG, 65%), AC, a4),
-            '5': mix(darken(BG, 50%), AC, a5),
+            '0': mix(darken(BG,  0%), AC, 0%)
+            '1': mix(darken(BG, 40%), AC, a1)
+            '2': mix(darken(BG, 40%), AC, a2)
+            '3': mix(darken(BG, 40%), AC, a3)
+            '4': mix(darken(BG, 65%), AC, a4)
+            '5': mix(darken(BG, 50%), AC, a5)
         },
         b1: {
             '0': spin(_red,  0deg - 0%)
@@ -339,29 +339,28 @@ SA = _sc_a
                 '  ⭐ FG: ' + luminosity(FG) + \
                 '  🌟 bg1: ' + bg-1 + \
                 '  🌟 fg1: ' + fg-1 + \
-                '  🌟 ac1: ' + ac-1
-                text-align: center;
-                position: absolute;
-                top: 0; left: 0; right: 0;
-                line-height: 2em;
-                height: 2em;
-                c: fg1
+                '  🌟 ac1: ' + ac-1 i
+                P(0 0 0 0)
+                text-align: center
+                line-height: 2em
+                height: 2em
+                c: fg1 0 bg3
             }
             body > div[id] {
-                margin-top: calc(2em + 0px);
-                max-height: calc(100vh - 2em);
+                margin-top: calc(2em + 0px)
+                max-height: calc(100vh - 2em)
                 b: 0 -1px bg5
             }
         }
     }
 
     // Use stylus-lang variables with CSS variables.
-    shadow  = var(--shadow);
-    sh      = var(--shadow);
-    bsh     = var(--bshadow);
-    white   = var(--white);
+    shadow  = var(--shadow)
+    sh      = var(--shadow)
+    bsh     = var(--bshadow)
+    white   = var(--white)
     outer   = 0 0 0 1px bg5
-    inner   = inset outer;
+    inner   = inset outer
     rc      = var(--radius)
 
     :root, .theme-dark {
@@ -445,11 +444,11 @@ SA = _sc_a
         }
 
         /// Various theme variables.
-        --shadow  : _sh;
+        --shadow  : _sh
         --bshadow : 0 8px 16px var(--shadow)
-        --white   : _white;
-        --t       : transparent !important;
-        --radius  : b_radius;
+        --white   : _white
+        --t       : transparent i
+        --radius  : b_radius
         --f-mono  : f_code, Consolas, Liberation Mono, Menlo, Courier, monospace
         --f-ui    : f_ui, Whitney, Helvetica Neue, Helvetica, Arial, sans-serif
         --avatar-s: avatar_size
@@ -561,24 +560,24 @@ SA = _sc_a
         if (code_lines) {
             pre code {
                 c: fg1
-                position: relative;
-                padding-left: 3em i;
+                position: relative
+                padding-left: 3em i
                 /// -> Generate a range of numbers.
-                n = '';
+                n = ''
                 for num in 1..128 {
-                    n += s('%s ', num);
+                    n += s('%s ', num)
                     if (num == 128) {
                         n += s('%s', num)
                     }
                 }
                 /// -> Use a psuedo-element as line numbers.
                 &::before {
-                    width: 2ch;
-                    overflow-y: hidden;
-                    P(0.5em 0 0.5em 0px, 0, n);
-                    padding: 0 0.5em 0 1.5em;
-                    white-space: pre-line;
-                    text-align: right;
+                    width: 2ch
+                    overflow-y: hidden
+                    P(0.5em 0 0.5em 0px, 0, n)
+                    padding: 0 0.5em 0 1.5em
+                    white-space: pre-line
+                    text-align: right
                     c: fg5
                 }
             }
@@ -897,13 +896,13 @@ SA = _sc_a
         +w('', 'sidebarRegion-') {
             /// -> Add userstyle version.
             nav > div:first-child::before {
-                padding: 16px 0;
-                margin-bottom: 16px;
-                content: '🌚 ' var(--note);
-                text-transform: initial;
-                font-weight: 500;
-                font-size: 16px;
-                display: block;
+                padding: 16px 0
+                margin-bottom: 16px
+                content: '🌚 ' var(--note)
+                text-transform: initial
+                font-weight: 500
+                font-size: 16px
+                display: block
                 b: 0 1px bg5
                 c: fg1
             }
@@ -999,7 +998,7 @@ SA = _sc_a
         /// Backdrop.
         +w('/', 'backdrop') {
             c: 0 0 bg1
-            opacity: 0.8 i;
+            opacity: 0.8 i
         }
 
         /// Global -> User info.
@@ -1087,14 +1086,14 @@ SA = _sc_a
         /// Global -> Upload.
         +w('/', 'uploadModal-') {
             border: 1px solid bg5 i
-            b: var(--elevation-high) i;
+            b: var(--elevation-high) i
             c: 0 0 bg1
             r: rc
             /// -> Preview.
             +w('', 'icon-') {
                 +w('&', 'image-') {
                     c: 0 0 bg3
-                    b: inner, bsh i;
+                    b: inner, bsh i
                 }
                 +w('&', 'unknown-' 'code-' 'video-' 'document-') {
                     filter: invert(0.8) hue-rotate(180deg)
@@ -1109,7 +1108,7 @@ SA = _sc_a
             +w('', 'footer-') {
                 border-top: 1px solid bg5 i
                 c: 0 0 bg2
-                b: none i;
+                b: none i
                 r: 0px 0px rc rc
             }
         }
@@ -1117,7 +1116,7 @@ SA = _sc_a
         +w('/', 'quickswitcher-') {
             &:not([class*='channel']) {
                 border: 1px solid bg5
-                b: var(--elevation-high) i;
+                b: var(--elevation-high) i
                 r: rc
             }
             /// -> Protip.
@@ -1194,8 +1193,8 @@ SA = _sc_a
     // Buttons.
     +w('', 'button-') {
         +w('&', 'lookLink-') {
-            c: fg3;
-            transition: 0.2s ease;
+            c: fg3
+            transition: 0.2s ease
             &:hover {
                 c: fg0
                 --g: 0deg, t, t 1px, currentColor 0, currentColor 2px, t 0
@@ -1205,7 +1204,7 @@ SA = _sc_a
         }
 
         +w('&', 'lookFilled-') {
-            transition: 0.2s ease;
+            transition: 0.2s ease
             &:hover { opacity: 0.8 }
             +w('&', 'colorBrand-') { c: white 0 ac1 }
             +w('&', 'colorGreen-') { c: white 0 b42 }
@@ -1416,7 +1415,7 @@ SA = _sc_a
             /// -> 'Has more' bar.
             +w('', 'hasMore-') {
                 c: ac1 bg5 bg2
-                transition: 0.2s ease;
+                transition: 0.2s ease
                 &:hover { opacity: 0.6 }
             }
             /// -> Welcome -> Border color.
@@ -1424,7 +1423,7 @@ SA = _sc_a
             /// -> Guild invites.
             +w('', 'userSelectNone-') {
                 +w('&', 'cursorDefault-') {
-                    margin-top: 1rem;
+                    margin-top: 1rem
                     r: rc
                     c: 0 0 bg2
                     b: inner
@@ -1453,7 +1452,7 @@ SA = _sc_a
 
                     /// Tweaks for short chat mode.
                     if (chat_short) {
-                        width: 4px;
+                        width: 4px
                         r: 4px 0px 0px 4px
                     }
                 }
@@ -1500,7 +1499,7 @@ SA = _sc_a
         +w('', 'jumpToPresentBar-') {
             > button {
                 c: fg3
-                transition: 0.2s ease;
+                transition: 0.2s ease
                 ../:hover button { c: fg1 }
             }
         }
@@ -1534,7 +1533,7 @@ SA = _sc_a
         +w('', 'cooldownWrapper-') { c: fg3 }
         +w('', 'newMessagesBar-') {
             c: 0 0 bg5
-            b: bsh i;
+            b: bsh i
             > button { c: fg1 }
         }
 
@@ -1586,8 +1585,8 @@ SA = _sc_a
         code {
             c: 0 bg5
             &.inline {
-                padding: 0.125em 0.2em;
-                b: inner, bsh i;
+                padding: 0.125em 0.2em
+                b: inner, bsh i
             }
         }
 
@@ -1623,39 +1622,39 @@ SA = _sc_a
 
     // Feat -> Shorter messages.
     if (chat_short) {
-        chat_width = chat_short_w;
+        chat_width = chat_short_w
         +w('', 'messagesWrapper-') {
             /// -> Messages.
             +w('', 'scroller-') {
                 padding-left: 12px
                 > div {
-                    width: 100%;
-                    max-width: chat_width;
-                    margin-left: auto;
-                    margin-right: auto;
-                    box-sizing: border-box;
+                    width: 100%
+                    max-width: chat_width
+                    margin-left: auto
+                    margin-right: auto
+                    box-sizing: border-box
                 }
             }
             /// -> Bars.
             +w('>', 'barBase-') {
-                margin-left: auto;
-                margin-right: auto;
-                max-width: chat_width;
+                margin-left: auto
+                margin-right: auto
+                max-width: chat_width
             }
             /// -> Textarea.
             + form > div {
                 +w('&', 'channelTextArea-') {
                     /// Textarea in DMs/Guilds/Annoncements.
                     &, ../[aria-expanded], ../[class *= 'wrapper-'] {
-                        max-width: chat_width;
-                        margin-right: auto;
-                        margin-left: auto;
+                        max-width: chat_width
+                        margin-right: auto
+                        margin-left: auto
                     }
                 }
                 +w('&', 'typing-') {
-                    max-width: chat_width;
-                    margin-right: auto;
-                    margin-left: auto;
+                    max-width: chat_width
+                    margin-right: auto
+                    margin-left: auto
                 }
             }
 
@@ -1681,8 +1680,8 @@ SA = _sc_a
             /[class*='reactions-'] {
                 margin-top: 0.25rem
                 .emoji {
-                    height: 1.5rem;
-                    width: @height;
+                    height: 1.5rem
+                    width: @height
                 }
 
                 /// Whitespace for emote menu.
@@ -1695,7 +1694,7 @@ SA = _sc_a
             /// -> Wrapper.
             +w('>', 'contentWrapper') {
                 border: 1px solid bg5
-                b: var(--elevation-high) i;
+                b: var(--elevation-high) i
                 r: rc
 
                 /// Fix background for emoji category text.
@@ -1718,7 +1717,7 @@ SA = _sc_a
 
         /// -> Fix hardcoded preload images.
         +w('/', 'imageLoading-') {
-            background-image: none i;
+            background-image: none i
             c: t 0 bg3
             r: 38%
         }
