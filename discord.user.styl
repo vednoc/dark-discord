@@ -964,19 +964,21 @@ SA = _sc_a
     }
 
     // Friends -> Active now.
-    +w('', 'nowPlaying' 'outer-') {
+    +w('', 'nowPlaying' 'outer-', i: 0) {
         /// Normal state.
-        +w('&', 'wrapper-') {
-            c: 0 0 bg3
+        c: 0 0 bg3
+        +w('', 'inset-') { c: 0 0 bg2 }
 
-            /// Rich presence.
-            +w('', 'inset-') { c: 0 0 bg4 }
+        /// Hover state.
+        &:hover {
+            c: 0 0 bg4
+            +w('', 'inset-') { c: 0 0 bg3 }
         }
 
-        /// Various states.
-        +w('&', 'active-') {
-            &, ../:hover { c: 0 0 bg5 }
-            +w('', ' active-' 'inset-') { c: 0 0 bg4 }
+        /// Active state.
+        +w('&', ' active-') {
+            c: 0 0 bg5
+            +w('', 'inset-') { c: 0 0 bg4 }
         }
 
         /// Popouts.
