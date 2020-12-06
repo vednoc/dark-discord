@@ -1628,6 +1628,7 @@ SA = _sc_a
     // Chat -> Autocomplete. @obsolete
     +w('', 'autocomplete-' 'autocomplete', i: '') {
         c: 0 0 bg2
+        r: rc i
         +w('', 'Title-') {
             c: fg5
             > strong { c: ac1 }
@@ -1635,7 +1636,7 @@ SA = _sc_a
         +w('', 'content-') { c: fg1 }
         +w('', 'description') { c: fg4 }
         +w('', 'divider-') { c: 0 0 bg5 }
-        +w('', 'Selected-') { c: 0 0 bg4 }
+        +w('', 'Selected-' 'selected-') { c: 0 0 bg3 }
     }
 
     // Feat -> Shorter messages.
