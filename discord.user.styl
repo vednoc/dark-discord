@@ -1510,11 +1510,21 @@ SA = _sc_a
 
             /// Input borders.
             > div {
-                &:first-of-type {
+                &:nth-of-type(1) {
                     border: 1px solid bg5
-                    border-bottom: none
+                    r: rc
+
+                    /// Reset reply state.
+                    +w('&', 'container-') { r: rc rc 0 0 }
                 }
-                &:last-of-type { border: 1px solid bg5 }
+                &:nth-of-type(2) {
+                    /// Reset reply state.
+                    +w('&', 'hasReply-') {
+                        border: 1px solid bg5
+                        border-top: none
+                        r: 0 0 rc rc
+                    }
+                }
             }
 
             /// Fix mention button colors.
