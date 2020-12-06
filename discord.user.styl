@@ -1510,8 +1510,16 @@ SA = _sc_a
 
             /// Input borders.
             > div {
-                r: inherit
-                b: inner
+                &:first-of-type {
+                    border: 1px solid bg5
+                    border-bottom: none
+                }
+                &:last-of-type { border: 1px solid bg5 }
+            }
+
+            /// Fix mention button colors.
+            +w('/', 'mentionButton-' 'colorBrand-', i: '') {
+                c: ac0
             }
 
             /// Fix emoji button padding.
