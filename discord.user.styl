@@ -328,7 +328,6 @@ SA = _sc_a
     define('b8' + key, s('var(--b8-%s)', unquote(key)), g) for key, val in C.b8
 }
 
-
 @-moz-document regexp('https?://discord(app)?.com/(app|channels|library|store|gui.*|log.*)(/.*)?') {
     /// Show debug.
     if (cg_debug) {
@@ -1209,6 +1208,7 @@ SA = _sc_a
             +w('&', 'colorBrand-') { c: white 0 ac1 }
             +w('&', 'colorGreen-') { c: white 0 b42 }
             +w('&', 'colorPrimary-') { c: fg1 0 bg4 }
+            +w('&', 'colorGrey-') { c: fg1 0 bg4 }
             +w('', 'contents-') { text-shadow: 1px 1px 0 #0005 }
         }
 
@@ -1222,6 +1222,12 @@ SA = _sc_a
             /// Chat -> Emoji picker tab.
             +w('&', 'colorBrand-') { c: fg5 }
             +w('&', 'colorBrand-' 'Active-', i: '') { c: fg1 0 bg1 }
+        }
+
+        /// Inlined.
+        +w('/', 'item-') {
+            &[style*='d-color: rgb(67\, 181\, 129'] { c: white 0 ac3 }
+            &[style*='d-color: rgba(67\, 181\, 129\, 0.2'] { c: ac1 0 ac4 }
         }
     }
 
