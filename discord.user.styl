@@ -408,6 +408,7 @@ SA = _sc_a
         --elevation-high:               0 8px 16px 2px sh //0 8px 16px rgba(0,0,0,0.24)
 
         /// Various backgrounds.
+        --radio-group-dot-foreground:   ac1 //#8ea1e1
         --channeltextarea-background:   bg3 //#40444b
         --activity-card-background:     bg0 //#202225
         --textbox-markdown-syntax:      fg4 //#8e9297
@@ -660,6 +661,14 @@ SA = _sc_a
                 &[style *= '67\, 181\, 129'] { c: 0 b41 b41 }
             }
         }
+    }
+
+    // Global -> Sliders.
+    +w('', 'control-') {
+        [style*="d-color: rgb(67\, 181\, 129"] { c: 0 0 b43 }
+        [style*="d-color: rgb(114\, 118\, 125"] { c: 0 0 bg5 }
+        rect[fill='white'] { v: bg0 }
+        +w('', 'slider-') {}
     }
 
     // Global -> Dropdown menus.
