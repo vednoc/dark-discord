@@ -662,6 +662,19 @@ SA = _sc_a
         }
     }
 
+    // Global -> Dropdown menus.
+    +w('', 'select-') {
+        +w('', '-control') {
+            c: red bg4 bg2
+            &:hover, &:focus-within { c: 0 bg5 }
+        }
+        +w('', '-menu') {
+            c: red bg5 bg2
+            +w('', '-option') { &:hover { c: 0 0 bg3 }}
+            .css-1ba14n5-option { c: 0 0 bg4 }
+        }
+    }
+
     // Guilds.
     +w('', 'wrapper-' 'guilds-', i: '') {
         /// Use theme colors.
