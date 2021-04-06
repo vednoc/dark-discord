@@ -749,11 +749,11 @@ SA = _sc_a
                 justify-content: flex-start
 
                 /// Unread indicators.
-                +w('>', 'pill-'){
+                +w('>', 'pill-') {
                     height: $size
 
                     /// Guild placeholder icon.
-                    + [draggable = 'false'] svg {
+                    + div > [draggable = 'false'] svg {
                         width: $size i
                         height: $size i
                         div { c: 0 0 bg5 }
@@ -773,8 +773,9 @@ SA = _sc_a
 
                 /// Folder icons.
                 > [draggable] {
-                    +w('>', 'wrapper-') { &, ../ { width: $size; height: $size}}
-                    +w('', 'svg-') { width: $size; height: $size }
+                    --background-primary: bg5 // Folder placeholders.
+                    +w('>', 'wrapper-') { &, ../ { width: $size; height: $size i }}
+                    svg { width: $size; height: $size }
                     +w('', 'Badge-') {
                         r: 50% i
                         b: 0 0 0 3px bg3
