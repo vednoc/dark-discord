@@ -367,27 +367,27 @@ SA = _sc_a
 }
 
 @-moz-document regexp('https?://discord(app)?.com/(app|channels|library|store|gui.*|log.*)(/.*)?') {
-    body {
-        content: 'a mixin'
-        +a('x', i: '/') {
-            --divider: _;
-            --debug: dbg
-            --len: len
-        }
-        +a(x y z) {
-            --divider: _;
-            --debug: dbg
-            --len: len
-        }
-        +a(1 2 3) {
-            --divider: _;
-            --debug: dbg
-            --len: len
-        }
-    }
-
     /// Show debug.
     if (cg_debug) {
+        :root {
+            content: 'a mixin'
+            +a('x', i: '/') {
+                --divider: _;
+                --debug: dbg
+                --len: len
+            }
+            +a(x y z) {
+                --divider: _;
+                --debug: dbg
+                --len: len
+            }
+            +a(1 2 3) {
+                --divider: _;
+                --debug: dbg
+                --len: len
+            }
+        }
+
         :root {
             &::before {
                 content: \
