@@ -78,8 +78,13 @@
 a(args, attr = 'class', i = '') {
     dbg ?= ''
     dbg += args
-    len ?= 'length => ' + length(args)
+    len ?= length(args)
     u    = unquote
+
+    // Check arguments.
+    if args[0] == 0 {
+        error('Must provide valid arguments. Length of arguments is: ' + len)
+    }
 
     // Process.
     for v, k in args {
@@ -365,14 +370,17 @@ SA = _sc_a
     body {
         content: 'a mixin'
         +a('x', i: '/') {
+            --divider: _;
             --debug: dbg
             --len: len
         }
         +a(x y z) {
+            --divider: _;
             --debug: dbg
             --len: len
         }
         +a(1 2 3) {
+            --divider: _;
             --debug: dbg
             --len: len
         }
