@@ -92,9 +92,13 @@ a(args, prefix = '', attr = 'class', i = '') {
         content: s('%s --- %s', k, v)
 
         // Iterate over arguments.
-        if k == 0 {
+        if k {
             //{ '--%s' % 0 }: args
-            lst += s('[%s*=%s], ', u(attr), v)
+            if k == length(args) - 1 {
+                lst += s('[%s*=%s]', u(attr), v)
+            } else {
+                lst += s('[%s*=%s], ', u(attr), v)
+            }
         } else {
             //{ '--%s' % k }: args
             lst += s('[%s*=%s], ', u(attr), v)
