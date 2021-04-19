@@ -75,7 +75,8 @@
 
 // Class mixin.
 // TODO: Add examples.
-a(args, attr = 'class', i = '') {
+a(args, prefix = '', attr = 'class', i = '') {
+    lst ?= ''
     dbg ?= ''
     dbg += args
     len ?= length(args)
@@ -92,16 +93,19 @@ a(args, attr = 'class', i = '') {
 
         // Iterate over arguments.
         if k == 0 {
-            { '--%s' % 0 }: args
+            //{ '--%s' % 0 }: args
+            lst += s('[%s*=%s], ', u(attr), v)
         } else {
-            { '--%s' % k }: args
+            //{ '--%s' % k }: args
+            lst += s('[%s*=%s], ', u(attr), v)
         }
 
         _: _ // Divider.
     }
 
     // Combine.
-    list = (i != '') ? s('%s %s', u(i), u(args)) : args
+    list = (i != '') ? s('%s %s', u(i), u(lst)) : lst
+    dbg = list
 
     // Generate.
     { list } {
