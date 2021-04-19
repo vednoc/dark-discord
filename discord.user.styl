@@ -100,12 +100,16 @@ a(args, prefix = '', attr = 'class', i = '') {
             }
         } else {
             // { '--%s' % k }: 'argument: ' + args[k]
-            lst += s('[%s*=%s], ', u(attr), v)
+            if k == length(args) - 1 {
+                lst += s('[%s*=%s]', u(attr), v)
+            } else {
+                lst += s('[%s*=%s], ', u(attr), v)
+            }
         }
     }
 
     // Combine.
-    list = (i != '') ? s('%s %s', u(i), u(lst)) : lst
+    list = (i != '') ? s('%s%s', u(i), u(lst)) : lst
     dbg = list
 
     // Generate.
