@@ -77,8 +77,7 @@
 // TODO: Add examples.
 a(args, prefix = '', attr = 'class', i = '') {
     lst ?= ''
-    dbg ?= ''
-    dbg += args
+    dbg ?= args
     len ?= length(args)
     u    = unquote
 
@@ -93,18 +92,16 @@ a(args, prefix = '', attr = 'class', i = '') {
 
         // Iterate over arguments.
         if k {
-            //{ '--%s' % 0 }: args
+            // { '--%s' % k }: 'argument: ' + args[k]
             if k == length(args) - 1 {
                 lst += s('[%s*=%s]', u(attr), v)
             } else {
                 lst += s('[%s*=%s], ', u(attr), v)
             }
         } else {
-            //{ '--%s' % k }: args
+            // { '--%s' % k }: 'argument: ' + args[k]
             lst += s('[%s*=%s], ', u(attr), v)
         }
-
-        _: _ // Divider.
     }
 
     // Combine.
