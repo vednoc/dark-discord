@@ -590,7 +590,7 @@ SA = _sc_a
         [mask *= 'dnd'], [fill *= '240\, 71\, 71'], /[fill *= '#f04747'] { v: b10 }
 
         /// Sidebar -> User status.
-        +w('/', 'status-') {
+        +a(status-, i: '/') {
             &[style *= '116\, 127\, 141'] { c: 0 0 fg5 }
             &[style *= '67\, 181\, 129'] { c: 0 0 b40 }
             &[style *= '250\, 166\, 26'] { c: 0 0 b20 }
@@ -650,7 +650,7 @@ SA = _sc_a
         }
 
         /// Global -> Tooltips.
-        +w('/', 'tooltipBlack-') {
+        +a(tooltipBlack-, i: '/') {
             border: 1px solid bg5
             c: fg1 0 bg3
             b: 0 4px 8px shadow i
@@ -659,7 +659,7 @@ SA = _sc_a
         }
 
         /// Fix 'Server Boosting' and similar tooltips.
-        +w('/', 'subscribeTooltipWrapper-') {
+        +a(subscribeTooltipWrapper-, i: '/') {
             c: 0 0 ac3
             &::after { border-bottom-color: ac3 i }
         }
@@ -683,7 +683,7 @@ SA = _sc_a
         }
 
         /// Global -> Bot tags.
-        +w('/', 'botTagInvert-') { c: white 0 ac0 }
+        +a(botTagInvert-, i: '/') { c: white 0 ac0 }
 
         /// Global -> Context menus.
         +w('', 'contextMenu-') {
@@ -712,14 +712,22 @@ SA = _sc_a
             }
         }
 
-        +w('/', 'checkbox-') {
+        +a(checkbox-, i: '/') {
             /// Squared.
             +w('&', 'box-') {
                 c: 0 bg5
 
+                /// 'Mark as spoiler' checkbox.
+                &[style*='r-color: rgb(114\, 137\, 218)'] {
+                    c: 0 ac1
+                    svg path { v: ac1 }
+                }
+
                 /// In bars or standalone.
-                +w('&', 'checked-') { c: ac1 white white }
-                &[style*='d-color: rgb(114\, 137\, 218)'] { c: white ac1 ac1 }
+                &[style*='d-color: rgb(114\, 137\, 218)'] {
+                    c: white ac1 ac1
+                    svg path { v: white }
+                }
             }
 
             /// Rounded.
@@ -856,7 +864,7 @@ SA = _sc_a
                 }
 
                 /// Expanded folders.
-                +w('/', 'expandedFolderBackground-') {
+                +a(expandedFolderBackground-, i: '/') {
                     width: $size
                     left: 10px i
                     r: 16px i
@@ -893,7 +901,7 @@ SA = _sc_a
                 border-top: 1px solid bg5 i
 
                 /// Popouts -> Status menu.
-                +w('/', 'menu-') { border: 1px solid bg5 i }
+                +a(menu-, i: '/') { border: 1px solid bg5 i }
             }
 
             /// Main/friends area.
@@ -1065,7 +1073,7 @@ SA = _sc_a
         }
 
         /// Popouts.
-        +w('/', 'popout-38lTFE') {
+        +a(popout-38lTFE, i: '/') {
             c: 0 0 bg0
             b: inner, bsh i
 
@@ -1080,7 +1088,7 @@ SA = _sc_a
     // Modals.
     +w('', 'modal-') {
         /// Backdrop.
-        +w('/', 'backdrop') {
+        +a(backdrop, i: '/') {
             c: 0 0 bg1
             opacity: 0.8 i
         }
@@ -1168,7 +1176,7 @@ SA = _sc_a
         }
 
         /// Global -> Upload.
-        +w('/', 'uploadModal-') {
+        +a(uploadModal-, i: '/') {
             border: 1px solid bg5 i
             b: var(--elevation-high) i
             c: 0 0 bg1
@@ -1197,7 +1205,7 @@ SA = _sc_a
             }
         }
         /// Global -> Quickswitcher.
-        +w('/', 'quickswitcher-') {
+        +a(quickswitcher-, i: '/') {
             &:not([class*='channel']) {
                 border: 1px solid bg5
                 b: var(--elevation-high) i
@@ -1213,7 +1221,7 @@ SA = _sc_a
             }
         }
         /// Global -> Keyboard combos.
-        +w('/', 'keyboardShortcutsModal') {
+        +a(keyboardShortcutsModal, i: '/') {
             border: 1px solid bg5 i
             c: 0 0 bg1
             r: rc
@@ -1227,7 +1235,7 @@ SA = _sc_a
         }
 
         /// Guilds -> Folder settings / Channel info / Gift a Nitro.
-        +w('/', 'root-1gCeng') {
+        +a(root-1gCeng, i: '/') {
             border: 1px solid bg5 i
             b: var(--elevation-high) i
             c: 0 0 bg1
@@ -1252,7 +1260,7 @@ SA = _sc_a
         }
 
         /// Inbox -> Fix borders.
-        +w('/', 'recentMentionsPopout-') {
+        +a(recentMentionsPopout-, i: '/') {
             border: 1px solid bg5 i
             b: var(--elevation-high) i
 
@@ -1264,7 +1272,7 @@ SA = _sc_a
         }
 
         /// Change avatar -> Zoom in/out slider.
-        +w('/', 'slider-') {
+        +a(slider-, i: '/') {
             +w('', 'bar-') { c: 0 0 bg4 }
             +w('', 'Fill-') { c: 0 0 ac1 }
             +w('', 'grabber-') { c: 0 fg1 fg1 }
@@ -1312,7 +1320,7 @@ SA = _sc_a
         }
 
         /// Inlined.
-        +w('/', 'item-') {
+        +a(item-, i: '/') {
             &[style*='d-color: rgb(67\, 181\, 129'] { c: white 0 ac3 }
             &[style*='d-color: rgba(67\, 181\, 129\, 0.2'] { c: ac1 0 ac4 }
         }
@@ -1413,8 +1421,8 @@ SA = _sc_a
         +w('', 'option-') { &::after { background: none i }}
 
         /// Search field.
-        +w('/', 'searchFilter-') { c: fg0 0 bg1 }
-        +w('/', 'searchAnswer-') { c: fg0 0 bg1 }
+        +a(searchFilter-, i: '/') { c: fg0 0 bg1 }
+        +a(searchAnswer-, i: '/') { c: fg0 0 bg1 }
 
         /// Results.
         +w('', 'channelSeparator-') { c: 0 0 bg2 }
@@ -1456,7 +1464,7 @@ SA = _sc_a
         border: 1px solid bg5
 
         /// Spotify invite.
-        +w('/', 'modal-yWgWj-') {
+        +a(modal-yWgWj-, i: '/') {
             border: 1px solid bg5 i
             c: 0 0 bg1
             b: var(--elevation-high) i
@@ -1481,7 +1489,7 @@ SA = _sc_a
         +w('>', 'title-') {
             c: 0 0 bg2
             /// -> Gradient.
-            +w('/', 'children-') {
+            +a(children-, i: '/') {
                 &::after { background: linear-gradient(90deg, t 0, bg2) i }
             }
         }
@@ -1638,7 +1646,7 @@ SA = _sc_a
             /.mention { c: ac0 0 ac5 }
 
             /// Markdown preview -> Inline code.
-            +w('/', 'inlineCode-') { font-family: var(--f-mono) i }
+            +a(inlineCode-, i: '/') { font-family: var(--f-mono) i }
         }
 
         +w('', 'cooldownWrapper-') { c: fg3 }
@@ -1654,7 +1662,7 @@ SA = _sc_a
             b: outer, bsh i
 
             /// Menu items.
-            +w('/', 'item-') {
+            +a(item-, i: '/') {
                 +w('&', 'colorDefault-') {
                     +w('&', 'focused-') { c: ac0 0 ac5 }
                 }
@@ -1672,7 +1680,7 @@ SA = _sc_a
         }
 
         /// -> Guild members.
-        +w('/', 'members-') {
+        +a(members-, i: '/') {
             b: inset 1px 0 bg5 i
             +w('', 'clickable-') {
                 &:hover [class *= 'layout-'] { c: 0 0 bg3 }
@@ -1703,7 +1711,7 @@ SA = _sc_a
         }
 
         /// Chat -> Bot tag colors.
-        +w('/', 'botTagRegular-') { c: white 0 ac1 }
+        +a(botTagRegular-, i: '/') { c: white 0 ac1 }
     }
 
     // Chat -> Markup.
@@ -1787,7 +1795,7 @@ SA = _sc_a
             }
 
             /// Fix 'Messages failed to load' alert.
-            +w('/', 'messagesErrorBar-') {
+            +a(messagesErrorBar-, i: '/') {
                 c: 0 0 b15
                 +w('>', 'Button') { c: b10 }
             }
@@ -1818,7 +1826,7 @@ SA = _sc_a
         }
 
         /// Drawers -> Emoji picker.
-        +w('/', 'drawerSizingWrapper-') {
+        +a(drawerSizingWrapper-, i: '/') {
             /// -> Wrapper.
             +w('>', 'contentWrapper') {
                 border: 1px solid bg5
@@ -1830,7 +1838,7 @@ SA = _sc_a
             }
 
             /// Chat -> Reacting to messages.
-            +w('/', 'emojiPicker-') {
+            +a(emojiPicker-, i: '/') {
                 box-shadow: 0 0 0 1px bg5
 
                 /// Fix background for emoji category text.
@@ -1844,7 +1852,7 @@ SA = _sc_a
         }
 
         /// -> Fix hardcoded preload images.
-        +w('/', 'imageLoading-') {
+        +a(imageLoading-, i: '/') {
             background-image: none i
             c: t 0 bg3
             r: 38%
