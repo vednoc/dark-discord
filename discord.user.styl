@@ -79,6 +79,7 @@ a(args, attr = 'class', i = '') {
     dbg ?= ''
     dbg += args
     len ?= 'length => ' + length(args)
+    u    = unquote
 
     // Process.
     for v, k in args {
@@ -95,14 +96,9 @@ a(args, attr = 'class', i = '') {
     }
 
     // Combine.
-    list = (i != '') ? s('%s %s', i, args) : args
-    //if i != '' {
-    //    list = i + ' ' + args
-    //} else {
-    //    list = args
-    //    // dbg_list: '' + list
-    //}
+    list = (i != '') ? s('%s %s', u(i), u(args)) : args
 
+    // Generate.
     { list } {
         { block }
     }
