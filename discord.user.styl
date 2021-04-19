@@ -80,10 +80,21 @@ a(args, attr = 'class', i = '') {
     dbg += args
     len ?= 'length => ' + length(args)
 
-    for v, i in args {
-        content: s('%s --- %s', i, v)
+    // Process.
+    for v, k in args {
+        content: s('%s --- %s', k, v)
+
+        // Iterate over arguments.
+        if k == 0 {
+            { '--%s' % 0 }: args
+        } else {
+            { '--%s' % k }: args
+        }
+
+        _: _ // Divider.
     }
 
+    // Combine.
     list = (i != '') ? s('%s %s', i, args) : args
     //if i != '' {
     //    list = i + ' ' + args
@@ -358,16 +369,16 @@ SA = _sc_a
     body {
         content: 'a mixin'
         +a('x', i: '/') {
-            --len: len
             --debug: dbg
+            --len: len
         }
         +a(x y z) {
-            --len: len
             --debug: dbg
+            --len: len
         }
         +a(1 2 3) {
-            --len: len
             --debug: dbg
+            --len: len
         }
     }
 
