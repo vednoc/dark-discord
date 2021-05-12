@@ -597,6 +597,9 @@ SA = _sc_a
             &[style *= '240\, 71\, 71'] { c: 0 0 b10 }
         }
 
+        // New green color.
+        svg rect[fill='#3ba55c'] { v: b40 }
+
         /// Badges.
         +w('', 'numberBadge-') {
             /// Global -> 'NEW' alerts.
@@ -605,6 +608,7 @@ SA = _sc_a
             /.wrapper-232cHJ,
             /// Unread messages.
             &[style *= 'nd-color: rgb(240\, 71\, 71)'],
+            &[style *= 'nd-color: rgb(237\, 66\, 69)'],
             /// Quickswitcher -> Unread messages.
             /[class *= 'quickswitcher-'] [class *= 'badge'],
             /// Guilds -> New messages.
@@ -1558,10 +1562,8 @@ SA = _sc_a
                     }
                 }
 
-                /// Reactions.
-                &:hover {
-                    +w('', 'reactionMe-') { c: 0 0 #fff2 }
-                }
+                /// Reaction colors.
+                +w('', 'reactionMe-') { c: 0 0 #ffffff20 }
             }
             /// -> Spoilers.
             +w('', 'spoilerText-') {
@@ -1588,7 +1590,7 @@ SA = _sc_a
 
             /// -> Reactions.
             +w('', 'reactionMe-') {
-                c: 0 0 ac4
+                c: 0 t ac4
                 +w('', 'Count-') {
                     font-weight: bold
                     c: ac0
