@@ -375,7 +375,7 @@ SA = _sc_a
     define('b8' + key, s('var(--b8-%s)', unquote(key)), g) for key, val in C.b8
 }
 
-@-moz-document regexp('https?://discord(app)?.com/(app|channels|library|store|gui.*|log.*)(/.*)?') {
+@-moz-document regexp('https?://discord(app)?.com/(app|channels|discovery|library|store|gui.*|log.*)(/.*)?') {
     /// Show debug.
     if (cg_debug) {
         :root {
@@ -913,7 +913,10 @@ SA = _sc_a
                 c: 0 0 bg1
 
                 /// Header.
-                +w('>', 'container-') { c: 0 0 bg2 }
+                +w('>', 'container-') {
+                    c: 0 0 bg2
+                    b: 0 1px bg5
+                }
 
                 /// 'Now playing' sidebar.
                 +w('', 'nowPlaying') { b: inset 1px 0 bg5 i }
