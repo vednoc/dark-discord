@@ -1063,32 +1063,16 @@ SA = _sc_a
 
     // Friends -> Active now.
     +w('', 'nowPlaying' 'outer-', i: 0) {
-        /// Normal state.
-        c: 0 0 bg3
-        +w('', 'inset-') { c: 0 0 bg2 }
-
         /// Hover state.
         &:hover {
-            c: 0 0 bg4
-            +w('', 'inset-') { c: 0 0 bg3 }
+            c: 0 bg4 bg3
+            +w('', 'inset-') { > section { c: 0 0 bg2 }}
         }
 
         /// Active state.
         +w('&', ' active-') {
-            c: 0 0 bg5
-            +w('', 'inset-') { c: 0 0 bg4 }
-        }
-
-        /// Popouts.
-        +a(popout-38lTFE, i: '/') {
-            c: 0 0 bg0
-            b: inner, bsh i
-
-            +w('', 'separator-') { c: 0 0 bg4 }
-
-            +w('', 'enabled-' 'ListItem', 0) {
-                &:hover { c: 0 0 bg2 }
-            }
+            c: 0 bg5 bg4
+            +w('', 'inset-') { > section { c: 0 0 bg3 }}
         }
     }
 
