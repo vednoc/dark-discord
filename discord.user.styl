@@ -1227,9 +1227,15 @@ SA = _sc_a
 
         /// Guilds -> Folder settings / Channel info / Gift a Nitro.
         +a(root-1gCeng, i: '/') {
+            --background-floating: bg1
             border: 1px solid bg5 i
             b: var(--elevation-high) i
             c: 0 0 bg1
+
+            /// User details modal.
+            +a(topSection-) {
+                --background-floating: bg2
+            }
 
             /// 'Delete message'.
             +w('', 'colorStandard-') {
@@ -1322,6 +1328,13 @@ SA = _sc_a
         border: 1px solid bg5 i
         b: var(--elevation-high) i
         c: 0 0 bg1
+
+        /// Reset new styles.
+        --background-floating: bg2
+        [class*='newPopout']:not(#z) {
+            c: 0 0 bg1
+            b: 0 1px bg1 i
+        }
 
         /// Header.
         +w('>', 'header') {
@@ -1850,15 +1863,6 @@ SA = _sc_a
 
     /// Feat -> Avatar size in info popout/modal.
     if (avatar_size > 80) {
-        /// Popout.
-        +w('', 'userPopout-' 'avatarWrapper-', i: 0) {
-            > div[style*='width: 80px'],
-            > svg[width='80'] {
-                width: var(--avatar-s) i
-                height: var(--avatar-s) i
-            }
-        }
-
         /// Modal.
         +w('', 'modal-' 'header-', i: 0) {
             div[style*='width: 80px'] {
