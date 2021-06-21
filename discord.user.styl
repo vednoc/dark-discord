@@ -31,6 +31,8 @@
 @var checkbox chat_short   'Shorter chat mode' 0
 @var text     chat_short_w 'Shorter chat width' 800px
 
+@var checkbox guild_avatar 'Move user menu to guilds bar' 0
+
 @var checkbox sb_short     'Smaller sidebar mode' 1
 @var text     sb_short_s   'Smaller sidebar mode size' 64px
 @var text     sb_short_w   'Smaller sidebar mode breakpoint' 940px
@@ -1874,5 +1876,48 @@ SA = _sc_a
 
         /// Search -> Fix media width.
         +w('', 'embedMedia-') { [data-fullscreen] { width: 100% i }}
+    }
+
+    /// Feat -> Move user menu to guilds bar.
+    if guild_avatar {
+        +w('', 'guilds-') {
+            // max-height: calc(100vh - 72px)
+            padding-bottom: 144px
+        }
+        +w('', 'sidebar-') {
+            /// The magic that makes this feature work.
+            &, /[class*='guilds'] + div { overflow: unset i }
+
+            /// Attach panel to guilds bar.
+            +w('', 'panels') {
+                +w('>', 'container-') {
+                    --size: (g_icons) ? (g_icons_s + 20px) : 72px
+                    padding: 8px 0
+                    z-index: 111
+                    height: 128px
+                    width: calc(var(--size))
+                    left: calc(-1 * var(--size))
+                    bottom: 0px
+                    overflow: hidden
+                    position: absolute
+                    flex-direction: column-reverse
+                    b: inset -1px 0 bg5
+                    c: 0 0 bg3
+
+                    /// Adjust buttons.
+                    +w('>', 'horizontal-') { flex-direction: column i }
+                }
+            }
+
+            /// Remove status.
+            +w('', 'subtext-') { display: none }
+            +w('', 'nameTag-') { display: none }
+
+            /// Center elements.
+            +w('', 'avatarWrapper-') {
+                margin-right: 0px
+                margin-top: 4px
+            }
+        }
     }
 }
