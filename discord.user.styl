@@ -1325,25 +1325,16 @@ SA = _sc_a
 
     // Popouts -> User popout.
     +w('', 'userPopout-') {
+        --background-floating: bg1
         border: 1px solid bg5 i
         b: var(--elevation-high) i
         c: 0 0 bg1
 
-        /// Reset new styles.
-        --background-floating: bg2
-        [class*='newPopout']:not(#z) {
-            c: 0 0 bg1
-            b: 0 1px bg1 i
-        }
-
         /// Header.
         +w('>', 'header') {
-            border-bottom: 1px solid bg5 i
-            c: 0 0 bg2
-
             /// Username.
-            +w('', 'headerTag-') {
-                c: fg2
+            +w('', 'headerTag') {
+                c: fg3
                 +w('', 'username-') { c: fg0 }
             }
 
