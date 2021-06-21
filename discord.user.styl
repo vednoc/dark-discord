@@ -582,23 +582,19 @@ SA = _sc_a
             }
         }
 
-        /// User -> Status icon.
-        /// TODO: Remove (obsolete?) RGB version in next version.
-        [mask *= 'offline'], [fill *= '116\, 127\, 141'], /[fill *= '#747f8d'] { v: fg5 }
-        [mask *= 'online'], [fill *= '67\, 181\, 129'], /[fill *= '#43b581'] { v: b40 }
-        [mask *= 'idle'], [fill *= '250\, 166\, 26'], /[fill *= '#faa61a'] { v: b20 }
-        [mask *= 'dnd'], [fill *= '240\, 71\, 71'], /[fill *= '#f04747'] { v: b10 }
+        /// Status colors.
+        svg {
+            rect[fill^='hsl(38'] { v: b20 }
+            rect[fill^='hsl(139'] { v: b40 }
+            rect[fill^='hsl(214'] { v: fg5 }
+            rect[fill^='hsl(359'] { v: b10 }
 
-        /// Sidebar -> User status.
-        +a(status-, i: '/') {
-            &[style *= '116\, 127\, 141'] { c: 0 0 fg5 }
-            &[style *= '67\, 181\, 129'] { c: 0 0 b40 }
-            &[style *= '250\, 166\, 26'] { c: 0 0 b20 }
-            &[style *= '240\, 71\, 71'] { c: 0 0 b10 }
+            /// User status menu.
+            [mask*='status-offline'] > div { c: 0 0 fg5 }
+            [mask*='status-online'] > div { c: 0 0 b40 }
+            [mask*='status-idle'] > div { c: 0 0 b20 }
+            [mask*='status-dnd'] > div { c: 0 0 b10 }
         }
-
-        // New green color.
-        svg rect[fill='#3ba55c'] { v: b40 }
 
         /// Badges.
         +w('', 'numberBadge-') {
